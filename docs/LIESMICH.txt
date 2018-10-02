@@ -1,6 +1,6 @@
 # yW2OO (yWriter-to-OpenOffice)
 
-HTML-Export von yWriter in ein sauberes OpenOffice Writer-Dokument wandeln, um Dokument- und Formatvorlagen anwenden zu können.
+HTML-Export von yWriter in ein sauberes OpenOffice Writer-Dokument umwandeln, um Dokument- und Formatvorlagen anwenden zu können.
 
 
 ## Allgemein
@@ -11,7 +11,7 @@ HTML-Export von yWriter in ein sauberes OpenOffice Writer-Dokument wandeln, um D
 ## Merkmale
 
 * Automatische Installation: Entpacken Sie die Installationsdateien irgendwo in Ihrem Benutzerbereich und starten Sie "install.bat".
-* Leicht zu benutzen: Kopieren sie einfach "writer.bat" in Ihren yWriter Export-Ordner und führen sie sie dort aus.
+* Leicht zu benutzen: Kopieren Sie einfach "writer.bat" in Ihren yWriter Export-Ordner und führen Sie sie dort aus.
 * Eine Dokumentvorlage (A4, Seitenzahlen, Courier New, 30 Zeilen à maximal 60 Anschläge) ist dabei und kann manuell geladen werden.
 
 
@@ -31,7 +31,7 @@ yW2OO bereinigt die von yWriter5 erzeugte Datei "Exported Project.html" für Ope
 ## Systemanforderungen
 
 * yWriter5 (yW2OO ist NICHT mit yWriter6 getestet!)
-* Windows (yW2OO ist unter Vista (32 Bit) und Win 10 (64 Bit) getestet).
+* Windows (yW2OO ist unter Vista (32 Bit) und Win 10 (64 Bit) getestet)
 * OpenOffice.org 3.x oder Apache OpenOffice 4.x (nur deutsche oder englische Installation)
 * Java
 
