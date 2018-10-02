@@ -1,4 +1,4 @@
-[Deutsche Fassung](yw2oo-ywriter-to-openoffice-1)
+[Deutsche Fassung](#yw2oo-ywriter-to-openoffice-1)
 
 # yW2OO (yWriter-to-OpenOffice)
 
