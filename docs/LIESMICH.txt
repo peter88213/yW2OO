@@ -1,0 +1,83 @@
+# yW2OO (yWriter-to-OpenOffice)
+
+HTML-Export von yWriter in ein sauberes OpenOffice Writer-Dokument wandeln, um Dokument- und Formatvorlagen anwenden zu können.
+
+
+## Allgemein
+
+[yWriter5](http://www.spacejock.com/yWriter5.html) ist ein kostenloses Schreibprogramm vom australischen Autor und Programmierer Simon Haynes. yWriter ist sehr hilfreich beim Strukturieren und Verfassen von Romanen, aber es ist nicht dafür gedacht, Text typographisch in Form zu bringen. Zur Formatierung durch ein mächtiges Office-Programm sollte er exportiert werden. Je nach Anspruch des Benutzers sind dazu mehrere Zwischenschritte nötig. yW2OO automatisiert diese Schritte weitgehend für OpenOffice Writer, so dass nur noch wenig Handarbeit übrig bleibt, um ein sauberes und hübsches OpenOffice-Dokument zu erhalten.
+
+
+## Merkmale
+
+* Automatische Installation: Entpacken Sie die Installationsdateien irgendwo in Ihrem Benutzerbereich und starten Sie "install.bat".
+* Leicht zu benutzen: Kopieren sie einfach "writer.bat" in Ihren yWriter Export-Ordner und führen sie sie dort aus.
+* Eine Dokumentvorlage (A4, Seitenzahlen, Courier New, 30 Zeilen à maximal 60 Anschläge) ist dabei und kann manuell geladen werden.
+
+
+yW2OO bereinigt die von yWriter5 erzeugte Datei "Exported Project.html" für OpenOffice Writer (V 3.x and 4.x). Die Software
+* entfernt etliche hinderliche Tabellen und Schriftartangaben. 
+* formatiert Kapitelüberschriften als "Überschrift 2".
+* formatiert Szenenüberschriften als "Überschrift 4".
+* formatiert jeden erste Absatz in Kapitel oder Szene als "Textkörper".
+* formatiert alle anderen Absätze als "Textkörper Einzug".
+* wandelt direkte Formatierung ("kursiv", "fett") in Zeichenformate um ("Betont", "Stark betont").
+* wandelt Geviertstriche in Halbgeviertstriche um, falls Leerzeichen angrenzen ("europäische" Gedankenstriche).
+* wandelt Leerzeichen vor Gedankenstrichen und Auslassungspunkten in feste (nicht trennbare) Leerzeichen um.
+* entfernt Leerzeilen innerhalb von Szenen.
+* speichert das Dokument als "ODT" ab.
+
+
+## Systemanforderungen
+
+* yWriter5 (yW2OO ist NICHT mit yWriter6 getestet!)
+* Windows (yW2OO ist unter Vista (32 Bit) und Win 10 (64 Bit) getestet).
+* OpenOffice.org 3.x oder Apache OpenOffice 4.x (nur deutsche oder englische Installation)
+* Java
+
+
+## Inhalt
+
+Die yW2OO Software kommt als selbstentpackendes ZIP-Archiv und umfasst:
+* README.txt: Kurzbeschreibung des Softwarepakets in englischer Sprache.
+* LIESMICH.txt: Kurzbeschreibung des Softwarepakets in deutscher Sprache.
+* Install.bat: Installationsdatei, die alles an den richtigen Ort bringt.
+* yW2OO.py: Ein Skript, das automatisch abläuft, bevor die HTML-Datei in OpenOffice Writer geöffnet wird.
+* yW2OO.oxt: OpenOffice-Erweiterung mit einer benötigten Makrobibliothek.
+* Manuscript.ott: Dokumentvorlage zur freien Verwendung.
+* LICENSE.txt: Informationen zur Lizensierung dieses Softwarepakets.
+
+
+## Installation
+
+1. Führen Sie das selbstentpackende Archiv "yW2OO-setup.exe" aus (Doppelklick) und wählen Sie einen Zielordner irgendwo in Ihrem Benutzerbereich (z.B. "Dokumente"). Ein Unterordner "yW2OO_Installation_files" wird automatisch erzeugt und gefüllt. 
+
+2. Öffnen Sie den Ordner "yW2OO_Installation_files" und führen Sie "Install.bat" aus (Doppelklick). Dadurch werden alle Programmdateien an den richtigen Ort kopiert und es wird der Extension Manager von OpenOffice gestartet. Bestätigen Sie die Installation der Erweiterung "yW2OO.oxt" und schließen Sie das Fenster des Extension Managers.
+
+3. Nun sollten Sie die neu erzeugte Datei "writer.bat" sehen. Kopieren Sie diese Datei in den "Export"-unterordner Ihres yWriter-Projekts (NICHT VERSCHIEBEN -- Sie brauchen je eine Kopie von "witer.bat" für jedes einzelne yWriter-Projekt).
+
+
+## Benutzung
+
+1. Verfassen Sie Ihren Roman mit yWriter5. Benutzen Sie Kursivschreibung nach Wunsch für Betonung, inneren Monolog, träume, Wünsche, Fremdwörter und Titel (Ausnahme: Liedtitel werden in Anführungszeichen gesetzt). Benutzen Sie Fettschreibung nach Wunsch für laute Ausrufe, Zeitungs- oder Plakattitel, Akronyme und so weiter. Benutzen Sie "--" für Gedankenstriche (mit Leerzeichen davor und/oder danach). 
+
+2. Lassen Sie yWriter Ihr Projekt als "<Ihr Projektordner>\Export\Exported Project.html" exportieren.
+
+3. Das Browserfenster, das "Exported Project.html" anzeigt, können Sie schließen. Ebenso können Sie yWriter beenden.
+
+4. Öffnen Sie den Ordner "<Ihr Projektordner>\Export".
+
+5. Führen Sie "writer.bat" aus (Doppelklick).
+
+6. Wenn alles klappt, wird OpenOffice Writer automatisch  starten und Ihr Dokument im OpenDocument-Format als "Exported Project.odt" mit hierarchischer Struktur und mit den richtigen Absatz-/Zeichenvorlagen anzeigen (siehe "Merkmale").
+
+7. Laden Sie eine Dokumentvorlage (empfohlen: "Manuscript.ott"). Die Hilfefunktion beschreibt unter "Vorlagen laden", wie das geht. Kreuzen Sie im "Vorlagen laden"-Dialog auf jeden Fall alle Kontrollkästchen an! 
+
+9. ich wünsche Ihnen viel Freude mit Ihrem hübschen und ordentlichen Dokument.
+
+
+## Freie Software
+
+yW2OO ist [freie Software](https://www.gnu.org/philosophy/free-sw.html). 
+Sie haben die Freiheit, sie zu verwenden, zu kopieren, zu verteilen, sie zu untersuchen und zu verbessern. 
+yW2OO wird unter der [MIT License](http://www.opensource.org/licenses/mit-license.php) veröffentlicht.
