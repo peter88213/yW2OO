@@ -1,51 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="Convert" script:language="StarBasic">REM  *****  BASIC  *****
+REM
+REM summary: Post-Processing an imported HTML file in order to be saved as ODT
+REM 
+REM author: Peter Triesberger
+REM see: https://github.com/peter88213/yW2OO
+REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
+REM copyright: (c) 2018, Peter Triesberger
+REM version: v1.0.0
+REM 
+REM note: This script is to be called automatically by batch file per command line parameter.
+REM 
+REM precondition: English or german Office installation.
+REM precondition: The input file &quot;Exported Project.html&quot; must be open and pre-processed by &quot;yW2OO.py&quot;.
+REM postcondition: The output file &quot;Exported Project.odt&quot; is generated and saved in the same directory where the input file is ( details see below).
+REM 
+REM since: 2018-10-01
+REM change: 2018-10-03 v1.0.0: Added comments and version number.
 
-rem Post-Processing an imported HTML file in order to be saved as ODT
+
 
 sub yHTML_en
-rem ----------------------------------------------------------------------
-rem Use English style names for (en-US) OpenOffice installation
-rem ----------------------------------------------------------------------
+
+REM ----------------------------------------------------------------------
+REM Use English style names for (en-US) OpenOffice installation
+REM ----------------------------------------------------------------------
+
 SetParagraphStyles_en
 SetPagestyle_en
 SaveAsODT
+
 End Sub
+
 
 
 sub yHTML_de
-rem ----------------------------------------------------------------------
-rem Use German style names for (de) OpenOffice installation
-rem ----------------------------------------------------------------------
+
+REM ----------------------------------------------------------------------
+REM Use German style names for (de) OpenOffice installation
+REM ----------------------------------------------------------------------
+
 SetParagraphStyles_de
 SetPagestyle_de
 SaveAsODT
+
 End Sub
 
+
+
 Sub SetParagraphStyles_de
-rem ----------------------------------------------------------------------
-rem Eine importierte HTML-Datei für die Umwandlung in ODT nachbearbeiten
-rem 
-rem Eingabe: yWriter HTML Export-Datei
-rem folgendermaßen vorverarbeitet:
-rem Kapitelüberschrift ist &quot;Überschrift 2&quot;
-rem Szenenüberschrift ist &quot;Überschrift 4&quot;
-rem Jeder erste Absatz in Kapitel oder Szene ist &quot;Überschrift 6&quot;
-rem Jeder andere Absatz ist &quot;Textkörper&quot;
-rem 
-rem Dieses BASIC Script formatiert alle Absätze um:
-rem &quot;Textkörper&quot; --&gt; &quot;Textkörper Einzug&quot;
-rem &quot;Überschrift 6&quot; --&gt; &quot;Textkörper&quot;
-rem &quot;Überschrift 2&quot; --&gt; &quot;Überschrift 2&quot; (harte Formatierungen entfernen)
-rem &quot;Überschrift 4&quot; --&gt; &quot;Überschrift 4&quot; (harte Formatierungen entfernen)
-rem 
-rem ----------------------------------------------------------------------
-rem get access to the document
+
+REM ----------------------------------------------------------------------
+REM Eine importierte HTML-Datei für die Umwandlung in ODT nachbearbeiten
+REM 
+REM Eingabe: yWriter HTML Export-Datei
+REM folgendermaßen vorverarbeitet:
+REM Kapitelüberschrift ist &quot;Überschrift 2&quot;
+REM Szenenüberschrift ist &quot;Überschrift 4&quot;
+REM Jeder erste Absatz in Kapitel oder Szene ist &quot;Überschrift 6&quot;
+REM Jeder andere Absatz ist &quot;Textkörper&quot;
+REM 
+REM Dieses BASIC Script formatiert alle Absätze um:
+REM &quot;Textkörper&quot; --&gt; &quot;Textkörper Einzug&quot;
+REM &quot;Überschrift 6&quot; --&gt; &quot;Textkörper&quot;
+REM &quot;Überschrift 2&quot; --&gt; &quot;Überschrift 2&quot; (harte Formatierungen entfernen)
+REM &quot;Überschrift 4&quot; --&gt; &quot;Überschrift 4&quot; (harte Formatierungen entfernen)
+REM 
+REM ----------------------------------------------------------------------
+
 document   = ThisComponent.CurrentController.Frame
 dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
 
-rem ----------------------------------------------------------------------
 dim args1(1) as new com.sun.star.beans.PropertyValue
 args1(0).Name = &quot;Template&quot;
 args1(0).Value = &quot;Standard&quot;
@@ -54,9 +80,10 @@ args1(1).Value = 8
 
 dispatcher.executeDispatch(document, &quot;.uno:StyleApply&quot;, &quot;&quot;, 0, args1())
 
-rem ----------------------------------------------------------------------
-rem Textkörper --&gt; Textkörper Einzug
-rem ----------------------------------------------------------------------
+REM ----------------------------------------------------------------------
+REM Textkörper --&gt; Textkörper Einzug
+REM ----------------------------------------------------------------------
+
 dim args2(18) as new com.sun.star.beans.PropertyValue
 args2(0).Name = &quot;SearchItem.StyleFamily&quot;
 args2(0).Value = 2
@@ -99,9 +126,10 @@ args2(18).Value = true
 
 dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args2())
 
-rem ----------------------------------------------------------------------
-rem Überschrift 6 --&gt; Textkörper
-rem ----------------------------------------------------------------------
+REM ----------------------------------------------------------------------
+REM Überschrift 6 --&gt; Textkörper
+REM ----------------------------------------------------------------------
+
 dim args3(18) as new com.sun.star.beans.PropertyValue
 args3(0).Name = &quot;SearchItem.StyleFamily&quot;
 args3(0).Value = 2
@@ -144,9 +172,10 @@ args3(18).Value = true
 
 dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args3())
 
-rem ----------------------------------------------------------------------
-rem Überschrift 2 --&gt; Überschrift 2
-rem ----------------------------------------------------------------------
+REM ----------------------------------------------------------------------
+REM Überschrift 2 --&gt; Überschrift 2
+REM ----------------------------------------------------------------------
+
 dim args4(18) as new com.sun.star.beans.PropertyValue
 args4(0).Name = &quot;SearchItem.StyleFamily&quot;
 args4(0).Value = 2
@@ -189,9 +218,10 @@ args4(18).Value = true
 
 dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args4())
 
-rem ----------------------------------------------------------------------
-rem Überschrift 4 --&gt; Überschrift 4
-rem ----------------------------------------------------------------------
+REM ----------------------------------------------------------------------
+REM Überschrift 4 --&gt; Überschrift 4
+REM ----------------------------------------------------------------------
+
 dim args5(18) as new com.sun.star.beans.PropertyValue
 args5(0).Name = &quot;SearchItem.StyleFamily&quot;
 args5(0).Value = 2
@@ -234,31 +264,33 @@ args5(18).Value = true
 
 dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args5())
 
-end sub
+end Sub
+
+
 
 sub SetParagraphStyles_en
-rem ----------------------------------------------------------------------
-rem Post-Processing an imported HTML file in order to be saved as ODT
-rem 
-rem Input: yWriter HTML export file 
-rem pre-processed as follows:
-rem Chapter heading is &quot;Heading 2&quot;
-rem Scene heading is &quot;Heading 4&quot; 
-rem First paragraph of each chapter and scene is &quot;Heading 6&quot;
-rem Any other paragraph is &quot;Text body&quot;
-rem 
-rem This BASIC Script re-formats all paragraphs:
-rem &quot;Text body&quot; --&gt; &quot;First-line indent&quot;
-rem &quot;Heading 6&quot; --&gt; &quot;Text body&quot;
-rem &quot;Heading 2&quot; --&gt; &quot;Heading 2&quot; (cleaning up hard formatting of Heading 2)
-rem &quot;Heading 4&quot; --&gt; &quot;Heading 4&quot; (cleaning up hard formatting of Heading 4)
-rem 
-rem ----------------------------------------------------------------------
-rem get access to the document
+
+REM ----------------------------------------------------------------------
+REM Post-Processing an imported HTML file in order to be saved as ODT
+REM 
+REM Input: yWriter HTML export file 
+REM pre-processed as follows:
+REM Chapter heading is &quot;Heading 2&quot;
+REM Scene heading is &quot;Heading 4&quot; 
+REM First paragraph of each chapter and scene is &quot;Heading 6&quot;
+REM Any other paragraph is &quot;Text body&quot;
+REM 
+REM This BASIC Script re-formats all paragraphs:
+REM &quot;Text body&quot; --&gt; &quot;First-line indent&quot;
+REM &quot;Heading 6&quot; --&gt; &quot;Text body&quot;
+REM &quot;Heading 2&quot; --&gt; &quot;Heading 2&quot; (cleaning up hard formatting of Heading 2)
+REM &quot;Heading 4&quot; --&gt; &quot;Heading 4&quot; (cleaning up hard formatting of Heading 4)
+REM 
+REM ----------------------------------------------------------------------
+
 document   = ThisComponent.CurrentController.Frame
 dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
 
-rem ----------------------------------------------------------------------
 dim args1(1) as new com.sun.star.beans.PropertyValue
 args1(0).Name = &quot;Template&quot;
 args1(0).Value = &quot;Standard&quot;
@@ -267,9 +299,10 @@ args1(1).Value = 8
 
 dispatcher.executeDispatch(document, &quot;.uno:StyleApply&quot;, &quot;&quot;, 0, args1())
 
-rem ----------------------------------------------------------------------
-rem Text body --&gt; First-line indent
-rem ----------------------------------------------------------------------
+REM ----------------------------------------------------------------------
+REM Text body --&gt; First-line indent
+REM ----------------------------------------------------------------------
+
 dim args2(18) as new com.sun.star.beans.PropertyValue
 args2(0).Name = &quot;SearchItem.StyleFamily&quot;
 args2(0).Value = 2
@@ -312,9 +345,10 @@ args2(18).Value = true
 
 dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args2())
 
-rem ----------------------------------------------------------------------
-rem &quot;Heading 6&quot; --&gt; &quot;Text body&quot;
-rem ----------------------------------------------------------------------
+REM ----------------------------------------------------------------------
+REM &quot;Heading 6&quot; --&gt; &quot;Text body&quot;
+REM ----------------------------------------------------------------------
+
 dim args3(18) as new com.sun.star.beans.PropertyValue
 args3(0).Name = &quot;SearchItem.StyleFamily&quot;
 args3(0).Value = 2
@@ -357,9 +391,10 @@ args3(18).Value = true
 
 dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args3())
 
-rem ----------------------------------------------------------------------
-rem Heading 2&quot; --&gt; &quot;Heading 2&quot; (cleaning up hard formatting of Heading 2)
-rem ----------------------------------------------------------------------
+REM ----------------------------------------------------------------------
+REM Heading 2&quot; --&gt; &quot;Heading 2&quot; (cleaning up hard formatting of Heading 2)
+REM ----------------------------------------------------------------------
+
 dim args4(18) as new com.sun.star.beans.PropertyValue
 args4(0).Name = &quot;SearchItem.StyleFamily&quot;
 args4(0).Value = 2
@@ -402,9 +437,10 @@ args4(18).Value = true
 
 dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args4())
 
-rem ----------------------------------------------------------------------
-rem Heading 4&quot; --&gt; &quot;Heading 4&quot; (cleaning up hard formatting of Heading 4)
-rem ----------------------------------------------------------------------
+REM ----------------------------------------------------------------------
+REM Heading 4&quot; --&gt; &quot;Heading 4&quot; (cleaning up hard formatting of Heading 4)
+REM ----------------------------------------------------------------------
+
 dim args5(18) as new com.sun.star.beans.PropertyValue
 args5(0).Name = &quot;SearchItem.StyleFamily&quot;
 args5(0).Value = 2
@@ -447,21 +483,21 @@ args5(18).Value = true
 
 dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args5())
 
+end Sub
 
-end sub
 
 
 sub SetPagestyle_de
-rem ----------------------------------------------------------------------
-rem define variables
+
+REM ----------------------------------------------------------------------
+REM Seitenformat  &quot;Standard &quot; laden und zum Anfang springen.
+REM ----------------------------------------------------------------------
+
 dim document   as object
 dim dispatcher as object
-rem ----------------------------------------------------------------------
-rem get access to the document
 document   = ThisComponent.CurrentController.Frame
 dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
 
-rem ----------------------------------------------------------------------
 dim args1(1) as new com.sun.star.beans.PropertyValue
 args1(0).Name = &quot;Template&quot;
 args1(0).Value = &quot;Standard&quot;
@@ -469,26 +505,24 @@ args1(1).Name = &quot;Family&quot;
 args1(1).Value = 8
 
 dispatcher.executeDispatch(document, &quot;.uno:StyleApply&quot;, &quot;&quot;, 0, args1())
-
-rem ----------------------------------------------------------------------
 dispatcher.executeDispatch(document, &quot;.uno:GoToStartOfDoc&quot;, &quot;&quot;, 0, Array())
 
-
-end sub
+end Sub
 
 
 
 sub SetPagestyle_en
-rem ----------------------------------------------------------------------
-rem define variables
+
+REM ----------------------------------------------------------------------
+REM Load pagestyle  &quot;Default &quot; and go to top.
+REM ----------------------------------------------------------------------
+
 dim document   as object
 dim dispatcher as object
-rem ----------------------------------------------------------------------
-rem get access to the document
+REM get access to the document
 document   = ThisComponent.CurrentController.Frame
 dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
 
-rem ----------------------------------------------------------------------
 dim args1(1) as new com.sun.star.beans.PropertyValue
 args1(0).Name = &quot;Template&quot;
 args1(0).Value = &quot;Default&quot;
@@ -496,29 +530,32 @@ args1(1).Name = &quot;Family&quot;
 args1(1).Value = 8
 
 dispatcher.executeDispatch(document, &quot;.uno:StyleApply&quot;, &quot;&quot;, 0, args1())
-
-rem ----------------------------------------------------------------------
 dispatcher.executeDispatch(document, &quot;.uno:GoToStartOfDoc&quot;, &quot;&quot;, 0, Array())
 
-end sub
+end Sub
+
 
 
 sub SaveAsODT
-rem ----------------------------------------------------------------------
-rem define variables
+
+REM ----------------------------------------------------------------------
+REM Save document in OpenDocument format
+REM ----------------------------------------------------------------------
+
 dim document   as object
 dim dispatcher as object
 dim DocPath as string
 
-rem ----------------------------------------------------------------------
-rem get access to the document
 document   = ThisComponent.CurrentController.Frame
 dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
 DocPath = ThisComponent.getURL()
 DocPath = Left(DocPath,len(DocPath)-4)+&quot;odt&quot;
 
 
-rem ----------------------------------------------------------------------
+REM ----------------------------------------------------------------------
+REM Use path and name of input file -- just change file extension
+REM ----------------------------------------------------------------------
+
 dim args1(1) as new com.sun.star.beans.PropertyValue
 args1(0).Name = &quot;URL&quot;
 args1(0).Value = DocPath
@@ -527,6 +564,8 @@ args1(1).Value = &quot;writer8&quot;
 
 dispatcher.executeDispatch(document, &quot;.uno:SaveAs&quot;, &quot;&quot;, 0, args1())
 
+end Sub
 
-end sub
+
+
 </script:module>

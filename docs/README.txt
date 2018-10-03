@@ -1,4 +1,4 @@
-# yW2OO (yWriter-to-OpenOffice)
+# yW2OO (yWriter-to-OpenOffice) v1.0.0
 
 Converting yWriter's HTML export into a neat OpenOffice Writer document, ready to apply templates and styles.
 
@@ -50,7 +50,7 @@ The yW2OO Software comes as self-extracting zipfile containing:
 
 ## Installation
 
-1. Run the self-extracting zipfile "yW2OO-setup.exe" (double click) and choose a folder within your user profile (e.g. "My documents"). A folder "yW2OO_Installation_files" will automatically be created for all content.
+1. Run the self-extracting zipfile "yW2OOv1.0.0.exe" (double click) and choose a folder within your user profile (e.g. "My documents"). A folder "yW2OO_Installation_files" will automatically be created for all content.
 
 2. Move into the "yW2OO_Installation_files" folder and run "Install.bat" (double click). This will copy all needed files to the right place and start Office's Extension Manager. Confirm the installation of the extension "yW2OO.oxt" and close the Extension Manager window.
 

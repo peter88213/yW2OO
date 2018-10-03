@@ -1,7 +1,30 @@
 @echo off
+REM
+REM summary: Installation file for the yW2OO software package.
+REM 
+REM author: Peter Triesberger
+REM see: https://github.com/peter88213/yW2OO
+REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
+REM copyright: (c) 2018, Peter Triesberger
+REM version: v1.0.0
+REM 
+REM note: This script is to be run manually after un-packing the setup file.
+REM 
+REM precondition: All installation files must exist in the working directory.
+REM precondition: OpenOffice.org 3.x or Apache OpenOffice 4.x must be installed in english or german localization.
+REM postcondition: The yW2OO Python preprocessor is installed in the OpenOffice user profile.
+REM postcondition: Optional templates are installed in the OpenOffice user profile.
+REM postcondition: The yW2OO Office Extension is installed.
+REM postcondition: The program starter "writer.bat" is generated in the working directory.
+REM 
+REM since: 2018-10-01
+REM change: 2018-10-03 v1.0.0: Added comments, version number and release info. Update "writer.bat" generator.
+
+set _release=v1.0.0 
 
 echo -----------------------------------------------------------------
-echo Installing yW2OO (yWriter to OpenOffice) software package ...
+echo yW2OO (yWriter to OpenOffice) %_release%
+echo Installing software package ...
 echo -----------------------------------------------------------------
 rem Determine Combination of Windows and Office 
 if exist "c:\Program Files (x86)\OpenOffice 4\program\swriter.exe" goto OpenOffice4-Win64
@@ -46,9 +69,13 @@ copy manuscript.ott "%_user%\template"
 
 rem Create language-dependent "writer.bat"
 echo @echo off > writer.bat
+ 
+echo echo yW2OO %_release% >> writer.bat
+echo echo Starting yWriter to OpenOffice conversion ... >> writer.bat
 echo if not exist "Exported Project.html" goto error >> writer.bat
 echo copy "Exported Project.html" "Exported Project.html.bak" ^> NUL >> writer.bat
 echo "%_writer%\program\python.exe" "%_user%\yW2OO\yW2OO.py" >> writer.bat
+echo if errorlevel 1 goto end >> writer.bat
 echo echo Starting Office ... >> writer.bat
 
 rem Trying to determine Office's language
@@ -84,7 +111,9 @@ pause
 
 "%_writer%\program\swriter.exe" -nodefault yW2OO.oxt
 
-echo Installation of yW2OO software package finished.
+
+
+echo Installation of yW2OO software package %_release% finished.
 
 echo -----------------------------------------------------------------
 echo Please copy "writer.bat" to your yWriter Project "Export" folder!
