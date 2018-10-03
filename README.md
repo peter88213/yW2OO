@@ -4,7 +4,7 @@
 
 Converting yWriter's HTML export into a neat OpenOffice Writer document, ready to apply templates and styles.
 
-[Download yW2OO self-extracting ZIP file](https://github.com/peter88213/yW2OO/raw/master/dist/yW2OO-setup.exe)
+[Download v1.0.0](https://github.com/peter88213/yW2OO/releases/download/v1.0.0/yW2OOv1.0.0.exe)
 
 ## General
 
@@ -51,7 +51,7 @@ yW2OO is distributed under the [MIT License](http://www.opensource.org/licenses/
 
 HTML-Export von yWriter in ein sauberes OpenOffice Writer-Dokument wandeln, um Dokument- und Formatvorlagen anwenden zu können.
 
-[yW2OO im selbst entpackenden Archiv herunterladen](https://github.com/peter88213/yW2OO/raw/master/dist/yW2OO-setup.exe)
+[Version 1.0.0 herunterladen](https://github.com/peter88213/yW2OO/releases/download/v1.0.0/yW2OOv1.0.0.exe)
 
 ## Allgemein
 
