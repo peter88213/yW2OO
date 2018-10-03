@@ -64,8 +64,8 @@ goto go-install
 echo Copying tools and templates to %_user% ...
 
 mkdir "%_user%\yW2OO"
-copy yW2OO.py "%_user%\yW2OO"
-copy manuscript.ott "%_user%\template"
+copy /y yW2OO.py "%_user%\yW2OO"
+copy /y manuscript.ott "%_user%\template"
 
 rem Create language-dependent "writer.bat"
 echo @echo off > writer.bat
