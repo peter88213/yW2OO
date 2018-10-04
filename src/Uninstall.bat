@@ -71,7 +71,7 @@ echo #
 echo # Almost done ...
 echo #
 echo # Please run Office and call the Extension Manager
-echo # Remove the extension "yW2OO2"
+echo # Remove the extension "yW2OO"
 echo # 
 echo -----------------------------------------------------------------
 pause
