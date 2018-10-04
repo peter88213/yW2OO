@@ -4,7 +4,7 @@ Converting yWriter's HTML export into a neat OpenOffice Writer document, ready t
 
 For more information see [Wiki (english)](https://github.com/peter88213/yW2OO/wiki)
 
-## Deutsch
+_Deutsche Fassung_
 
 HTML-Export von yWriter in ein sauberes OpenOffice Writer-Dokument wandeln, um Dokument- und Formatvorlagen anwenden zu können.
 
