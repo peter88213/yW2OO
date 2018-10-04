@@ -1,6 +1,6 @@
-# yW2OO (yWriter to OpenOffice)
+# yW2OO (yWriter to OpenOffice converter)
 
-Converting yWriter's HTML export into a neat Office Writer document (ODT), ready to apply templates and styles.
+Convert yWriter's HTML export into a neat Office Writer document (ODT), ready to apply templates and styles.
 
 For more information see [Wiki (english)](https://github.com/peter88213/yW2OO/wiki)
 

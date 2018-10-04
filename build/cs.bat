@@ -15,7 +15,7 @@ set _project=yW2OO
 
 set _source_path=..\src\
 set _macro_path=OXT\
-set _document_path=..\docs\
+set _root=..\
 set _target_path=yW2OO_Installation_files
 
 
@@ -31,12 +31,12 @@ rem--------------------------------------------------------
 rem Generate README files
 rem--------------------------------------------------------
 
-echo # yW2OO (yWriter to OpenOffice) %_release%>%_target_path%\README.txt
-echo Converting yWriter's HTML export into a neat OpenOffice Writer document, ready to apply templates and styles.>>%_target_path%\README.txt
+echo # yW2OO (yWriter to OpenOffice converter) %_release%>%_target_path%\README.txt
+echo Convert yWriter's HTML export into a neat OpenOffice Writer document, ready to apply templates and styles.>>%_target_path%\README.txt
 echo For further information see https://github.com/peter88213/yW2OO/wiki/>>%_target_path%\README.txt
 
 
-echo # yW2OO (yWriter-to-OpenOffice) %_release%>%_target_path%\LIESMICH.txt
+echo # yW2OO (yWriter to OpenOffice converter) %_release%>%_target_path%\LIESMICH.txt
 echo HTML-Export von yWriter in ein sauberes OpenOffice Writer-Dokument umwandeln, um Dokument- und Formatvorlagen anwenden zu können.>>%_target_path%\LIESMICH.txt
 echo Weitere Informationen s. https://github.com/peter88213/yW2OO/wiki/Deutsch>>%_target_path%\LIESMICH.txt
 
@@ -55,7 +55,7 @@ set _file=%_source_path%Uninstall.bat
 call :copyFile
 set _file=%_macro_path%yW2OO.oxt
 call :copyFile
-set _file=%_document_path%LICENSE.TXT
+set _file=%_root%LICENSE
 call :copyFile
 
 goto end
@@ -66,7 +66,7 @@ copy /y  %_file% %_target_path%
 exit /b
 
 :error
-del %_target_path%
+
 rmdir /s /q %_target_path%
 echo ERROR: %_file% does not exist!
 pause
