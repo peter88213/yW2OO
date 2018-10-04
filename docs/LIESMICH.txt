@@ -1,8 +1,0 @@
-# yW2OO (yWriter-to-OpenOffice) v1.0.0
-
-HTML-Export von yWriter in ein sauberes OpenOffice Writer-Dokument umwandeln, um Dokument- und Formatvorlagen anwenden zu können.
-
-Weitere Informationen s. https://github.com/peter88213/yW2OO/wiki/Deutsch
-
-(c) 2018 Peter Triesberger
-

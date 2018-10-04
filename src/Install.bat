@@ -6,7 +6,7 @@ REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.0.0
+REM version: v1.1.0
 REM 
 REM note: This script is to be run manually after un-packing the setup file.
 REM 
@@ -19,8 +19,9 @@ REM postcondition: The program starter "writer.bat" is generated in the working 
 REM 
 REM since: 2018-10-01
 REM change: 2018-10-03 v1.0.0: Added comments, version number and release info. Update "writer.bat" generator.
+REM change: 2018-10-03 v1.1.0: Update release info. Update "writer.bat" generator.
 
-set _release=v1.0.0 
+set _release=v1.1.0 
 
 echo -----------------------------------------------------------------
 echo yW2OO (yWriter to OpenOffice) %_release%
@@ -109,15 +110,17 @@ echo then close Office!
 echo -----------------------------------------------------------------
 pause
 
-"%_writer%\program\swriter.exe" -nodefault yW2OO.oxt
+rem "%_writer%\program\swriter.exe" -nodefault yW2OO.oxt
+yW2OO.oxt
 
-
-
-echo Installation of yW2OO software package %_release% finished.
 
 echo -----------------------------------------------------------------
-echo Please copy "writer.bat" to your yWriter Project "Export" folder!
-echo Export your yWriter project as HTML, then run "writer.bat"
+echo #
+echo # Installation of yW2OO software package %_release% finished.
+echo #
+echo # Please copy "writer.bat" to your yWriter Project "Export" folder!
+echo # Export your yWriter project as HTML, then run "writer.bat"
+echo #
 echo -----------------------------------------------------------------
 
 :end
