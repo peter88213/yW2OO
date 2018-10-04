@@ -1,5 +1,4 @@
 # yW2OO (yWriter-to-OpenOffice) v1.0.0
-## English
 
 Converting yWriter's HTML export into a neat OpenOffice Writer document, ready to apply templates and styles.
 
