@@ -37,33 +37,42 @@ goto end
 set _writer=c:\Program Files (x86)\OpenOffice 4
 set _user=%USERPROFILE%\AppData\Roaming\OpenOffice\4\user
 echo OpenOffice 4.x on Windows (64 bit) detected.
-goto go-install
+goto go-uninstall
 
 :OpenOffice4-Win32
 set _writer=c:\Program Files\OpenOffice 4
 set _user=%USERPROFILE%\AppData\Roaming\OpenOffice\4\user
 echo OpenOffice 4.x on Windows (32 bit) detected.
-goto go-install
+goto go-uninstall
 
 :OpenOffice3-Win64
 set _writer=c:\Program Files (x86)\OpenOffice.org 3
 set _user=%USERPROFILE%\AppData\Roaming\OpenOffice.org\3\user
 echo OpenOffice 3.x on Windows (64 bit) detected.
-goto go-install
+goto go-uninstall
 
 :OpenOffice3-Win32
 set _writer=c:\Program Files\OpenOffice.org 3
 set _user=%USERPROFILE%\AppData\Roaming\OpenOffice.org\3\user
 echo OpenOffice 3.x on Windows (32 bit) detected.
-goto go-install
+goto go-uninstall
 
-:go-install
+:go-uninstall
 
-echo Deleting tools and templates in %_user% ...
+echo Deleting templates in %_user%\template (on confiration only) ...
 
-del /p "%_user%\template\manuscript.ott"
-rem del /s /q yW2OO.py "%_user%\yW2OO\"
+set _file="%_user%\template\Manuscript_en-US.ott"
+if exist %file% del /p %file%
+
+set _file="%_user%\template\Manuscript_de-DE.ott"
+if exist %file% del /p %file%
+
+echo Deleting tools in %_user%\yW2OO and removing folder ...
+
 rmdir /s /q "%_user%\yW2OO"
+
+echo Deleting writer.bat (you may delete copies in ^<your yWriter project^>\Export manually)
+
 del writer.bat
  
 echo -----------------------------------------------------------------

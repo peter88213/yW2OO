@@ -6,7 +6,7 @@ REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.1.0
+REM version: v1.2.0
 REM 
 REM note: This script is to be run manually after un-packing the setup file.
 REM 
@@ -20,8 +20,9 @@ REM
 REM since: 2018-10-01
 REM change: 2018-10-03 v1.0.0: Added comments, version number and release info. Update "writer.bat" generator.
 REM change: 2018-10-03 v1.1.0: Update release info. Update "writer.bat" generator.
+REM change: 2018-10-05 v1.2.0: Update release info. Update "writer.bat" generator.
 
-set _release=v1.1.0 
+set _release=v1.2.0 
 
 echo -----------------------------------------------------------------
 echo yW2OO (yWriter to OpenOffice) %_release%
@@ -66,7 +67,8 @@ echo Copying tools and templates to %_user% ...
 
 mkdir "%_user%\yW2OO"
 copy /y yW2OO.py "%_user%\yW2OO"
-copy /y manuscript.ott "%_user%\template"
+copy /y Manuscript_de-DE.ott "%_user%\template"
+copy /y manuscript_en-US.ott "%_user%\template"
 
 rem Create language-dependent "writer.bat"
 echo @echo off > writer.bat
@@ -105,7 +107,7 @@ echo exit >> writer.bat
 
 echo -----------------------------------------------------------------
 echo Office's Extension Manager will be started automatically.
-echo Please confirm installation of extension "yW2OO2",
+echo Please confirm installation of extension "yW2OO",
 echo then close Office!
 echo -----------------------------------------------------------------
 pause
