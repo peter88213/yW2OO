@@ -72,7 +72,13 @@ copy /y manuscript_en-US.ott "%_user%\template"
 
 rem Create language-dependent "writer.bat"
 echo @echo off > writer.bat
- 
+
+echo if exist "%_user%\yW2OO\yW2OO.py" goto inst_ok >> writer.bat
+echo echo ERROR: yW2OO Software is not installed! >> writer.bat
+echo pause >> writer.bat
+echo goto end >> writer.bat
+echo :inst_ok >> writer.bat
+
 echo echo yW2OO %_release% >> writer.bat
 echo echo Starting yWriter to OpenOffice conversion ... >> writer.bat
 echo if not exist "Exported Project.html" goto error >> writer.bat
@@ -84,7 +90,6 @@ echo echo Starting Office ... >> writer.bat
 rem Trying to determine Office's language
 if exist "%_writer%\readmes\readme_de.txt" goto german
 goto english
-
 
 :german:
 echo Use german localization -- style names in german language
@@ -104,17 +109,7 @@ echo pause >> writer.bat
 echo :end >> writer.bat
 echo exit >> writer.bat
 
-
-echo -----------------------------------------------------------------
-echo Office's Extension Manager will be started automatically.
-echo Please confirm installation of extension "yW2OO",
-echo then close Office!
-echo -----------------------------------------------------------------
-pause
-
-rem "%_writer%\program\swriter.exe" -nodefault yW2OO.oxt
-yW2OO.oxt
-
+"%_writer%\program\unopkg" add -f yW2OO.OXT
 
 echo -----------------------------------------------------------------
 echo #

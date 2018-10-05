@@ -6,7 +6,7 @@ REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.1.0
+REM version: v1.2.0
 REM 
 REM note: This script is to be run manually.
 REM 
@@ -18,7 +18,7 @@ REM postcondition: The yW2OO Office Extension must be removed via Extension Mana
 REM 
 REM since: 2018-10-04
 
-set _release=v1.1.0 
+set _release=v1.2.0 
 
 echo -----------------------------------------------------------------
 echo yW2OO (yWriter to OpenOffice) %_release%
@@ -59,13 +59,13 @@ goto go-uninstall
 
 :go-uninstall
 
-echo Deleting templates in %_user%\template (on confiration only) ...
+echo Deleting templates in %_user%\template (on confirmation only) ...
 
 set _file="%_user%\template\Manuscript_en-US.ott"
-if exist %file% del /p %file%
+if exist %_file% del /p %_file%
 
 set _file="%_user%\template\Manuscript_de-DE.ott"
-if exist %file% del /p %file%
+if exist %_file% del /p %_file%
 
 echo Deleting tools in %_user%\yW2OO and removing folder ...
 
@@ -74,15 +74,12 @@ rmdir /s /q "%_user%\yW2OO"
 echo Deleting writer.bat (you may delete copies in ^<your yWriter project^>\Export manually)
 
 del writer.bat
- 
-echo -----------------------------------------------------------------
-echo #
-echo # Almost done ...
-echo #
-echo # Please run Office and call the Extension Manager
-echo # Remove the extension "yW2OO"
-echo # 
-echo -----------------------------------------------------------------
+
+echo Removing OpenOffice extension
+
+"%_writer%\program\unopkg" remove -f yW2OO.OXT
+
+echo done ...
 pause
 
 
