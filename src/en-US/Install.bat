@@ -68,7 +68,6 @@ echo Copying program components and templates to %_user% ...
 
 mkdir "%_user%\yW2OO"
 copy /y yW2OO.py "%_user%\yW2OO"
-copy /y Manuscript_de-DE.ott "%_user%\template"
 copy /y manuscript_en-US.ott "%_user%\template"
 
 rem Create language-dependent "writer.bat"
