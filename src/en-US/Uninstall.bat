@@ -1,12 +1,12 @@
 @echo off
 REM
-REM summary: Removes most parts of the yW2OO software package.
+REM summary: Removes the yW2OO software package.
 REM 
 REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.2.0
+REM version: v1.3.0
 REM 
 REM note: This script is to be run manually.
 REM 
@@ -17,8 +17,9 @@ REM postcondition: The template remains, if user wants it.
 REM postcondition: The yW2OO Office Extension must be removed via Extension Manager.
 REM 
 REM since: 2018-10-04
+REM change: 2018-10-09 v1.3.0: Created german localized copy of v1.2.0 "Uninstall.bat".
 
-set _release=v1.2.0 
+set _release=v1.3.0 
 
 echo -----------------------------------------------------------------
 echo yW2OO (yWriter to OpenOffice) %_release%
@@ -29,8 +30,8 @@ if exist "c:\Program Files (x86)\OpenOffice 4\program\swriter.exe" goto OpenOffi
 if exist "c:\Program Files\OpenOffice 4\program\swriter.exe" goto OpenOffice4-Win32
 if exist "c:\Program Files (x86)\OpenOffice.org 3\program\swriter.exe" goto OpenOffice3-Win64
 if exist "c:\Program Files\OpenOffice.org 3\program\swriter.exe" goto OpenOffice3-Win32
-echo ERROR: OpenOffice 3.x or 4.x not found
-echo Installation aborted
+echo ERROR: OpenOffice 3.x or 4.x not found!
+echo De-Installation aborted.
 goto end
 
 :OpenOffice4-Win64
@@ -67,19 +68,19 @@ if exist %_file% del /p %_file%
 set _file="%_user%\template\Manuscript_de-DE.ott"
 if exist %_file% del /p %_file%
 
-echo Deleting tools in %_user%\yW2OO and removing folder ...
+echo Deleting program components in %_user%\yW2OO and removing folder ...
 
 rmdir /s /q "%_user%\yW2OO"
 
-echo Deleting writer.bat (you may delete copies in ^<your yWriter project^>\Export manually)
+echo Deleting writer.bat (you may delete copies in ^<your yWriter project^>\Export manually) ...
 
 del writer.bat
 
-echo Removing OpenOffice extension
+echo Removing OpenOffice extension ...
 
 "%_writer%\program\unopkg" remove -f yW2OO.OXT
 
-echo done ...
+echo Done.
 pause
 
 
