@@ -12,4 +12,4 @@ echo rem >> %_genfile%
 for /F "tokens=*" %%l in ('dir /s /b Export') do echo copy /y writer.bat "%%l" >> %_genfile%
 popd
 copy %_docroot%\%_genfile%
-rem del /y %_docroot%\%_genfile%
+del /y %_docroot%\%_genfile%

@@ -11,4 +11,4 @@ echo rem >> %_rmfile%
 for /F "tokens=*" %%l in ('dir /s /b Export') do echo del /p "%%l\writer.bat"  >> %_rmfile%
 popd
 copy %_docroot%\%_rmfile%
-rem del /y %_docroot%\%_rmfile%
+del /y %_docroot%\%_rmfile%
