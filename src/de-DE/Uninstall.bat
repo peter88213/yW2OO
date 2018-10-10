@@ -6,7 +6,7 @@ REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.3.0
+REM version: v1.4.0
 REM 
 REM note: This script is to be run manually.
 REM 
@@ -18,8 +18,9 @@ REM postcondition: The yW2OO Office Extension must be removed via Extension Mana
 REM 
 REM since: 2018-10-04
 REM change: 2018-10-09 v1.3.0: Created german localized copy of v1.2.0 "Uninstall.bat".
+REM change: 2018-10-19 v1.4.0: Update release info.
 
-set _release=v1.3.0 
+set _release=v1.4.0 
 
 echo -----------------------------------------------------------------
 echo yW2OO (yWriter to OpenOffice) %_release%

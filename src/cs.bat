@@ -1,14 +1,14 @@
 rem @echo off
 REM cs.bat
-REM summary: Collects everything for a yW2OO release en-US and de-DE
+REM summary: Collects everything for a yW2OO release (en and de localisation)
 REM          and puts it into a setup directories to be zipped.
 REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.3.0
+REM version: v1.4.0
 
-set _release=v1.3.0
+set _release=v1.4.0
 
 set _project=yW2OO
 
@@ -18,12 +18,12 @@ set _root=..\
 set _source_en=en-US
 set _source_de=de-DE
 set _macro_path=%_root%build\OXT
-set _target_en=%_root%build\yW2OO_en-US%_release%
-set _target_de=%_root%build\yW2OO_de-DE%_release%
+set _target_en=%_root%build\yW2OO_en_%_release%
+set _target_de=%_root%build\yW2OO_de_%_release%
 
 
 rem --------------------------------------------------------
-rem clear destination folders
+rem Create empty target folders
 rem --------------------------------------------------------
 
 mkdir %_target_en%
