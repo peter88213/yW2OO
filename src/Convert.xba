@@ -30,6 +30,7 @@ sub yHTML_en
 
 SetParagraphStyles_en
 SetPagestyle_en
+rem SmartQuote_en
 SaveAsODT
 
 End Sub
@@ -44,6 +45,7 @@ sub yHTML_de
 
 SetParagraphStyles_de
 SetPagestyle_de
+rem SmartQuote_de
 SaveAsODT
 
 End Sub
@@ -569,22 +571,122 @@ end Sub
 
 
 
-sub SetDocLang_de
+sub SmartQuote_en
 
 &apos;&apos; ----------------------------------------------------------------------
-&apos;&apos; Set document language &quot;de&quot;
+&apos;&apos; Replace false double quotation marks by &quot;english style&quot; ones 
 &apos;&apos; ----------------------------------------------------------------------
 
 dim document   as object
 dim dispatcher as object
+
 document   = ThisComponent.CurrentController.Frame
 dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
 
-dim args1(0) as new com.sun.star.beans.PropertyValue
-args1(0).Name = &quot;Language&quot;
-args1(0).Value = &quot;Default_Deutsch (Deutschland)&quot;
+rem ----------------------------------------------------------------------
+dim args1(18) as new com.sun.star.beans.PropertyValue
+args1(0).Name = &quot;SearchItem.StyleFamily&quot;
+args1(0).Value = 2
+args1(1).Name = &quot;SearchItem.CellType&quot;
+args1(1).Value = 0
+args1(2).Name = &quot;SearchItem.RowDirection&quot;
+args1(2).Value = true
+args1(3).Name = &quot;SearchItem.AllTables&quot;
+args1(3).Value = false
+args1(4).Name = &quot;SearchItem.Backward&quot;
+args1(4).Value = false
+args1(5).Name = &quot;SearchItem.Pattern&quot;
+args1(5).Value = false
+args1(6).Name = &quot;SearchItem.Content&quot;
+args1(6).Value = false
+args1(7).Name = &quot;SearchItem.AsianOptions&quot;
+args1(7).Value = false
+args1(8).Name = &quot;SearchItem.AlgorithmType&quot;
+args1(8).Value = 1
+args1(9).Name = &quot;SearchItem.SearchFlags&quot;
+args1(9).Value = 65536
+args1(10).Name = &quot;SearchItem.SearchString&quot;
+args1(10).Value = &quot;(\&quot;+CHR$(34)+&quot;\&lt;)([^\&quot;+CHR$(34)+&quot;]*[\.\?!,]?)(\&quot;+CHR$(34)+&quot;)&quot;
+args1(11).Name = &quot;SearchItem.ReplaceString&quot;
+args1(11).Value = &quot;“$2”&quot;
+args1(12).Name = &quot;SearchItem.Locale&quot;
+args1(12).Value = 255
+args1(13).Name = &quot;SearchItem.ChangedChars&quot;
+args1(13).Value = 2
+args1(14).Name = &quot;SearchItem.DeletedChars&quot;
+args1(14).Value = 2
+args1(15).Name = &quot;SearchItem.InsertedChars&quot;
+args1(15).Value = 2
+args1(16).Name = &quot;SearchItem.TransliterateFlags&quot;
+args1(16).Value = 1280
+args1(17).Name = &quot;SearchItem.Command&quot;
+args1(17).Value = 3
+args1(18).Name = &quot;Quiet&quot;
+args1(18).Value = true
 
-dispatcher.executeDispatch(document, &quot;.uno:LanguageStatus&quot;, &quot;&quot;, 0, args1())
+dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args1())
+
+
+end sub
+
+
+sub SmartQuote_de
+
+&apos;&apos; ----------------------------------------------------------------------
+&apos;&apos; Falsche doppelte Anführungszeichen durch Guillemets ersetzen
+&apos;&apos; ----------------------------------------------------------------------
+
+dim document   as object
+dim dispatcher as object
+
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+rem ----------------------------------------------------------------------
+dim args1(18) as new com.sun.star.beans.PropertyValue
+args1(0).Name = &quot;SearchItem.StyleFamily&quot;
+args1(0).Value = 2
+args1(1).Name = &quot;SearchItem.CellType&quot;
+args1(1).Value = 0
+args1(2).Name = &quot;SearchItem.RowDirection&quot;
+args1(2).Value = true
+args1(3).Name = &quot;SearchItem.AllTables&quot;
+args1(3).Value = false
+args1(4).Name = &quot;SearchItem.Backward&quot;
+args1(4).Value = false
+args1(5).Name = &quot;SearchItem.Pattern&quot;
+args1(5).Value = false
+args1(6).Name = &quot;SearchItem.Content&quot;
+args1(6).Value = false
+args1(7).Name = &quot;SearchItem.AsianOptions&quot;
+args1(7).Value = false
+args1(8).Name = &quot;SearchItem.AlgorithmType&quot;
+args1(8).Value = 1
+args1(9).Name = &quot;SearchItem.SearchFlags&quot;
+args1(9).Value = 65536
+args1(10).Name = &quot;SearchItem.SearchString&quot;
+args1(10).Value = &quot;(\&quot;+CHR$(34)+&quot;\&lt;)([^\&quot;+CHR$(34)+&quot;]*[\.\?!,]?)(\&quot;+CHR$(34)+&quot;)&quot;
+args1(11).Name = &quot;SearchItem.ReplaceString&quot;
+args1(11).Value = &quot;»$2«&quot;
+args1(12).Name = &quot;SearchItem.Locale&quot;
+args1(12).Value = 255
+args1(13).Name = &quot;SearchItem.ChangedChars&quot;
+args1(13).Value = 2
+args1(14).Name = &quot;SearchItem.DeletedChars&quot;
+args1(14).Value = 2
+args1(15).Name = &quot;SearchItem.InsertedChars&quot;
+args1(15).Value = 2
+args1(16).Name = &quot;SearchItem.TransliterateFlags&quot;
+args1(16).Value = 1280
+args1(17).Name = &quot;SearchItem.Command&quot;
+args1(17).Value = 3
+args1(18).Name = &quot;Quiet&quot;
+args1(18).Value = true
+
+dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args1())
+
+
+end sub
 
 
 </script:module>
