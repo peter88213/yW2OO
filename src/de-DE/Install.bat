@@ -6,7 +6,7 @@ REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.4.0
+REM version: v1.4.1
 REM 
 REM Diese Datei muss von Hand ausgeführt werden, nachdem das Installationsarchiv entpackt ist.
 REM 
@@ -22,9 +22,10 @@ REM change: 2018-10-03 v1.0.0: Added comments, version number and release info. 
 REM change: 2018-10-03 v1.1.0: Update release info. Update "writer.bat" generator.
 REM change: 2018-10-05 v1.2.0: Update release info. Update "writer.bat" generator.
 REM change: 2018-10-09 v1.3.0: Created german localized copy of v1.2.0 "install.bat".
-REM change: 2018-10-19 v1.4.0: Update release info.
+REM change: 2018-10-10 v1.4.0: Update release info.
+REM change: 2018-10-13 v1.4.1: Update release info. Apply new directory structure.
 
-set _release=v1.4.0
+set _release=v1.4.1
 
 echo -----------------------------------------------------------------
 echo yW2OO (yWriter to OpenOffice) %_release%
@@ -68,8 +69,8 @@ goto go-install
 echo Programmkomponenten und Vorlagen werden nach %_user% kopiert ...
 
 mkdir "%_user%\yW2OO"
-copy /y yW2OO.py "%_user%\yW2OO"
-copy /y Manuscript_de-DE.ott "%_user%\template"
+copy /y program\yW2OO.py "%_user%\yW2OO"
+copy /y program\Manuscript_de-DE.ott "%_user%\template"
 
 rem Create language-dependent "writer.bat"
 echo @echo off > writer.bat
@@ -93,7 +94,7 @@ echo pause >> writer.bat
 echo :end >> writer.bat
 echo exit >> writer.bat
 
-"%_writer%\program\unopkg" add -f yW2OO.OXT
+"%_writer%\program\unopkg" add -f program\yW2OO.OXT
 
 echo -----------------------------------------------------------------
 echo #

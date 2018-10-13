@@ -6,9 +6,9 @@ REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.4.0
+REM version: v1.4.1
 
-set _release=v1.4.0
+set _release=v1.4.1
 
 set _project=yW2OO
 
@@ -28,8 +28,21 @@ rem --------------------------------------------------------
 
 mkdir %_target_en%
 del /s /q %_target_en%
+
+mkdir %_target_en%\program
+del /s /q %_target_en%\program
+
+mkdir %_target_en%\add-on
+del /s /q %_target_en%\add-on
+
 mkdir %_target_de%
 del /s /q %_target_de%
+
+mkdir %_target_de%\program
+del /s /q %_target_de%\program
+
+mkdir %_target_de%\add-on
+del /s /q %_target_de%\add-on
 
 rem --------------------------------------------------------
 rem Generate README files
@@ -50,37 +63,64 @@ rem Copy release items
 rem --------------------------------------------------------
 
 set _file=%_source_en%\Manuscript_en-US.ott
-call :copyFile_en
+set _dest=%_target_en%\program\
+call :copyFile
+
 set _file=%_source_de%\Manuscript_de-DE.ott
-call :copyFile_de
+set _dest=%_target_de%\program\
+call :copyFile
+
 set _file=yW2OO.py
-call :copyFile_en
-call :copyFile_de
+set _dest=%_target_en%\program\
+call :copyFile
+set _dest=%_target_de%\program\
+call :copyFile
+
 set _file=%_source_en%\Install.bat
-call :copyFile_en
+set _dest=%_target_en%\
+call :copyFile
+
 set _file=%_source_de%\Install.bat
-call :copyFile_de
+set _dest=%_target_de%\
+call :copyFile
+
 set _file=%_source_en%\Uninstall.bat
-call :copyFile_en
+set _dest=%_target_en%\
+call :copyFile
+
 set _file=%_source_de%\Uninstall.bat
-call :copyFile_de
+set _dest=%_target_de%\
+call :copyFile
+
 set _file=%_macro_path%\yW2OO.oxt
-call :copyFile_en
-call :copyFile_de
+set _dest=%_target_en%\program\
+call :copyFile
+set _dest=%_target_de%\program\
+call :copyFile
+
 set _file=%_root%LICENSE
-call :copyFile_en
-call :copyFile_de
+set _dest=%_target_en%\
+call :copyFile
+set _dest=%_target_de%\
+call :copyFile
+
+set _file=genCopyWriter.bat
+set _dest=%_target_en%\add-on\
+call :copyFile
+set _dest=%_target_de%\add-on\
+call :copyFile
+
+set _file=genRemoveWriter.bat
+set _dest=%_target_en%\add-on\
+call :copyFile
+set _dest=%_target_de%\add-on\
+call :copyFile
 
 goto end
 
-:copyFile_en
+:copyFile
 if not exist %_file% goto error
-copy /y  %_file% %_target_en%\
-exit /b
-
-:copyFile_de
-if not exist %_file% goto error
-copy /y  %_file% %_target_de%\
+copy /y  %_file% %_dest%
 exit /b
 
 :error
