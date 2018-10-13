@@ -10,5 +10,5 @@ echo rem Remove "writer.bat" from all yWriter project "Export" folders > %_rmfil
 echo rem >> %_rmfile%
 for /F "tokens=*" %%l in ('dir /s /b Export') do echo del /p "%%l\writer.bat"  >> %_rmfile%
 popd
-copy %_docroot%\%_rmfile%
-del /y %_docroot%\%_rmfile%
+copy %_docroot%\%_rmfile% ..\
+del %_docroot%\%_rmfile%
