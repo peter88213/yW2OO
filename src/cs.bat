@@ -116,6 +116,10 @@ call :copyFile
 set _dest=%_target_de%\add-on\
 call :copyFile
 
+set _file=%_source_de%\Roman-Taschenbuch125x190.odt
+set _dest=%_target_de%\add-on\
+call :copyFile
+
 goto end
 
 :copyFile

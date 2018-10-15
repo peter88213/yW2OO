@@ -24,6 +24,7 @@ REM change: 2018-10-05 v1.2.0: Update release info. Update "writer.bat" generato
 REM change: 2018-10-09 v1.3.0: Created german localized copy of v1.2.0 "install.bat".
 REM change: 2018-10-10 v1.4.0: Update release info.
 REM change: 2018-10-13 v1.4.1: Update release info. Apply new directory structure.
+REM change: 2018-10-15 v1.4.1: Create target directories if necessary.
 
 set _release=v1.4.1
 
@@ -68,9 +69,12 @@ goto go-install
 
 echo Programmkomponenten und Vorlagen werden nach %_user% kopiert ...
 
-mkdir "%_user%\yW2OO"
-copy /y program\yW2OO.py "%_user%\yW2OO"
-copy /y program\Manuscript_de-DE.ott "%_user%\template"
+if not exist "%_user%\yW2OO" mkdir "%_user%\yW2OO"
+copy /y yW2OO.py "%_user%\yW2OO"
+
+if not exist "%_user%\template" mkdir "%_user%\template"
+copy /y Manuscript_de-DE.ott "%_user%\template"
+
 
 rem Create language-dependent "writer.bat"
 echo @echo off > writer.bat
