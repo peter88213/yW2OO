@@ -8,7 +8,7 @@ REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
 REM version: v1.4.1
 REM 
-REM note: This script is to be run manually after un-packing the setup file.
+REM note: This script is to be executed manually after un-packing the setup file.
 REM 
 REM precondition: All installation files must exist in the working directory.
 REM precondition: OpenOffice.org 3.x or Apache OpenOffice 4.x must be installed in english or german localization.
@@ -25,52 +25,78 @@ REM change: 2018-10-09 v1.3.0: Created english localized copy of v1.2.0 "install
 REM change: 2018-10-10 v1.4.0: Update release info.
 REM change: 2018-10-13 v1.4.1: Update release info. Apply new directory structure.
 REM change: 2018-10-15 v1.4.1: Create target directories if necessary.
+REM change: 2018-10-16 v1.4.1: Add LibreOffice 5 suppport.
 
 set _release=v1.4.1 
 
+set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
+set _OpenOffice4_w32=c:\Program Files\OpenOffice 4
+set _OpenOffice3_w64=c:\Program Files (x86)\OpenOffice.org 3
+set _OpenOffice3_w32=c:\Program Files\OpenOffice.org 3
+set _LibreOffice5_w64=c:\Program Files (x86)\LibreOffice 5
+set _LibreOffice5_w32=c:\Program Files\LibreOffice 5
+
+set _OpenOffice4_Userprofile=AppData\Roaming\OpenOffice\4\user
+set _OpenOffice3_Userprofile=AppData\Roaming\OpenOffice.org\3\user
+set _LibreOffice5_Userprofile=AppData\Roaming\LibreOffice\4\user
+
 echo -----------------------------------------------------------------
-echo yW2OO (yWriter to OpenOffice) %_release%
+echo yW2OO (yWriter to OpenOffice/LibreOffice) %_release%
 echo Installing software package ...
 echo -----------------------------------------------------------------
-rem Determine Combination of Windows and Office 
-if exist "c:\Program Files (x86)\OpenOffice 4\program\swriter.exe" goto OpenOffice4-Win64
-if exist "c:\Program Files\OpenOffice 4\program\swriter.exe" goto OpenOffice4-Win32
-if exist "c:\Program Files (x86)\OpenOffice.org 3\program\swriter.exe" goto OpenOffice3-Win64
-if exist "c:\Program Files\OpenOffice.org 3\program\swriter.exe" goto OpenOffice3-Win32
-echo ERROR: OpenOffice 3.x or 4.x not found
+rem Detect Combination of Windows and Office 
+if exist "%_OpenOffice4_w64%\program\swriter.exe" goto OpenOffice4-Win64
+if exist "%_OpenOffice4_w32%\program\swriter.exe" goto OpenOffice4-Win32
+if exist "%_OpenOffice3_w64%\program\swriter.exe" goto OpenOffice3-Win64
+if exist "%_OpenOffice3_w32%\program\swriter.exe" goto OpenOffice3-Win32
+if exist "%_LibreOffice5_w64%\program\swriter.exe" goto LibreOffice5-Win64
+if exist "%_LibreOffice5_w32%\program\swriter.exe" goto LibreOffice5-Win32
+echo ERROR: No supported version of OpenOffice/LibreOffice found!
 echo Installation aborted
 goto end
 
 :OpenOffice4-Win64
-set _writer=c:\Program Files (x86)\OpenOffice 4
-set _user=%USERPROFILE%\AppData\Roaming\OpenOffice\4\user
+set _writer=%_OpenOffice4_w64%
+set _user=%USERPROFILE%\%_OpenOffice4_Userprofile%
 echo OpenOffice 4.x on Windows (64 bit) detected.
-goto go-install
+goto settings_done
 
 :OpenOffice4-Win32
-set _writer=c:\Program Files\OpenOffice 4
-set _user=%USERPROFILE%\AppData\Roaming\OpenOffice\4\user
+set _writer=%_OpenOffice4_w32%
+set _user=%USERPROFILE%\%_OpenOffice4_Userprofile%
 echo OpenOffice 4.x on Windows (32 bit) detected.
-goto go-install
+goto settings_done
 
 :OpenOffice3-Win64
-set _writer=c:\Program Files (x86)\OpenOffice.org 3
-set _user=%USERPROFILE%\AppData\Roaming\OpenOffice.org\3\user
+set _writer=%_OpenOffice3_w64%
+set _user=%USERPROFILE%\%_OpenOffice3_Userprofile%
 echo OpenOffice 3.x on Windows (64 bit) detected.
-goto go-install
+goto settings_done
 
 :OpenOffice3-Win32
-set _writer=c:\Program Files\OpenOffice.org 3
-set _user=%USERPROFILE%\AppData\Roaming\OpenOffice.org\3\user
+set _writer=%_OpenOffice3_w32%
+set _user=%USERPROFILE%\%_OpenOffice3_Userprofile%
 echo OpenOffice 3.x on Windows (32 bit) detected.
-goto go-install
+goto settings_done
 
-:go-install
+:LibreOffice5-Win64
+set _writer=%_LibreOffice5_w64%
+set _user=%USERPROFILE%\%_LibreOffice5_Userprofile%
+echo LibreOffice 5.x on Windows (64 bit) detected.
+goto settings_done
+
+:LibreOffice5-Win32
+set _writer=%_LibreOffice5_w32%
+set _user=%USERPROFILE%\%_LibreOffice5_Userprofile%
+echo LibreOffice 5.x on Windows (32 bit) detected.
+goto settings_done
+
+:settings_done
 
 echo Copying program components and templates to %_user% ...
 
 if not exist "%_user%\yW2OO" mkdir "%_user%\yW2OO"
-copy /y yW2OO.py "%_user%\yW2OO"
+copy /y program\yW2OO.py "%_user%\yW2OO"
 
 if not exist "%_user%\template" mkdir "%_user%\template"
 copy /y program\manuscript_en-US.ott "%_user%\template"

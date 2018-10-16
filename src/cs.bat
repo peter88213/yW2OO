@@ -48,12 +48,12 @@ rem --------------------------------------------------------
 rem Generate README files
 rem --------------------------------------------------------
 
-echo # yW2OO (yWriter to OpenOffice converter) %_release%>%_target_en%\README.txt
+echo # yW2OO (yWriter to OpenOffice/LibreOffice converter) %_release%>%_target_en%\README.txt
 echo Convert yWriter's HTML export file into a neat OpenOffice Writer document, ready to apply templates and styles.>>%_target_en%\README.txt
 echo For further information see https://github.com/peter88213/yW2OO/wiki/>>%_target_en%\README.txt
 
 
-echo # yW2OO (yWriter to OpenOffice converter) %_release%>%_target_de%\LIESMICH.txt
+echo # yW2OO (yWriter-zu-OpenOffice/LibreOffice-Konvertierer) %_release%>%_target_de%\LIESMICH.txt
 echo HTML-Exportdatei von yWriter in ein sauberes OpenOffice Writer-Dokument umwandeln, um Dokument- und Formatvorlagen anwenden zu können.>>%_target_de%\LIESMICH.txt
 echo Weitere Informationen s. https://github.com/peter88213/yW2OO/wiki/Deutsch>>%_target_de%\LIESMICH.txt
 
