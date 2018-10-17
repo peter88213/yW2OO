@@ -1,7 +1,7 @@
 Sub SetTemplate
 		path=createunoservice("com.sun.star.util.PathSettings")
-		match = InStr(path.UserConfig,"config")
-		TemplatePath = Left(path.UserConfig,match-1)+"template/Manuscript_de-DE.ott"
+		match = InStr(path.UserConfig,"/config")
+		TemplatePath = Left(path.UserConfig,match)+"template/Manuscript_de-DE.ott"
 		rem Msgbox TemplatePath
         dim args(0) as new com.sun.star.beans.PropertyValue
         sTemplateName = "Manuscript_de-DE.ott"

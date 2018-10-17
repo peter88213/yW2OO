@@ -6,7 +6,7 @@ REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.4.1
+REM version: v1.5.0
 REM 
 REM note: This script is to be executed manually after un-packing the setup file.
 REM 
@@ -26,8 +26,9 @@ REM change: 2018-10-10 v1.4.0: Update release info.
 REM change: 2018-10-13 v1.4.1: Update release info. Apply new directory structure.
 REM change: 2018-10-15 v1.4.1: Create target directories if necessary.
 REM change: 2018-10-16 v1.4.1: Add LibreOffice 5 suppport.
+REM change: 2018-10-18 v1.5.0: Update release info. 
 
-set _release=v1.4.1
+set _release=v1.5.0 
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4
