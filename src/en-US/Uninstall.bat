@@ -21,7 +21,7 @@ REM change: 2018-10-09 v1.3.0: Created german localized copy of v1.2.0 "Uninstal
 REM change: 2018-10-10 v1.4.0: Update release info.
 REM change: 2018-10-13 v1.4.1: Update release info. 
 REM change: 2018-10-16 v1.4.1: Add LibreOffice 5 suppport.
-REM change: 2018-10-18 v1.5.0: Update release info. 
+REM change: 2018-10-17 v1.5.0: Update release info. 
 
 set _release=v1.5.0 
 

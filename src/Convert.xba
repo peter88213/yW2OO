@@ -20,7 +20,8 @@
 &apos; change: 2018-10-03 v1.0.0: Added comments and version number.
 &apos; change: 2018-10-03 v1.0.1: rename: &quot;First-line indent&quot; --&gt; &quot;First line indent&quot;.
 &apos; change: 2018-10-11 v1.0.2: Add SmartQuote_de/en.
-&apos; change: 2018-10-18 v1.0.3: Add SetTemplate_de/en.
+&apos; change: 2018-10-17 v1.0.3: Add SetTemplate_de/en.
+&apos; change: 2018-10-17 v1.0.4: Replaced deprecated &quot;DocumentInfo&quot; by &quot;DocumentProperties&quot;.
 
 
 
@@ -703,8 +704,8 @@ Sub SetTemplate_de
         args(0).Name = &quot;OverwriteStyles&quot;
         args(0).Value = True
         ThisComponent.stylefamilies.loadStylesFromURL( sURL, args() )
-        ThisComponent.DocumentInfo.Template = sTemplateName
-        ThisComponent.DocumentInfo.TemplateFileName = sURL
+        ThisComponent.DocumentProperties.TemplateName = sTemplateName
+        ThisComponent.DocumentProperties.TemplateURL = sURL
 End Sub
 
 
@@ -719,8 +720,8 @@ Sub SetTemplate_en
         args(0).Name = &quot;OverwriteStyles&quot;
         args(0).Value = True
         ThisComponent.stylefamilies.loadStylesFromURL( sURL, args() )
-        ThisComponent.DocumentInfo.Template = sTemplateName
-        ThisComponent.DocumentInfo.TemplateFileName = sURL
+        ThisComponent.DocumentProperties.TemplateName = sTemplateName
+        ThisComponent.DocumentProperties.TemplateURL = sURL
 End Sub
 
 
