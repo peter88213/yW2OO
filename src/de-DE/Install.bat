@@ -100,7 +100,7 @@ if not exist "%_user%\yW2OO" mkdir "%_user%\yW2OO"
 copy /y program\yW2OO.py "%_user%\yW2OO"
 
 if not exist "%_user%\template" mkdir "%_user%\template"
-copy /y program\Manuscript_de-DE.ott "%_user%\template"
+copy program\Manuscript_de-DE.ott "%_user%\template"
 
 
 rem Create language-dependent "writer.bat"
