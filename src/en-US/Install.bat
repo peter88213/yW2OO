@@ -6,7 +6,7 @@ REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.5.0
+REM version: v1.6.0
 REM 
 REM note: This script is to be executed manually after un-packing the setup file.
 REM 
@@ -27,8 +27,9 @@ REM change: 2018-10-13 v1.4.1: Update release info. Apply new directory structur
 REM change: 2018-10-15 v1.4.1: Create target directories if necessary.
 REM change: 2018-10-16 v1.4.1: Add LibreOffice 5 suppport.
 REM change: 2018-10-17 v1.5.0: Update release info. 
+REM change: 2018-10-23 v1.6.0: Update release info. 
 
-set _release=v1.5.0 
+set _release=1.6.0
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4
@@ -42,7 +43,7 @@ set _OpenOffice3_Userprofile=AppData\Roaming\OpenOffice.org\3\user
 set _LibreOffice5_Userprofile=AppData\Roaming\LibreOffice\4\user
 
 echo -----------------------------------------------------------------
-echo yW2OO (yWriter to OpenOffice/LibreOffice) %_release%
+echo yW2OO (yWriter to OpenOffice/LibreOffice) v%_release%
 echo Installing software package ...
 echo -----------------------------------------------------------------
 rem Detect Combination of Windows and Office 
@@ -109,7 +110,7 @@ echo echo ERROR: yW2OO Software is not installed! >> writer.bat
 echo pause >> writer.bat
 echo goto end >> writer.bat
 echo :inst_ok >> writer.bat
-echo echo yW2OO %_release% >> writer.bat
+echo echo yW2OO v%_release% >> writer.bat
 echo echo Starting yWriter to OpenOffice conversion ... >> writer.bat
 echo if not exist "Exported Project.html" goto error >> writer.bat
 echo copy "Exported Project.html" "Exported Project.html.bak" ^> NUL >> writer.bat
@@ -125,14 +126,22 @@ echo pause >> writer.bat
 echo :end >> writer.bat
 echo exit >> writer.bat
 
-"%_writer%\program\unopkg" add -f program\yW2OO.OXT
+echo Removing old OpenOffice extension ...
+
+"%_writer%\program\unopkg" remove -f yW2OO.OXT
+
+echo Installing new OpenOffice extension ...
+
+"%_writer%\program\unopkg" add -f program\yW2OO-%_release%.oxt
 
 echo -----------------------------------------------------------------
 echo #
-echo # Installation of yW2OO software package %_release% finished.
+echo # Installation of yW2OO software package v%_release% finished.
 echo #
-echo # Please copy "writer.bat" to your yWriter Project "Export" folder!
-echo # Export your yWriter project as HTML, then run "writer.bat"
+echo # Please copy "writer.bat" 
+echo # to your yWriter Project "Export" folder!
+echo # Export your yWriter project as HTML,
+echo # then run "writer.bat"
 echo #
 echo -----------------------------------------------------------------
 

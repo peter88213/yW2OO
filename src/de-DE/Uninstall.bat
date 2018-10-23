@@ -6,7 +6,7 @@ REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.5.0
+REM version: v1.6.0
 REM 
 REM note: This script is to be executed manually.
 REM 
@@ -22,8 +22,9 @@ REM change: 2018-10-10 v1.4.0: Update release info.
 REM change: 2018-10-13 v1.4.1: Update release info. 
 REM change: 2018-10-16 v1.4.1: Add LibreOffice 5 suppport.
 REM change: 2018-10-17 v1.5.0: Update release info. 
+REM change: 2018-10-23 v1.6.0: Update release info. 
 
-set _release=v1.5.0 
+set _release=1.6.0
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4
@@ -37,7 +38,7 @@ set _OpenOffice3_Userprofile=AppData\Roaming\OpenOffice.org\3\user
 set _LibreOffice5_Userprofile=AppData\Roaming\LibreOffice\4\user
 
 echo -----------------------------------------------------------------
-echo yW2OO (yWriter to OpenOffice/LibreOffice) %_release%
+echo yW2OO (yWriter to OpenOffice/LibreOffice) v%_release%
 echo Entferne Softwarepaket ...
 echo -----------------------------------------------------------------
 rem Detet Combination of Windows and Office 
@@ -107,7 +108,7 @@ del writer.bat
 
 echo OpenOffice Erweiterung wird deinstalliert ...
 
-"%_writer%\program\unopkg" remove -f yW2OO.OXT
+"%_writer%\program\unopkg" remove -f yW2OO-%_release%.oxt
 
 echo Fertig.
 pause

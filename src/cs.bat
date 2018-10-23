@@ -6,9 +6,9 @@ REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.5.0
+REM version: v1.6.0
 
-set _release=v1.5.0
+set _release=1.6.0
 
 set _project=yW2OO
 
@@ -17,9 +17,9 @@ rem Set up directory structure
 set _root=..\
 set _source_en=en-US
 set _source_de=de-DE
-set _macro_path=%_root%build\OXT
-set _target_en=%_root%build\yW2OO_en_%_release%
-set _target_de=%_root%build\yW2OO_de_%_release%
+set _macro_path=%_root%oxt
+set _target_en=%_root%build\yW2OO_en_v%_release%
+set _target_de=%_root%build\yW2OO_de_v%_release%
 
 
 rem --------------------------------------------------------
@@ -48,12 +48,12 @@ rem --------------------------------------------------------
 rem Generate README files
 rem --------------------------------------------------------
 
-echo # yW2OO (yWriter to OpenOffice/LibreOffice converter) %_release%>%_target_en%\README.txt
+echo # yW2OO (yWriter to OpenOffice/LibreOffice converter) v%_release%>%_target_en%\README.txt
 echo Convert yWriter's HTML export file into a neat OpenOffice Writer document, ready to apply templates and styles.>>%_target_en%\README.txt
 echo For further information see https://github.com/peter88213/yW2OO/wiki/>>%_target_en%\README.txt
 
 
-echo # yW2OO (yWriter-zu-OpenOffice/LibreOffice-Konvertierer) %_release%>%_target_de%\LIESMICH.txt
+echo # yW2OO (yWriter-zu-OpenOffice/LibreOffice-Konvertierer) v%_release%>%_target_de%\LIESMICH.txt
 echo HTML-Exportdatei von yWriter in ein sauberes OpenOffice Writer-Dokument umwandeln, um Dokument- und Formatvorlagen anwenden zu können.>>%_target_de%\LIESMICH.txt
 echo Weitere Informationen s. https://github.com/peter88213/yW2OO/wiki/Deutsch>>%_target_de%\LIESMICH.txt
 
@@ -92,7 +92,7 @@ set _file=%_source_de%\Uninstall.bat
 set _dest=%_target_de%\
 call :copyFile
 
-set _file=%_macro_path%\yW2OO.oxt
+set _file=%_macro_path%\yW2OO-%_release%.oxt
 set _dest=%_target_en%\program\
 call :copyFile
 set _dest=%_target_de%\program\

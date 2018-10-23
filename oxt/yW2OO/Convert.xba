@@ -8,7 +8,7 @@
 &apos; see: https://github.com/peter88213/yW2OO
 &apos; license: The MIT License (https://opensource.org/licenses/mit-license.php)
 &apos; copyright: (c) 2018, Peter Triesberger
-&apos; version: v1.0.3
+&apos; version: v1.0.5
 &apos; 
 &apos; note: This script is to be called automatically by batch file per command line parameter.
 &apos; 
@@ -22,6 +22,7 @@
 &apos; change: 2018-10-11 v1.0.2: Add SmartQuote_de/en.
 &apos; change: 2018-10-17 v1.0.3: Add SetTemplate_de/en.
 &apos; change: 2018-10-17 v1.0.4: Replaced deprecated &quot;DocumentInfo&quot; by &quot;DocumentProperties&quot;.
+&apos; change: 2018-10-23 v1.0.5: Removed SmartQuote_de/en. Added search/replace for LibreOffice specific style name
 
 
 
@@ -70,7 +71,8 @@ Sub SetParagraphStyles_de
 &apos; Jeder andere Absatz ist &quot;Textkörper&quot;
 &apos; 
 &apos; Dieses BASIC Script formatiert alle Absätze um:
-&apos; &quot;Textkörper&quot; --&gt; &quot;Textkörper Einzug&quot;
+&apos; &quot;Textkörper&quot; --&gt; &quot;Textkörper Einzug&quot; (OpenOffice)
+&apos; &quot;Textkörper&quot; --&gt; &quot;Einzug erste Zeile&quot; (LibreOffice)
 &apos; &quot;Überschrift 6&quot; --&gt; &quot;Textkörper&quot;
 &apos; &quot;Überschrift 2&quot; --&gt; &quot;Überschrift 2&quot; (harte Formatierungen entfernen)
 &apos; &quot;Überschrift 4&quot; --&gt; &quot;Überschrift 4&quot; (harte Formatierungen entfernen)
@@ -89,7 +91,7 @@ args1(1).Value = 8
 dispatcher.executeDispatch(document, &quot;.uno:StyleApply&quot;, &quot;&quot;, 0, args1())
 
 &apos; ----------------------------------------------------------------------
-&apos; Textkörper --&gt; Textkörper Einzug
+&apos; Textkörper --&gt; Textkörper Einzug (OpenOffice)
 &apos; ----------------------------------------------------------------------
 
 dim args2(18) as new com.sun.star.beans.PropertyValue
@@ -133,6 +135,52 @@ args2(18).Name = &quot;Quiet&quot;
 args2(18).Value = true
 
 dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args2())
+
+&apos; ----------------------------------------------------------------------
+&apos; Textkörper --&gt; Einzug erste Zeile (LibreOffice)
+&apos; ----------------------------------------------------------------------
+
+dim args9(18) as new com.sun.star.beans.PropertyValue
+args9(0).Name = &quot;SearchItem.StyleFamily&quot;
+args9(0).Value = 2
+args9(1).Name = &quot;SearchItem.CellType&quot;
+args9(1).Value = 0
+args9(2).Name = &quot;SearchItem.RowDirection&quot;
+args9(2).Value = true
+args9(3).Name = &quot;SearchItem.AllTables&quot;
+args9(3).Value = false
+args9(4).Name = &quot;SearchItem.Backward&quot;
+args9(4).Value = false
+args9(5).Name = &quot;SearchItem.Pattern&quot;
+args9(5).Value = true
+args9(6).Name = &quot;SearchItem.Content&quot;
+args9(6).Value = false
+args9(7).Name = &quot;SearchItem.AsianOptions&quot;
+args9(7).Value = false
+args9(8).Name = &quot;SearchItem.AlgorithmType&quot;
+args9(8).Value = 0
+args9(9).Name = &quot;SearchItem.SearchFlags&quot;
+args9(9).Value = 65536
+args9(10).Name = &quot;SearchItem.SearchString&quot;
+args9(10).Value = &quot;Textkörper&quot;
+args9(11).Name = &quot;SearchItem.ReplaceString&quot;
+args9(11).Value = &quot;Einzug erste Zeile&quot;
+args9(12).Name = &quot;SearchItem.Locale&quot;
+args9(12).Value = 255
+args9(13).Name = &quot;SearchItem.ChangedChars&quot;
+args9(13).Value = 2
+args9(14).Name = &quot;SearchItem.DeletedChars&quot;
+args9(14).Value = 2
+args9(15).Name = &quot;SearchItem.InsertedChars&quot;
+args9(15).Value = 2
+args9(16).Name = &quot;SearchItem.TransliterateFlags&quot;
+args9(16).Value = 1280
+args9(17).Name = &quot;SearchItem.Command&quot;
+args9(17).Value = 3
+args9(18).Name = &quot;Quiet&quot;
+args9(18).Value = true
+
+dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args9())
 
 &apos; ----------------------------------------------------------------------
 &apos; Überschrift 6 --&gt; Textkörper
@@ -576,123 +624,6 @@ end Sub
 
 
 
-sub SmartQuote_en
-
-&apos; ----------------------------------------------------------------------
-&apos; Replace false double quotation marks by &quot;english style&quot; ones 
-&apos; ----------------------------------------------------------------------
-
-dim document   as object
-dim dispatcher as object
-
-document   = ThisComponent.CurrentController.Frame
-dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
-
-rem ----------------------------------------------------------------------
-dim args1(18) as new com.sun.star.beans.PropertyValue
-args1(0).Name = &quot;SearchItem.StyleFamily&quot;
-args1(0).Value = 2
-args1(1).Name = &quot;SearchItem.CellType&quot;
-args1(1).Value = 0
-args1(2).Name = &quot;SearchItem.RowDirection&quot;
-args1(2).Value = true
-args1(3).Name = &quot;SearchItem.AllTables&quot;
-args1(3).Value = false
-args1(4).Name = &quot;SearchItem.Backward&quot;
-args1(4).Value = false
-args1(5).Name = &quot;SearchItem.Pattern&quot;
-args1(5).Value = false
-args1(6).Name = &quot;SearchItem.Content&quot;
-args1(6).Value = false
-args1(7).Name = &quot;SearchItem.AsianOptions&quot;
-args1(7).Value = false
-args1(8).Name = &quot;SearchItem.AlgorithmType&quot;
-args1(8).Value = 1
-args1(9).Name = &quot;SearchItem.SearchFlags&quot;
-args1(9).Value = 65536
-args1(10).Name = &quot;SearchItem.SearchString&quot;
-args1(10).Value = &quot;(\&quot;+CHR$(34)+&quot;\&lt;)([^\&quot;+CHR$(34)+&quot;]*[\.\?!,]?)(\&quot;+CHR$(34)+&quot;)&quot;
-args1(11).Name = &quot;SearchItem.ReplaceString&quot;
-args1(11).Value = &quot;“$2”&quot;
-args1(12).Name = &quot;SearchItem.Locale&quot;
-args1(12).Value = 255
-args1(13).Name = &quot;SearchItem.ChangedChars&quot;
-args1(13).Value = 2
-args1(14).Name = &quot;SearchItem.DeletedChars&quot;
-args1(14).Value = 2
-args1(15).Name = &quot;SearchItem.InsertedChars&quot;
-args1(15).Value = 2
-args1(16).Name = &quot;SearchItem.TransliterateFlags&quot;
-args1(16).Value = 1280
-args1(17).Name = &quot;SearchItem.Command&quot;
-args1(17).Value = 3
-args1(18).Name = &quot;Quiet&quot;
-args1(18).Value = true
-
-dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args1())
-
-
-end sub
-
-
-sub SmartQuote_de
-
-&apos; ----------------------------------------------------------------------
-&apos; Falsche doppelte Anführungszeichen durch Guillemets ersetzen
-&apos; ----------------------------------------------------------------------
-
-dim document   as object
-dim dispatcher as object
-
-document   = ThisComponent.CurrentController.Frame
-dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
-
-rem ----------------------------------------------------------------------
-dim args1(18) as new com.sun.star.beans.PropertyValue
-args1(0).Name = &quot;SearchItem.StyleFamily&quot;
-args1(0).Value = 2
-args1(1).Name = &quot;SearchItem.CellType&quot;
-args1(1).Value = 0
-args1(2).Name = &quot;SearchItem.RowDirection&quot;
-args1(2).Value = true
-args1(3).Name = &quot;SearchItem.AllTables&quot;
-args1(3).Value = false
-args1(4).Name = &quot;SearchItem.Backward&quot;
-args1(4).Value = false
-args1(5).Name = &quot;SearchItem.Pattern&quot;
-args1(5).Value = false
-args1(6).Name = &quot;SearchItem.Content&quot;
-args1(6).Value = false
-args1(7).Name = &quot;SearchItem.AsianOptions&quot;
-args1(7).Value = false
-args1(8).Name = &quot;SearchItem.AlgorithmType&quot;
-args1(8).Value = 1
-args1(9).Name = &quot;SearchItem.SearchFlags&quot;
-args1(9).Value = 65536
-args1(10).Name = &quot;SearchItem.SearchString&quot;
-args1(10).Value = &quot;(\&quot;+CHR$(34)+&quot;\&lt;)([^\&quot;+CHR$(34)+&quot;]*[\.\?!,]?)(\&quot;+CHR$(34)+&quot;)&quot;
-args1(11).Name = &quot;SearchItem.ReplaceString&quot;
-args1(11).Value = &quot;»$2«&quot;
-args1(12).Name = &quot;SearchItem.Locale&quot;
-args1(12).Value = 255
-args1(13).Name = &quot;SearchItem.ChangedChars&quot;
-args1(13).Value = 2
-args1(14).Name = &quot;SearchItem.DeletedChars&quot;
-args1(14).Value = 2
-args1(15).Name = &quot;SearchItem.InsertedChars&quot;
-args1(15).Value = 2
-args1(16).Name = &quot;SearchItem.TransliterateFlags&quot;
-args1(16).Value = 1280
-args1(17).Name = &quot;SearchItem.Command&quot;
-args1(17).Value = 3
-args1(18).Name = &quot;Quiet&quot;
-args1(18).Value = true
-
-dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args1())
-
-
-end sub
-
 Sub SetTemplate_de
 		path=createunoservice(&quot;com.sun.star.util.PathSettings&quot;)
 		match = InStr(path.UserConfig,&quot;/config&quot;)
@@ -707,6 +638,7 @@ Sub SetTemplate_de
         ThisComponent.DocumentProperties.TemplateName = sTemplateName
         ThisComponent.DocumentProperties.TemplateURL = sURL
 End Sub
+
 
 
 Sub SetTemplate_en
