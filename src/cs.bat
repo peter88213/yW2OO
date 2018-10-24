@@ -6,9 +6,9 @@ REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.6.0
+REM version: v1.7.0
 
-set _release=1.6.0
+set _release=1.7.0
 
 set _project=yW2OO
 
@@ -62,11 +62,11 @@ rem --------------------------------------------------------
 rem Copy release items
 rem --------------------------------------------------------
 
-set _file=%_source_en%\Manuscript_en-US.ott
+set _file=%_source_en%\StandardPages.ott
 set _dest=%_target_en%\program\
 call :copyFile
 
-set _file=%_source_de%\Manuscript_de-DE.ott
+set _file=%_source_de%\StandardPages.ott
 set _dest=%_target_de%\program\
 call :copyFile
 

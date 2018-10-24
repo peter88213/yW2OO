@@ -6,7 +6,7 @@ REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.6.0
+REM version: v1.7.0
 REM 
 REM note: This script is to be executed manually.
 REM 
@@ -23,8 +23,9 @@ REM change: 2018-10-13 v1.4.1: Update release info.
 REM change: 2018-10-16 v1.4.1: Add LibreOffice 5 suppport.
 REM change: 2018-10-17 v1.5.0: Update release info. 
 REM change: 2018-10-23 v1.6.0: Update release info. 
+REM change: 2018-10-24 v1.7.0: Added new document template. 
 
-set _release=1.6.0
+set _release=1.7.0
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4
@@ -96,6 +97,9 @@ set _file="%_user%\template\Manuscript_de-DE.ott"
 if exist %_file% del /p %_file%
 
 set _file="%_user%\template\Manuscript_en-US.ott"
+if exist %_file% del /p %_file%
+
+set _file="%_user%\template\StandardPages.ott"
 if exist %_file% del /p %_file%
 
 echo Programmkomponenten in %_user%\yW2OO werden mitsamt dem Ordner entfernt ...

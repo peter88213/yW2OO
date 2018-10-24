@@ -8,7 +8,7 @@
 &apos; see: https://github.com/peter88213/yW2OO
 &apos; license: The MIT License (https://opensource.org/licenses/mit-license.php)
 &apos; copyright: (c) 2018, Peter Triesberger
-&apos; version: v1.0.5
+&apos; version: v2.0.0
 &apos; 
 &apos; note: This script is to be called automatically by batch file per command line parameter.
 &apos; 
@@ -23,308 +23,21 @@
 &apos; change: 2018-10-17 v1.0.3: Add SetTemplate_de/en.
 &apos; change: 2018-10-17 v1.0.4: Replaced deprecated &quot;DocumentInfo&quot; by &quot;DocumentProperties&quot;.
 &apos; change: 2018-10-23 v1.0.5: Removed SmartQuote_de/en. Added search/replace for LibreOffice specific style name
+&apos; change: 2018-10-23 v2.0.0: Auto localization of style names
 
 
 
-sub yHTML_en
+sub main
 
-&apos; ----------------------------------------------------------------------
-&apos; Use English style names for (en-US) OpenOffice installation
-&apos; ----------------------------------------------------------------------
-
-SetParagraphStyles_en
-SetPagestyle_en
-SetTemplate_en
-rem SmartQuote_en
+SetParagraphStyles
+SetPagestyle
+SetTemplate
 SaveAsODT
 
 End Sub
 
 
-
-sub yHTML_de
-
-&apos; ----------------------------------------------------------------------
-&apos; Use German style names for (de) OpenOffice installation
-&apos; ----------------------------------------------------------------------
-
-SetParagraphStyles_de
-SetPagestyle_de
-SetTemplate_de
-rem SmartQuote_de
-SaveAsODT
-
-End Sub
-
-
-
-Sub SetParagraphStyles_de
-
-&apos; ----------------------------------------------------------------------
-&apos; Eine importierte HTML-Datei für die Umwandlung in ODT nachbearbeiten
-&apos; 
-&apos; Eingabe: yWriter HTML Export-Datei
-&apos; folgendermaßen vorverarbeitet:
-&apos; Kapitelüberschrift ist &quot;Überschrift 2&quot;
-&apos; Szenenüberschrift ist &quot;Überschrift 4&quot;
-&apos; Jeder erste Absatz in Kapitel oder Szene ist &quot;Überschrift 6&quot;
-&apos; Jeder andere Absatz ist &quot;Textkörper&quot;
-&apos; 
-&apos; Dieses BASIC Script formatiert alle Absätze um:
-&apos; &quot;Textkörper&quot; --&gt; &quot;Textkörper Einzug&quot; (OpenOffice)
-&apos; &quot;Textkörper&quot; --&gt; &quot;Einzug erste Zeile&quot; (LibreOffice)
-&apos; &quot;Überschrift 6&quot; --&gt; &quot;Textkörper&quot;
-&apos; &quot;Überschrift 2&quot; --&gt; &quot;Überschrift 2&quot; (harte Formatierungen entfernen)
-&apos; &quot;Überschrift 4&quot; --&gt; &quot;Überschrift 4&quot; (harte Formatierungen entfernen)
-&apos; 
-&apos; ----------------------------------------------------------------------
-
-document   = ThisComponent.CurrentController.Frame
-dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
-
-dim args1(1) as new com.sun.star.beans.PropertyValue
-args1(0).Name = &quot;Template&quot;
-args1(0).Value = &quot;Standard&quot;
-args1(1).Name = &quot;Family&quot;
-args1(1).Value = 8
-
-dispatcher.executeDispatch(document, &quot;.uno:StyleApply&quot;, &quot;&quot;, 0, args1())
-
-&apos; ----------------------------------------------------------------------
-&apos; Textkörper --&gt; Textkörper Einzug (OpenOffice)
-&apos; ----------------------------------------------------------------------
-
-dim args2(18) as new com.sun.star.beans.PropertyValue
-args2(0).Name = &quot;SearchItem.StyleFamily&quot;
-args2(0).Value = 2
-args2(1).Name = &quot;SearchItem.CellType&quot;
-args2(1).Value = 0
-args2(2).Name = &quot;SearchItem.RowDirection&quot;
-args2(2).Value = true
-args2(3).Name = &quot;SearchItem.AllTables&quot;
-args2(3).Value = false
-args2(4).Name = &quot;SearchItem.Backward&quot;
-args2(4).Value = false
-args2(5).Name = &quot;SearchItem.Pattern&quot;
-args2(5).Value = true
-args2(6).Name = &quot;SearchItem.Content&quot;
-args2(6).Value = false
-args2(7).Name = &quot;SearchItem.AsianOptions&quot;
-args2(7).Value = false
-args2(8).Name = &quot;SearchItem.AlgorithmType&quot;
-args2(8).Value = 0
-args2(9).Name = &quot;SearchItem.SearchFlags&quot;
-args2(9).Value = 65536
-args2(10).Name = &quot;SearchItem.SearchString&quot;
-args2(10).Value = &quot;Textkörper&quot;
-args2(11).Name = &quot;SearchItem.ReplaceString&quot;
-args2(11).Value = &quot;Textkörper Einzug&quot;
-args2(12).Name = &quot;SearchItem.Locale&quot;
-args2(12).Value = 255
-args2(13).Name = &quot;SearchItem.ChangedChars&quot;
-args2(13).Value = 2
-args2(14).Name = &quot;SearchItem.DeletedChars&quot;
-args2(14).Value = 2
-args2(15).Name = &quot;SearchItem.InsertedChars&quot;
-args2(15).Value = 2
-args2(16).Name = &quot;SearchItem.TransliterateFlags&quot;
-args2(16).Value = 1280
-args2(17).Name = &quot;SearchItem.Command&quot;
-args2(17).Value = 3
-args2(18).Name = &quot;Quiet&quot;
-args2(18).Value = true
-
-dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args2())
-
-&apos; ----------------------------------------------------------------------
-&apos; Textkörper --&gt; Einzug erste Zeile (LibreOffice)
-&apos; ----------------------------------------------------------------------
-
-dim args9(18) as new com.sun.star.beans.PropertyValue
-args9(0).Name = &quot;SearchItem.StyleFamily&quot;
-args9(0).Value = 2
-args9(1).Name = &quot;SearchItem.CellType&quot;
-args9(1).Value = 0
-args9(2).Name = &quot;SearchItem.RowDirection&quot;
-args9(2).Value = true
-args9(3).Name = &quot;SearchItem.AllTables&quot;
-args9(3).Value = false
-args9(4).Name = &quot;SearchItem.Backward&quot;
-args9(4).Value = false
-args9(5).Name = &quot;SearchItem.Pattern&quot;
-args9(5).Value = true
-args9(6).Name = &quot;SearchItem.Content&quot;
-args9(6).Value = false
-args9(7).Name = &quot;SearchItem.AsianOptions&quot;
-args9(7).Value = false
-args9(8).Name = &quot;SearchItem.AlgorithmType&quot;
-args9(8).Value = 0
-args9(9).Name = &quot;SearchItem.SearchFlags&quot;
-args9(9).Value = 65536
-args9(10).Name = &quot;SearchItem.SearchString&quot;
-args9(10).Value = &quot;Textkörper&quot;
-args9(11).Name = &quot;SearchItem.ReplaceString&quot;
-args9(11).Value = &quot;Einzug erste Zeile&quot;
-args9(12).Name = &quot;SearchItem.Locale&quot;
-args9(12).Value = 255
-args9(13).Name = &quot;SearchItem.ChangedChars&quot;
-args9(13).Value = 2
-args9(14).Name = &quot;SearchItem.DeletedChars&quot;
-args9(14).Value = 2
-args9(15).Name = &quot;SearchItem.InsertedChars&quot;
-args9(15).Value = 2
-args9(16).Name = &quot;SearchItem.TransliterateFlags&quot;
-args9(16).Value = 1280
-args9(17).Name = &quot;SearchItem.Command&quot;
-args9(17).Value = 3
-args9(18).Name = &quot;Quiet&quot;
-args9(18).Value = true
-
-dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args9())
-
-&apos; ----------------------------------------------------------------------
-&apos; Überschrift 6 --&gt; Textkörper
-&apos; ----------------------------------------------------------------------
-
-dim args3(18) as new com.sun.star.beans.PropertyValue
-args3(0).Name = &quot;SearchItem.StyleFamily&quot;
-args3(0).Value = 2
-args3(1).Name = &quot;SearchItem.CellType&quot;
-args3(1).Value = 0
-args3(2).Name = &quot;SearchItem.RowDirection&quot;
-args3(2).Value = true
-args3(3).Name = &quot;SearchItem.AllTables&quot;
-args3(3).Value = false
-args3(4).Name = &quot;SearchItem.Backward&quot;
-args3(4).Value = false
-args3(5).Name = &quot;SearchItem.Pattern&quot;
-args3(5).Value = true
-args3(6).Name = &quot;SearchItem.Content&quot;
-args3(6).Value = false
-args3(7).Name = &quot;SearchItem.AsianOptions&quot;
-args3(7).Value = false
-args3(8).Name = &quot;SearchItem.AlgorithmType&quot;
-args3(8).Value = 0
-args3(9).Name = &quot;SearchItem.SearchFlags&quot;
-args3(9).Value = 65536
-args3(10).Name = &quot;SearchItem.SearchString&quot;
-args3(10).Value = &quot;Überschrift 6&quot;
-args3(11).Name = &quot;SearchItem.ReplaceString&quot;
-args3(11).Value = &quot;Textkörper&quot;
-args3(12).Name = &quot;SearchItem.Locale&quot;
-args3(12).Value = 255
-args3(13).Name = &quot;SearchItem.ChangedChars&quot;
-args3(13).Value = 2
-args3(14).Name = &quot;SearchItem.DeletedChars&quot;
-args3(14).Value = 2
-args3(15).Name = &quot;SearchItem.InsertedChars&quot;
-args3(15).Value = 2
-args3(16).Name = &quot;SearchItem.TransliterateFlags&quot;
-args3(16).Value = 1280
-args3(17).Name = &quot;SearchItem.Command&quot;
-args3(17).Value = 3
-args3(18).Name = &quot;Quiet&quot;
-args3(18).Value = true
-
-dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args3())
-
-&apos; ----------------------------------------------------------------------
-&apos; Überschrift 2 --&gt; Überschrift 2
-&apos; ----------------------------------------------------------------------
-
-dim args4(18) as new com.sun.star.beans.PropertyValue
-args4(0).Name = &quot;SearchItem.StyleFamily&quot;
-args4(0).Value = 2
-args4(1).Name = &quot;SearchItem.CellType&quot;
-args4(1).Value = 0
-args4(2).Name = &quot;SearchItem.RowDirection&quot;
-args4(2).Value = true
-args4(3).Name = &quot;SearchItem.AllTables&quot;
-args4(3).Value = false
-args4(4).Name = &quot;SearchItem.Backward&quot;
-args4(4).Value = false
-args4(5).Name = &quot;SearchItem.Pattern&quot;
-args4(5).Value = true
-args4(6).Name = &quot;SearchItem.Content&quot;
-args4(6).Value = false
-args4(7).Name = &quot;SearchItem.AsianOptions&quot;
-args4(7).Value = false
-args4(8).Name = &quot;SearchItem.AlgorithmType&quot;
-args4(8).Value = 0
-args4(9).Name = &quot;SearchItem.SearchFlags&quot;
-args4(9).Value = 65536
-args4(10).Name = &quot;SearchItem.SearchString&quot;
-args4(10).Value = &quot;Überschrift 2&quot;
-args4(11).Name = &quot;SearchItem.ReplaceString&quot;
-args4(11).Value = &quot;Überschrift 2&quot;
-args4(12).Name = &quot;SearchItem.Locale&quot;
-args4(12).Value = 255
-args4(13).Name = &quot;SearchItem.ChangedChars&quot;
-args4(13).Value = 2
-args4(14).Name = &quot;SearchItem.DeletedChars&quot;
-args4(14).Value = 2
-args4(15).Name = &quot;SearchItem.InsertedChars&quot;
-args4(15).Value = 2
-args4(16).Name = &quot;SearchItem.TransliterateFlags&quot;
-args4(16).Value = 1280
-args4(17).Name = &quot;SearchItem.Command&quot;
-args4(17).Value = 3
-args4(18).Name = &quot;Quiet&quot;
-args4(18).Value = true
-
-dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args4())
-
-&apos; ----------------------------------------------------------------------
-&apos; Überschrift 4 --&gt; Überschrift 4
-&apos; ----------------------------------------------------------------------
-
-dim args5(18) as new com.sun.star.beans.PropertyValue
-args5(0).Name = &quot;SearchItem.StyleFamily&quot;
-args5(0).Value = 2
-args5(1).Name = &quot;SearchItem.CellType&quot;
-args5(1).Value = 0
-args5(2).Name = &quot;SearchItem.RowDirection&quot;
-args5(2).Value = true
-args5(3).Name = &quot;SearchItem.AllTables&quot;
-args5(3).Value = false
-args5(4).Name = &quot;SearchItem.Backward&quot;
-args5(4).Value = false
-args5(5).Name = &quot;SearchItem.Pattern&quot;
-args5(5).Value = true
-args5(6).Name = &quot;SearchItem.Content&quot;
-args5(6).Value = false
-args5(7).Name = &quot;SearchItem.AsianOptions&quot;
-args5(7).Value = false
-args5(8).Name = &quot;SearchItem.AlgorithmType&quot;
-args5(8).Value = 0
-args5(9).Name = &quot;SearchItem.SearchFlags&quot;
-args5(9).Value = 65536
-args5(10).Name = &quot;SearchItem.SearchString&quot;
-args5(10).Value = &quot;Überschrift 4&quot;
-args5(11).Name = &quot;SearchItem.ReplaceString&quot;
-args5(11).Value = &quot;Überschrift 4&quot;
-args5(12).Name = &quot;SearchItem.Locale&quot;
-args5(12).Value = 255
-args5(13).Name = &quot;SearchItem.ChangedChars&quot;
-args5(13).Value = 2
-args5(14).Name = &quot;SearchItem.DeletedChars&quot;
-args5(14).Value = 2
-args5(15).Name = &quot;SearchItem.InsertedChars&quot;
-args5(15).Value = 2
-args5(16).Name = &quot;SearchItem.TransliterateFlags&quot;
-args5(16).Value = 1280
-args5(17).Name = &quot;SearchItem.Command&quot;
-args5(17).Value = 3
-args5(18).Name = &quot;Quiet&quot;
-args5(18).Value = true
-
-dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args5())
-
-end Sub
-
-
-
-sub SetParagraphStyles_en
+sub SetParagraphStyles
 
 &apos; ----------------------------------------------------------------------
 &apos; Post-Processing an imported HTML file in order to be saved as ODT
@@ -344,16 +57,18 @@ sub SetParagraphStyles_en
 &apos; 
 &apos; ----------------------------------------------------------------------
 
+
+&apos; Fetch localized display names to be replaced
+
+ThisDoc    = ThisComponent
+dim pStyles
+  pStyles = ThisDoc.StyleFamilies.getByName(&quot;ParagraphStyles&quot;)
+
+dim document   as object
+dim dispatcher as object
+&apos; get access to the document
 document   = ThisComponent.CurrentController.Frame
 dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
-
-dim args1(1) as new com.sun.star.beans.PropertyValue
-args1(0).Name = &quot;Template&quot;
-args1(0).Value = &quot;Standard&quot;
-args1(1).Name = &quot;Family&quot;
-args1(1).Value = 8
-
-dispatcher.executeDispatch(document, &quot;.uno:StyleApply&quot;, &quot;&quot;, 0, args1())
 
 &apos; ----------------------------------------------------------------------
 &apos; Text body --&gt; First line indent
@@ -381,9 +96,9 @@ args2(8).Value = 0
 args2(9).Name = &quot;SearchItem.SearchFlags&quot;
 args2(9).Value = 65536
 args2(10).Name = &quot;SearchItem.SearchString&quot;
-args2(10).Value = &quot;Text body&quot;
+args2(10).Value = pStyles.getByName(&quot;Text body&quot;).DisplayName
 args2(11).Name = &quot;SearchItem.ReplaceString&quot;
-args2(11).Value = &quot;First line indent&quot;
+args2(11).Value = pStyles.getByName(&quot;First line indent&quot;).DisplayName
 args2(12).Name = &quot;SearchItem.Locale&quot;
 args2(12).Value = 255
 args2(13).Name = &quot;SearchItem.ChangedChars&quot;
@@ -427,9 +142,9 @@ args3(8).Value = 0
 args3(9).Name = &quot;SearchItem.SearchFlags&quot;
 args3(9).Value = 65536
 args3(10).Name = &quot;SearchItem.SearchString&quot;
-args3(10).Value = &quot;Heading 6&quot;
+args3(10).Value = pStyles.getByName(&quot;Heading 6&quot;).DisplayName
 args3(11).Name = &quot;SearchItem.ReplaceString&quot;
-args3(11).Value = &quot;Text body&quot;
+args3(11).Value = pStyles.getByName(&quot;Text body&quot;).DisplayName
 args3(12).Name = &quot;SearchItem.Locale&quot;
 args3(12).Value = 255
 args3(13).Name = &quot;SearchItem.ChangedChars&quot;
@@ -473,9 +188,9 @@ args4(8).Value = 0
 args4(9).Name = &quot;SearchItem.SearchFlags&quot;
 args4(9).Value = 65536
 args4(10).Name = &quot;SearchItem.SearchString&quot;
-args4(10).Value = &quot;Heading 2&quot;
+args4(10).Value = pStyles.getByName(&quot;Heading 2&quot;).DisplayName
 args4(11).Name = &quot;SearchItem.ReplaceString&quot;
-args4(11).Value = &quot;Heading 2&quot;
+args4(11).Value = pStyles.getByName(&quot;Heading 2&quot;).DisplayName
 args4(12).Name = &quot;SearchItem.Locale&quot;
 args4(12).Value = 255
 args4(13).Name = &quot;SearchItem.ChangedChars&quot;
@@ -519,9 +234,9 @@ args5(8).Value = 0
 args5(9).Name = &quot;SearchItem.SearchFlags&quot;
 args5(9).Value = 65536
 args5(10).Name = &quot;SearchItem.SearchString&quot;
-args5(10).Value = &quot;Heading 4&quot;
+args5(10).Value = pStyles.getByName(&quot;Heading 4&quot;).DisplayName
 args5(11).Name = &quot;SearchItem.ReplaceString&quot;
-args5(11).Value = &quot;Heading 4&quot;
+args5(11).Value = pStyles.getByName(&quot;Heading 4&quot;).DisplayName
 args5(12).Name = &quot;SearchItem.Locale&quot;
 args5(12).Value = 255
 args5(13).Name = &quot;SearchItem.ChangedChars&quot;
@@ -543,34 +258,18 @@ end Sub
 
 
 
-sub SetPagestyle_de
+
+sub SetPagestyle
+
+&apos; Fetch localized display names to be replaced
+
+ThisDoc    = ThisComponent
+dim pStyles
+  pStyles = ThisDoc.StyleFamilies.getByName(&quot;PageStyles&quot;)
+
 
 &apos; ----------------------------------------------------------------------
-&apos; Seitenformat  &quot;Standard &quot; laden und zum Anfang springen.
-&apos; ----------------------------------------------------------------------
-
-dim document   as object
-dim dispatcher as object
-document   = ThisComponent.CurrentController.Frame
-dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
-
-dim args1(1) as new com.sun.star.beans.PropertyValue
-args1(0).Name = &quot;Template&quot;
-args1(0).Value = &quot;Standard&quot;
-args1(1).Name = &quot;Family&quot;
-args1(1).Value = 8
-
-dispatcher.executeDispatch(document, &quot;.uno:StyleApply&quot;, &quot;&quot;, 0, args1())
-dispatcher.executeDispatch(document, &quot;.uno:GoToStartOfDoc&quot;, &quot;&quot;, 0, Array())
-
-end Sub
-
-
-
-sub SetPagestyle_en
-
-&apos; ----------------------------------------------------------------------
-&apos; Load pagestyle  &quot;Default &quot; and go to top.
+&apos; Load default pagestyle.
 &apos; ----------------------------------------------------------------------
 
 dim document   as object
@@ -581,11 +280,16 @@ dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
 
 dim args1(1) as new com.sun.star.beans.PropertyValue
 args1(0).Name = &quot;Template&quot;
-args1(0).Value = &quot;Default&quot;
+args1(0).Value = pStyles.getByName(&quot;Standard&quot;).DisplayName
 args1(1).Name = &quot;Family&quot;
 args1(1).Value = 8
 
 dispatcher.executeDispatch(document, &quot;.uno:StyleApply&quot;, &quot;&quot;, 0, args1())
+
+&apos; ----------------------------------------------------------------------
+&apos; Go to top.
+&apos; ----------------------------------------------------------------------
+
 dispatcher.executeDispatch(document, &quot;.uno:GoToStartOfDoc&quot;, &quot;&quot;, 0, Array())
 
 end Sub
@@ -624,13 +328,13 @@ end Sub
 
 
 
-Sub SetTemplate_de
+Sub SetTemplate
 		path=createunoservice(&quot;com.sun.star.util.PathSettings&quot;)
 		match = InStr(path.UserConfig,&quot;/config&quot;)
-		TemplatePath = Left(path.UserConfig,match)+&quot;template/Manuscript_de-DE.ott&quot;
+		TemplatePath = Left(path.UserConfig,match)+&quot;template/StandardPages.ott&quot;
 		rem Msgbox TemplatePath
         dim args(0) as new com.sun.star.beans.PropertyValue
-        sTemplateName = &quot;Manuscript_de-DE.ott&quot;
+        sTemplateName = &quot;StandardPages.ott&quot;
         sURL = TemplatePath
         args(0).Name = &quot;OverwriteStyles&quot;
         args(0).Value = True
@@ -640,21 +344,6 @@ Sub SetTemplate_de
 End Sub
 
 
-
-Sub SetTemplate_en
-		path=createunoservice(&quot;com.sun.star.util.PathSettings&quot;)
-		match = InStr(path.UserConfig,&quot;/config&quot;)
-		TemplatePath = Left(path.UserConfig,match)+&quot;template/Manuscript_en-US.ott&quot;
-		rem Msgbox TemplatePath
-        dim args(0) as new com.sun.star.beans.PropertyValue
-        sTemplateName = &quot;Manuscript_de-DE.ott&quot;
-        sURL = TemplatePath
-        args(0).Name = &quot;OverwriteStyles&quot;
-        args(0).Value = True
-        ThisComponent.stylefamilies.loadStylesFromURL( sURL, args() )
-        ThisComponent.DocumentProperties.TemplateName = sTemplateName
-        ThisComponent.DocumentProperties.TemplateURL = sURL
-End Sub
 
 
 </script:module>

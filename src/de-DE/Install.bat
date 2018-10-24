@@ -6,7 +6,7 @@ REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.6.0
+REM version: v1.7.0
 REM 
 REM note: This script is to be executed manually after un-packing the setup file.
 REM 
@@ -28,8 +28,9 @@ REM change: 2018-10-15 v1.4.1: Create target directories if necessary.
 REM change: 2018-10-16 v1.4.1: Add LibreOffice 5 suppport.
 REM change: 2018-10-17 v1.5.0: Update release info. 
 REM change: 2018-10-23 v1.6.0: Update release info. 
+REM change: 2018-10-24 v1.7.0: Macro call is language independent; renamed document template.
 
-set _release=1.6.0
+set _release=1.7.0
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4
@@ -101,7 +102,7 @@ if not exist "%_user%\yW2OO" mkdir "%_user%\yW2OO"
 copy /y program\yW2OO.py "%_user%\yW2OO"
 
 if not exist "%_user%\template" mkdir "%_user%\template"
-copy program\Manuscript_de-DE.ott "%_user%\template"
+copy program\StandardPages.ott "%_user%\template"
 
 
 rem Create language-dependent "writer.bat"
@@ -118,7 +119,7 @@ echo copy "Exported Project.html" "Exported Project.html.bak" ^> NUL >> writer.b
 echo "%_writer%\program\python.exe" "%_user%\yW2OO\yW2OO.py" >> writer.bat
 echo if errorlevel 1 goto end >> writer.bat
 echo echo Office wird jetzt aufgerufen ... >> writer.bat
-echo "%_writer%\program\swriter.exe" "macro:///yW2OO.Convert.yHTML_de" "Exported Project.html"  >> writer.bat
+echo "%_writer%\program\swriter.exe" "macro:///yW2OO.Convert.main" "Exported Project.html"  >> writer.bat
 echo goto end >> writer.bat
 echo :error >> writer.bat
 echo echo FEHLER: "Exported Project.html" existiert nicht! >> writer.bat
