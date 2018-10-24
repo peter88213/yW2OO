@@ -6,15 +6,13 @@ REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
-REM version: v1.7.0
 REM 
 REM note: This script is to be executed manually.
 REM 
 REM precondition: yW2OO is installed.
-REM precondition: OpenOffice.org 3.x or Apache OpenOffice 4.x must be installed in english or german localization.
+REM precondition: OpenOffice.org 3.x or Apache OpenOffice 4.x is installed.
 REM postcondition: Previously auto-installed items of yW2OO are removed.
 REM postcondition: The template remains, if user wants it.
-REM postcondition: The yW2OO Office Extension must be removed via Extension Manager.
 REM 
 REM since: 2018-10-04
 REM change: 2018-10-09 v1.3.0: Created german localized copy of v1.2.0 "Uninstall.bat".
@@ -24,6 +22,7 @@ REM change: 2018-10-16 v1.4.1: Add LibreOffice 5 suppport.
 REM change: 2018-10-17 v1.5.0: Update release info. 
 REM change: 2018-10-23 v1.6.0: Update release info. 
 REM change: 2018-10-24 v1.7.0: Added new document template. 
+REM change: 2018-10-24 v1.7.0: Simplify texts for locale-independent use.
 
 set _release=1.7.0
 
@@ -56,25 +55,25 @@ goto end
 :OpenOffice4-Win64
 set _writer=%_OpenOffice4_w64%
 set _user=%USERPROFILE%\%_OpenOffice4_Userprofile%
-echo OpenOffice 4.x on Windows (64 bit) detected.
+echo OpenOffice 4.x - Windows (64 bit)
 goto settings_done
 
 :OpenOffice4-Win32
 set _writer=%_OpenOffice4_w32%
 set _user=%USERPROFILE%\%_OpenOffice4_Userprofile%
-echo OpenOffice 4.x on Windows (32 bit) detected.
+echo OpenOffice 4.x - Windows (32 bit)
 goto settings_done
 
 :OpenOffice3-Win64
 set _writer=%_OpenOffice3_w64%
 set _user=%USERPROFILE%\%_OpenOffice3_Userprofile%
-echo OpenOffice 3.x on Windows (64 bit) detected.
+echo OpenOffice 3.x - Windows (64 bit)
 goto settings_done
 
 :OpenOffice3-Win32
 set _writer=%_OpenOffice3_w32%
 set _user=%USERPROFILE%\%_OpenOffice3_Userprofile%
-echo OpenOffice 3.x on Windows (32 bit) detected.
+echo OpenOffice 3.x - Windows (32 bit)
 goto settings_done
 
 :LibreOffice5-Win64
@@ -106,7 +105,7 @@ echo Deleting program components in %_user%\yW2OO and removing folder ...
 
 rmdir /s /q "%_user%\yW2OO"
 
-echo Deleting writer.bat (you may delete copies in ^<your yWriter project^>\Export manually) ...
+echo Deleting writer.bat ...
 
 del writer.bat
 
@@ -114,7 +113,14 @@ echo Removing OpenOffice extension ...
 
 "%_writer%\program\unopkg" remove -f yW2OO-%_release%.oxt
 
-echo Done.
+echo -----------------------------------------------------------------
+echo #
+echo # yW2OO v%_release% is removed from your PC.
+echo #
+echo # You may delete copies of copy "writer.bat" 
+echo # in your yWriter Project "Export" folder manually
+echo #
+echo -----------------------------------------------------------------
 pause
 
 
