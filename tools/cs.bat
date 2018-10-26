@@ -12,7 +12,6 @@ set _release=1.7.0
 set _project=yW2OO
 
 set _root=..\
-set _macro_path=%_root%oxt
 
 rem ********************************************************
 rem English/international release
@@ -22,7 +21,7 @@ rem --------------------------------------------------------
 rem Set up directory structure
 rem --------------------------------------------------------
 
-set _source_en=en-US
+set _source_en=%_root%ott\en-US
 set _target_en=%_root%build\yW2OO_en_v%_release%
 
 mkdir %_target_en%
@@ -58,6 +57,34 @@ set _target=%_target_en%
 call :cpInternational
 
 rem --------------------------------------------------------
+rem Copy templates for customization
+rem --------------------------------------------------------
+
+mkdir %_target_en%\add-on\template-A4
+del /s /q %_target_de%\add-on\template-A4
+
+set _file=%_root%ott\de-DE\StandardPages.ott
+set _dest=%_target_en%\add-on\template-A4\
+call :copyFile
+
+set _file=%_root%ott\de-DE\README.txt
+set _dest=%_target_en%\add-on\template-A4\
+call :copyFile
+
+mkdir %_target_en%\add-on\template-Letter
+del /s /q %_target_de%\add-on\template-Letter
+
+set _file=%_root%ott\en-US\StandardPages.ott
+set _dest=%_target_en%\add-on\template-Letter\
+call :copyFile
+
+set _file=%_root%ott\en-US\README.txt
+set _dest=%_target_en%\add-on\template-Letter\
+call :copyFile
+
+
+
+rem --------------------------------------------------------
 rem End (english/international release) 
 rem --------------------------------------------------------
 
@@ -69,7 +96,7 @@ rem --------------------------------------------------------
 rem Set up directory structure
 rem --------------------------------------------------------
 
-set _source_de=de-DE
+set _source_de=%_root%ott\de-DE
 set _target_de=%_root%build\yW2OO_de_v%_release%
 
 mkdir %_target_de%
@@ -95,16 +122,23 @@ set _file=%_source_de%\StandardPages.ott
 set _dest=%_target_de%\program\
 call :copyFile
 
-set _file=%_source_de%\Roman-Taschenbuch125x190.odt
-set _dest=%_target_de%\add-on\
-call :copyFile
-
 rem --------------------------------------------------------
 rem Copy language independent release items 
 rem --------------------------------------------------------
 
 set _target=%_target_de%
 call :cpInternational
+
+rem --------------------------------------------------------
+rem Copy model document for paperback (german)
+rem --------------------------------------------------------
+
+mkdir %_target_de%\add-on\Buchgestaltung
+del /s /q %_target_de%\add-on\Buchgestaltung
+
+set _file=%_source_de%\Roman-Taschenbuch125x190.odt
+set _dest=%_target_de%\add-on\Buchgestaltung\
+call :copyFile
 
 rem --------------------------------------------------------
 rem End (german release) 
@@ -118,28 +152,29 @@ goto end
 rem --------------------------------------------------------
 rem Copy language independent release items
 rem --------------------------------------------------------
+@echo
 
-set _file=yW2OO.py
+set _file=%_root%src\yW2OO.py
 set _dest=%_target%\program\
 call :copyFile
 
-set _file=Install.bat
+set _file=%_root%src\Install.bat
 set _dest=%_target%\
 call :copyFile
 
-set _file=Uninstall.bat
+set _file=%_root%src\Uninstall.bat
 set _dest=%_target%\
 call :copyFile
 
-set _file=%_macro_path%\yW2OO-%_release%.oxt
+set _file=%_root%oxt\yW2OO-%_release%.oxt
 set _dest=%_target%\program\
 call :copyFile
 
-set _file=genCopyWriter.bat
+set _file=%_root%src\genCopyWriter.bat
 set _dest=%_target%\add-on\
 call :copyFile
 
-set _file=genRemoveWriter.bat
+set _file=%_root%src\genRemoveWriter.bat
 set _dest=%_target%\add-on\
 call :copyFile
 
