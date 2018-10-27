@@ -29,6 +29,7 @@ REM change: 2018-10-17 v1.5.0: Update release info.
 REM change: 2018-10-23 v1.6.0: Update release info. 
 REM change: 2018-10-24 v1.7.0: Macro call is language independent; renamed document template.
 REM change: 2018-10-24 v1.7.0: Simplify texts for locale-independent use.
+REM change: 2018-10-27 v1.7.0: Suppress puzzling installation message and confirm template overwrite.
 
 set _release=1.7.0
 
@@ -98,13 +99,21 @@ goto settings_done
 
 :settings_done
 
+echo Removing old OpenOffice extension ...
+
+"%_writer%\program\unopkg" remove -f yW2OO.OXT >nul
+
+echo Installing new OpenOffice extension ...
+
+"%_writer%\program\unopkg" add -f program\yW2OO-%_release%.oxt
+
 echo Copying program components and templates to %_user% ...
 
 if not exist "%_user%\yW2OO" mkdir "%_user%\yW2OO"
 copy /y program\yW2OO.py "%_user%\yW2OO"
 
 if not exist "%_user%\template" mkdir "%_user%\template"
-copy program\StandardPages.ott "%_user%\template"
+copy /-y program\StandardPages.ott "%_user%\template"
 
 echo Creating "writer.bat" ...
 
@@ -128,14 +137,6 @@ echo echo ERROR: "Exported Project.html" does not exist! >> writer.bat
 echo pause >> writer.bat
 echo :end >> writer.bat
 echo exit >> writer.bat
-
-echo Removing old OpenOffice extension ...
-
-"%_writer%\program\unopkg" remove -f yW2OO.OXT
-
-echo Installing new OpenOffice extension ...
-
-"%_writer%\program\unopkg" add -f program\yW2OO-%_release%.oxt
 
 echo -----------------------------------------------------------------
 echo #
