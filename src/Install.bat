@@ -30,8 +30,10 @@ REM change: 2018-10-23 v1.6.0: Update release info.
 REM change: 2018-10-24 v1.7.0: Macro call is language independent; renamed document template.
 REM change: 2018-10-24 v1.7.0: Simplify texts for locale-independent use.
 REM change: 2018-10-27 v1.7.0: Suppress puzzling installation message and confirm template overwrite.
+REM change: 2019-06-22 v1.8.0: StandardPages template is no longer being associated with the converted document.
 
-set _release=1.7.0
+
+set _release=1.8.0
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4

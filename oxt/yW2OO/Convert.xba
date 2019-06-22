@@ -24,8 +24,7 @@
 &apos; change: 2018-10-17 v1.0.4: Replaced deprecated &quot;DocumentInfo&quot; by &quot;DocumentProperties&quot;.
 &apos; change: 2018-10-23 v1.0.5: Removed SmartQuote_de/en. Added search/replace for LibreOffice specific style name
 &apos; change: 2018-10-23 v2.0.0: Auto localization of style names
-
-
+&apos; change: 2019-06-22 v2.1.0: StandardPages template is no longer being associated with the converted document.
 
 sub main
 
@@ -339,8 +338,8 @@ Sub SetTemplate
         args(0).Name = &quot;OverwriteStyles&quot;
         args(0).Value = True
         ThisComponent.stylefamilies.loadStylesFromURL( sURL, args() )
-        ThisComponent.DocumentProperties.TemplateName = sTemplateName
-        ThisComponent.DocumentProperties.TemplateURL = sURL
+        rem ThisComponent.DocumentProperties.TemplateName = sTemplateName
+        rem ThisComponent.DocumentProperties.TemplateURL = sURL
 End Sub
 
 
