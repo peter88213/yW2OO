@@ -31,9 +31,9 @@ REM change: 2018-10-24 v1.7.0: Macro call is language independent; renamed docum
 REM change: 2018-10-24 v1.7.0: Simplify texts for locale-independent use.
 REM change: 2018-10-27 v1.7.0: Suppress puzzling installation message and confirm template overwrite.
 REM change: 2019-06-22 v1.8.0: StandardPages template is no longer being associated with the converted document.
+REM change: 2019-08-15 v1.8.1: LibreOffice 6.x installation enabled
 
-
-set _release=1.8.0
+set _release=1.8.1
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4
@@ -41,10 +41,12 @@ set _OpenOffice3_w64=c:\Program Files (x86)\OpenOffice.org 3
 set _OpenOffice3_w32=c:\Program Files\OpenOffice.org 3
 set _LibreOffice5_w64=c:\Program Files (x86)\LibreOffice 5
 set _LibreOffice5_w32=c:\Program Files\LibreOffice 5
+set _LibreOffice6_w64=c:\Program Files (x86)\LibreOffice
+set _LibreOffice6_w32=c:\Program Files\LibreOffice
 
 set _OpenOffice4_Userprofile=AppData\Roaming\OpenOffice\4\user
 set _OpenOffice3_Userprofile=AppData\Roaming\OpenOffice.org\3\user
-set _LibreOffice5_Userprofile=AppData\Roaming\LibreOffice\4\user
+set _LibreOffice_Userprofile=AppData\Roaming\LibreOffice\4\user
 
 echo -----------------------------------------------------------------
 echo yW2OO (yWriter to OpenOffice/LibreOffice) v%_release%
@@ -59,6 +61,8 @@ if exist "%_OpenOffice3_w64%\program\swriter.exe" goto OpenOffice3-Win64
 if exist "%_OpenOffice3_w32%\program\swriter.exe" goto OpenOffice3-Win32
 if exist "%_LibreOffice5_w64%\program\swriter.exe" goto LibreOffice5-Win64
 if exist "%_LibreOffice5_w32%\program\swriter.exe" goto LibreOffice5-Win32
+if exist "%_LibreOffice6_w64%\program\swriter.exe" goto LibreOffice6-Win64
+if exist "%_LibreOffice6_w32%\program\swriter.exe" goto LibreOffice6-Win32
 echo ERROR: No supported version of OpenOffice/LibreOffice found!
 echo Installation aborted
 goto end
@@ -89,14 +93,26 @@ goto settings_done
 
 :LibreOffice5-Win64
 set _writer=%_LibreOffice5_w64%
-set _user=%USERPROFILE%\%_LibreOffice5_Userprofile%
-echo LibreOffice 5.x - Windows (64 bit)
+set _user=%USERPROFILE%\%_LibreOffice_Userprofile%
+echo LibreOffice
 goto settings_done
 
 :LibreOffice5-Win32
 set _writer=%_LibreOffice5_w32%
-set _user=%USERPROFILE%\%_LibreOffice5_Userprofile%
-echo LibreOffice 5.x - Windows (32 bit)
+set _user=%USERPROFILE%\%_LibreOffice_Userprofile%
+echo LibreOffice
+goto settings_done
+
+:LibreOffice6-Win64
+set _writer=%_LibreOffice6_w64%
+set _user=%USERPROFILE%\%_LibreOffice_Userprofile%
+echo LibreOffice
+goto settings_done
+
+:LibreOffice6-Win32
+set _writer=%_LibreOffice6_w32%
+set _user=%USERPROFILE%\%_LibreOffice_Userprofile%
+echo LibreOffice
 goto settings_done
 
 :settings_done

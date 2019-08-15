@@ -7,7 +7,7 @@ REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
 
-set _release=1.8.0
+set _release=1.8.1
 
 set _project=yW2OO
 
