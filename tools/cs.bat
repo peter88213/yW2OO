@@ -32,6 +32,7 @@ del /s /q %_target_en%\program
 
 mkdir %_target_en%\add-on
 del /s /q %_target_en%\add-on
+xcopy /s %_root%\add-on\*.* %_target_en%\add-on\
 
 rem --------------------------------------------------------
 rem Generate english README file with release info
@@ -107,6 +108,7 @@ del /s /q %_target_de%\program
 
 mkdir %_target_de%\add-on
 del /s /q %_target_de%\add-on
+xcopy /s %_root%\add-on\*.* %_target_de%\add-on\
 
 rem --------------------------------------------------------
 rem Copy english README file
@@ -130,17 +132,6 @@ set _target=%_target_de%
 call :cpInternational
 
 rem --------------------------------------------------------
-rem Copy model document for paperback (german)
-rem --------------------------------------------------------
-
-mkdir %_target_de%\add-on\Buchgestaltung
-del /s /q %_target_de%\add-on\Buchgestaltung
-
-set _file=%_source_de%\Roman-Taschenbuch125x190.odt
-set _dest=%_target_de%\add-on\Buchgestaltung\
-call :copyFile
-
-rem --------------------------------------------------------
 rem End (german release) 
 rem --------------------------------------------------------
 
@@ -158,24 +149,16 @@ set _file=%_root%src\yW2OO.py
 set _dest=%_target%\program\
 call :copyFile
 
-set _file=%_root%src\Install.bat
+set _file=%_root%tools\Install.bat
 set _dest=%_target%\
 call :copyFile
 
-set _file=%_root%src\Uninstall.bat
+set _file=%_root%tools\Uninstall.bat
 set _dest=%_target%\
 call :copyFile
 
 set _file=%_root%oxt\yW2OO-%_release%.oxt
 set _dest=%_target%\program\
-call :copyFile
-
-set _file=%_root%src\genCopyWriter.bat
-set _dest=%_target%\add-on\
-call :copyFile
-
-set _file=%_root%src\genRemoveWriter.bat
-set _dest=%_target%\add-on\
 call :copyFile
 
 set _file=%_root%LICENSE
