@@ -25,14 +25,14 @@ yW2OO.py
 @since: 2018-10-01
 @change: 2018-10-03 v1.2.1: Added exit codes, start message and epydoc fields.
 @change: 2018-10-10 v1.3.0: Added yWriter6 tags to replaceList. Added all possible HTML scene dividers.
+@change: 2019-08-18 v1.4.0: Changed processing of dashes and ellipses (just revert yWriter's mdash conversion). Replace double spaces by single spaces.
 '''
 import sys
-startMessage = '\nyW2OO preprocessor v1.3.0'
+startMessage = '\nyW2OO preprocessor v1.4.0'
 
 HTMLfileName = "Exported Project.html" # yWriter default
 stringBeforeChapterNumber = "Chapter " # US: Chapter; Germany: Kapitel;  could also be a dash
 stringAfterChapterNumber = "" # could be a dash
-#dash = "&ndash;" # &mdash; (---) or &ndash; (--)
 
 
 replaceList =[
@@ -51,9 +51,6 @@ replaceList =[
     "<center>&bull;</center>\n\n<p class='Para'>|<H4>&bull;</H4>\n<H6>|",
     "<table align=center border=0 width=790>||",
     "<tr><td>||",
-    #"&mdash;|"+dash+"|",
-    " &mdash;|&nbsp;&ndash;|",
-    "&mdash; |&ndash; |",
     "<font name='arial' size=+1>||",
     "</font>||",
     "</td></tr></table>||",
@@ -67,8 +64,10 @@ replaceList =[
     "</b>|</STRONG>|",
     "<i>|<EM>|",
     "</i>|</EM>|",
-    #" "+dash+"|&nbsp;"+dash+"|",
-    " &hellip;|&nbsp;&hellip;|",
+    "&mdash;|--|",
+    #"&hellip;|...|",
+    "  | |",
+    "  | |",
     ]
 
 def searchAndReplace(processData, replaceList):

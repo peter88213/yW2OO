@@ -15,18 +15,9 @@ REM postcondition: Previously auto-installed items of yW2OO are removed.
 REM postcondition: The template remains, if user wants it.
 REM 
 REM since: 2018-10-04
-REM change: 2018-10-09 v1.3.0: Created german localized copy of v1.2.0 "Uninstall.bat".
-REM change: 2018-10-10 v1.4.0: Update release info.
-REM change: 2018-10-13 v1.4.1: Update release info. 
-REM change: 2018-10-16 v1.4.1: Add LibreOffice 5 suppport.
-REM change: 2018-10-17 v1.5.0: Update release info. 
-REM change: 2018-10-23 v1.6.0: Update release info. 
-REM change: 2018-10-24 v1.7.0: Added new document template. 
-REM change: 2018-10-24 v1.7.0: Simplify texts for locale-independent use.
-REM change: 2019-06-22 v1.8.0: StandardPages template is no longer being associated with the converted document.
-REM change: 2019-08-15 v1.8.1: Added LibreOffice 6.x support.
+REM History: see Install.bat
 
-set _release=1.8.1
+set _release=1.9.0
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4

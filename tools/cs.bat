@@ -7,7 +7,7 @@ REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2018, Peter Triesberger
 
-set _release=1.8.1
+set _release=1.9.0
 
 set _project=yW2OO
 
@@ -68,7 +68,7 @@ set _file=%_root%ott\de-DE\StandardPages.ott
 set _dest=%_target_en%\add-on\template-A4\
 call :copyFile
 
-set _file=%_root%ott\de-DE\README.txt
+set _file=%_root%ott\de-DE\README.md
 set _dest=%_target_en%\add-on\template-A4\
 call :copyFile
 
@@ -79,7 +79,7 @@ set _file=%_root%ott\en-US\StandardPages.ott
 set _dest=%_target_en%\add-on\template-Letter\
 call :copyFile
 
-set _file=%_root%ott\en-US\README.txt
+set _file=%_root%ott\en-US\README.md
 set _dest=%_target_en%\add-on\template-Letter\
 call :copyFile
 
