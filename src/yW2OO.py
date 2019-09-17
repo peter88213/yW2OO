@@ -26,13 +26,14 @@ yW2OO.py
 @change: 2018-10-03 v1.2.1: Added exit codes, start message and epydoc fields.
 @change: 2018-10-10 v1.3.0: Added yWriter6 tags to replaceList. Added all possible HTML scene dividers.
 @change: 2019-08-18 v1.4.0: Changed processing of dashes and ellipses (just revert yWriter's mdash conversion). Replace double spaces by single spaces.
+@change: 2019-09-17 v1.5.0: Changed processing of chapter headings. Remove "Chapter" and add a period to the chapter number.
 '''
 import sys
-startMessage = '\nyW2OO preprocessor v1.4.0'
+startMessage = '\nyW2OO preprocessor v1.5.0'
 
 HTMLfileName = "Exported Project.html" # yWriter default
-stringBeforeChapterNumber = "Chapter " # US: Chapter; Germany: Kapitel;  could also be a dash
-stringAfterChapterNumber = "" # could be a dash
+stringBeforeChapterNumber = "" # US: Chapter; Germany: Kapitel;  could also be a dash
+stringAfterChapterNumber = "." # could be a dash
 
 
 replaceList =[
