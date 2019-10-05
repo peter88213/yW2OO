@@ -16,9 +16,8 @@ yW2OO.py
 
 @author: Peter Triesberger
 @see: https://github.com/peter88213/yW2OO
-@version: v1.3.0
 @license: The MIT License (https://opensource.org/licenses/mit-license.php)
-@copyright: (c) 2018, Peter Triesberger
+@copyright: (c) 2019, Peter Triesberger
 @return: Exit code (0 if no error occurred; 1 if  file "Exported Project.html" cannot be read or written).
 @precondition: The file "Exported Project.html" must exist with r/w access in the working directory.
 @postcondition: The file "Exported Project.html" is modified (see summary).
@@ -27,9 +26,10 @@ yW2OO.py
 @change: 2018-10-10 v1.3.0: Added yWriter6 tags to replaceList. Added all possible HTML scene dividers.
 @change: 2019-08-18 v1.4.0: Changed processing of dashes and ellipses (just revert yWriter's mdash conversion). Replace double spaces by single spaces.
 @change: 2019-09-17 v1.5.0: Changed processing of chapter headings. Remove "Chapter" and add a period to the chapter number.
+@change: 2019-10-05 v1.5.1: Changed start message.
 '''
 import sys
-startMessage = '\nyW2OO preprocessor v1.5.0'
+startMessage = '\nyW2OO preprocessor formatting yWriter HTML export v1.5.1'
 
 HTMLfileName = "Exported Project.html" # yWriter default
 stringBeforeChapterNumber = "" # US: Chapter; Germany: Kapitel;  could also be a dash
@@ -96,11 +96,11 @@ if __name__ == '__main__':
         HTMLfile = open(HTMLfileName,'w')
         HTMLfile.write(HTMLdata)
         HTMLfile.close()
-        message = '"'+HTMLfileName+'" successfully converted.'
+        message = '"'+HTMLfileName+'" successfully converted.\n'
         print(message)
         exitcode = 0
     except:
-        message = 'ERROR: Cannot access "'+HTMLfileName+'"!'
+        message = 'ERROR: Cannot access "'+HTMLfileName+'"!\n'
         print(message)
         exitcode = 1
     sys.exit(exitcode)

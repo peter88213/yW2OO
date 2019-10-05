@@ -5,9 +5,9 @@ REM          and puts it into localized setup directories to be zipped.
 REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
-REM copyright: (c) 2018, Peter Triesberger
+REM copyright: (c) 2019, Peter Triesberger
 
-set _release=1.9.0
+set _release=1.10.0
 
 set _project=yW2OO
 
@@ -146,6 +146,10 @@ rem --------------------------------------------------------
 @echo
 
 set _file=%_root%src\yW2OO.py
+set _dest=%_target%\program\
+call :copyFile
+
+set _file=%_root%src\SceTi.py
 set _dest=%_target%\program\
 call :copyFile
 

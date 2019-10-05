@@ -33,8 +33,9 @@ REM change: 2018-10-27 v1.7.0: Suppress puzzling installation message and confir
 REM change: 2019-06-22 v1.8.0: StandardPages template is no longer being associated with the converted document.
 REM change: 2019-08-15 v1.8.1: Added LibreOffice 6.x support.
 REM change: 2019-08-18 v1.9.0: Changed processing of dashes and ellipses (just revert yWriter's mdash conversion). Replace double spaces by single spaces.
+REM change: 2019-08-18 v1.10.0: Scene titles can be added to the document as comments.
 
-set _release=1.9.0
+set _release=1.10.0
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4
@@ -129,7 +130,7 @@ echo Installing new OpenOffice extension ...
 echo Copying program components and templates to %_user% ...
 
 if not exist "%_user%\yW2OO" mkdir "%_user%\yW2OO"
-copy /y program\yW2OO.py "%_user%\yW2OO"
+copy /y program\*.py "%_user%\yW2OO"
 
 if not exist "%_user%\template" mkdir "%_user%\template"
 copy /-y program\StandardPages.ott "%_user%\template"
@@ -148,6 +149,7 @@ echo if not exist "Exported Project.html" goto error >> writer.bat
 echo copy "Exported Project.html" "Exported Project.html.bak" ^> NUL >> writer.bat
 echo "%_writer%\program\python.exe" "%_user%\yW2OO\yW2OO.py" >> writer.bat
 echo if errorlevel 1 goto end >> writer.bat
+echo "%_writer%\program\python.exe" "%_user%\yW2OO\SceTi.py" >> writer.bat
 echo echo Running Office Writer ... >> writer.bat
 echo "%_writer%\program\swriter.exe" "macro:///yW2OO.Convert.main" "Exported Project.html"  >> writer.bat
 echo goto end >> writer.bat
