@@ -33,9 +33,10 @@ REM change: 2018-10-27 v1.7.0: Suppress puzzling installation message and confir
 REM change: 2019-06-22 v1.8.0: StandardPages template is no longer being associated with the converted document.
 REM change: 2019-08-15 v1.8.1: Added LibreOffice 6.x support.
 REM change: 2019-08-18 v1.9.0: Changed processing of dashes and ellipses (just revert yWriter's mdash conversion). Replace double spaces by single spaces.
-REM change: 2019-08-18 v1.10.0: Scene titles can be added to the document as comments.
+REM change: 2019-10-06 v1.10.0: Scene titles can be added to the document as comments.
+REM change: 2019-10-06 v1.11.0: Scene titles are taken from "Auto_Descriptions.txt" instead of "auto_outline.txt". Each scene gets a number.
 
-set _release=1.10.0
+set _release=1.11.0
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4
