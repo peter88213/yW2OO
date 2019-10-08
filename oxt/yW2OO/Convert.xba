@@ -25,9 +25,11 @@
 &apos; change: 2018-10-23 v1.0.5: Removed SmartQuote_de/en. Added search/replace for LibreOffice specific style name
 &apos; change: 2018-10-23 v2.0.0: Auto localization of style names
 &apos; change: 2019-06-22 v2.1.0: StandardPages template is no longer being associated with the converted document.
+&apos; change: 2019-10-08 v2.2.0: New Subroutine "FormatAnnotations"
 
 sub main
 
+FormatAnnotations
 SetParagraphStyles
 SetPagestyle
 SetTemplate
@@ -343,6 +345,18 @@ Sub SetTemplate
 End Sub
 
 
+&apos; ----------------------------------------------------------------------
+&apos; Set "Author" of automatic generated annotations
+&apos; ----------------------------------------------------------------------
 
+Sub FormatAnnotations
+		DocFields = ThisComponent.getTextFields().createEnumeration()
+  		Do While DocFields.hasMoreElements()
+    		DocField = DocFields.nextElement()
+    		If DocField.supportsService(&quot;com.sun.star.text.TextField.Annotation&quot;) Then
+      			DocField.Author = &quot;Scene descriptions&quot;
+    		End If
+  		Loop
+End Sub
 
 </script:module>
