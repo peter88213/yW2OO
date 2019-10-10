@@ -27,9 +27,10 @@ yW2OO.py
 @change: 2019-08-18 v1.4.0: Changed processing of dashes and ellipses (just revert yWriter's mdash conversion). Replace double spaces by single spaces.
 @change: 2019-09-17 v1.5.0: Changed processing of chapter headings. Remove "Chapter" and add a period to the chapter number.
 @change: 2019-10-05 v1.5.1: Changed start message.
+@change: 2019-10-10 v1.6.0: Modified processing of empty scene dividers.
 '''
 import sys
-startMessage = '\nyW2OO preprocessor formatting yWriter HTML export v1.5.1'
+startMessage = '\nyW2OO preprocessor formatting yWriter HTML export v1.6.0'
 
 HTMLfileName = "Exported Project.html" # yWriter default
 stringBeforeChapterNumber = "" # US: Chapter; Germany: Kapitel;  could also be a dash
@@ -38,13 +39,14 @@ stringAfterChapterNumber = "." # could be a dash
 
 replaceList =[
     "<p align='justify'><i>&nbsp;</i></p>\n<p class='Para'>|<H6>|",
-    "<br /><br /><br /><center>&nbsp;</center><br /><br />\n\n<p class='Para'>|<H4>&nbsp;</H4>\n<H6>|",
+    "<br /><br /><br /><center>&nbsp;</center><br /><br />\n\n<p class='Para'>|<H4>* * *</H4>\n<H6>|",
     "<br /><br /><br /><center>*</center><br /><br />\n\n<p class='Para'>|<H4>*</H4>\n<H6>|",
     "<br /><br /><br /><center>* * *</center><br /><br />\n\n<p class='Para'>|<H4>* * *</H4>\n<H6>|",
     "<br /><br /><br /><center>#</center><br /><br />\n\n<p class='Para'>|<H4>#</H4>\n<H6>|",
     "<br /><br /><br /><center>-=#=-</center><br /><br />\n\n<p class='Para'>|<H4>-=#=-</H4>\n<H6>|",
     "<br /><br /><br /><center>&bull;</center><br /><br />\n\n<p class='Para'>|<H4>&bull;</H4>\n<H6>|",
-    "<center>&nbsp;</center>\n\n<p class='Para'>|<H4>&nbsp;</H4>\n<H6>|",
+    "<center></center>\n\n<p class='Para'>|<H4>* * *</H4>\n<H6>|",
+    "<center>&nbsp;</center>\n\n<p class='Para'>|<H4>* * *</H4>\n<H6>|",
     "<center>*</center>\n\n<p class='Para'>|<H4>*</H4>\n<H6>|",
     "<center>* * *</center>\n\n<p class='Para'>|<H4>* * *</H4>\n<H6>|",
     "<center>#</center>\n\n<p class='Para'>|<H4>#</H4>\n<H6>|",
