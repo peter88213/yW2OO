@@ -2,7 +2,7 @@
 
 SceTi.py
 
-@summary: Adds scene titles from yWriter's exported Scene Descriptions 
+@summary: Adds scene titles from yWriter's exported scene descriptions 
     as HTML comments to the pre-processed HTML export file.
     OpenOffice shall display these comments e.g. in the Navigator.
     This script reads scene titles from "Auto_Descriptions.txt" 
@@ -45,6 +45,10 @@ SceTi.py
     Further refactoring: Renamed "main" function to "AnnotateScenes".
 @change: 2019-10-21 v1.2.0 
     Further refactoring and code documentation. New exit codes.
+@change: 2019-10-21 v1.3.0 
+    "CollectSceneTitles" gets filename as parameter 
+    and returns simple list of scenes. 
+    "AnnotateScenes" uses this data to create HTML comments.
 
 '''
 import sys, re
@@ -52,25 +56,25 @@ import sys, re
 startMessage = '\nSceTi adding yWriter scene titles to HTML export v1.2.0' 
 # Don't forget to set the correct version number!
 
-descFileName = "../Auto_Descriptions.txt"   # (yWriter: "Project>Export Project>Scene Descriptions").
+descFileName = "../Auto_Descriptions.txt"   # (yWriter: "Project>Export Project>Scene descriptions").
 htmlFileName = "Exported Project.html"      # (yWriter: "Project>Export Project>to HTML").
 
 descSceneMarker = "^ 0"      # Due to yWriter's scene numbering beginning with '0.1' in each chapter.
 htmlSceneMarker = "<H6>"     # Due to yW2OO's preprocessing. 
 
 
-def CollectSceneTitles():
-    ''' Generate list of HTML annotations containing numbered scene titles. '''
+def CollectSceneTitles(inputFileName):
+    ''' Generate a list of numbered scene titles. '''
     try:
         # Open the scene descriptions exported by yWriter (hopefully fitting to the exported project).
-        descFile = open(descFileName,'r')
+        descFile = open(inputFileName,'r')
         descData = descFile.readlines()
         descFile.close()
     except:
-        print('ERROR: Cannot open "' + descFileName + '".\nPlease export outline first!\n')
+        print('ERROR: Cannot open "' + inputFileName + '".\nPlease export outline first!\n')
         sys.exit(1)
     else:
-        sceneTitles=[]      # List of html annotations with numbered scene titles.
+        sceneTitles=[]      # List of numbered scene titles.
         chapterNo = -1      # Counts non-empty lines representing chapter titles.
                             # The first non-empty line represents the project title 
                             # and is considered "chapter # 0".
@@ -82,10 +86,9 @@ def CollectSceneTitles():
                     # Line is not a scene title -- so it must be the next chapter title.
                     chapterNo = chapterNo + 1
                 else:
-                    # Line is a scene title -- replace the first characters by the chapter number.
-                    sceneTitle = re.sub(descSceneMarker, str(chapterNo), line)
-                    # Format numbered scene title as one-line html comment and add it to the list.
-                    sceneTitles.append("<!-- "+sceneTitle.rstrip()+" -->\n")
+                    # Line is a scene title -- Replace the first characters by the chapter number 
+                    # and add it to the list.
+                    sceneTitles.append(re.sub(descSceneMarker, str(chapterNo), line))
         return(sceneTitles)
 
 
@@ -101,17 +104,17 @@ def AnnotateScenes():
         print('ERROR: Cannot open "'+htmlFileName+'".\nPlease export yWriter project as HTML first!\n')
         sys.exit(2)
     else:
-        sceneTitles = CollectSceneTitles()
-        outlineSceneCount = len(sceneTitles)    # Number of scenes found in yWriter's Scene Descriptions.
+        sceneTitles = CollectSceneTitles(descFileName)
+        outlineSceneCount = len(sceneTitles)    # Number of scenes found in yWriter's scene descriptions.
         # Now browse the HTML project file for scene beginnings.      
         htmlSceneCount = 0                      # Counts paragraphs formatted by yW2OO.py as scene beginnings. 
         htmlWithAnnotations=[]                  # HTML lines including annotations (to be generated).
         for line in htmlData:
             if line.count(htmlSceneMarker) > 0:
-                # Found a new scene in the project -- Does it fit to yWriter's Scene Descriptions?
+                # Found a new scene in the project -- Does it fit to yWriter's scene descriptions?
                 if htmlSceneCount < outlineSceneCount:
-                    # Maybe ... so let's insert an annotation.
-                    htmlWithAnnotations.append(sceneTitles[htmlSceneCount])
+                    # Maybe ... so let's insert an one-line HTML annotation containing the title.
+                    htmlWithAnnotations.append("<!-- "+sceneTitles[htmlSceneCount].rstrip()+" -->\n")
                 htmlSceneCount = htmlSceneCount +1  # Increase the ACTUAL number of scenes.
             htmlWithAnnotations.append(line)        # Copy original HTML line.           
         if htmlSceneCount == 0:
@@ -119,17 +122,17 @@ def AnnotateScenes():
             print('ERROR: "'+htmlFileName+'" is not pre-processed or contains no scene.\nPlease run yW2OO.py first!\n')
             sys.exit(3)
         elif htmlSceneCount != outlineSceneCount:
-            # HTML export and Scene Descriptions seem not to fit together. 
+            # HTML export and scene descriptions seem not to fit together. 
             print('ERROR: "'+htmlFileName+'" and "'+descFileName+'" do not match.\nPlease re-export outline first!\n')
             sys.exit(4)
         else:
-            # HTML export and Scene Descriptions have the same number of scenes.
+            # HTML export and scene descriptions have the same number of scenes.
             try:
                 # Overwrite yWriter's HTML export file.
                 htmlFile = open(htmlFileName,'w')
                 htmlFile.writelines(htmlWithAnnotations)
                 htmlFile.close()
-                print('Added '+str(outlineSceneCount)+' Scene Titles as comments to "'+htmlFileName+'".\n')
+                print('Added '+str(outlineSceneCount)+' scene titles as comments to "'+htmlFileName+'".\n')
             except:
                 print('ERROR: Cannot write "'+htmlFileName+'".\n')
                 sys.exit(5)
