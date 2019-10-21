@@ -8,10 +8,11 @@ yW2OOtest.py
 @license: The MIT License (https://opensource.org/licenses/mit-license.php)
 @copyright: (c) 2019, Peter Triesberger
 @precondition: This script is to be placed in "<project dir>/test"
-@precondition: The module(s) to be tested must exist in "<project dir>/src"
+@precondition: The subjects to testing must exist in "<project dir>/src"
 @precondition: A test environment as specified below must exist.
 @precondition: "<project dir>/test/yWriter5 Sample/Auto_Descriptions.txt" must exist.
 @since: 2019-10-21
+@change: 2019-10-21 v1.0.0 Adapted subjects' function calls.
 
 '''
 import unittest
@@ -56,14 +57,14 @@ def ConversionIsOK():
     CopyFile(testDataFileName,exportFileName)
     workdir = os.getcwd()
     os.chdir(testDataPath)
-    yW2OO.main()
+    yW2OO.TidyUp()
     os.chdir(workdir)
     return(ReadFile(exportFileName) == ReadFile(yW2OOrefFileName))
 
 def AnnotationIsOK():
     workdir = os.getcwd()
     os.chdir(testDataPath)
-    SceTi.main()
+    SceTi.AnnotateScenes()
     os.chdir(workdir)
     return(ReadFile(exportFileName) == ReadFile(sceTiRefFileName))
 

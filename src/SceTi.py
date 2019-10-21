@@ -22,14 +22,16 @@ Exported yWriter scenes must not be empty.
 @since: 2019-10-05
 @change: 2019-10-06 v1.1.0 Scene titles are taken from "Auto_Descriptions.txt" instead of "auto_outline.txt". Each scene gets a number.
 @change: 2019-10-21 v1.1.1 Refactoring for unit test support.
+@change: 2019-10-21 v1.1.2 Further refactoring: Renamed "main" function to "AnnotateScenes".
+
 '''
 import sys, re
-startMessage = '\nSceTi adding yWriter scene titles to HTML export v1.1.1'
+startMessage = '\nSceTi adding yWriter scene titles to HTML export v1.1.2'
 
 projectFileName = "Exported Project.html" # yWriter default
 sceneFileName = "../Auto_Descriptions.txt" # yWriter default
 
-def main():  
+def AnnotateScenes():  
     exitcode = 0
     print(startMessage)
     try:     
@@ -99,5 +101,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()  
+    AnnotateScenes()  
 

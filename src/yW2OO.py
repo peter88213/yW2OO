@@ -29,9 +29,11 @@ yW2OO.py
 @change: 2019-10-05 v1.5.1 Changed start message.
 @change: 2019-10-10 v1.6.0 Modified processing of empty scene dividers.
 @change: 2019-10-21 v1.6.1 Refactoring for unit test support.
+@change: 2019-10-21 v1.6.2 Further refactoring: Renamed "main" function to "TidyUp".
+
 '''
 import sys
-startMessage = '\nyW2OO preprocessor formatting yWriter HTML export v1.6.1'
+startMessage = '\nyW2OO preprocessor formatting yWriter HTML export v1.6.2'
 
 htmlFileName = "Exported Project.html" # yWriter default
 stringBeforeChapterNumber = "" # US: Chapter; Germany: Kapitel;  could also be a dash
@@ -88,7 +90,7 @@ def SearchAndReplace(processData, replaceList):
         processData = processData.replace(replaceItem[0],replaceItem[1])
     return(processData)
 
-def main():
+def TidyUp():
     print(startMessage)
     try:     
         htmlFile = open(htmlFileName,'r')
@@ -106,4 +108,4 @@ def main():
         sys.exit(1)
     
 if __name__ == '__main__':
-    main()    
+    TidyUp()    
