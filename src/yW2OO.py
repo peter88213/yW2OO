@@ -22,17 +22,18 @@ yW2OO.py
 @precondition: The file "Exported Project.html" must exist with r/w access in the working directory.
 @postcondition: The file "Exported Project.html" is modified (see summary).
 @since: 2018-10-01
-@change: 2018-10-03 v1.2.1: Added exit codes, start message and epydoc fields.
-@change: 2018-10-10 v1.3.0: Added yWriter6 tags to replaceList. Added all possible HTML scene dividers.
-@change: 2019-08-18 v1.4.0: Changed processing of dashes and ellipses (just revert yWriter's mdash conversion). Replace double spaces by single spaces.
-@change: 2019-09-17 v1.5.0: Changed processing of chapter headings. Remove "Chapter" and add a period to the chapter number.
-@change: 2019-10-05 v1.5.1: Changed start message.
-@change: 2019-10-10 v1.6.0: Modified processing of empty scene dividers.
+@change: 2018-10-03 v1.2.1 Added exit codes, start message and epydoc fields.
+@change: 2018-10-10 v1.3.0 Added yWriter6 tags to replaceList. Added all possible HTML scene dividers.
+@change: 2019-08-18 v1.4.0 Changed processing of dashes and ellipses (just revert yWriter's mdash conversion). Replace double spaces by single spaces.
+@change: 2019-09-17 v1.5.0 Changed processing of chapter headings. Remove "Chapter" and add a period to the chapter number.
+@change: 2019-10-05 v1.5.1 Changed start message.
+@change: 2019-10-10 v1.6.0 Modified processing of empty scene dividers.
+@change: 2019-10-21 v1.6.1 Refactoring for unit test support.
 '''
 import sys
-startMessage = '\nyW2OO preprocessor formatting yWriter HTML export v1.6.0'
+startMessage = '\nyW2OO preprocessor formatting yWriter HTML export v1.6.1'
 
-HTMLfileName = "Exported Project.html" # yWriter default
+htmlFileName = "Exported Project.html" # yWriter default
 stringBeforeChapterNumber = "" # US: Chapter; Germany: Kapitel;  could also be a dash
 stringAfterChapterNumber = "." # could be a dash
 
@@ -73,7 +74,7 @@ replaceList =[
     "  | |",
     ]
 
-def searchAndReplace(processData, replaceList):
+def SearchAndReplace(processData, replaceList):
     '''
     @summary: Modifying a string by looping through a list of search/replacement items.
     @param: processData: string to be modified.
@@ -87,24 +88,22 @@ def searchAndReplace(processData, replaceList):
         processData = processData.replace(replaceItem[0],replaceItem[1])
     return(processData)
 
-
-if __name__ == '__main__':
+def main():
     print(startMessage)
     try:     
-        HTMLfile = open(HTMLfileName,'r')
-        HTMLdata = HTMLfile.read()
-        HTMLfile.close()
-        HTMLdata = searchAndReplace(HTMLdata, replaceList)
-        HTMLfile = open(HTMLfileName,'w')
-        HTMLfile.write(HTMLdata)
-        HTMLfile.close()
-        message = '"'+HTMLfileName+'" successfully converted.\n'
+        htmlFile = open(htmlFileName,'r')
+        htmlData = htmlFile.read()
+        htmlFile.close()
+        htmlData = SearchAndReplace(htmlData, replaceList)
+        htmlFile = open(htmlFileName,'w')
+        htmlFile.write(htmlData)
+        htmlFile.close()
+        message = '"'+htmlFileName+'" successfully converted.\n'
         print(message)
-        exitcode = 0
     except:
-        message = 'ERROR: Cannot access "'+HTMLfileName+'"!\n'
+        message = 'ERROR: Cannot access "'+htmlFileName+'"!\n'
         print(message)
-        exitcode = 1
-    sys.exit(exitcode)
+        sys.exit(1)
     
-    
+if __name__ == '__main__':
+    main()    
