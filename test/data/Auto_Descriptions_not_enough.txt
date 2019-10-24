@@ -1,0 +1,31 @@
+Hal Spacejock book one - Sample yWriter Project
+
+Chapter 1
+
+ 0.1 Meet Hal, threatened by Vurdi
+
+Chapter 2
+
+ 0.1 Jerling buys team. Discusses Seraph.
+
+ 0.2 Hal takes a call from Jerling
+
+Chapter 3
+
+ 0.1 Clunk arrives
+
+Chapter 4
+
+ 0.1 Hal going to port control
+
+ 0.2 Clunk checking computer for Incubots.
+
+ 0.3 Hal talking to the Portmaster
+
+ 0.4 Clunk takes call from Hal. Calls Jerling. Fire.
+
+Chapter 5
+
+ 0.1 Clunk calls, the landing field is on fire. Hal tells him to sit tight.
+
+
