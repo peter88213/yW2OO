@@ -11,7 +11,7 @@
 
 ## How to localize yW2OO installation
 
-1. Copy `StandardPages.ott` to your OpenOffice `..\user\template` directory. Overwrite existing file, if applicable.
+1. Copy `StandardPages.ott` to your Open/LibreOffice `user\template` directory. Overwrite existing file, if applicable.
 2. Right-click `StandardPages.ott` and select `open`  (DO NOT DOUBLE CLICK) --> This starts Office Writer to modify the template.
 3. `(OpenOffice main menu)` --> `Tools` --> `Language` --> `For all Text`.
 4. Select your language.
