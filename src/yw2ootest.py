@@ -101,6 +101,37 @@ class FilesFitTogether(unittest.TestCase):
 
 
 
+class NotPreprocessed(unittest.TestCase):
+    """ Test case: sceti.py processes "raw" html export. """
+    
+    def setUp(self):
+        os.chdir(SRC_PATH)
+        # Place the correct html Export file.
+        copy_file(TEST_DATA_PATH + EXPORT_FILE, TEST_EXEC_PATH + EXPORT_FILE)
+        # Place the correct scene descriptions.
+        copy_file(TEST_DATA_PATH + SCENE_FILE, TEST_EXEC_PATH + SCENE_FILE)
+
+
+    def test(self):
+        """ Test sceti annotation only. """
+        os.chdir(TEST_EXEC_PATH)
+        self.assertRaises(SystemExit, sceti.main)
+        os.chdir(SRC_PATH)
+
+
+    def tearDown(self):
+        os.chdir(SRC_PATH)
+        try:
+            os.remove(TEST_EXEC_PATH + EXPORT_FILE)
+        except:
+            pass
+        try:
+            os.remove(TEST_EXEC_PATH + SCENE_FILE)
+        except:
+            pass
+
+
+
 class NoProjectFile(unittest.TestCase):
     """ Test case: html export is missing in the Export directory. """
     
