@@ -40,7 +40,6 @@ SCETI_REF_FILE = TEST_DATA_PATH + "SceTiReference5.html"
 
 
 def read_file(myFileName):
-    """ Just for clearness of code. """
     myFile = open(myFileName, 'r')
     myData = myFile.read()
     myFile.close()
@@ -48,7 +47,6 @@ def read_file(myFileName):
 
 
 def copy_file(inputFile, outputFile):
-
     myData = read_file(inputFile)
     myFile = open(outputFile, 'w')
     myFile.write(myData)

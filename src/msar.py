@@ -10,7 +10,7 @@ by "new Text[0..n]". Old Text and new Text are input from replacements list.
     ...
     old Text[n]|new Text[n]|
 
-    Syntax: sar.py <text file to modify><replacements list>
+    Syntax: msar.py <text file to modify><replacements list>
 
 @author: Peter Triesberger
 @see: https://github.com/peter88213/yW2OO
@@ -35,7 +35,7 @@ def search_and_replace(processData, replaceList):
     @return: Modified string
     """
     for line in replaceList:
-        replaceItem = line.split("|")
+        replaceItem = line.split('|')
         processData = processData.replace(replaceItem[0], replaceItem[1])
     return(processData)
 
@@ -51,7 +51,7 @@ def main():
         myTextFile.close()
         myReplaceList.close()
     except:
-        print "Syntax: sar.py <text file to modify><replacements list>"
+        print 'Syntax: sar.py <text file to modify><replacements list>'
 
 
 if __name__ == '__main__':

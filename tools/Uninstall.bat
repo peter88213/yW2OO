@@ -5,19 +5,20 @@ REM
 REM author: Peter Triesberger
 REM see: https://github.com/peter88213/yW2OO
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
-REM copyright: (c) 2018, Peter Triesberger
+REM copyright: (c) 2019, Peter Triesberger
 REM 
 REM note: This script is to be executed manually.
 REM 
 REM precondition: yW2OO is installed.
 REM precondition: OpenOffice.org 3.x or Apache OpenOffice 4.x is installed.
 REM postcondition: Previously auto-installed items of yW2OO are removed.
+REM postcondition: "writer.bat" is removed from all yWriter "Export" directories within [userprofile]\Documents.
 REM postcondition: The template remains, if user wants it.
 REM 
 REM since: 2018-10-04
 REM History: see Install.bat
 
-set _release=1.13.0
+set _release=1.14.0
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4
@@ -101,17 +102,6 @@ goto settings_done
 
 :settings_done
 
-echo Deleting templates in %_user%\template (on confirmation only) ...
-
-set _file="%_user%\template\Manuscript_en-US.ott"
-if exist %_file% del /p %_file%
-
-set _file="%_user%\template\Manuscript_de-DE.ott"
-if exist %_file% del /p %_file%
-
-set _file="%_user%\template\StandardPages.ott"
-if exist %_file% del /p %_file%
-
 echo Deleting program components in %_user%\yW2OO and removing folder ...
 
 rmdir /s /q "%_user%\yW2OO"
@@ -124,12 +114,12 @@ echo Removing OpenOffice extension ...
 
 "%_writer%\program\unopkg" remove -f yW2OO-%_release%.oxt
 
+call genRemoveWriter.bat
+call RemoveWriter.bat
+
 echo -----------------------------------------------------------------
 echo #
 echo # yW2OO v%_release% is removed from your PC.
-echo #
-echo # You may delete copies of copy "writer.bat" 
-echo # in your yWriter Project "Export" folder manually
 echo #
 echo -----------------------------------------------------------------
 pause

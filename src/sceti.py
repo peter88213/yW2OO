@@ -20,7 +20,7 @@
     with r/w access in the working directory.
     It must be pre-processed by yW2OO.py. 
 @precondition: The File "Auto_Descriptions.txt" must exist 
-    in the directory just above the working directory. 
+    in the working directory. 
     It must match to "Exported Project.html", 
     i.e the number of sceneTitles must be the same.
 @postcondition: The file "Exported Project.html" is overwritten 
@@ -47,32 +47,32 @@
 import re
 import sys
 
-VERSION = "v1.3.1"
+VERSION = 'v1.3.1'
 
 START_MESSAGE = '\nSceTi adding yWriter scene titles to html export ' + VERSION
 
 # (yWriter command: "Project>Export Project>Scene descriptions").
-DESC_FILE = "../Auto_Descriptions.txt"
+DESC_FILE = 'Auto_Descriptions.txt'
 
 # (yWriter command: "Project>Export Project>to html").
-HTML_FILE = "Exported Project.html"
+HTML_FILE = 'Exported Project.html'
 
 # The scene numbering in yWriter's scene descriptions begins with '0.1'
 # in each chapter, so scene titles can be identified by a leading ' 0'
-DESC_SCENE_MARKER = "^ 0"
+DESC_SCENE_MARKER = '^ 0'
 
 # The yW2OO preprocessor formats each scene's first paragraph as a
 # (temporary) 6th level heading. Here's the right place to insert
 # scene title annotations.
-HTML_SCENE_MARKER = "<H6>"
+HTML_SCENE_MARKER = '<H6>'
 
 
 def collect_scene_titles():
     """Generate a list of numbered scene titles. 
 
-    @summary: Browse the scene descriptions exported by yWriter. 
-        Identify chapters and scenes. Put the scene titles in a list,
-        adding the correct chapter number to each scene number.  
+    @summary: Parse the scene descriptions exported by yWriter. 
+        Identify chapters and scenes. Put the scene titles in a list
+        with the correct chapter number leading each scene number.  
     @precondition: The File "Auto_Descriptions.txt" must exist 
         in the directory just above the working directory. 
     @return: Sorted list of numbered scene titles.
@@ -86,27 +86,27 @@ def collect_scene_titles():
               '".\nPlease export outline first!\n')
         sys.exit(1)
     else:
-        # Declare a List for numbered scene titles.
         sceneTitles = []
-        # Declare a Counter for non-empty lines generally containing
-        # chapter titles. The first non-empty line contains the project
-        # title; this is compensated by a negative counter preset.
+        # chapterCount: Counter for non-empty lines generally containing
+        # chapter titles. The first non-empty line in yWriter's
+        # scene descriptions file contains the project title;
+        # this is compensated by a negative counter preset.
         chapterCount = -1
         for line in descData:
             # Count chapter entries and generate annotations
             # with numbered scene titles.
-            if re.search(".+", line.rstrip()) is not None:
+            if re.search('.+', line.rstrip()):
                 # The line is not empty. Is it a scene title?
-                if re.search(DESC_SCENE_MARKER, line) is None:
-                    # The line is not a scene title,
-                    # so it must be the next chapter title.
-                    chapterCount = chapterCount + 1
-                else:
+                if re.search(DESC_SCENE_MARKER, line):
                     # The line contains a scene title.
                     # Replace the first characters by the chapter number
                     # and add the line to the scene list.
                     sceneTitles.append(
                         re.sub(DESC_SCENE_MARKER, str(chapterCount), line))
+                else:
+                    # The line is not a scene title,
+                    # so it must be the next chapter title.
+                    chapterCount = chapterCount + 1
         return(sceneTitles)
 
 
@@ -122,8 +122,6 @@ def insert_scene_titles(sceneTitles):
         containing scene titles as html comments. 
     """
     try:
-        # Open yWriter's html export file
-        # (hopefully pre-processed by yW2OO.py).
         htmlFile = open(HTML_FILE, 'r')
         htmlData = htmlFile.readlines()
         htmlFile.close()
@@ -132,15 +130,15 @@ def insert_scene_titles(sceneTitles):
               '".\nPlease export yWriter project as html first!\n')
         sys.exit(2)
     else:
-        # Declare a REFERENCE number of scenes.
+        # outlineSceneCount: REFERENCE number of scenes.
         # If the html project file contains the same number of scenes,
         # the scene descriptions file is considered matching.
         outlineSceneCount = len(sceneTitles)
         # Now browse the html project file for scene beginnings.
-        # First declare a counter for paragraphs formatted by yW2OO.py
+        # htmlSceneCount: counter for paragraphs formatted by yW2OO.py
         # as scene beginnings.
         htmlSceneCount = 0
-        # Declare a list for the new html document including annotations.
+        # htmlWithAnnotations: list for the new html document including annotations.
         htmlWithAnnotations = []
         for line in htmlData:
             if line.count(HTML_SCENE_MARKER) > 0:
@@ -150,7 +148,7 @@ def insert_scene_titles(sceneTitles):
                     # Maybe ... so let's insert an one-line html annotation
                     # containing the title.
                     htmlWithAnnotations.append(
-                        "<!-- " + sceneTitles[htmlSceneCount].rstrip() + " -->\n")
+                        '<!-- ' + sceneTitles[htmlSceneCount].rstrip() + ' -->\n')
                 # Increase the ACTUAL number of scenes.
                 htmlSceneCount = htmlSceneCount + 1
             htmlWithAnnotations.append(line)        # Copy original html line.
@@ -183,7 +181,7 @@ def insert_scene_titles(sceneTitles):
 
 
 def main():
-    print(START_MESSAGE)     # Must contain the correct version number!
+    print(START_MESSAGE)
     insert_scene_titles(collect_scene_titles())
 
 

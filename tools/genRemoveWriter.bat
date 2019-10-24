@@ -7,7 +7,8 @@ set _docroot="%userprofile%\Documents"
 set _rmfile=removeWriter.bat
 pushd %_docroot%
 echo rem Remove "writer.bat" from all yWriter project "Export" folders > %_rmfile%
-echo rem >> %_rmfile%
-for /F "tokens=*" %%l in ('dir /s /b Export') do echo del /p "%%l\writer.bat"  >> %_rmfile%
+echo @echo on >> %_genfile%
+for /F "tokens=*" %%l in ('dir /s /b Export') do echo del /q "%%l\writer.bat"  >> %_rmfile%
+echo @echo off >> %_genfile%
 popd
-move /Y  %_docroot%\%_rmfile% ..\
+move /Y  %_docroot%\%_rmfile% .\

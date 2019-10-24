@@ -26,6 +26,7 @@
 &apos; change: 2018-10-23 v2.0.0: Auto localization of style names
 &apos; change: 2019-06-22 v2.1.0: StandardPages template is no longer being associated with the converted document.
 &apos; change: 2019-10-08 v2.2.0: New Subroutine "FormatAnnotations"
+&apos; change: 2019-10-23 v2.3.0: Check if StandardPages template exists.
 
 sub main
 
@@ -264,9 +265,9 @@ sub SetPagestyle
 
 &apos; Fetch localized display names to be replaced
 
-ThisDoc    = ThisComponent
+ThisDoc = ThisComponent
 dim pStyles
-  pStyles = ThisDoc.StyleFamilies.getByName(&quot;PageStyles&quot;)
+pStyles = ThisDoc.StyleFamilies.getByName(&quot;PageStyles&quot;)
 
 
 &apos; ----------------------------------------------------------------------
@@ -287,9 +288,7 @@ args1(1).Value = 8
 
 dispatcher.executeDispatch(document, &quot;.uno:StyleApply&quot;, &quot;&quot;, 0, args1())
 
-&apos; ----------------------------------------------------------------------
 &apos; Go to top.
-&apos; ----------------------------------------------------------------------
 
 dispatcher.executeDispatch(document, &quot;.uno:GoToStartOfDoc&quot;, &quot;&quot;, 0, Array())
 
@@ -312,10 +311,7 @@ dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
 DocPath = ThisComponent.getURL()
 DocPath = Left(DocPath,len(DocPath)-4)+&quot;odt&quot;
 
-
-&apos; ----------------------------------------------------------------------
 &apos; Use path and name of input file -- just change file extension
-&apos; ----------------------------------------------------------------------
 
 dim args1(1) as new com.sun.star.beans.PropertyValue
 args1(0).Name = &quot;URL&quot;
@@ -328,35 +324,41 @@ dispatcher.executeDispatch(document, &quot;.uno:SaveAs&quot;, &quot;&quot;, 0, a
 end Sub
 
 
-
 Sub SetTemplate
-		path=createunoservice(&quot;com.sun.star.util.PathSettings&quot;)
-		match = InStr(path.UserConfig,&quot;/config&quot;)
-		TemplatePath = Left(path.UserConfig,match)+&quot;template/StandardPages.ott&quot;
-		rem Msgbox TemplatePath
-        dim args(0) as new com.sun.star.beans.PropertyValue
-        sTemplateName = &quot;StandardPages.ott&quot;
-        sURL = TemplatePath
-        args(0).Name = &quot;OverwriteStyles&quot;
-        args(0).Value = True
-        ThisComponent.stylefamilies.loadStylesFromURL( sURL, args() )
-        rem ThisComponent.DocumentProperties.TemplateName = sTemplateName
-        rem ThisComponent.DocumentProperties.TemplateURL = sURL
+
+&apos; ----------------------------------------------------------------------
+&apos; Load styles of StandardPages.ott template (if existing)
+&apos; ----------------------------------------------------------------------
+
+path=createunoservice(&quot;com.sun.star.util.PathSettings&quot;)
+match = InStr(path.UserConfig,&quot;/config&quot;)
+TemplatePath = Left(path.UserConfig,match)+&quot;template/StandardPages.ott&quot;
+If FileExists(TemplatePath) Then
+	dim args(0) as new com.sun.star.beans.PropertyValue
+	sTemplateName = &quot;StandardPages.ott&quot;
+	sURL = TemplatePath
+	args(0).Name = &quot;OverwriteStyles&quot;
+	args(0).Value = True
+	ThisComponent.stylefamilies.loadStylesFromURL( sURL, args() )
+	End If
+	
 End Sub
 
+
+
+Sub FormatAnnotations
 
 &apos; ----------------------------------------------------------------------
 &apos; Set "Author" of automatic generated annotations
 &apos; ----------------------------------------------------------------------
 
-Sub FormatAnnotations
-		DocFields = ThisComponent.getTextFields().createEnumeration()
-  		Do While DocFields.hasMoreElements()
-    		DocField = DocFields.nextElement()
-    		If DocField.supportsService(&quot;com.sun.star.text.TextField.Annotation&quot;) Then
-      			DocField.Author = &quot;Scene descriptions&quot;
-    		End If
-  		Loop
+DocFields = ThisComponent.getTextFields().createEnumeration()
+Do While DocFields.hasMoreElements()
+	DocField = DocFields.nextElement()
+	If DocField.supportsService(&quot;com.sun.star.text.TextField.Annotation&quot;) Then
+		DocField.Author = &quot;Scene descriptions&quot;
+	End If
+Loop
 End Sub
 
 </script:module>

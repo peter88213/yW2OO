@@ -62,15 +62,17 @@
 """
 import sys
 
+VERSION = 'v1.8.0'
+
 # Don't forget to set the correct version number!
-START_MESSAGE = '\nyW2OO restructuring yWriter html export v1.8.0'
+START_MESSAGE = '\nyW2OO restructuring yWriter html export ' + VERSION
 
 # (yWriter: "Project>Export Project>to html").
-HTML_FILE = "Exported Project.html"
+HTML_FILE = 'Exported Project.html'
 
 
 # Replacements to be made (see search_and_replace()):
-
+# NOTE: Double quotes are required because search strings contain single quotes.
 replaceList = [
     "<p align='justify'><i>&nbsp;</i></p>\n<p class='Para'>|<H6>|",
     "<br /><br /><br /><center>&nbsp;</center><br /><br />\n\n<p class='Para'>|<H4>* * *</H4>\n<H6>|",
@@ -118,7 +120,7 @@ def search_and_replace(processData, replaceList):
     @return: Modified string
     """
     for line in replaceList:
-        replaceItem = line.split("|")
+        replaceItem = line.split('|')
         processData = processData.replace(replaceItem[0], replaceItem[1])
     return(processData)
 
