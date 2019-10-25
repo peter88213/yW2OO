@@ -73,7 +73,7 @@ HTML_FILE = 'Exported Project.html'
 
 # Replacements to be made (see search_and_replace()):
 # NOTE: Double quotes are required because search strings contain single quotes.
-replaceList = [
+myReplaceList = [
     "<p align='justify'><i>&nbsp;</i></p>\n<p class='Para'>|<H6>|",
     "<br /><br /><br /><center>&nbsp;</center><br /><br />\n\n<p class='Para'>|<H4>* * *</H4>\n<H6>|",
     "<br /><br /><br /><center>*</center><br /><br />\n\n<p class='Para'>|<H4>*</H4>\n<H6>|",
@@ -130,16 +130,16 @@ def main():
     print(START_MESSAGE)
     try:
         htmlFile = open(HTML_FILE, 'r')
-        htmlData = htmlFile.read()
+        myHtmlData = htmlFile.read()
         htmlFile.close()
     except:
         print('ERROR: Cannot read "' + HTML_FILE + '"!\n')
         sys.exit(1)
     else:
-        htmlData = search_and_replace(htmlData, replaceList)
+        myHtmlData = search_and_replace(myHtmlData, myReplaceList)
         try:
             htmlFile = open(HTML_FILE, 'w')
-            htmlFile.write(htmlData)
+            htmlFile.write(myHtmlData)
             htmlFile.close()
             print('"' + HTML_FILE + '" successfully processed.\n')
             return(0)
