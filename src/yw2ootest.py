@@ -17,9 +17,10 @@
     (see https://www.python.org/dev/peps/pep-0008/)
 @change: 2019-10-23 v1.2.0 General refactoring.
     Organized tests in several different test cases including fault conditions. 
+@change: 2019-10-23 v1.2.1 Minor refactoring.
+
 """
 import os
-import sys
 import unittest
 
 import sceti
@@ -39,16 +40,15 @@ TEST_EXEC_PATH = '../test/yWriter5 Sample/Export/'
 
 # Test data
 EXPORT_FILE = 'Exported Project.html'
-SCENE_FILE = 'Auto_Descriptions.txt' 
+SCENE_FILE = 'Auto_Descriptions.txt'
 
-# Test data for fault conditions 
+# Test data for fault conditions
 NOT_ENOUGH_SCENES = 'Auto_Descriptions_not_enough.txt'
 TOO_MANY_SCENES = 'Auto_Descriptions_too_many.txt'
 
 # Reference data for correct execution
 YW2OO_REF_FILE = 'yW2OOreference5.html'
 SCETI_REF_FILE = 'SceTiReference5.html'
-
 
 
 def read_file(myFileName):
@@ -66,14 +66,13 @@ def copy_file(inputFile, outputFile):
     return()
 
 
-
 class NormalOperation(unittest.TestCase):
     """ Test case: Normal operation
-    
+
         Condition: html export and scene descriptions fit together. 
         Expected result: The output files match the reference files. 
     """
-    
+
     def setUp(self):
         os.chdir(SRC_PATH)
         # Place the correct html Export file.
@@ -81,23 +80,24 @@ class NormalOperation(unittest.TestCase):
         # Place the correct scene descriptions.
         copy_file(TEST_DATA_PATH + SCENE_FILE, TEST_EXEC_PATH + SCENE_FILE)
 
-
     def test1(self):
-        """ Step 1: Test yw2oo conversion only. """
+        """ Step 1: Test 'yw2oo' only. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
         os.chdir(SRC_PATH)
-        self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE), read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
+        # html file must contain all the replacements.
+        self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
+                         read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
 
-    
     def test2(self):
-        """ Step 2: Test both yw2oo conversion and sceti annotation. """
+        """ Step 2: Test both 'yw2oo' and 'sceti'. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
         sceti.main()
         os.chdir(SRC_PATH)
-        self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE), read_file(TEST_DATA_PATH + SCETI_REF_FILE))
-
+        # html file must contain all the replacements plus annotations.
+        self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
+                         read_file(TEST_DATA_PATH + SCETI_REF_FILE))
 
     def tearDown(self):
         os.chdir(SRC_PATH)
@@ -111,14 +111,13 @@ class NormalOperation(unittest.TestCase):
             pass
 
 
-
 class NotPreprocessed(unittest.TestCase):
     """ Test case: Wrong execution order or unknown preprocessor failure. 
-    
-        Condition: sceti.py processes "raw" html export.
-        Expected result: sceti.py exits with error; html remains unchanged.
+
+        Condition: sceti.py processes 'raw' html export.
+        Expected result: sceti.py exits with error; html file remains unchanged.
     """
-    
+
     def setUp(self):
         os.chdir(SRC_PATH)
         # Place the correct html Export file.
@@ -126,14 +125,15 @@ class NotPreprocessed(unittest.TestCase):
         # Place the correct scene descriptions.
         copy_file(TEST_DATA_PATH + SCENE_FILE, TEST_EXEC_PATH + SCENE_FILE)
 
-
     def test(self):
-        """ Test sceti annotation only. """
+        """ Test 'sceti' only. """
         os.chdir(TEST_EXEC_PATH)
+        # Fault condition must cause 'sceti' program termination.
         self.assertRaises(SystemExit, sceti.main)
         os.chdir(SRC_PATH)
-        self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE), read_file(TEST_DATA_PATH + EXPORT_FILE))
-
+        # html file must remain unchanged.
+        self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
+                         read_file(TEST_DATA_PATH + EXPORT_FILE))
 
     def tearDown(self):
         os.chdir(SRC_PATH)
@@ -147,14 +147,13 @@ class NotPreprocessed(unittest.TestCase):
             pass
 
 
-
 class NoProjectFile(unittest.TestCase):
     """ Test case: Exported html project file is not present.
-    
+
         Condition: scene descriptions file is present, html file isn't.
         Expected result: Both yw2oo.py and sceti.py exit with error.
     """
-    
+
     def setUp(self):
         os.chdir(SRC_PATH)
         # Make sure there's no "html Export file" present.
@@ -165,11 +164,12 @@ class NoProjectFile(unittest.TestCase):
         # Place the correct scene descriptions.
         copy_file(TEST_DATA_PATH + SCENE_FILE, TEST_EXEC_PATH + SCENE_FILE)
 
-
     def test(self):
         """ Test yw2oo conversion and sceti annotation. """
         os.chdir(TEST_EXEC_PATH)
+        # Fault condition must cause 'yw2oo' program termination.
         self.assertRaises(SystemExit, yw2oo.main)
+        # Fault condition must cause 'sceti' program termination.
         self.assertRaises(SystemExit, sceti.main)
         os.chdir(SRC_PATH)
 
@@ -187,12 +187,12 @@ class NoProjectFile(unittest.TestCase):
 
 class NoDescriptionFile(unittest.TestCase):
     """ Test case: Exported scene descriptions file is not present. 
-    
+
         Condition: html file is present, scene descriptions file isn't.
         Expected result: yw2oo's output file matches the reference; 
             sceti.py exits with error.      
     """
-    
+
     def setUp(self):
         os.chdir(SRC_PATH)
         # Make sure there's no "scene descriptions file" present.
@@ -203,15 +203,16 @@ class NoDescriptionFile(unittest.TestCase):
         # Place the correct html Export file.
         copy_file(TEST_DATA_PATH + EXPORT_FILE, TEST_EXEC_PATH + EXPORT_FILE)
 
-
     def test(self):
         """ Test yw2oo conversion and sceti annotation. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
+        # Fault condition must cause 'sceti' program termination.
         self.assertRaises(SystemExit, sceti.main)
         os.chdir(SRC_PATH)
-        self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE), read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
-
+        # html file must remain unchanged.
+        self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
+                         read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
 
     def tearDown(self):
         os.chdir(SRC_PATH)
@@ -227,28 +228,30 @@ class NoDescriptionFile(unittest.TestCase):
 
 class DescriptionFileTooSmall(unittest.TestCase):
     """ Test case: Scene descriptions file has not enough scenes. 
-    
+
         Condition: Scene descriptions file has less scenes 
             than html export file.
         Expected result: yw2oo's output file matches the reference; 
             sceti.py exits with error.      
     """
-    
+
     def setUp(self):
         os.chdir(SRC_PATH)
-        copy_file(TEST_DATA_PATH + NOT_ENOUGH_SCENES, TEST_EXEC_PATH + SCENE_FILE)
+        copy_file(TEST_DATA_PATH + NOT_ENOUGH_SCENES,
+                  TEST_EXEC_PATH + SCENE_FILE)
         # Place the correct html Export file.
         copy_file(TEST_DATA_PATH + EXPORT_FILE, TEST_EXEC_PATH + EXPORT_FILE)
-
 
     def test(self):
         """ Test yw2oo conversion and sceti annotation. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
+        # Fault condition must cause 'sceti' program termination.
         self.assertRaises(SystemExit, sceti.main)
         os.chdir(SRC_PATH)
-        self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE), read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
-
+        # html file must remain unchanged.
+        self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
+                         read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
 
     def tearDown(self):
         os.chdir(SRC_PATH)
@@ -264,29 +267,31 @@ class DescriptionFileTooSmall(unittest.TestCase):
 
 class DescriptionFileTooBig(unittest.TestCase):
     """ Test case: Scene descriptions file has too many scenes. 
-    
+
     Condition: Scene descriptions file has more scenes 
         than html export file.
     Expected result: yw2oo's output file matches the reference; 
         sceti.py exits with error.      
     """
-    
+
     def setUp(self):
         os.chdir(SRC_PATH)
         # Place the test scene descriptions.
-        copy_file(TEST_DATA_PATH + TOO_MANY_SCENES, TEST_EXEC_PATH + SCENE_FILE)
+        copy_file(TEST_DATA_PATH + TOO_MANY_SCENES,
+                  TEST_EXEC_PATH + SCENE_FILE)
         # Place the correct html Export file.
         copy_file(TEST_DATA_PATH + EXPORT_FILE, TEST_EXEC_PATH + EXPORT_FILE)
-
 
     def test(self):
         """ Test yw2oo conversion and sceti annotation. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
+        # Fault condition must cause 'sceti' program termination.
         self.assertRaises(SystemExit, sceti.main)
         os.chdir(SRC_PATH)
-        self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE), read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
-
+        # html file must remain unchanged.
+        self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
+                         read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
 
     def tearDown(self):
         os.chdir(SRC_PATH)

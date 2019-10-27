@@ -72,7 +72,8 @@ HTML_FILE = 'Exported Project.html'
 
 
 # Replacements to be made (see search_and_replace()):
-# NOTE: Double quotes are required because search strings contain single quotes.
+# NOTE: Double quotes are required
+# because search strings contain single quotes.
 myReplaceList = [
     "<p align='justify'><i>&nbsp;</i></p>\n<p class='Para'>|<H6>|",
     "<br /><br /><br /><center>&nbsp;</center><br /><br />\n\n<p class='Para'>|<H4>* * *</H4>\n<H6>|",

@@ -1,4 +1,4 @@
-"""Add scene titles to yWriter's html export.
+""" Add scene titles to yWriter's html export.
 
 @summary: Adds scene titles as comments to yWriter's html export file.
     OpenOffice shall convert these html comments into navigable items.
@@ -68,7 +68,7 @@ HTML_SCENE_MARKER = '<H6>'
 
 
 def collect_scene_titles():
-    """Generate a list of numbered scene titles. 
+    """ Generate a list of numbered scene titles. 
 
     @summary: Parse the scene descriptions exported by yWriter. 
         Identify chapters and scenes. Put the scene titles in a list
@@ -138,7 +138,8 @@ def insert_scene_titles(sceneTitles):
         # htmlSceneCount: counter for paragraphs formatted by yW2OO.py
         # as scene beginnings.
         htmlSceneCount = 0
-        # htmlWithAnnotations: list for the new html document including annotations.
+        # htmlWithAnnotations: list for the new html document including
+        # annotations.
         htmlWithAnnotations = []
         for line in htmlData:
             if line.count(HTML_SCENE_MARKER) > 0:
