@@ -81,7 +81,22 @@ class NormalOperation(unittest.TestCase):
         copy_file(TEST_DATA_PATH + SCENE_FILE, TEST_EXEC_PATH + SCENE_FILE)
 
     def test1(self):
-        """ Step 1: Test 'yw2oo' only. """
+        """ Step 1: Verify test data integrity. """
+        # Test input data must differ from the reference test output data.
+        self.assertNotEqual(
+            read_file(TEST_DATA_PATH + EXPORT_FILE), read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
+        self.assertNotEqual(
+            read_file(TEST_DATA_PATH + EXPORT_FILE), read_file(TEST_DATA_PATH + SCETI_REF_FILE))
+        self.assertNotEqual(
+            read_file(TEST_DATA_PATH + YW2OO_REF_FILE), read_file(TEST_DATA_PATH + SCETI_REF_FILE))
+        # 'Normal operation' test data must differ from the faulty test data.
+        self.assertNotEqual(
+            read_file(TEST_DATA_PATH + SCENE_FILE), read_file(TEST_DATA_PATH + NOT_ENOUGH_SCENES))
+        self.assertNotEqual(
+            read_file(TEST_DATA_PATH + SCENE_FILE), read_file(TEST_DATA_PATH + TOO_MANY_SCENES))
+
+    def test2(self):
+        """ Step 2: Test 'yw2oo' only. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
         os.chdir(SRC_PATH)
@@ -89,8 +104,9 @@ class NormalOperation(unittest.TestCase):
         self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
                          read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
 
-    def test2(self):
-        """ Step 2: Test both 'yw2oo' and 'sceti'. """
+
+    def test3(self):
+        """ Step 3: Test both 'yw2oo' and 'sceti'. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
         sceti.main()
