@@ -26,8 +26,7 @@
 @copyright: (c) 2019, Peter Triesberger
 @return: Exit code 
     0 if no error occurred; 
-    1 if  file "Exported Project.html" cannot be read.
-    2 if  file "Exported Project.html" cannot be written.
+    1 if any error occurred.
 @precondition: The file "Exported Project.html" must exist 
     with r/w access in the working directory.
 @postcondition: The file "Exported Project.html" is modified 
@@ -59,6 +58,8 @@
     Removed leader and trailer for scene numbers.
     Further refactoring according to PEP 8 style guide
     (see https://www.python.org/dev/peps/pep-0008/)
+@change: 2019-10-27 v1.9.0 
+    Set all exit codes to 1.
 """
 import sys
 
@@ -146,7 +147,7 @@ def main():
             return(0)
         except:
             print('ERROR: Cannot write "' + HTML_FILE + '"!\n')
-            sys.exit(2)
+            sys.exit(1)
 
 
 if __name__ == '__main__':

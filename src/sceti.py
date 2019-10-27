@@ -7,15 +7,9 @@
 @license: The MIT License 
     (https://opensource.org/licenses/mit-license.php)
 @copyright: (c) 2019, Peter Triesberger
-@return: Exitcode
+@return: Exit code 
     0 if no error occurred; 
-    1 if "Auto_Descriptions.txt" cannot be read; 
-    2 if "Exported Project.html" cannot be read; 
-    3 if "Exported Project.html" is not pre-processed 
-      or contains no scene; 
-    4 if "Exported Project.html" and "Auto_Descriptions.txt" 
-      contain different numbers of scenes; 
-    5 if "Exported Project.html" cannot be written. 
+    1 if any error occurred.
 @precondition: The file "Exported Project.html" must exist 
     with r/w access in the working directory.
     It must be pre-processed by yW2OO.py. 
@@ -42,6 +36,8 @@
 @change: 2019-10-23 v1.3.1
     Further refactoring according to PEP 8 style guide
     (see https://www.python.org/dev/peps/pep-0008/)
+@change: 2019-10-27 v1.4.0 
+    Set all exit codes to 1.
 """
 
 import re
@@ -128,7 +124,7 @@ def insert_scene_titles(sceneTitles):
     except:
         print('ERROR: Cannot open "' + HTML_FILE +
               '".\nPlease export yWriter project as html first!\n')
-        sys.exit(2)
+        sys.exit(1)
     else:
         # outlineSceneCount: REFERENCE number of scenes.
         # If the html project file contains the same number of scenes,
@@ -158,12 +154,12 @@ def insert_scene_titles(sceneTitles):
             # The html file seems to be not preprocessed.
             print('ERROR: "' + HTML_FILE +
                   '" is not pre-processed or contains no scene.\nPlease run yW2OO.py first!\n')
-            sys.exit(3)
+            sys.exit(1)
         elif htmlSceneCount != outlineSceneCount:
             # html export and scene descriptions seem not to fit together.
             print('ERROR: "' + HTML_FILE + '" and "' + DESC_FILE +
                   '" do not match.\nPlease re-export outline first!\n')
-            sys.exit(4)
+            sys.exit(1)
         else:
             # html export and scene descriptions have
             # the same number of scenes.
@@ -176,9 +172,7 @@ def insert_scene_titles(sceneTitles):
                       ' scene titles as comments to "' + HTML_FILE + '".\n')
             except:
                 print('ERROR: Cannot write "' + HTML_FILE + '".\n')
-                sys.exit(5)
-            else:
-                return(0)
+                sys.exit(1)
 
 
 def main():

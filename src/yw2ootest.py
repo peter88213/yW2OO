@@ -18,7 +18,7 @@
 @change: 2019-10-23 v1.2.0 General refactoring.
     Organized tests in several different test cases including fault conditions. 
 @change: 2019-10-23 v1.2.1 Minor refactoring.
-
+@change: 2019-10-27 v1.3.0 Verify test data integrity.
 """
 import os
 import unittest
