@@ -13,12 +13,13 @@ REM precondition: yW2OO is installed.
 REM precondition: OpenOffice.org 3.x or Apache OpenOffice 4.x is installed.
 REM postcondition: Previously auto-installed items of yW2OO are removed.
 REM postcondition: "writer.bat" is removed from all yWriter "Export" directories within [userprofile]\Documents.
-REM postcondition: The template remains, if user wants it.
 REM 
 REM since: 2018-10-04
 REM History: see Install.bat
 
 set _release=1.14.0
+
+pushd setup
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4
@@ -116,6 +117,8 @@ echo Removing OpenOffice extension ...
 
 call genRemoveWriter.bat
 call RemoveWriter.bat
+
+popd
 
 echo -----------------------------------------------------------------
 echo #

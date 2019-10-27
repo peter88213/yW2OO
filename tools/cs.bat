@@ -21,8 +21,12 @@ set _target=%_root%build\yW2OO_v%_release%
 if exist %_target% rd /s /q %_target%
 
 mkdir %_target%
-mkdir %_target%\program
-mkdir %_target%\add-on
+mkdir %_target%\setup
+mkdir %_target%\setup\program
+mkdir %_target%\fonts
+mkdir %_target%\template
+mkdir %_target%\template\StandardPages_A4
+mkdir %_target%\template\StandardPages_Letter
 
 xcopy /s %_root%\add-on\*.* %_target%\add-on\
 
@@ -39,11 +43,19 @@ rem Copy release items
 rem --------------------------------------------------------
 
 set _file=%_root%src\yw2oo.py
-set _dest=%_target%\program\
+set _dest=%_target%\setup\program\
 call :copyFile
 
 set _file=%_root%src\sceti.py
-set _dest=%_target%\program\
+set _dest=%_target%\setup\program\
+call :copyFile
+
+set _file=%_root%oxt\yW2OO-%_release%.oxt
+set _dest=%_target%\setup\program\
+call :copyFile
+
+set _file=%_root%LICENSE
+set _dest=%_target%\
 call :copyFile
 
 set _file=%_root%tools\Install.bat
@@ -55,19 +67,31 @@ set _dest=%_target%\
 call :copyFile
 
 set _file=%_root%tools\genCopyWriter.bat
-set _dest=%_target%\
+set _dest=%_target%\setup\
 call :copyFile
 
 set _file=%_root%tools\genRemoveWriter.bat
-set _dest=%_target%\
+set _dest=%_target%\setup\
 call :copyFile
 
-set _file=%_root%oxt\yW2OO-%_release%.oxt
-set _dest=%_target%\program\
+set _file=%_root%ott\StandardPages_A4\README.md
+set _dest=%_target%\template\StandardPages_A4\
 call :copyFile
 
-set _file=%_root%LICENSE
-set _dest=%_target%\
+set _file=%_root%ott\StandardPages_A4\standardPages.ott
+set _dest=%_target%\template\StandardPages_A4\
+call :copyFile
+
+set _file=%_root%ott\StandardPages_Letter\README.md
+set _dest=%_target%\template\StandardPages_Letter\
+call :copyFile
+
+set _file=%_root%ott\StandardPages_Letter\standardPages.ott
+set _dest=%_target%\template\StandardPages_Letter\
+call :copyFile
+
+set _file=%_root%fonts\CourierPrime.zip
+set _dest=%_target%\fonts\
 call :copyFile
 
 exit /b
