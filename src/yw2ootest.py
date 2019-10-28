@@ -19,6 +19,7 @@
     Organized tests in several different test cases including fault conditions. 
 @change: 2019-10-23 v1.2.1 Minor refactoring.
 @change: 2019-10-27 v1.3.0 Verify test data integrity.
+@change: 2019-10-28 v1.1.1 Use context manager for file operations.
 """
 import os
 import unittest
@@ -51,18 +52,15 @@ YW2OO_REF_FILE = 'yW2OOreference5.html'
 SCETI_REF_FILE = 'SceTiReference5.html'
 
 
-def read_file(myFileName):
-    myFile = open(myFileName, 'r')
-    myData = myFile.read()
-    myFile.close()
-    return(myData)
+def read_file(inputFile):
+    with open(inputFile, 'r') as f:
+        return(f.read())
 
 
 def copy_file(inputFile, outputFile):
     myData = read_file(inputFile)
-    myFile = open(outputFile, 'w')
-    myFile.write(myData)
-    myFile.close()
+    with open(outputFile, 'w') as f:
+        f.write(myData)
     return()
 
 
@@ -76,24 +74,31 @@ class NormalOperation(unittest.TestCase):
     def setUp(self):
         os.chdir(SRC_PATH)
         # Place the correct html Export file.
-        copy_file(TEST_DATA_PATH + EXPORT_FILE, TEST_EXEC_PATH + EXPORT_FILE)
+        copy_file(TEST_DATA_PATH + EXPORT_FILE,
+                  TEST_EXEC_PATH + EXPORT_FILE)
         # Place the correct scene descriptions.
-        copy_file(TEST_DATA_PATH + SCENE_FILE, TEST_EXEC_PATH + SCENE_FILE)
+        copy_file(TEST_DATA_PATH + SCENE_FILE,
+                  TEST_EXEC_PATH + SCENE_FILE)
 
     def test1(self):
         """ Step 1: Verify test data integrity. """
         # Test input data must differ from the reference test output data.
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + EXPORT_FILE), read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
+            read_file(TEST_DATA_PATH + EXPORT_FILE),
+            read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + EXPORT_FILE), read_file(TEST_DATA_PATH + SCETI_REF_FILE))
+            read_file(TEST_DATA_PATH + EXPORT_FILE),
+            read_file(TEST_DATA_PATH + SCETI_REF_FILE))
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + YW2OO_REF_FILE), read_file(TEST_DATA_PATH + SCETI_REF_FILE))
+            read_file(TEST_DATA_PATH + YW2OO_REF_FILE),
+            read_file(TEST_DATA_PATH + SCETI_REF_FILE))
         # 'Normal operation' test data must differ from the faulty test data.
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + SCENE_FILE), read_file(TEST_DATA_PATH + NOT_ENOUGH_SCENES))
+            read_file(TEST_DATA_PATH + SCENE_FILE),
+            read_file(TEST_DATA_PATH + NOT_ENOUGH_SCENES))
         self.assertNotEqual(
-            read_file(TEST_DATA_PATH + SCENE_FILE), read_file(TEST_DATA_PATH + TOO_MANY_SCENES))
+            read_file(TEST_DATA_PATH + SCENE_FILE),
+            read_file(TEST_DATA_PATH + TOO_MANY_SCENES))
 
     def test2(self):
         """ Step 2: Test 'yw2oo' only. """
@@ -103,7 +108,6 @@ class NormalOperation(unittest.TestCase):
         # html file must contain all the replacements.
         self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
                          read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
-
 
     def test3(self):
         """ Step 3: Test both 'yw2oo' and 'sceti'. """
@@ -137,9 +141,11 @@ class NotPreprocessed(unittest.TestCase):
     def setUp(self):
         os.chdir(SRC_PATH)
         # Place the correct html Export file.
-        copy_file(TEST_DATA_PATH + EXPORT_FILE, TEST_EXEC_PATH + EXPORT_FILE)
+        copy_file(TEST_DATA_PATH + EXPORT_FILE,
+                  TEST_EXEC_PATH + EXPORT_FILE)
         # Place the correct scene descriptions.
-        copy_file(TEST_DATA_PATH + SCENE_FILE, TEST_EXEC_PATH + SCENE_FILE)
+        copy_file(TEST_DATA_PATH + SCENE_FILE,
+                  TEST_EXEC_PATH + SCENE_FILE)
 
     def test(self):
         """ Test 'sceti' only. """
@@ -178,7 +184,8 @@ class NoProjectFile(unittest.TestCase):
         except:
             pass
         # Place the correct scene descriptions.
-        copy_file(TEST_DATA_PATH + SCENE_FILE, TEST_EXEC_PATH + SCENE_FILE)
+        copy_file(TEST_DATA_PATH + SCENE_FILE,
+                  TEST_EXEC_PATH + SCENE_FILE)
 
     def test(self):
         """ Test yw2oo conversion and sceti annotation. """
@@ -217,7 +224,8 @@ class NoDescriptionFile(unittest.TestCase):
         except:
             pass
         # Place the correct html Export file.
-        copy_file(TEST_DATA_PATH + EXPORT_FILE, TEST_EXEC_PATH + EXPORT_FILE)
+        copy_file(TEST_DATA_PATH + EXPORT_FILE,
+                  TEST_EXEC_PATH + EXPORT_FILE)
 
     def test(self):
         """ Test yw2oo conversion and sceti annotation. """
@@ -256,7 +264,8 @@ class DescriptionFileTooSmall(unittest.TestCase):
         copy_file(TEST_DATA_PATH + NOT_ENOUGH_SCENES,
                   TEST_EXEC_PATH + SCENE_FILE)
         # Place the correct html Export file.
-        copy_file(TEST_DATA_PATH + EXPORT_FILE, TEST_EXEC_PATH + EXPORT_FILE)
+        copy_file(TEST_DATA_PATH + EXPORT_FILE,
+                  TEST_EXEC_PATH + EXPORT_FILE)
 
     def test(self):
         """ Test yw2oo conversion and sceti annotation. """
@@ -296,7 +305,8 @@ class DescriptionFileTooBig(unittest.TestCase):
         copy_file(TEST_DATA_PATH + TOO_MANY_SCENES,
                   TEST_EXEC_PATH + SCENE_FILE)
         # Place the correct html Export file.
-        copy_file(TEST_DATA_PATH + EXPORT_FILE, TEST_EXEC_PATH + EXPORT_FILE)
+        copy_file(TEST_DATA_PATH + EXPORT_FILE,
+                  TEST_EXEC_PATH + EXPORT_FILE)
 
     def test(self):
         """ Test yw2oo conversion and sceti annotation. """

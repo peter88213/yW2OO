@@ -38,6 +38,8 @@
     (see https://www.python.org/dev/peps/pep-0008/)
 @change: 2019-10-27 v1.4.0 
     Set all exit codes to 1.
+@change: 2019-10-28 v1.4.1 
+    Minor refactoring: Use context manager for file operations.
 """
 
 import re
@@ -74,9 +76,8 @@ def collect_scene_titles():
     @return: Sorted list of numbered scene titles.
     """
     try:
-        descFile = open(DESC_FILE, 'r')
-        descData = descFile.readlines()
-        descFile.close()
+        with open(DESC_FILE, 'r') as f:
+            descData = f.readlines()
     except:
         print('ERROR: Cannot open "' + DESC_FILE +
               '".\nPlease export outline first!\n')
@@ -118,9 +119,8 @@ def insert_scene_titles(sceneTitles):
         containing scene titles as html comments. 
     """
     try:
-        htmlFile = open(HTML_FILE, 'r')
-        htmlData = htmlFile.readlines()
-        htmlFile.close()
+        with open(HTML_FILE, 'r') as f:
+            htmlData = f.readlines()
     except:
         print('ERROR: Cannot open "' + HTML_FILE +
               '".\nPlease export yWriter project as html first!\n')
@@ -165,9 +165,8 @@ def insert_scene_titles(sceneTitles):
             # the same number of scenes.
             try:
                 # Overwrite yWriter's html export file.
-                htmlFile = open(HTML_FILE, 'w')
-                htmlFile.writelines(htmlWithAnnotations)
-                htmlFile.close()
+                with open(HTML_FILE, 'w') as f:
+                    f.writelines(htmlWithAnnotations)
                 print('Added ' + str(outlineSceneCount) +
                       ' scene titles as comments to "' + HTML_FILE + '".\n')
             except:

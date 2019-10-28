@@ -60,6 +60,8 @@
     (see https://www.python.org/dev/peps/pep-0008/)
 @change: 2019-10-27 v1.9.0 
     Set all exit codes to 1.
+@change: 2019-10-28 v1.9.1 
+    Minor refactoring: Use context manager for file operations.
 """
 import sys
 
@@ -131,18 +133,16 @@ def main():
     """ Restructure and clean up yWriter's html export. """
     print(START_MESSAGE)
     try:
-        htmlFile = open(HTML_FILE, 'r')
-        myHtmlData = htmlFile.read()
-        htmlFile.close()
+        with open(HTML_FILE, 'r') as f:
+            myHtmlData = f.read()
     except:
         print('ERROR: Cannot read "' + HTML_FILE + '"!\n')
         sys.exit(1)
     else:
         myHtmlData = search_and_replace(myHtmlData, myReplaceList)
         try:
-            htmlFile = open(HTML_FILE, 'w')
-            htmlFile.write(myHtmlData)
-            htmlFile.close()
+            with open(HTML_FILE, 'w') as f:
+                f.write(myHtmlData)
             print('"' + HTML_FILE + '" successfully processed.\n')
             return(0)
         except:
