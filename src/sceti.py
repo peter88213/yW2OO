@@ -47,7 +47,7 @@
 import re
 import sys
 
-VERSION = 'v1.3.1'
+VERSION = 'v1.4.2'
 
 START_MESSAGE = '\nSceTi adding yWriter scene titles to html export ' + VERSION
 
