@@ -68,7 +68,7 @@
 """
 import sys
 
-VERSION = 'v1.9.0'
+VERSION = 'v1.9.2'
 
 # Don't forget to set the correct version number!
 START_MESSAGE = '\nyW2OO restructuring yWriter html export ' + VERSION
