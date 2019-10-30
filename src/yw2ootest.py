@@ -133,7 +133,7 @@ class NormalOperation(unittest.TestCase):
 
 
 class ProjectFileReadOnly(unittest.TestCase):
-    """ Test case: 
+    """ Test case: File can not be written.
 
         Condition: Exported html project file is read-only. 
         Expected result: Both yw2oo.py and sceti.py exit with error.
