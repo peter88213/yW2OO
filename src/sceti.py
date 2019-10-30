@@ -40,6 +40,8 @@
     Set all exit codes to 1.
 @change: 2019-10-28 v1.4.1 
     Minor refactoring: Use context manager for file operations.
+@change: 2019-10-30 v1.4.2 
+    Minor refactoring: Straighten control flow; Specify exceptions.
 """
 
 import re
@@ -121,7 +123,7 @@ def insert_scene_titles(sceneTitles):
     try:
         with open(HTML_FILE, 'r') as f:
             htmlData = f.readlines()
-    except:
+    except IOError:
         print('ERROR: Cannot open "' + HTML_FILE +
               '".\nPlease export yWriter project as html first!\n')
         sys.exit(1)
@@ -149,29 +151,30 @@ def insert_scene_titles(sceneTitles):
                 # Increase the ACTUAL number of scenes.
                 htmlSceneCount = htmlSceneCount + 1
             htmlWithAnnotations.append(line)        # Copy original html line.
+
         if htmlSceneCount == 0:
             # Not a single html scene marker was found:
             # The html file seems to be not preprocessed.
             print('ERROR: "' + HTML_FILE +
                   '" is not pre-processed or contains no scene.\nPlease run yW2OO.py first!\n')
             sys.exit(1)
-        elif htmlSceneCount != outlineSceneCount:
+        if htmlSceneCount != outlineSceneCount:
             # html export and scene descriptions seem not to fit together.
             print('ERROR: "' + HTML_FILE + '" and "' + DESC_FILE +
                   '" do not match.\nPlease re-export outline first!\n')
             sys.exit(1)
-        else:
-            # html export and scene descriptions have
-            # the same number of scenes.
-            try:
-                # Overwrite yWriter's html export file.
-                with open(HTML_FILE, 'w') as f:
-                    f.writelines(htmlWithAnnotations)
-                print('Added ' + str(outlineSceneCount) +
-                      ' scene titles as comments to "' + HTML_FILE + '".\n')
-            except:
-                print('ERROR: Cannot write "' + HTML_FILE + '".\n')
-                sys.exit(1)
+
+        # html export and scene descriptions have
+        # the same number of scenes.
+        try:
+            # Overwrite yWriter's html export file.
+            with open(HTML_FILE, 'w') as f:
+                f.writelines(htmlWithAnnotations)
+            print('Added ' + str(outlineSceneCount) +
+                  ' scene titles as comments to "' + HTML_FILE + '".\n')
+        except IOError:
+            print('ERROR: Cannot write "' + HTML_FILE + '".\n')
+            sys.exit(1)
 
 
 def main():

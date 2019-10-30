@@ -19,7 +19,8 @@
     Organized tests in several different test cases including fault conditions. 
 @change: 2019-10-23 v1.2.1 Minor refactoring.
 @change: 2019-10-27 v1.3.0 Verify test data integrity.
-@change: 2019-10-28 v1.1.1 Use context manager for file operations.
+@change: 2019-10-28 v1.3.1 Use context manager for file operations.
+@change: 2019-10-30 v1.4.0 New test case: "html export file is write-only".
 """
 import os
 import unittest
@@ -131,6 +132,49 @@ class NormalOperation(unittest.TestCase):
             pass
 
 
+class ProjectFileReadOnly(unittest.TestCase):
+    """ Test case: 
+
+        Condition: Exported html project file is read-only. 
+        Expected result: Both yw2oo.py and sceti.py exit with error.
+    """
+
+    def setUp(self):
+        os.chdir(SRC_PATH)
+        # Place the correct html Export file.
+        copy_file(TEST_DATA_PATH + EXPORT_FILE,
+                  TEST_EXEC_PATH + EXPORT_FILE)
+        # Set html Export file read-only.
+        os.system('attrib +R "' +
+                  os.path.normpath(TEST_EXEC_PATH + EXPORT_FILE) + '"')
+        # Place the correct scene descriptions.
+        copy_file(TEST_DATA_PATH + SCENE_FILE,
+                  TEST_EXEC_PATH + SCENE_FILE)
+
+    def test(self):
+        """ Test both 'yw2oo' and 'sceti'. """
+        os.chdir(TEST_EXEC_PATH)
+        # Fault condition must cause 'yw2oo' program termination.
+        self.assertRaises(SystemExit, yw2oo.main)
+        # Fault condition must cause 'sceti' program termination.
+        self.assertRaises(SystemExit, sceti.main)
+        os.chdir(SRC_PATH)
+
+    def tearDown(self):
+        os.chdir(SRC_PATH)
+        # Set html Export file read + write.
+        os.system('attrib -R "' +
+                  os.path.normpath(TEST_EXEC_PATH + EXPORT_FILE) + '"')
+        try:
+            os.remove(TEST_EXEC_PATH + EXPORT_FILE)
+        except:
+            pass
+        try:
+            os.remove(TEST_EXEC_PATH + SCENE_FILE)
+        except:
+            pass
+
+
 class NotPreprocessed(unittest.TestCase):
     """ Test case: Wrong execution order or unknown preprocessor failure. 
 
@@ -188,7 +232,7 @@ class NoProjectFile(unittest.TestCase):
                   TEST_EXEC_PATH + SCENE_FILE)
 
     def test(self):
-        """ Test yw2oo conversion and sceti annotation. """
+        """ Test both 'yw2oo' and 'sceti'. """
         os.chdir(TEST_EXEC_PATH)
         # Fault condition must cause 'yw2oo' program termination.
         self.assertRaises(SystemExit, yw2oo.main)
@@ -228,7 +272,7 @@ class NoDescriptionFile(unittest.TestCase):
                   TEST_EXEC_PATH + EXPORT_FILE)
 
     def test(self):
-        """ Test yw2oo conversion and sceti annotation. """
+        """ Test both 'yw2oo' and 'sceti'. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
         # Fault condition must cause 'sceti' program termination.
@@ -268,7 +312,7 @@ class DescriptionFileTooSmall(unittest.TestCase):
                   TEST_EXEC_PATH + EXPORT_FILE)
 
     def test(self):
-        """ Test yw2oo conversion and sceti annotation. """
+        """ Test both 'yw2oo' and 'sceti'. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
         # Fault condition must cause 'sceti' program termination.
@@ -309,7 +353,7 @@ class DescriptionFileTooBig(unittest.TestCase):
                   TEST_EXEC_PATH + EXPORT_FILE)
 
     def test(self):
-        """ Test yw2oo conversion and sceti annotation. """
+        """ Test both 'yw2oo' and 'sceti'. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
         # Fault condition must cause 'sceti' program termination.

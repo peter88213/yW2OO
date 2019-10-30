@@ -62,6 +62,9 @@
     Set all exit codes to 1.
 @change: 2019-10-28 v1.9.1 
     Minor refactoring: Use context manager for file operations.
+@change: 2019-10-30 v1.9.2 
+    Minor refactoring: Straighten control flow; Specify exceptions;
+    cover faulty replacements list.
 """
 import sys
 
@@ -72,6 +75,8 @@ START_MESSAGE = '\nyW2OO restructuring yWriter html export ' + VERSION
 
 # (yWriter: "Project>Export Project>to html").
 HTML_FILE = 'Exported Project.html'
+
+DELIMITER = '|'
 
 
 # Replacements to be made (see search_and_replace()):
@@ -121,11 +126,14 @@ def search_and_replace(processData, replaceList):
     @param: replaceList: list of strings containing search/replacement items. 
         Structure of each list element: "<search item>|<replacement item>|" 
         The replacement item can be empty.  
-    @return: Modified string
+    @return: Modified string, None if input data is misformatted.
     """
     for line in replaceList:
-        replaceItem = line.split('|')
-        processData = processData.replace(replaceItem[0], replaceItem[1])
+        if line.count(DELIMITER) == 2:
+            replaceItem = line.split(DELIMITER)
+            processData = processData.replace(replaceItem[0], replaceItem[1])
+        else:
+            return(None)
     return(processData)
 
 
@@ -135,19 +143,22 @@ def main():
     try:
         with open(HTML_FILE, 'r') as f:
             myHtmlData = f.read()
-    except:
+    except IOError:
         print('ERROR: Cannot read "' + HTML_FILE + '"!\n')
         sys.exit(1)
-    else:
-        myHtmlData = search_and_replace(myHtmlData, myReplaceList)
-        try:
-            with open(HTML_FILE, 'w') as f:
-                f.write(myHtmlData)
-            print('"' + HTML_FILE + '" successfully processed.\n')
-            return(0)
-        except:
-            print('ERROR: Cannot write "' + HTML_FILE + '"!\n')
-            sys.exit(1)
+
+    myHtmlData = search_and_replace(myHtmlData, myReplaceList)
+    assert myHtmlData != None
+
+    try:
+        with open(HTML_FILE, 'w') as f:
+            f.write(myHtmlData)
+    except IOError:
+        print('ERROR: Cannot write "' + HTML_FILE + '"!\n')
+        sys.exit(1)
+
+    print('"' + HTML_FILE + '" successfully processed.\n')
+    return(0)
 
 
 if __name__ == '__main__':
