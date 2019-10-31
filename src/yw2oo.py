@@ -32,46 +32,13 @@
 @postcondition: The file "Exported Project.html" is modified 
     (see summary).
 @since: 2018-10-01
-@change: 2018-10-03 v1.2.1 
-    Added exit codes, start message and epydoc fields.
-@change: 2018-10-10 v1.3.0 
-    Added yWriter6 tags to replaceList. 
-    Added all possible html scene dividers.
-@change: 2019-08-18 v1.4.0 
-    Changed processing of dashes and ellipses 
-    (just revert yWriter's mdash conversion). 
-    Replace double spaces by single spaces.
-@change: 2019-09-17 v1.5.0 
-    Changed processing of chapter headings. 
-    Remove "Chapter" and add a period to the chapter number.
-@change: 2019-10-05 v1.5.1 
-    Changed start message.
-@change: 2019-10-10 v1.6.0 
-    Modified processing of empty scene dividers.
-@change: 2019-10-21 v1.6.1 
-    Refactoring for unit test support.
-@change: 2019-10-21 v1.6.2 
-    Further refactoring: Renamed "main" function to "main".
-@change: 2019-10-21 v1.7.0 
-    Further refactoring and code documentation. New exit codes.
-@change: 2019-10-23 v1.8.0
-    Removed leader and trailer for scene numbers.
-    Further refactoring according to PEP 8 style guide
-    (see https://www.python.org/dev/peps/pep-0008/)
-@change: 2019-10-27 v1.9.0 
-    Set all exit codes to 1.
-@change: 2019-10-28 v1.9.1 
-    Minor refactoring: Use context manager for file operations.
-@change: 2019-10-30 v1.9.2 
-    Minor refactoring: Straighten control flow; Specify exceptions;
-    cover faulty replacements list.
 """
 import sys
 
-VERSION = 'v1.9.2'
+VERSION = 'v1.9.3'
 
 # Don't forget to set the correct version number!
-START_MESSAGE = '\nyW2OO restructuring yWriter html export ' + VERSION
+START_MESSAGE = "\nyW2OO - Structuring yWriter's html export " + VERSION
 
 # (yWriter: "Project>Export Project>to html").
 HTML_FILE = 'Exported Project.html'
@@ -82,7 +49,7 @@ DELIMITER = '|'
 # Replacements to be made (see search_and_replace()):
 # NOTE: Double quotes are required
 # because search strings contain single quotes.
-myReplaceList = [
+htmlReplaceList = [
     "<p align='justify'><i>&nbsp;</i></p>\n<p class='Para'>|<H6>|",
     "<br /><br /><br /><center>&nbsp;</center><br /><br />\n\n<p class='Para'>|<H4>* * *</H4>\n<H6>|",
     "<br /><br /><br /><center>*</center><br /><br />\n\n<p class='Para'>|<H4>*</H4>\n<H6>|",
@@ -138,21 +105,21 @@ def search_and_replace(processData, replaceList):
 
 
 def main():
-    """ Restructure and clean up yWriter's html export. """
+    """ Clean up and structure yWriter's html export. """
     print(START_MESSAGE)
     try:
         with open(HTML_FILE, 'r') as f:
-            myHtmlData = f.read()
+            htmlData = f.read()
     except IOError:
         print('ERROR: Cannot read "' + HTML_FILE + '"!\n')
         sys.exit(1)
 
-    myHtmlData = search_and_replace(myHtmlData, myReplaceList)
-    assert myHtmlData != None
+    htmlData = search_and_replace(htmlData, htmlReplaceList)
+    assert htmlData != None
 
     try:
         with open(HTML_FILE, 'w') as f:
-            f.write(myHtmlData)
+            f.write(htmlData)
     except IOError:
         print('ERROR: Cannot write "' + HTML_FILE + '"!\n')
         sys.exit(1)

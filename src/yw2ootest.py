@@ -10,17 +10,6 @@
 @precondition: A test environment as specified below must exist.
 @precondition: "<project dir>/test/yWriter5 Sample/Auto_Descriptions.txt" must exist.
 @since: 2019-10-21
-@change: 2019-10-21 v1.0.0 Adapted subjects' function calls.
-@change: 2019-10-23 v1.1.0 Adapted  to new directory structure and test subjects:
-    sceti v1.3.1, yw2oo v1.8.0.
-    Further refactoring according to PEP 8 style guide
-    (see https://www.python.org/dev/peps/pep-0008/)
-@change: 2019-10-23 v1.2.0 General refactoring.
-    Organized tests in several different test cases including fault conditions. 
-@change: 2019-10-23 v1.2.1 Minor refactoring.
-@change: 2019-10-27 v1.3.0 Verify test data integrity.
-@change: 2019-10-28 v1.3.1 Use context manager for file operations.
-@change: 2019-10-30 v1.4.0 New test case: "html export file is write-only".
 """
 import os
 import unittest
@@ -81,8 +70,8 @@ class NormalOperation(unittest.TestCase):
         copy_file(TEST_DATA_PATH + SCENE_FILE,
                   TEST_EXEC_PATH + SCENE_FILE)
 
-    def test1(self):
-        """ Step 1: Verify test data integrity. """
+    def test_data(self):
+        """ Verify test data integrity. """
         # Test input data must differ from the reference test output data.
         self.assertNotEqual(
             read_file(TEST_DATA_PATH + EXPORT_FILE),
@@ -101,8 +90,8 @@ class NormalOperation(unittest.TestCase):
             read_file(TEST_DATA_PATH + SCENE_FILE),
             read_file(TEST_DATA_PATH + TOO_MANY_SCENES))
 
-    def test2(self):
-        """ Step 2: Test 'yw2oo' only. """
+    def test_preprocessing(self):
+        """ Test yw2oo. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
         os.chdir(SRC_PATH)
@@ -110,8 +99,8 @@ class NormalOperation(unittest.TestCase):
         self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
                          read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
 
-    def test3(self):
-        """ Step 3: Test both 'yw2oo' and 'sceti'. """
+    def test_annotations(self):
+        """ Test sceti. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
         sceti.main()
