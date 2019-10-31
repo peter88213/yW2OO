@@ -90,8 +90,8 @@ class NormalOperation(unittest.TestCase):
             read_file(TEST_DATA_PATH + SCENE_FILE),
             read_file(TEST_DATA_PATH + TOO_MANY_SCENES))
 
-    def test_preprocessing(self):
-        """ Test yw2oo. """
+    def test_yw2oo(self):
+        """ Test yw2oo without running sceti afterwards. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
         os.chdir(SRC_PATH)
@@ -99,8 +99,8 @@ class NormalOperation(unittest.TestCase):
         self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
                          read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
 
-    def test_annotations(self):
-        """ Test sceti. """
+    def test_sceti(self):
+        """ Run yw2oo and test sceti. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
         sceti.main()
@@ -140,8 +140,8 @@ class ProjectFileReadOnly(unittest.TestCase):
         copy_file(TEST_DATA_PATH + SCENE_FILE,
                   TEST_EXEC_PATH + SCENE_FILE)
 
-    def test(self):
-        """ Test both 'yw2oo' and 'sceti'. """
+    def test_all(self):
+        """ Test both yw2oo and sceti. """
         os.chdir(TEST_EXEC_PATH)
         # Fault condition must cause 'yw2oo' program termination.
         self.assertRaises(SystemExit, yw2oo.main)
@@ -180,8 +180,8 @@ class NotPreprocessed(unittest.TestCase):
         copy_file(TEST_DATA_PATH + SCENE_FILE,
                   TEST_EXEC_PATH + SCENE_FILE)
 
-    def test(self):
-        """ Test 'sceti' only. """
+    def test_sceti(self):
+        """ Test sceti without running yw2oo before. """
         os.chdir(TEST_EXEC_PATH)
         # Fault condition must cause 'sceti' program termination.
         self.assertRaises(SystemExit, sceti.main)
@@ -220,8 +220,8 @@ class NoProjectFile(unittest.TestCase):
         copy_file(TEST_DATA_PATH + SCENE_FILE,
                   TEST_EXEC_PATH + SCENE_FILE)
 
-    def test(self):
-        """ Test both 'yw2oo' and 'sceti'. """
+    def test_all(self):
+        """ Test both yw2oo and sceti. """
         os.chdir(TEST_EXEC_PATH)
         # Fault condition must cause 'yw2oo' program termination.
         self.assertRaises(SystemExit, yw2oo.main)
@@ -260,8 +260,8 @@ class NoDescriptionFile(unittest.TestCase):
         copy_file(TEST_DATA_PATH + EXPORT_FILE,
                   TEST_EXEC_PATH + EXPORT_FILE)
 
-    def test(self):
-        """ Test both 'yw2oo' and 'sceti'. """
+    def test_sceti(self):
+        """ Run yw2oo and test sceti. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
         # Fault condition must cause 'sceti' program termination.
@@ -300,8 +300,8 @@ class DescriptionFileTooSmall(unittest.TestCase):
         copy_file(TEST_DATA_PATH + EXPORT_FILE,
                   TEST_EXEC_PATH + EXPORT_FILE)
 
-    def test(self):
-        """ Test both 'yw2oo' and 'sceti'. """
+    def test_sceti(self):
+        """ Run yw2oo and test sceti. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
         # Fault condition must cause 'sceti' program termination.
@@ -341,8 +341,8 @@ class DescriptionFileTooBig(unittest.TestCase):
         copy_file(TEST_DATA_PATH + EXPORT_FILE,
                   TEST_EXEC_PATH + EXPORT_FILE)
 
-    def test(self):
-        """ Test both 'yw2oo' and 'sceti'. """
+    def test_sceti(self):
+        """ Run yw2oo and test sceti. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
         # Fault condition must cause 'sceti' program termination.
