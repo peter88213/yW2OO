@@ -1,15 +1,9 @@
 """ Python unit tests for the yW2OO project.
 
-@summary: Test suite for yw2oo.py (does conversion) and sceti.py (does annotation)
-@author: Peter Triesberger
-@see: https://github.com/peter88213/yw2oo
-@license: The MIT License (https://opensource.org/licenses/mit-license.php)
-@copyright: (c) 2019, Peter Triesberger
-@precondition: This script is to be placed in "<project dir>/test"
-@precondition: The subjects to testing must exist in "<project dir>/src"
-@precondition: A test environment as specified below must exist.
-@precondition: "<project dir>/test/yWriter5 Sample/Auto_Descriptions.txt" must exist.
-@since: 2019-10-21
+Test suite for yw2oo.py (does conversion) and sceti.py (does annotation).
+
+For further information see https://github.com/peter88213/yW2OO
+Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
 import unittest
