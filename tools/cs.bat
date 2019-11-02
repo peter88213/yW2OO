@@ -1,10 +1,10 @@
 REM cs.bat
-REM summary: Collects everything for a yW2OO release
-REM          and puts it the "build" setup directory to be zipped.
-REM author: Peter Triesberger
-REM see: https://github.com/peter88213/yW2OO
-REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
-REM copyright: (c) 2019, Peter Triesberger
+REM Collects everything for a yW2OO release
+REM and puts it the "build" setup directory to be zipped.
+REM 
+REM See: https://github.com/peter88213/yW2OO
+REM License: The MIT License (https://opensource.org/licenses/mit-license.php)
+REM Copyright: (c) 2019, Peter Triesberger
 
 set _release=1.14.0
 
