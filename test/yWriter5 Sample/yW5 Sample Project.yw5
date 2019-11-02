@@ -37,7 +37,7 @@ Simon Haynes is a client of the John Jarrold Literary Agency]]></Bio>
 		<WordTargetEndDate>2007-08-27</WordTargetEndDate>
 		<MRUSpecificDate>1899-12-30</MRUSpecificDate>
 		<MRUSpecificTime>00:00</MRUSpecificTime>
-		<LastViewedScID>9</LastViewedScID>
+		<LastViewedScID>1</LastViewedScID>
 		<DeadlineDate1>2004-09-01</DeadlineDate1>
 		<DeadlineDate2>2004-12-14</DeadlineDate2>
 		<DeadlineDate3>2004-12-20</DeadlineDate3>
@@ -561,6 +561,11 @@ Clunk's battery starts to run low. He continues. As the fire extinguisher begins
 	</WC>
 	<WC>
 		<Date>2019-10-21</Date>
+		<Count>1256</Count>
+		<TotalCount>1256</TotalCount>
+	</WC>
+	<WC>
+		<Date>2019-11-02</Date>
 		<Count>1256</Count>
 		<TotalCount>1256</TotalCount>
 	</WC>
