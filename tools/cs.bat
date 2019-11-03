@@ -31,16 +31,22 @@ mkdir %_target%\template\StandardPages_Letter
 xcopy /s %_root%\add-on\*.* %_target%\add-on\
 
 rem --------------------------------------------------------
-rem Generate english README file with release info
+rem Generate release info
 rem --------------------------------------------------------
 
-echo # yW2OO (yWriter to OpenOffice/LibreOffice converter) v%_release%>%_target%\README.txt
-echo Convert yWriter's HTML export file into a neat OpenOffice Writer document, ready to apply templates and styles.>>%_target%\README.txt
-echo For further information see https://github.com/peter88213/yW2OO/wiki/>>%_target%\README.txt
+echo v%_release%>%_target%\VERSION
 
 rem --------------------------------------------------------
 rem Copy release items 
 rem --------------------------------------------------------
+
+set _file=%_root%README.md
+set _dest=%_target%\
+call :copyFile
+
+set _file=%_root%LIESMICH.md
+set _dest=%_target%\
+call :copyFile
 
 set _file=%_root%src\yw2oo.py
 set _dest=%_target%\setup\program\
