@@ -36,49 +36,40 @@ DSCR_SCENE_MARKER = '^ 0'
 HTML_SCENE_MARKER = "<p class='textbody'>"
 
 
-def collect_scene_titles():
+def collect_scene_titles(dscrData):
     """ Generate a list of numbered scene titles. """
-    try:
-        with open(DSCR_FILE, 'r') as f:
-            descData = f.readlines()
-    except:
-        print('ERROR: Cannot open "' + DSCR_FILE +
-              '".\nPlease export outline first!\n')
-        sys.exit(1)
-
-    else:
-        # Identify scene titles, replace their first characters
-        # by the chapter number, and add them to the scene list.
-        # Non-blank lines without a scene marker count as
-        # chapter titles.
-        sceneList = []
-        # The first chapter title is preceded by the project title.
-        # This is compensated by a negative chapter counter preset.
-        chapterCount = -1
-        for line in descData:
-            if re.search(DSCR_SCENE_MARKER, line):
-                sceneList.append(
-                    re.sub(DSCR_SCENE_MARKER, str(chapterCount), line))
-            elif re.search('.+', line.rstrip()):
-                chapterCount = chapterCount + 1
-        return(sceneList)
+    # Identify scene titles, replace their first characters
+    # by the chapter number, and add them to the scene list.
+    # Non-blank lines without a scene marker count as
+    # chapter titles.
+    sceneList = []
+    # The first chapter title is preceded by the project title.
+    # This is compensated by a negative chapter counter preset.
+    chapterCount = -1
+    for line in dscrData:
+        if re.search(DSCR_SCENE_MARKER, line):
+            sceneList.append(
+                re.sub(DSCR_SCENE_MARKER, str(chapterCount), line))
+        elif re.search('.+', line.rstrip()):
+            chapterCount = chapterCount + 1
+    return(sceneList)
 
 
-def insert_scene_titles(sceneTitles):
+def insert_scene_titles(bookTitle, htmlInput, sceneTitles):
     """ Put html comments with numbered scene titles to scene beginnings. """
-    try:
-        with open(HTML_FILE, 'r') as f:
-            htmlInput = f.readlines()
-    except IOError:
-        print('ERROR: Cannot open "' + HTML_FILE +
-              '".\nPlease export yWriter project as html first!\n')
-        sys.exit(1)
-
     # Identify scene beginnings and insert html comments before them.
     htmlOutput = []
     sceneTotalExpected = len(sceneTitles)
     sceneCount = 0
+    htmlHeader = True
     for line in htmlInput:
+        if htmlHeader:
+            if line.count('</head>'):
+                # Put metadata at the bottom of the html <head>
+                # section, if available.
+                htmlOutput.append('<title>' + bookTitle + '</title>\n')
+                # Exiting the html <head> section
+                htmlHeader = False
         if line.count(HTML_SCENE_MARKER):
             try:
                 htmlOutput.append(
@@ -113,7 +104,25 @@ def insert_scene_titles(sceneTitles):
 
 def main():
     print(START_MESSAGE)
-    insert_scene_titles(collect_scene_titles())
+
+    try:
+        with open(HTML_FILE, 'r') as f:
+            htmlInput = f.readlines()
+    except IOError:
+        print('ERROR: Cannot open "' + HTML_FILE +
+              '".\nPlease export yWriter project as html first!\n')
+        sys.exit(1)
+
+    try:
+        with open(DSCR_FILE, 'r') as f:
+            dscrData = f.readlines()
+    except:
+        print('ERROR: Cannot open "' + DSCR_FILE +
+              '".\nPlease export outline first!\n')
+        sys.exit(1)
+
+    bookTitle = dscrData[0].rstrip()
+    insert_scene_titles(bookTitle, htmlInput, collect_scene_titles(dscrData))
 
 
 if __name__ == '__main__':
