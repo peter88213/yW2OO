@@ -21,7 +21,6 @@ For further information see https://github.com/peter88213/yW2OO
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import sys
-import re
 
 VERSION = 'v1.12.0'
 START_MESSAGE = "\nyW2OO - Structuring yWriter's html export " + VERSION
