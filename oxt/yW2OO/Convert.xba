@@ -24,9 +24,9 @@
 &apos; change: 2018-10-23 v1.0.5: Removed SmartQuote_de/en. Added search/replace for LibreOffice specific style name
 &apos; change: 2018-10-23 v2.0.0: Auto localization of style names
 &apos; change: 2019-06-22 v2.1.0: StandardPages template is no longer being associated with the converted document.
-&apos; change: 2019-10-08 v2.2.0: New Subroutine "FormatAnnotations"
+&apos; change: 2019-10-08 v2.2.0: New Subroutine &quot;FormatAnnotations&quot;
 &apos; change: 2019-10-23 v2.3.0: Check if StandardPages template exists.
-&apos; change: 2019-11-06 v2.4.0: Process "user" styles defined by css attributes.
+&apos; change: 2019-11-06 v2.4.0: Process &quot;user&quot; styles defined by css attributes.
 
 sub main
 
@@ -118,6 +118,8 @@ args2(18).Value = true
 
 dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args2())
 
+pStyles.removeByName(args2(10).Value)
+
 &apos; ----------------------------------------------------------------------
 &apos; &quot;Text body.textbody&quot; --&gt; &quot;Text body&quot;
 &apos; ----------------------------------------------------------------------
@@ -163,6 +165,8 @@ args3(18).Name = &quot;Quiet&quot;
 args3(18).Value = true
 
 dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args3())
+
+pStyles.removeByName(args3(10).Value)
 
 &apos; ----------------------------------------------------------------------
 &apos; Heading 2&quot; --&gt; &quot;Heading 2&quot; (cleaning up hard formatting of Heading 2)
@@ -349,7 +353,7 @@ End Sub
 Sub FormatAnnotations
 
 &apos; ----------------------------------------------------------------------
-&apos; Set "Author" of automatic generated annotations
+&apos; Set &quot;Author&quot; of automatic generated annotations
 &apos; ----------------------------------------------------------------------
 
 DocFields = ThisComponent.getTextFields().createEnumeration()
