@@ -32,9 +32,8 @@ DSCR_FILE = 'Auto_Descriptions.txt'
 # in each chapter, so scene titles can be identified by a leading ' 0'
 DSCR_SCENE_MARKER = '^ 0'
 
-# The yW2OO preprocessor formats each scene's first paragraph as a
-# 6th level heading. Scene title comments are to be inserted here.
-HTML_SCENE_MARKER = '<h6>'
+# Scene title comments are to be inserted here.
+HTML_SCENE_MARKER = "<p class='textbody'>"
 
 
 def collect_scene_titles():

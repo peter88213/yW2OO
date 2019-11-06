@@ -38,9 +38,9 @@ DELIMITER = '|'
 CSS_HEADER = '''<html>
 <head>
 <style type='text/css'>
-h2, h4, p, h6 {font: 1em monospace; margin: 3em; line-height: 1.5em}
-p, h6 {margin-top:0; margin-bottom:0}
-p {text-indent: 1em}
+h2, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}
+p.textbody {margin-top:0; margin-bottom:0}
+p.firstlineindent {margin-top:0; margin-bottom:0; text-indent: 1em}
 h2 {font-weight: bold}
 h2, h4 {text-align: center}
 strong {font-weight:normal; text-transform: uppercase}
@@ -54,20 +54,20 @@ strong {font-weight:normal; text-transform: uppercase}
 # because search strings contain single quotes.
 htmlReplaceList = [
     "<html><head></head><body>|" + CSS_HEADER + "|",
-    "<p align='justify'><i>&nbsp;</i></p>\n<p class='Para'>|<h6>|",
-    "<br /><br /><br /><center>&nbsp;</center><br /><br />\n\n<p class='Para'>|<h4>* * *</h4>\n<h6>|",
-    "<br /><br /><br /><center>*</center><br /><br />\n\n<p class='Para'>|<h4>*</h4>\n<h6>|",
-    "<br /><br /><br /><center>* * *</center><br /><br />\n\n<p class='Para'>|<h4>* * *</h4>\n<h6>|",
-    "<br /><br /><br /><center>#</center><br /><br />\n\n<p class='Para'>|<h4>#</h4>\n<h6>|",
-    "<br /><br /><br /><center>-=#=-</center><br /><br />\n\n<p class='Para'>|<h4>-=#=-</h4>\n<h6>|",
-    "<br /><br /><br /><center>&bull;</center><br /><br />\n\n<p class='Para'>|<h4>&bull;</h4>\n<h6>|",
-    "<center></center>\n\n<p class='Para'>|<h4>* * *</h4>\n<h6>|",
-    "<center>&nbsp;</center>\n\n<p class='Para'>|<h4>* * *</h4>\n<h6>|",
-    "<center>*</center>\n\n<p class='Para'>|<h4>*</h4>\n<h6>|",
-    "<center>* * *</center>\n\n<p class='Para'>|<h4>* * *</h4>\n<h6>|",
-    "<center>#</center>\n\n<p class='Para'>|<h4>#</h4>\n<h6>|",
-    "<center>-=#=-</center>\n\n<p class='Para'>|<h4>-=#=-</h4>\n<h6>|",
-    "<center>&bull;</center>\n\n<p class='Para'>|<h4>&bull;</h4>\n<h6>|",
+    "<p align='justify'><i>&nbsp;</i></p>\n<p class='Para'>|<p class='textbody'>|",
+    "<br /><br /><br /><center>&nbsp;</center><br /><br />\n\n<p class='Para'>|<h4>* * *</h4>\n<p class='textbody'>|",
+    "<br /><br /><br /><center>*</center><br /><br />\n\n<p class='Para'>|<h4>*</h4>\n<p class='textbody'>|",
+    "<br /><br /><br /><center>* * *</center><br /><br />\n\n<p class='Para'>|<h4>* * *</h4>\n<p class='textbody'>|",
+    "<br /><br /><br /><center>#</center><br /><br />\n\n<p class='Para'>|<h4>#</h4>\n<p class='textbody'>|",
+    "<br /><br /><br /><center>-=#=-</center><br /><br />\n\n<p class='Para'>|<h4>-=#=-</h4>\n<p class='textbody'>|",
+    "<br /><br /><br /><center>&bull;</center><br /><br />\n\n<p class='Para'>|<h4>&bull;</h4>\n<p class='textbody'>|",
+    "<center></center>\n\n<p class='Para'>|<h4>* * *</h4>\n<p class='textbody'>|",
+    "<center>&nbsp;</center>\n\n<p class='Para'>|<h4>* * *</h4>\n<p class='textbody'>|",
+    "<center>*</center>\n\n<p class='Para'>|<h4>*</h4>\n<p class='textbody'>|",
+    "<center>* * *</center>\n\n<p class='Para'>|<h4>* * *</h4>\n<p class='textbody'>|",
+    "<center>#</center>\n\n<p class='Para'>|<h4>#</h4>\n<p class='textbody'>|",
+    "<center>-=#=-</center>\n\n<p class='Para'>|<h4>-=#=-</h4>\n<p class='textbody'>|",
+    "<center>&bull;</center>\n\n<p class='Para'>|<h4>&bull;</h4>\n<p class='textbody'>|",
     "<table align=center border=0 width=790>||",
     "<tr><td>||",
     "<font name='arial' size=+1>||",
@@ -86,7 +86,7 @@ htmlReplaceList = [
     "&mdash;|--|",
     "  | |",
     "  | |",
-    "<p class='Para'>|<p>|",
+    "<p class='Para'>|<p class='firstlineindent'>|",
 ]
 
 
@@ -116,9 +116,6 @@ def main():
     htmlData = search_and_replace(htmlData, htmlReplaceList)
     assert htmlData != None
 
-    # this step is optional, because OpenOffice does accept
-    # faulty html code (for now).
-    htmlData = re.sub('<h6>(.+)</p>', r'<h6>\1</h6>', htmlData)
     # Make the html file look extra pretty.
     while htmlData.count('\n\n\n'):
         htmlData = htmlData.replace('\n\n\n', '\n\n')
