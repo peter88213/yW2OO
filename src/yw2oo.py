@@ -7,10 +7,8 @@ Open/LibreOffice Writer. It
 *   sets Chapter headings to "Heading 2" and removes the String
     "Chapter",
 *   sets Scene headings to "Heading 4",
-*   sets the first paragraph of each chapter and scene to "Heading 6"
-    (it is assumed that in Writer, default paragraphs will be set to 
-    "First-line indent", and "Heading 6" to "Text body" manually or 
-    by a macro),
+*   sets the first paragraph of each scene to "p.textbody",
+*   sets all other paragraphs to "p.firstlineindent",
 *   converts "italic" and "bold" into "emphasized" and "strong" 
     according to Writer's character styles,
 *   converts em-dashes into double hyphens (to be converted into the
