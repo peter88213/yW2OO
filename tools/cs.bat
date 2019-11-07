@@ -6,7 +6,7 @@ REM See: https://github.com/peter88213/yW2OO
 REM License: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM Copyright: (c) 2019, Peter Triesberger
 
-set _release=1.15.0
+set _release=1.15.1
 
 set _project=yW2OO
 
@@ -34,7 +34,7 @@ rem --------------------------------------------------------
 rem Generate release info
 rem --------------------------------------------------------
 
-echo v%_release%>%_target%\VERSION
+rem echo v%_release%>%_target%\VERSION
 
 rem --------------------------------------------------------
 rem Copy release items 

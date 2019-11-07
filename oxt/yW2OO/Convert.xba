@@ -27,6 +27,7 @@
 &apos; change: 2019-10-08 v2.2.0: New Subroutine &quot;FormatAnnotations&quot;
 &apos; change: 2019-10-23 v2.3.0: Check if StandardPages template exists.
 &apos; change: 2019-11-06 v2.4.0: Process &quot;user&quot; styles defined by css attributes.
+&apos; change: 2019-11-07 v2.4.1: Added exception handling.
 
 sub main
 
@@ -118,8 +119,6 @@ args2(18).Value = true
 
 dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args2())
 
-pStyles.removeByName(args2(10).Value)
-
 &apos; ----------------------------------------------------------------------
 &apos; &quot;Text body.textbody&quot; --&gt; &quot;Text body&quot;
 &apos; ----------------------------------------------------------------------
@@ -165,8 +164,6 @@ args3(18).Name = &quot;Quiet&quot;
 args3(18).Value = true
 
 dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args3())
-
-pStyles.removeByName(args3(10).Value)
 
 &apos; ----------------------------------------------------------------------
 &apos; Heading 2&quot; --&gt; &quot;Heading 2&quot; (cleaning up hard formatting of Heading 2)
@@ -260,6 +257,16 @@ args5(18).Value = true
 
 dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args5())
 
+On Error Goto ErrorHandler
+
+pStyles.removeByName(args2(10).Value)
+pStyles.removeByName(args3(10).Value)
+
+exit Sub
+
+ErrorHandler:
+Resume Next
+
 end Sub
 
 
@@ -310,6 +317,8 @@ dim document   as object
 dim dispatcher as object
 dim DocPath as string
 
+On Error goto DontSave
+
 document   = ThisComponent.CurrentController.Frame
 dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
 DocPath = ThisComponent.getURL()
@@ -324,6 +333,8 @@ args1(1).Name = &quot;FilterName&quot;
 args1(1).Value = &quot;writer8&quot;
 
 dispatcher.executeDispatch(document, &quot;.uno:SaveAs&quot;, &quot;&quot;, 0, args1())
+
+DontSave:
 
 end Sub
 
