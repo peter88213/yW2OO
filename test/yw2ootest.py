@@ -18,8 +18,8 @@ import yw2oo
 # where this script is placed and executed
 
 SRC_PATH = os.getcwd()
-TEST_DATA_PATH = '../test/data/'
-TEST_EXEC_PATH = '../test/yWriter5 Sample/Export/'
+TEST_DATA_PATH = 'data/'
+TEST_EXEC_PATH = 'yWriter5 Sample/Export/'
 
 # To be placed in TEST_DATA_PATH:
 
