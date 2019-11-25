@@ -34,7 +34,12 @@ TOO_MANY_SCENES = 'Auto_Descriptions_too_many.txt'
 
 # Reference data for correct execution
 YW2OO_REF_FILE = 'yW2OOreference5.html'
-SCETI_REF_FILE = 'SceTiReference5.html'
+if sceti.CREATE_BOOKMARKS:
+    SCETI_REF_FILE = 'SceTiReference5-Bookmarks.html'
+    CSV_REF_FILE = 'Exported Project-Bookmarks.csv'
+else:
+    SCETI_REF_FILE = 'SceTiReference5.html'
+    CSV_REF_FILE = 'Exported Project.csv'
 
 
 def read_file(inputFile):
@@ -105,7 +110,7 @@ class NormalOperation(unittest.TestCase):
                          read_file(TEST_DATA_PATH + SCETI_REF_FILE))
         # csv file to be generated
         self.assertEqual(read_file(TEST_EXEC_PATH + CSV_FILE),
-                         read_file(TEST_DATA_PATH + CSV_FILE))
+                         read_file(TEST_DATA_PATH + CSV_REF_FILE))
 
     def tearDown(self):
         os.chdir(TEST_PATH)
@@ -118,7 +123,7 @@ class NormalOperation(unittest.TestCase):
         except:
             pass
         try:
-            os.remove(TEST_EXEC_PATH + CSV_FILE)
+            os.remove(TEST_EXEC_PATH + CSV_REF_FILE)
         except:
             pass
 
@@ -165,7 +170,7 @@ class ProjectFileReadOnly(unittest.TestCase):
         except:
             pass
         try:
-            os.remove(TEST_EXEC_PATH + CSV_FILE)
+            os.remove(TEST_EXEC_PATH + CSV_REF_FILE)
         except:
             pass
 
@@ -207,7 +212,7 @@ class NotPreprocessed(unittest.TestCase):
         except:
             pass
         try:
-            os.remove(TEST_EXEC_PATH + CSV_FILE)
+            os.remove(TEST_EXEC_PATH + CSV_REF_FILE)
         except:
             pass
 
@@ -250,7 +255,7 @@ class NoProjectFile(unittest.TestCase):
         except:
             pass
         try:
-            os.remove(TEST_EXEC_PATH + CSV_FILE)
+            os.remove(TEST_EXEC_PATH + CSV_REF_FILE)
         except:
             pass
 
@@ -296,7 +301,7 @@ class NoDescriptionFile(unittest.TestCase):
         except:
             pass
         try:
-            os.remove(TEST_EXEC_PATH + CSV_FILE)
+            os.remove(TEST_EXEC_PATH + CSV_REF_FILE)
         except:
             pass
 
@@ -340,7 +345,7 @@ class DescriptionFileTooSmall(unittest.TestCase):
         except:
             pass
         try:
-            os.remove(TEST_EXEC_PATH + CSV_FILE)
+            os.remove(TEST_EXEC_PATH + CSV_REF_FILE)
         except:
             pass
 
@@ -385,7 +390,7 @@ class DescriptionFileTooBig(unittest.TestCase):
         except:
             pass
         try:
-            os.remove(TEST_EXEC_PATH + CSV_FILE)
+            os.remove(TEST_EXEC_PATH + CSV_REF_FILE)
         except:
             pass
 
