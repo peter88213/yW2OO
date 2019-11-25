@@ -17,7 +17,7 @@ import yw2oo
 # The paths are relative to the "src" directory,
 # where this script is placed and executed
 
-SRC_PATH = os.getcwd()
+TEST_PATH = os.getcwd()
 TEST_DATA_PATH = 'data/'
 TEST_EXEC_PATH = 'yWriter5 Sample/Export/'
 
@@ -26,6 +26,7 @@ TEST_EXEC_PATH = 'yWriter5 Sample/Export/'
 # Test data
 EXPORT_FILE = 'Exported Project.html'
 SCENE_FILE = 'Auto_Descriptions.txt'
+CSV_FILE = 'Exported Project.csv'
 
 # Test data for fault conditions
 NOT_ENOUGH_SCENES = 'Auto_Descriptions_not_enough.txt'
@@ -56,7 +57,7 @@ class NormalOperation(unittest.TestCase):
     """
 
     def setUp(self):
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         # Place the correct html Export file.
         copy_file(TEST_DATA_PATH + EXPORT_FILE,
                   TEST_EXEC_PATH + EXPORT_FILE)
@@ -88,7 +89,7 @@ class NormalOperation(unittest.TestCase):
         """ Test yw2oo without running sceti afterwards. """
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         # html file must contain all the replacements.
         self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
                          read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
@@ -98,19 +99,26 @@ class NormalOperation(unittest.TestCase):
         os.chdir(TEST_EXEC_PATH)
         yw2oo.main()
         sceti.main()
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         # html file must contain all the replacements plus annotations.
         self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
                          read_file(TEST_DATA_PATH + SCETI_REF_FILE))
+        # csv file to be generated
+        self.assertEqual(read_file(TEST_EXEC_PATH + CSV_FILE),
+                         read_file(TEST_DATA_PATH + CSV_FILE))
 
     def tearDown(self):
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         try:
             os.remove(TEST_EXEC_PATH + EXPORT_FILE)
         except:
             pass
         try:
             os.remove(TEST_EXEC_PATH + SCENE_FILE)
+        except:
+            pass
+        try:
+            os.remove(TEST_EXEC_PATH + CSV_FILE)
         except:
             pass
 
@@ -123,7 +131,7 @@ class ProjectFileReadOnly(unittest.TestCase):
     """
 
     def setUp(self):
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         # Place the correct html Export file.
         copy_file(TEST_DATA_PATH + EXPORT_FILE,
                   TEST_EXEC_PATH + EXPORT_FILE)
@@ -141,10 +149,10 @@ class ProjectFileReadOnly(unittest.TestCase):
         self.assertRaises(SystemExit, yw2oo.main)
         # Fault condition must cause 'sceti' program termination.
         self.assertRaises(SystemExit, sceti.main)
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
 
     def tearDown(self):
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         # Set html Export file read + write.
         os.system('attrib -R "' +
                   os.path.normpath(TEST_EXEC_PATH + EXPORT_FILE) + '"')
@@ -154,6 +162,10 @@ class ProjectFileReadOnly(unittest.TestCase):
             pass
         try:
             os.remove(TEST_EXEC_PATH + SCENE_FILE)
+        except:
+            pass
+        try:
+            os.remove(TEST_EXEC_PATH + CSV_FILE)
         except:
             pass
 
@@ -166,7 +178,7 @@ class NotPreprocessed(unittest.TestCase):
     """
 
     def setUp(self):
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         # Place the correct html Export file.
         copy_file(TEST_DATA_PATH + EXPORT_FILE,
                   TEST_EXEC_PATH + EXPORT_FILE)
@@ -179,19 +191,23 @@ class NotPreprocessed(unittest.TestCase):
         os.chdir(TEST_EXEC_PATH)
         # Fault condition must cause 'sceti' program termination.
         self.assertRaises(SystemExit, sceti.main)
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         # html file must remain unchanged.
         self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
                          read_file(TEST_DATA_PATH + EXPORT_FILE))
 
     def tearDown(self):
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         try:
             os.remove(TEST_EXEC_PATH + EXPORT_FILE)
         except:
             pass
         try:
             os.remove(TEST_EXEC_PATH + SCENE_FILE)
+        except:
+            pass
+        try:
+            os.remove(TEST_EXEC_PATH + CSV_FILE)
         except:
             pass
 
@@ -204,7 +220,7 @@ class NoProjectFile(unittest.TestCase):
     """
 
     def setUp(self):
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         # Make sure there's no "html Export file" present.
         try:
             os.remove(TEST_EXEC_PATH + EXPORT_FILE)
@@ -221,16 +237,20 @@ class NoProjectFile(unittest.TestCase):
         self.assertRaises(SystemExit, yw2oo.main)
         # Fault condition must cause 'sceti' program termination.
         self.assertRaises(SystemExit, sceti.main)
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
 
     def tearDown(self):
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         try:
             os.remove(TEST_EXEC_PATH + EXPORT_FILE)
         except:
             pass
         try:
             os.remove(TEST_EXEC_PATH + SCENE_FILE)
+        except:
+            pass
+        try:
+            os.remove(TEST_EXEC_PATH + CSV_FILE)
         except:
             pass
 
@@ -244,7 +264,7 @@ class NoDescriptionFile(unittest.TestCase):
     """
 
     def setUp(self):
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         # Make sure there's no "scene descriptions file" present.
         try:
             os.remove(TEST_EXEC_PATH + SCENE_FILE)
@@ -260,19 +280,23 @@ class NoDescriptionFile(unittest.TestCase):
         yw2oo.main()
         # Fault condition must cause 'sceti' program termination.
         self.assertRaises(SystemExit, sceti.main)
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         # html file must remain unchanged.
         self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
                          read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
 
     def tearDown(self):
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         try:
             os.remove(TEST_EXEC_PATH + EXPORT_FILE)
         except:
             pass
         try:
             os.remove(TEST_EXEC_PATH + SCENE_FILE)
+        except:
+            pass
+        try:
+            os.remove(TEST_EXEC_PATH + CSV_FILE)
         except:
             pass
 
@@ -287,7 +311,7 @@ class DescriptionFileTooSmall(unittest.TestCase):
     """
 
     def setUp(self):
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         copy_file(TEST_DATA_PATH + NOT_ENOUGH_SCENES,
                   TEST_EXEC_PATH + SCENE_FILE)
         # Place the correct html Export file.
@@ -300,19 +324,23 @@ class DescriptionFileTooSmall(unittest.TestCase):
         yw2oo.main()
         # Fault condition must cause 'sceti' program termination.
         self.assertRaises(SystemExit, sceti.main)
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         # html file must remain unchanged.
         self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
                          read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
 
     def tearDown(self):
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         try:
             os.remove(TEST_EXEC_PATH + EXPORT_FILE)
         except:
             pass
         try:
             os.remove(TEST_EXEC_PATH + SCENE_FILE)
+        except:
+            pass
+        try:
+            os.remove(TEST_EXEC_PATH + CSV_FILE)
         except:
             pass
 
@@ -327,7 +355,7 @@ class DescriptionFileTooBig(unittest.TestCase):
     """
 
     def setUp(self):
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         # Place the test scene descriptions.
         copy_file(TEST_DATA_PATH + TOO_MANY_SCENES,
                   TEST_EXEC_PATH + SCENE_FILE)
@@ -341,19 +369,23 @@ class DescriptionFileTooBig(unittest.TestCase):
         yw2oo.main()
         # Fault condition must cause 'sceti' program termination.
         self.assertRaises(SystemExit, sceti.main)
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         # html file must remain unchanged.
         self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
                          read_file(TEST_DATA_PATH + YW2OO_REF_FILE))
 
     def tearDown(self):
-        os.chdir(SRC_PATH)
+        os.chdir(TEST_PATH)
         try:
             os.remove(TEST_EXEC_PATH + EXPORT_FILE)
         except:
             pass
         try:
             os.remove(TEST_EXEC_PATH + SCENE_FILE)
+        except:
+            pass
+        try:
+            os.remove(TEST_EXEC_PATH + CSV_FILE)
         except:
             pass
 
