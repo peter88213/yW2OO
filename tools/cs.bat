@@ -4,9 +4,9 @@ REM and puts it the "build" setup directory to be zipped.
 REM 
 REM See: https://github.com/peter88213/yW2OO
 REM License: The MIT License (https://opensource.org/licenses/mit-license.php)
-REM Copyright: (c) 2019, Peter Triesberger
+REM Copyright: (c) 2020, Peter Triesberger
 
-set _release=1.15.1
+set _release=1.16.0
 
 set _project=yW2OO
 

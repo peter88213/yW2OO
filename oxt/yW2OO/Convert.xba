@@ -28,6 +28,7 @@
 &apos; change: 2019-10-23 v2.3.0: Check if StandardPages template exists.
 &apos; change: 2019-11-06 v2.4.0: Process &quot;user&quot; styles defined by css attributes.
 &apos; change: 2019-11-07 v2.4.1: Added exception handling.
+&apos; change: 2020-01-07 v2.5.0: Added SaveAsHTML.
 
 sub main
 
@@ -322,7 +323,7 @@ On Error goto DontSave
 document   = ThisComponent.CurrentController.Frame
 dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
 DocPath = ThisComponent.getURL()
-DocPath = Left(DocPath,len(DocPath)-4)+&quot;odt&quot;
+DocPath = REPLACE(DocPath,&quot;.html&quot;,&quot;.odt&quot;)
 
 &apos; Use path and name of input file -- just change file extension
 
@@ -371,9 +372,44 @@ DocFields = ThisComponent.getTextFields().createEnumeration()
 Do While DocFields.hasMoreElements()
 	DocField = DocFields.nextElement()
 	If DocField.supportsService(&quot;com.sun.star.text.TextField.Annotation&quot;) Then
-		DocField.Author = &quot;Scene descriptions&quot;
+		If DocField.Author = NONE  Then
+			DocField.Author = &quot;scene title&quot;
+		End If
 	End If
 Loop
+
 End Sub
+
+
+
+sub SaveAsHTML
+
+&apos; ----------------------------------------------------------------------
+&apos; Save document in HTML format
+&apos; ----------------------------------------------------------------------
+
+dim document   as object
+dim dispatcher as object
+dim DocPath as string
+
+On Error goto DontSave
+
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+DocPath = ThisComponent.getURL()
+DocPath = REPLACE(DocPath,&quot;.odt&quot;,&quot;.html&quot;)
+&apos; Use path and name of input file -- just change file extension
+
+dim args1(1) as new com.sun.star.beans.PropertyValue
+args1(0).Name = &quot;URL&quot;
+args1(0).Value = DocPath
+args1(1).Name = &quot;FilterName&quot;
+args1(1).Value = &quot;HTML (StarWriter)&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:SaveAs&quot;, &quot;&quot;, 0, args1())
+
+DontSave:
+
+end Sub
 
 </script:module>
