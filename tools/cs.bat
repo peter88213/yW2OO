@@ -6,7 +6,7 @@ REM See: https://github.com/peter88213/yW2OO
 REM License: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM Copyright: (c) 2020, Peter Triesberger
 
-set _release=1.16.0
+set _release=2.0.0
 
 set _project=yW2OO
 
@@ -48,11 +48,11 @@ set _file=%_root%LIESMICH.md
 set _dest=%_target%\
 call :copyFile
 
-set _file=%_root%src\yw2oo.pyw
+set _file=%_root%src\yw2oo.py
 set _dest=%_target%\setup\program\
 call :copyFile
 
-set _file=%_root%oxt\yW2OO-%_release%.oxt
+set _file=%_root%oxt\yW2OO-L-%_release%.oxt
 set _dest=%_target%\setup\program\
 call :copyFile
 

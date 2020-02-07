@@ -1,6 +1,6 @@
-"""yW2OO v2.0 - Import and export ywriter7 scenes for editing. 
+"""yW2OO v2.0 -Export ywriter7 scenes as html. 
 
-Proof reading file format: html (with invisible chapter and scene tags)
+Syntax: yw2oo.py your_project.yw7
 
 Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/yW2OO
@@ -8,12 +8,55 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 
 import sys
-
-
-from html.parser import HTMLParser
-
-from abc import abstractmethod
 import os
+import re
+import xml.etree.ElementTree as ET
+
+TITLE = 'yW2OO v2.0'
+
+HTML_SCENE_DIVIDER = '* * *'
+# To be placed between scene ending and beginning tags.
+
+# Make the generated html file look good in a web browser:
+
+STYLESHEET = '<style type="text/css">\n' + \
+    'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
+    'h1, h2, h3, h4 {text-align: center}\n' +\
+    'h1 {letter-spacing: 0.2em; font-style: italic}' + \
+    'h1, h2 {font-weight: bold}\n' + \
+    'h3 {font-style: italic}\n' + \
+    'p.textbody {margin-top:0; margin-bottom:0}\n' + \
+    'p.firstlineindent {margin-top:0; margin-bottom:0; text-indent: 1em}\n' + \
+    'strong {font-weight:normal; text-transform: uppercase}\n' + \
+    '</style>\n'
+
+HTML_HEADER = '<html>\n' + '<head>\n' + \
+    '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n' + STYLESHEET + \
+    '<title>$bookTitle$</title>\n' + \
+    '</head>\n' + '<body>\n'
+
+HTML_FOOTER = '\n</body>\n</html>\n'
+
+HTML_HEADING_MARKERS = ("h2", "h1")
+# Index is yWriter's chapter chLevel:
+# 0 is for an ordinary chapter
+# 1 is for a chapter beginning a section
+
+
+def to_html(text):
+    """Convert yw7 raw markup to html. Return a html string."""
+    try:
+        text = text.replace('\n', '</p>\n<p class="firstlineindent">')
+        text = text.replace('[i]', '<em>')
+        text = text.replace('[/i]', '</em>')
+        text = text.replace('[b]', '<strong>')
+        text = text.replace('[/b]', '</strong>')
+        text = re.sub('\<p(.+?)\>\<\/p\>', '<p\g<1>><br></p>', text)
+
+    except:
+        pass
+
+    return text
 
 
 class Novel():
@@ -29,21 +72,6 @@ class Novel():
 
     def __init__(self, filePath):
         self.title = None
-        # str
-
-        self.summary = None
-        # str
-
-        self.fieldTitle1 = None
-        # str
-
-        self.fieldTitle2 = None
-        # str
-
-        self.fieldTitle3 = None
-        # str
-
-        self.fieldTitle4 = None
         # str
 
         self.chapters = {}
@@ -79,18 +107,6 @@ class Novel():
         if filePath.lower().endswith(self._FILE_EXTENSION):
             self._filePath = filePath
 
-    @abstractmethod
-    def read(self):
-        """Parse the file and store selected properties.
-        To be overwritten by file format specific subclasses.
-        """
-
-    @abstractmethod
-    def write(self, novel):
-        """Write selected novel properties to the file.
-        To be overwritten by file format specific subclasses.
-        """
-
     def file_exists(self):
         """Check whether the file specified by _filePath exists. """
         if os.path.isfile(self._filePath):
@@ -122,9 +138,6 @@ class Chapter():
         self.title = None
         # str
 
-        self.summary = None
-        # str
-
         self.chLevel = None
         # int
         # 0 = chapter level
@@ -144,17 +157,11 @@ class Chapter():
         # corresponds to the chapter's order of the scenes.
 
 
-import re
-
-
 class Scene():
     """yWriter scene representation."""
 
     def __init__(self):
         self.title = None
-        # str
-
-        self.summary = None
         # str
 
         self._sceneContent = None
@@ -171,24 +178,6 @@ class Scene():
 
         self.isUnused = None
         # bool
-
-        self.tags = None
-        # list of str
-
-        self.sceneNotes = None
-        # str
-
-        self.field1 = None
-        # str
-
-        self.field2 = None
-        # str
-
-        self.field3 = None
-        # str
-
-        self.field4 = None
-        # str
 
     @property
     def sceneContent(self):
@@ -212,122 +201,7 @@ class Scene():
         self.letterCount = len(text)
 
 
-HTML_SCENE_DIVIDER = '* * *'
-# To be placed between scene ending and beginning tags.
-
-# Make the generated html file look good in a web browser:
-
-STYLESHEET = '<style type="text/css">\n' + \
-    'h1, h2, h3, h4, p {font: 1em monospace; margin: 3em; line-height: 1.5em}\n' + \
-    'h1, h2, h3, h4 {text-align: center}\n' +\
-    'h1 {letter-spacing: 0.2em; font-style: italic}' + \
-    'h1, h2 {font-weight: bold}\n' + \
-    'h3 {font-style: italic}\n' + \
-    'p.textbody {margin-top:0; margin-bottom:0}\n' + \
-    'p.firstlineindent {margin-top:0; margin-bottom:0; text-indent: 1em}\n' + \
-    'strong {font-weight:normal; text-transform: uppercase}\n' + \
-    '</style>\n'
-
-HTML_HEADER = '<html>\n' + '<head>\n' + \
-    '<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n' + STYLESHEET + \
-    '<title>$bookTitle$</title>\n' + \
-    '</head>\n' + '<body>\n'
-
-HTML_FOOTER = '\n</body>\n</html>\n'
-
-
-def to_yw7(text):
-    """Convert html tags to yw7 raw markup. Return a yw7 markup string."""
-    text = text.replace('<i>', '[i]')
-    text = text.replace('<I>', '[i]')
-    text = text.replace('<em>', '[i]')
-    text = text.replace('<EM>', '[i]')
-    text = text.replace('</i>', '[/i]')
-    text = text.replace('</I>', '[/i]')
-    text = text.replace('</em>', '[/i]')
-    text = text.replace('</EM>', '[/i]')
-    text = text.replace('<b>', '[b]')
-    text = text.replace('<B>', '[b]')
-    text = text.replace('</b>', '[/b]')
-    text = text.replace('</B>', '[/b]')
-    text = text.replace('</strong><', '[/b]')
-    text = text.replace('</STRONG>', '[/b]')
-    text = text.replace('\n', ' ')
-    text = text.replace('\r', ' ')
-    text = text.replace('\t', ' ')
-
-    text = re.sub('<em.+?>', '[i]', text)
-    text = re.sub('<EM.+?>', '[i]', text)
-    text = re.sub('<strong.+?>', '[b]', text)
-    text = re.sub('<STRONG.+?>', '[b]', text)
-
-    text = text.replace('[/b][b]', '')
-    text = text.replace('[/i][i]', '')
-
-    while '  ' in text:
-        text = text.replace('  ', ' ')
-
-    return text
-
-
-def to_html(text):
-    """Convert yw7 raw markup to html. Return a html string."""
-    try:
-        text = text.replace('\n', '</p>\n<p class="firstlineindent">')
-        text = text.replace('[i]', '<em>')
-        text = text.replace('[/i]', '</em>')
-        text = text.replace('[b]', '<strong>')
-        text = text.replace('[/b]', '</strong>')
-        text = re.sub('\<p(.+?)\>\<\/p\>', '<p\g<1>><br></p>', text)
-
-    except:
-        pass
-
-    return text
-
-
-def strip_markup(text):
-    """Strip yw7 raw markup. Return a plain text string."""
-    try:
-        text = text.replace('[i]', '')
-        text = text.replace('[/i]', '')
-        text = text.replace('[b]', '')
-        text = text.replace('[/b]', '')
-
-    except:
-        pass
-
-    return text
-
-
-def read_html_file(filePath) -> tuple:
-    """Open a html file being encoded utf-8 or ANSI.
-    Return a tuple:
-    [0] = Message beginning with SUCCESS or ERROR.
-    [1] = The file content in a single string. 
-    """
-    try:
-        with open(filePath, 'r', encoding='utf-8') as f:
-            text = (f.read())
-    except:
-        # HTML files exported by a word processor may be ANSI encoded.
-        try:
-            with open(filePath, 'r') as f:
-                text = (f.read())
-
-        except(FileNotFoundError):
-            return ('ERROR: "' + filePath + '" not found.', None)
-
-    return ('SUCCESS', text)
-
-
-HTML_HEADING_MARKERS = ("h2", "h1")
-# Index is yWriter's chapter chLevel:
-# 0 is for an ordinary chapter
-# 1 is for a chapter beginning a section
-
-
-class Manuscript(Novel, HTMLParser):
+class Manuscript(Novel):
     """HTML file representation of an yWriter project's manuscript part.
 
     Represents a html file with chapter and scene sections 
@@ -340,72 +214,9 @@ class Manuscript(Novel, HTMLParser):
 
     def __init__(self, filePath):
         Novel.__init__(self, filePath)
-        HTMLParser.__init__(self)
         self._lines = []
         self._scId = None
         self._chId = None
-
-    def handle_starttag(self, tag, attrs):
-        """Recognize the beginning ot the body section.
-        Overwrites HTMLparser.handle_starttag()
-        """
-        if tag == 'div':
-
-            if attrs[0][0] == 'id':
-
-                if attrs[0][1].startswith('ChID'):
-                    self._chId = re.search('[0-9]+', attrs[0][1]).group()
-                    self.chapters[self._chId] = Chapter()
-                    self.chapters[self._chId].srtScenes = []
-                    self.srtChapters.append(self._chId)
-
-                elif attrs[0][1].startswith('ScID'):
-                    self._scId = re.search('[0-9]+', attrs[0][1]).group()
-                    self.scenes[self._scId] = Scene()
-                    self.chapters[self._chId].srtScenes.append(self._scId)
-
-    def handle_endtag(self, tag):
-        """Recognize the end of the scene section and save data.
-        Overwrites HTMLparser.handle_endtag().
-        """
-        if self._scId is not None:
-
-            if tag == 'div':
-                self.scenes[self._scId].sceneContent = ''.join(self._lines)
-                self._lines = []
-                self._scId = None
-
-            elif tag == 'p':
-                self._lines.append('\n')
-
-        elif self._chId is not None:
-
-            if tag == 'div':
-                self._chId = None
-
-    def handle_data(self, data):
-        """Collect data within scene sections.
-        Overwrites HTMLparser.handle_data().
-        """
-        if self._scId is not None:
-            self._lines.append(data.rstrip().lstrip())
-
-    def read(self):
-        """Read scene content from a html file 
-        with chapter and scene sections.
-        Return a message beginning with SUCCESS or ERROR. 
-        """
-        result = read_html_file(self._filePath)
-
-        if result[0].startswith('ERROR'):
-            return (result[0])
-
-        text = to_yw7(result[1])
-
-        # Invoke HTML parser.
-
-        self.feed(text)
-        return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
     def write(self, novel):
         """Generate a html file containing:
@@ -443,7 +254,6 @@ class Manuscript(Novel, HTMLParser):
         for chId in self.srtChapters:
 
             if (not self.chapters[chId].isUnused) and self.chapters[chId].chType == 0:
-                lines.append('<div id="ChID:' + chId + '">')
                 headingMarker = HTML_HEADING_MARKERS[self.chapters[chId].chLevel]
                 lines.append('<' + headingMarker + '>' + format_chapter_title(
                     self.chapters[chId].title) + '</' + headingMarker + '>')
@@ -452,7 +262,6 @@ class Manuscript(Novel, HTMLParser):
 
                     if not self.scenes[scId].isUnused:
                         lines.append('<h4>' + HTML_SCENE_DIVIDER + '</h4>')
-                        lines.append('<div id="ScID:' + scId + '">')
                         lines.append('<p class="textbody">')
 
                         # Insert scene ID as anchor.
@@ -469,9 +278,6 @@ class Manuscript(Novel, HTMLParser):
                                 to_html(self.scenes[scId].sceneContent))
 
                         lines.append('</p>')
-                        lines.append('</div>')
-
-                lines.append('</div>')
 
         lines.append(HTML_FOOTER)
         text = '\n'.join(lines)
@@ -497,69 +303,6 @@ class Manuscript(Novel, HTMLParser):
         return None
 
 
-import xml.etree.ElementTree as ET
-
-
-def indent(elem, level=0):
-    """xml pretty printer
-
-    Kudos to to Fredrik Lundh. 
-    Source: http://effbot.org/zone/element-lib.htm#prettyprint
-    """
-    i = "\n" + level * "  "
-
-    if len(elem):
-
-        if not elem.text or not elem.text.strip():
-            elem.text = i + "  "
-
-        if not elem.tail or not elem.tail.strip():
-            elem.tail = i
-
-        for elem in elem:
-            indent(elem, level + 1)
-
-        if not elem.tail or not elem.tail.strip():
-            elem.tail = i
-
-    else:
-        if level and (not elem.tail or not elem.tail.strip()):
-            elem.tail = i
-
-
-def cdata(filePath, cdataTags: list):
-    '''Postprocess the xml file created by ElementTree:
-       Put a header on top and insert the missing CDATA tags.
-    '''
-    with open(filePath, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-
-    newlines = ['<?xml version="1.0" encoding="utf-8"?>\n']
-
-    for line in lines:
-
-        for tag in cdataTags:
-            line = re.sub('\<' + tag + '\>', '<' +
-                          tag + '><![CDATA[', line)
-            line = re.sub('\<\/' + tag + '\>',
-                          ']]></' + tag + '>', line)
-
-        newlines.append(line)
-
-    newXml = ''.join(newlines)
-    newXml = newXml.replace('[CDATA[ \n', '[CDATA[')
-    newXml = newXml.replace('\n]]', ']]')
-
-    try:
-        with open(filePath, 'w', encoding='utf-8') as f:
-            f.write(newXml)
-
-    except:
-        return 'ERROR: Can not write"' + filePath + '".'
-
-    return 'SUCCESS: "' + filePath + '" written.'
-
-
 class Yw7File(Novel):
     """yWriter 7 xml project file representation."""
 
@@ -568,38 +311,11 @@ class Yw7File(Novel):
 
     def __init__(self, filePath):
         Novel.__init__(self, filePath)
-        self._cdataTags = ['Title', 'AuthorName', 'Bio', 'Desc', 'FieldTitle1', 'FieldTitle2', 'FieldTitle3', 'FieldTitle4',
-                           'LaTeXHeaderFile', 'Tags', 'AKA', 'ImageFile', 'FullName', 'Goals', 'Notes', 'RTFFile', 'SceneContent']
-        # Names of yw7 xml elements containing CDATA.
-        # ElementTree.write omits CDATA tags, so they have to be inserted
-        # afterwards.
 
     def read(self):
         """Parse the yw7 xml file located at filePath, fetching the Novel attributes.
         Return a message beginning with SUCCESS or ERROR.
         """
-
-        # Complete list of tags requiring CDATA (if incomplete).
-
-        try:
-            with open(self._filePath, 'r', encoding='utf-8') as f:
-                xmlData = f.read()
-
-        except(FileNotFoundError):
-            return 'ERROR: "' + self._filePath + '" not found.'
-
-        lines = xmlData.split('\n')
-
-        for line in lines:
-            tag = re.search('\<(.+?)\>\<\!\[CDATA', line)
-
-            if tag is not None:
-
-                if not (tag.group(1) in self._cdataTags):
-                    self._cdataTags.append(tag.group(1))
-
-        # Open the file again and let ElementTree parse its xml structure.
-
         try:
             self._tree = ET.parse(self._filePath)
             root = self._tree.getroot()
@@ -610,22 +326,11 @@ class Yw7File(Novel):
         prj = root.find('PROJECT')
         self.title = prj.find('Title').text
 
-        if prj.find('Desc') is not None:
-            self.summary = prj.find('Desc').text
-
-        self.fieldTitle1 = prj.find('FieldTitle1').text
-        self.fieldTitle2 = prj.find('FieldTitle2').text
-        self.fieldTitle3 = prj.find('FieldTitle3').text
-        self.fieldTitle4 = prj.find('FieldTitle4').text
-
         for chp in root.iter('CHAPTER'):
             chId = chp.find('ID').text
             self.chapters[chId] = Chapter()
             self.chapters[chId].title = chp.find('Title').text
             self.srtChapters.append(chId)
-
-            if chp.find('Desc') is not None:
-                self.chapters[chId].summary = chp.find('Desc').text
 
             if chp.find('SectionStart') is not None:
                 self.chapters[chId].chLevel = 1
@@ -655,29 +360,6 @@ class Yw7File(Novel):
             self.scenes[scId] = Scene()
             self.scenes[scId].title = scn.find('Title').text
 
-            if scn.find('Desc') is not None:
-                self.scenes[scId].summary = scn.find('Desc').text
-
-            if scn.find('Notes') is not None:
-                self.scenes[scId].sceneNotes = scn.find('Notes').text
-
-            if scn.find('Field1') is not None:
-                self.scenes[scId].field1 = scn.find('Field1').text
-
-            if scn.find('Field2') is not None:
-                self.scenes[scId].field2 = scn.find('Field2').text
-
-            if scn.find('Field3') is not None:
-                self.scenes[scId].field3 = scn.find('Field3').text
-
-            if scn.find('Field4') is not None:
-                self.scenes[scId].field4 = scn.find('Field4').text
-
-            if scn.find('Tags') is not None:
-
-                if scn.find('Tags').text is not None:
-                    self.scenes[scId].tags = scn.find('Tags').text.split(';')
-
             if scn.find('Unused') is not None:
                 self.scenes[scId].isUnused = True
 
@@ -688,260 +370,8 @@ class Yw7File(Novel):
 
         return 'SUCCESS: ' + str(len(self.scenes)) + ' Scenes read from "' + self._filePath + '".'
 
-    def write(self, novel):
-        """Open the yw7 xml file located at filePath and replace a set 
-        of items by the novel attributes not being None.
-        Return a message beginning with SUCCESS or ERROR.
-        """
-
-        # Copy the novel's attributes to write
-
-        if novel.title is not None:
-            self.title = novel.title
-
-        if novel.summary is not None:
-            self.summary = novel.summary
-
-        if novel.fieldTitle1 is not None:
-            self.fieldTitle1 = novel.fieldTitle1
-
-        if novel.fieldTitle2 is not None:
-            self.fieldTitle2 = novel.fieldTitle2
-
-        if novel.fieldTitle3 is not None:
-            self.fieldTitle3 = novel.fieldTitle3
-
-        if novel.fieldTitle4 is not None:
-            self.fieldTitle4 = novel.fieldTitle4
-
-        '''Do not modify these items yet:
-        if novel.srtChapters != []:
-            self.srtChapters = novel.srtChapters
-        '''
-
-        if novel.scenes is not None:
-
-            for scId in novel.scenes:
-
-                if novel.scenes[scId].title is not None:
-                    self.scenes[scId].title = novel.scenes[scId].title
-
-                if novel.scenes[scId].summary is not None:
-                    self.scenes[scId].summary = novel.scenes[scId].summary
-
-                if novel.scenes[scId].sceneContent is not None:
-                    self.scenes[scId].sceneContent = novel.scenes[scId].sceneContent
-
-                if novel.scenes[scId].sceneNotes is not None:
-                    self.scenes[scId].sceneNotes = novel.scenes[scId].sceneNotes
-
-                if novel.scenes[scId].field1 is not None:
-                    self.scenes[scId].field1 = novel.scenes[scId].field1
-
-                if novel.scenes[scId].field2 is not None:
-                    self.scenes[scId].field2 = novel.scenes[scId].field2
-
-                if novel.scenes[scId].field3 is not None:
-                    self.scenes[scId].field3 = novel.scenes[scId].field3
-
-                if novel.scenes[scId].field4 is not None:
-                    self.scenes[scId].field4 = novel.scenes[scId].field4
-
-                if novel.scenes[scId].tags is not None:
-                    self.scenes[scId].tags = novel.scenes[scId].tags
-
-                '''Do not modify these items yet:
-                if novel.scenes[scId].isUnused is not None:
-                    self.scenes[scId].isUnused = novel.chapters[chId].isUnused
-                '''
-
-        if novel.chapters is not None:
-
-            for chId in novel.chapters:
-
-                if novel.chapters[chId].title is not None:
-                    self.chapters[chId].title = novel.chapters[chId].title
-
-                if novel.chapters[chId].summary is not None:
-                    self.chapters[chId].summary = novel.chapters[chId].summary
-
-                '''Do not modify these items yet:
-                if novel.chapters[chId].chLevel is not None:
-                    self.chapters[chId].chLevel = novel.chapters[chId].chLevel
-
-                if novel.chapters[chId].chType is not None:
-                    self.chapters[chId].chType = novel.chapters[chId].chType
-
-                if novel.chapters[chId].isUnused is not None:
-                    self.chapters[chId].isUnused = novel.chapters[chId].isUnused
-
-                if novel.chapters[chId].srtScenes != []:
-                    self.chapters[chId].srtScenes = novel.chapters[chId].srtScenes
-                '''
-
-        sceneCount = 0
-        root = self._tree.getroot()
-        prj = root.find('PROJECT')
-        prj.find('Title').text = self.title
-        prj.find('FieldTitle1').text = self.fieldTitle1
-        prj.find('FieldTitle2').text = self.fieldTitle2
-        prj.find('FieldTitle3').text = self.fieldTitle3
-        prj.find('FieldTitle4').text = self.fieldTitle4
-
-        if self.summary is not None:
-
-            if prj.find('Desc') is None:
-                newDesc = ET.SubElement(prj, 'Desc')
-                newDesc.text = self.summary
-
-            else:
-                prj.find('Desc').text = self.summary
-
-        for chp in root.iter('CHAPTER'):
-            chId = chp.find('ID').text
-
-            if chId in self.chapters:
-                chp.find('Title').text = self.chapters[chId].title
-
-                if self.chapters[chId].summary is not None:
-
-                    if chp.find('Desc') is None:
-                        newDesc = ET.SubElement(chp, 'Desc')
-                        newDesc.text = self.chapters[chId].summary
-
-                    else:
-                        chp.find('Desc').text = self.chapters[chId].summary
-
-                '''Do not modify these items yet:
-                chp.find('Type').text = str(self.chapters[chId].chType)
-                
-                levelInfo = chp.find('SectionStart')
-                
-                if levelInfo is not None:
-                    
-                    if self.chapters[chId].chLevel == 0:
-                         chp.remove(levelInfo)
-
-                unusedMarker = chp.find('Unused')
-                
-                if unused is not None:
-                    
-                    if not self.chapters[chId].isUnused:
-                         chp.remove(unusedMarker)
-                '''
-
-        for scn in root.iter('SCENE'):
-
-            scId = scn.find('ID').text
-
-            if scId in self.scenes:
-
-                if self.scenes[scId].title is not None:
-                    scn.find('Title').text = self.scenes[scId].title
-
-                if self.scenes[scId].summary is not None:
-
-                    if scn.find('Desc') is None:
-                        newDesc = ET.SubElement(scn, 'Desc')
-                        newDesc.text = self.scenes[scId].summary
-
-                    else:
-                        scn.find('Desc').text = self.scenes[scId].summary
-
-                if self.scenes[scId]._sceneContent is not None:
-                    scn.find(
-                        'SceneContent').text = self.scenes[scId]._sceneContent
-                    scn.find('WordCount').text = str(
-                        self.scenes[scId].wordCount)
-                    scn.find('LetterCount').text = str(
-                        self.scenes[scId].letterCount)
-
-                if self.scenes[scId].sceneNotes is not None:
-
-                    if scn.find('Notes') is None:
-                        newNotes = ET.SubElement(scn, 'Notes')
-                        newNotes.text = self.scenes[scId].sceneNotes
-
-                    else:
-                        scn.find('Notes').text = self.scenes[scId].sceneNotes
-
-                if self.scenes[scId].field1 is not None:
-
-                    if scn.find('Field1') is None:
-                        newField = ET.SubElement(scn, 'Field1')
-                        newField.text = self.scenes[scId].field1
-
-                    else:
-                        scn.find('Field1').text = self.scenes[scId].field1
-
-                if self.scenes[scId].field2 is not None:
-
-                    if scn.find('Field2') is None:
-                        newField = ET.SubElement(scn, 'Field2')
-                        newField.text = self.scenes[scId].field2
-
-                    else:
-                        scn.find('Field2').text = self.scenes[scId].field2
-
-                if self.scenes[scId].field3 is not None:
-
-                    if scn.find('Field3') is None:
-                        newField = ET.SubElement(scn, 'Field3')
-                        newField.text = self.scenes[scId].field3
-
-                    else:
-                        scn.find('Field3').text = self.scenes[scId].field3
-
-                if self.scenes[scId].field4 is not None:
-
-                    if scn.find('Field4') is None:
-                        newField = ET.SubElement(scn, 'Field4')
-                        newField.text = self.scenes[scId].field4
-
-                    else:
-                        scn.find('Field4').text = self.scenes[scId].field4
-
-                if self.scenes[scId].tags is not None:
-
-                    if scn.find('Tags') is None:
-                        newTags = ET.SubElement(scn, 'Tags')
-                        newTags.text = ';'.join(self.scenes[scId].tags)
-
-                    else:
-                        scn.find('Tags').text = ';'.join(
-                            self.scenes[scId].tags)
-
-                '''Do not modify these items yet:
-                unusedMarker = scn.find('Unused')
-                
-                if unused is not None:
-                    
-                    if not self.scenes[scId].isUnused:
-                         scn.remove(unusedMarker)
-                '''
-
-                sceneCount = sceneCount + 1
-
-        indent(root)
-        tree = ET.ElementTree(root)
-
-        try:
-            self._tree.write(self._filePath, encoding='utf-8')
-
-        except(PermissionError):
-            return 'ERROR: "' + self._filePath + '" is write protected.'
-
-        # Postprocess the xml file created by ElementTree
-        message = cdata(self._filePath, self._cdataTags)
-
-        if 'ERROR' in message:
-            return message
-
-        return 'SUCCESS: ' + str(sceneCount) + ' Scenes written to "' + self._filePath + '".'
-
     def is_locked(self):
-        """Test whether a .lock file placed by yWriter exists.
-        """
+        """Test whether a .lock file placed by yWriter exists."""
         if os.path.isfile(self._filePath + '.lock'):
             return True
 
@@ -949,118 +379,13 @@ class Yw7File(Novel):
             return False
 
 
-class Yw7Cnv():
-    """Converter for yWriter 7 project files.
-
-    # Methods
-
-    yw7_to_document : str
-        Arguments
-            yw7File : Yw7File
-                an object representing the source file.
-            documentFile : Novel
-                a Novel subclass instance representing the target file.
-        Read .yw7 file, parse xml and create a document file.
-        Return a message beginning with SUCCESS or ERROR.    
-
-    document_to_yw7 : str
-        Arguments
-            documentFile : Novel
-                a Novel subclass instance representing the source file.
-            yw7File : Yw7File
-                an object representing the target file.
-        Read document file, convert its content to xml, and replace .yw7 file.
-        Return a message beginning with SUCCESS or ERROR.
-
-    confirm_overwrite : bool
-        Arguments
-            fileName : str
-                Path to the file to be overwritten
-        Ask for permission to overwrite the target file.
-        Returns True by default.
-        This method is to be overwritten by subclasses with an user interface.
-    """
-
-    def yw7_to_document(self, yw7File, documentFile):
-        """Read .yw7 file and convert xml to a document file."""
-        if yw7File.is_locked():
-            return 'ERROR: yWriter 7 seems to be open. Please close first.'
-
-        if yw7File.filePath is None:
-            return 'ERROR: "' + yw7File.filePath + '" is not an yWriter 7 project.'
-
-        message = yw7File.read()
-
-        if message.startswith('ERROR'):
-            return message
-
-        if documentFile.file_exists():
-
-            if not self.confirm_overwrite(documentFile.filePath):
-                return 'Program abort by user.'
-
-        return documentFile.write(yw7File)
-
-    def document_to_yw7(self, documentFile, yw7File):
-        """Read document file, convert its content to xml, and replace .yw7 file."""
-        if yw7File.is_locked():
-            return 'ERROR: yWriter 7 seems to be open. Please close first.'
-
-        if yw7File.filePath is None:
-            return 'ERROR: "' + yw7File.filePath + '" is not an yWriter 7 project.'
-
-        if not yw7File.file_exists():
-            return 'ERROR: Project "' + yw7File.filePath + '" not found.'
-
-        if not self.confirm_overwrite(yw7File.filePath):
-            return 'Program abort by user.'
-
-        if documentFile.filePath is None:
-            return 'ERROR: "' + documentFile.filePath + '" is not of the supported type.'
-
-        if not documentFile.file_exists():
-            return 'ERROR: "' + documentFile.filePath + '" not found.'
-
-        message = documentFile.read()
-
-        if message.startswith('ERROR'):
-            return message
-
-        message = yw7File.read()
-        # initialize yw7File data
-
-        if message.startswith('ERROR'):
-            return message
-
-        prjStructure = documentFile.get_structure()
-
-        if prjStructure is not None:
-
-            if prjStructure == '':
-                return 'ERROR: Source file contains no yWriter project structure information.'
-
-            if prjStructure != yw7File.get_structure():
-                return 'ERROR: Structure mismatch - yWriter project not modified.'
-
-        return yw7File.write(documentFile)
-
-    def confirm_overwrite(self, fileName):
-        """To be overwritten by subclasses with UI."""
-        return True
-
-
-TITLE = 'yW2OO v2.0'
-
-
-class CnvRunner(Yw7Cnv):
-    """Standalone yWriter 7 converter with a simple GUI. 
+class CnvRunner():
+    """Standalone yWriter 7 converter. 
 
     # Arguments
 
         sourcePath : str
             a full or relative path to the file to be converted.
-            Either an .yw7 file or a file of any supported type. 
-            The file type determines the conversion's direction.    
 
         document : Novel
             instance of any Novel subclass representing the 
@@ -1090,6 +415,17 @@ class CnvRunner(Yw7Cnv):
             - _manuscript for a html file containing scene contents.
             - _scenes for a html file containing scene summaries.
             - _chapters for a html file containing chapter summaries.
+
+    # Methods
+
+    yw7_to_document : str
+        Arguments
+            yw7File : Yw7File
+                an object representing the source file.
+            documentFile : Novel
+                a Novel subclass instance representing the target file.
+        Read .yw7 file, parse xml and create a document file.
+        Return a message beginning with SUCCESS or ERROR.    
     """
 
     def __init__(self, sourcePath, document, extension, silentMode, suffix):
@@ -1114,45 +450,29 @@ class CnvRunner(Yw7Cnv):
             yw7File = Yw7File(yw7Path)
             print(self.yw7_to_document(yw7File, document))
 
-        elif sourcePath.endswith(suffix + '.' + extension):
-            document.filePath = sourcePath
-
-            # Determine the project file path.
-
-            yw7Path = sourcePath.split(suffix + '.' + extension)[0] + '.yw7'
-            print('Import yWriter7 scenes content from ' + extension)
-            print('Proofed scenes in "' + document.filePath + '"')
-
-            # Instantiate an Yw7File object and pass it along with
-            # the document to the converter class.
-
-            yw7File = Yw7File(yw7Path)
-            print(self.document_to_yw7(document, yw7File))
-
         else:
-            print('Argument is wrong or missing (drag and drop error?)\nInput file must be .yw7 or ' +
-                  suffix + '.' + extension + ' type.')
+            print('Argument is wrong or missing\nInput file must be .yw7 type.')
 
-    def confirm_overwrite(self, filePath):
-        """ Invoked by the parent if a file already exists. """
+    def yw7_to_document(self, yw7File, documentFile):
+        """Read .yw7 file and convert xml to a document file."""
+        if yw7File.is_locked():
+            return 'ERROR: yWriter 7 seems to be open. Please close first.'
 
-        if self.silentMode:
-            return True
+        if yw7File.filePath is None:
+            return 'ERROR: "' + yw7File.filePath + '" is not an yWriter 7 project.'
 
-        else:
-            answer = input('Overwrite existing file "' + filePath + '"? (y/n)')
+        message = yw7File.read()
 
-            if answer == 'y':
-                return True
+        if message.startswith('ERROR'):
+            return message
 
-            else:
-                return False
+        return documentFile.write(yw7File)
 
 
 def run(sourcePath, silentMode=True):
     document = Manuscript('')
     converter = CnvRunner(sourcePath, document, 'html',
-                          silentMode, '_manuscript')
+                          silentMode, '_yw2oo')
 
 
 if __name__ == '__main__':

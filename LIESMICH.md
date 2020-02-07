@@ -1,10 +1,18 @@
 # yW2OO (yWriter-zu-OpenOffice/LibreOffice-Konvertierer)
 
-HTML-Exportdatei von [yWriter](http://www.spacejock.com/yWriter5.html) in eine saubere OpenDocument-Textdatei umwandeln, um Dokument- und Formatvorlagen anwenden zu können.
+Einen Roman aus [yWriter 7](http://www.spacejock.com/yWriter7.html) in eine saubere OpenDocument-Textdatei exportieren, um Dokument- und Formatvorlagen anwenden zu können.
 
 ![Screenshot: Automatisch erzeugtes ODT](https://raw.githubusercontent.com/peter88213/yW2OO/master/docs/Screenshots/Writer-de.png)
 
 Mehr Informationen finden Sie im [Wiki (deutsch)](https://github.com/peter88213/yW2OO/wiki/Deutsch). 
+
+## Voraussetzungen
+
+* Windows.
+
+* yWriter 7.
+
+* Eine reguläre LibreOffice 6-Installation (bis Version 6.3; nicht "portable").
 
 ## Download
 
@@ -25,17 +33,11 @@ Die yW2OO Software kommt als ZIP-Archiv `yW2OO_Versionsnummer.zip`.
 
 ## yW2OO benutzen
 
-1. Verfassen Sie Ihren Roman mit yWriter. Schauen Sie nach, ob der Ordner `<Ihr yWriter Projekt>\Export` eine Datei namens `writer.bat` enthält. Falls nicht, kopieren Sie sie von `yW2OO_<Versionsnummer>\setup` hierher.
+1. Verfassen Sie Ihren Roman mit yWriter 7. Schauen Sie nach, ob der Ordner `<Ihr yWriter Projekt>.yw` eine Datei namens `writer.bat` enthält. Falls nicht, kopieren Sie sie von `yW2OO_<Versionsnummer>\setup` hierher.
 
-2. __Optional:__ Lassen Sie yWriter die Szenenbeschreibungen an den vorgeschlagenen Ort exportieren, wenn Sie die Szenentitel als navigierbare Kommentare haben wollen. Befehl: __Project > Export Project > Scene descriptions__.
+2. Schließen Sie yWriter und öffnen Sie den Ordner `<Ihr yWriter Projekt>.yw7` und führen Sie `writer.bat` aus (Doppelklick). Wenn alles klappt, wird LibreOffice Writer automatisch starten und das Dokument im OpenDocument-Format als "Exported Project.odt" mit hierarchischer Struktur und mit den richtigen Absatz-/Zeichenvorlagen anzeigen.
 
-3. Lassen Sie yWriter Ihr Projekt als `<Ihr yWriter Projekt>\Export\Exported Project.html` exportieren. Befehl: __Project > Export Project > to html__.
-
-4. Das Browserfenster, das "Exported Project.html" anzeigt, können Sie schließen.
-
-5. Öffnen Sie den Ordner `<Ihr yWriter Projekt>\Export` und führen Sie `writer.bat` aus (Doppelklick). Wenn alles klappt, wird OpenOffice/LibreOffice Writer automatisch starten und das Dokument im OpenDocument-Format als "Exported Project.odt" mit hierarchischer Struktur und mit den richtigen Absatz-/Zeichenvorlagen anzeigen.
-
-6. Bringen Sie Ihr Manuskript mit Hilfe von [OOTyW](https://github.com/peter88213/OOTyW/wiki/Deutsch) typographisch auf Vordermann.
+3. Bringen Sie Ihr Manuskript mit Hilfe von [OOTyW](https://github.com/peter88213/OOTyW/wiki/Deutsch) typographisch auf Vordermann.
 
 ## yW2OO deinstallieren
 

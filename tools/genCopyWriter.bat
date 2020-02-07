@@ -9,7 +9,7 @@ pushd %_docroot%
 echo rem Copy "writer.bat" to all yWriter project "Export" folders >> %_genfile%
 echo rem "writer.bat" must exist in this directory >> %_genfile%
 echo @echo on >> %_genfile%
-for /F "tokens=*" %%l in ('dir /s /b Export') do echo copy /y writer.bat "%%l" >> %_genfile%
+for /F "tokens=*" %%l in ('dir /s /b *.yw') do echo copy /y writer.bat "%%l" >> %_genfile%
 echo @echo off >> %_genfile%
 popd
 move /Y  %_docroot%\%_genfile% .\

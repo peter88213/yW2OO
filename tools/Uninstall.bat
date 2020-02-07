@@ -3,34 +3,28 @@ REM Removes the yW2OO software package.
 REM 
 REM See: https://github.com/peter88213/yW2OO
 REM License: The MIT License (https://opensource.org/licenses/mit-license.php)
-REM Copyright: (c) 2019, Peter Triesberger
+REM Copyright: (c) 2020, Peter Triesberger
 REM 
 REM Note: This script is to be executed manually.
 REM 
 REM Preconditions:
 REM * yW2OO is installed.
-REM * OpenOffice.org 3.x or Apache OpenOffice 4.x or LibreOffice 6.* is installed.
-REM
+REM * LibreOffice 5.x or 6.x is installed.
+RREM
 REM Postconditions:
 REM * Previously auto-installed items of yW2OO are removed.
-REM * "writer.bat" is removed from all yWriter "Export" directories within [userprofile]\Documents.
+REM * "writer.bat" is removed from all yWriter project directories within [userprofile]\Documents.
 
-set _release=1.16.0
+set _release=2.0.0
 
 pushd setup
 
-set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
-set _OpenOffice4_w32=c:\Program Files\OpenOffice 4
-set _OpenOffice3_w64=c:\Program Files (x86)\OpenOffice.org 3
-set _OpenOffice3_w32=c:\Program Files\OpenOffice.org 3
 set _LibreOffice5_w64=c:\Program Files (x86)\LibreOffice 5
 set _LibreOffice5_w32=c:\Program Files\LibreOffice 5
 set _LibreOffice6_w64=c:\Program Files (x86)\LibreOffice
 set _LibreOffice6_w32=c:\Program Files\LibreOffice
 
-set _OpenOffice4_Userprofile=AppData\Roaming\OpenOffice\4\user
-set _OpenOffice3_Userprofile=AppData\Roaming\OpenOffice.org\3\user
-set _LibreOffice_Userprofile=AppData\Roaming\LibreOffice\4\user
+et _LibreOffice_Userprofile=AppData\Roaming\LibreOffice\4\user
 
 echo -----------------------------------------------------------------
 echo yW2OO (yWriter to OpenOffice/LibreOffice) v%_release%
@@ -39,41 +33,13 @@ echo -----------------------------------------------------------------
 
 rem Detect Combination of Windows and Office 
 
-if exist "%_OpenOffice4_w64%\program\swriter.exe" goto OpenOffice4-Win64
-if exist "%_OpenOffice4_w32%\program\swriter.exe" goto OpenOffice4-Win32
-if exist "%_OpenOffice3_w64%\program\swriter.exe" goto OpenOffice3-Win64
-if exist "%_OpenOffice3_w32%\program\swriter.exe" goto OpenOffice3-Win32
-if exist "%_LibreOffice5_w64%\program\swriter.exe" goto LibreOffice5-Win64
+f exist "%_LibreOffice5_w64%\program\swriter.exe" goto LibreOffice5-Win64
 if exist "%_LibreOffice5_w32%\program\swriter.exe" goto LibreOffice5-Win32
 if exist "%_LibreOffice6_w64%\program\swriter.exe" goto LibreOffice6-Win64
 if exist "%_LibreOffice6_w32%\program\swriter.exe" goto LibreOffice6-Win32
-echo ERROR: No supported version of OpenOffice/LibreOffice found!
+echo ERROR: No supported version of LibreOffice found!
 echo Installation aborted
 goto end
-
-:OpenOffice4-Win64
-set _writer=%_OpenOffice4_w64%
-set _user=%USERPROFILE%\%_OpenOffice4_Userprofile%
-echo OpenOffice 4.x - Windows (64 bit)
-goto settings_done
-
-:OpenOffice4-Win32
-set _writer=%_OpenOffice4_w32%
-set _user=%USERPROFILE%\%_OpenOffice4_Userprofile%
-echo OpenOffice 4.x - Windows (32 bit)
-goto settings_done
-
-:OpenOffice3-Win64
-set _writer=%_OpenOffice3_w64%
-set _user=%USERPROFILE%\%_OpenOffice3_Userprofile%
-echo OpenOffice 3.x - Windows (64 bit)
-goto settings_done
-
-:OpenOffice3-Win32
-set _writer=%_OpenOffice3_w32%
-set _user=%USERPROFILE%\%_OpenOffice3_Userprofile%
-echo OpenOffice 3.x - Windows (32 bit)
-goto settings_done
 
 :LibreOffice5-Win64
 set _writer=%_LibreOffice5_w64%
@@ -111,7 +77,7 @@ del writer.bat
 
 echo Removing OpenOffice extension ...
 
-"%_writer%\program\unopkg" remove -f yW2OO-%_release%.oxt
+"%_writer%\program\unopkg" remove -f yW2OO-L-%_release%.oxt
 
 call genRemoveWriter.bat
 call RemoveWriter.bat
