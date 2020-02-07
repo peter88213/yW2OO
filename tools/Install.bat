@@ -128,7 +128,7 @@ echo echo yW2OO v%_release% >> writer.bat
 echo echo Starting yWriter to OpenOffice conversion ... >> writer.bat
 echo if not exist "Exported Project.html" goto error >> writer.bat
 echo copy "Exported Project.html" "Exported Project.html.bak" ^> NUL >> writer.bat
-echo "%_writer%\program\python.exe" "%_user%\yW2OO\yw2oo.py" >> writer.bat
+echo "%_writer%\program\python.exe" "%_user%\yW2OO\yw2oo.pyw" >> writer.bat
 echo if errorlevel 1 goto end >> writer.bat
 echo if exist ..\Auto_Descriptions.txt move /Y ..\Auto_Descriptions.txt .\ >> writer.bat
 echo "%_writer%\program\python.exe" "%_user%\yW2OO\sceti.py" >> writer.bat

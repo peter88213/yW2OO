@@ -48,11 +48,7 @@ set _file=%_root%LIESMICH.md
 set _dest=%_target%\
 call :copyFile
 
-set _file=%_root%src\yw2oo.py
-set _dest=%_target%\setup\program\
-call :copyFile
-
-set _file=%_root%src\sceti.py
+set _file=%_root%src\yw2oo.pyw
 set _dest=%_target%\setup\program\
 call :copyFile
 
