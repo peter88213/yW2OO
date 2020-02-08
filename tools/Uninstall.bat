@@ -15,7 +15,7 @@ REM Postconditions:
 REM * Previously auto-installed items of yW2OO are removed.
 REM * "writer.bat" is removed from all yWriter project directories within [userprofile]\Documents.
 
-set _release=2.0.0
+set _release=2.0.1
 
 pushd setup
 
@@ -79,7 +79,8 @@ echo Removing OpenOffice extension ...
 
 "%_writer%\program\unopkg" remove -f yW2OO-L-%_release%.oxt
 
-call genRemoveWriter.bat
+echo "%_writer%\program\python.exe" "findyw7.py" >> findyw7.bat
+call findyw7.bat
 call RemoveWriter.bat
 
 popd

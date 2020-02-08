@@ -1,6 +1,6 @@
 REM cs.bat
 REM Collects everything for a yW2OO release
-REM and puts it the "build" setup directory to be zipped.
+REM and puts it the "dist" setup directory to be zipped.
 REM 
 REM See: https://github.com/peter88213/yW2OO
 REM License: The MIT License (https://opensource.org/licenses/mit-license.php)
@@ -16,7 +16,7 @@ rem --------------------------------------------------------
 rem Set up directory structure
 rem --------------------------------------------------------
 
-set _target=%_root%build\yW2OO_v%_release%
+set _target=%_root%dist\yW2OO_v%_release%
 
 if exist %_target% rd /s /q %_target%
 
@@ -52,6 +52,10 @@ set _file=%_root%src\yw2oo.py
 set _dest=%_target%\setup\program\
 call :copyFile
 
+set _file=%_root%src\findyw7.py
+set _dest=%_target%\setup\
+call :copyFile
+
 set _file=%_root%oxt\yW2OO-L-%_release%.oxt
 set _dest=%_target%\setup\program\
 call :copyFile
@@ -66,14 +70,6 @@ call :copyFile
 
 set _file=%_root%tools\Uninstall.bat
 set _dest=%_target%\
-call :copyFile
-
-set _file=%_root%tools\genCopyWriter.bat
-set _dest=%_target%\setup\
-call :copyFile
-
-set _file=%_root%tools\genRemoveWriter.bat
-set _dest=%_target%\setup\
 call :copyFile
 
 set _file=%_root%ott\StandardPages_A4\README.md
