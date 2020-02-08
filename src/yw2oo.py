@@ -56,6 +56,9 @@ HTML_HEADING_MARKERS = ("h2", "h1")
 # 1 is for a chapter beginning a section
 
 
+startWriter = False
+
+
 def to_html(text):
     """Convert yw7 raw markup to html. Return a html string."""
     try:
@@ -343,39 +346,38 @@ def main():
             break
 
     if sourcePath is None:
-        print('ERROR: No yWriter 7 project found.')
-        exit(1)
+        return 'ERROR: No yWriter 7 project found.'
 
     print('Export yWriter7 scenes content to html')
     print('Project: "' + sourcePath + '"')
     yw7File = Yw7File(sourcePath)
 
     if yw7File.is_locked():
-        print('ERROR: yWriter 7 seems to be open. Please close first.')
-        sys.exit(1)
+        return 'ERROR: yWriter 7 seems to be open. Please close first.'
 
     message = yw7File.read()
-    print(message)
 
     if message.startswith('ERROR'):
-        sys.exit(1)
+        return (message)
 
     document = Manuscript(sourcePath.split('.yw7')[0] + SUFFIX + '.html')
     message = document.write(yw7File)
-    print(message)
 
     if message.startswith('ERROR'):
-        sys.exit(1)
+        return (message)
 
-    for lo in LIBREOFFICE:
+    if startWriter:
 
-        if os.path.isfile(lo):
-            cmd = [os.path.normpath(lo)]
-            cmd.append('macro:///yW2OO.Convert.main')
-            cmd.append(document.filePath)
-            subprocess.call(cmd)
-            break
+        for lo in LIBREOFFICE:
+
+            if os.path.isfile(lo):
+                cmd = [os.path.normpath(lo)]
+                cmd.append('macro:///yW2OO.Convert.main')
+                cmd.append(document.filePath)
+                subprocess.call(cmd)
+                return (message)
 
 
 if __name__ == '__main__':
-    main()
+    startWriter = True
+    print(main())
