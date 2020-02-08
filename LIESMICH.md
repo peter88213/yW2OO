@@ -12,7 +12,7 @@ Mehr Informationen finden Sie im [Wiki (deutsch)](https://github.com/peter88213/
 
 * yWriter 7.
 
-* Eine reguläre LibreOffice 6-Installation (bis Version 6.3; nicht "portable").
+* Eine reguläre LibreOffice 5 oder 6-Installation (bis Version 6.3; nicht "portable").
 
 ## Download
 
@@ -22,13 +22,15 @@ Die yW2OO Software kommt als ZIP-Archiv `yW2OO_Versionsnummer.zip`.
 
 ## yW2OO installieren
 
-1. Entpacken Sie das Archiv `yW2OO_<Versionsnummer>.zip` irgendwo in Ihrem Benutzerbereich.  
+1. Falls Sie bereits yW2OO v1.x installiert haben, führen Sie bitte das Deinstallationsprogramm dafür aus. 
 
-2. Öffnen Sie den Ordner `yW2OO_<Versionsnummer>` und führen Sie `Install.bat` aus (Doppelklick). Dadurch werden alle Programmdateien an den richtigen Ort kopiert und es wird die Office-Erweiterung installiert.
+2. Entpacken Sie das Archiv `yW2OO_<Versionsnummer>.zip` irgendwo in Ihrem Benutzerbereich.  
 
-3. __Optional:__ Öffnen Sie den Ordner `yW2OO_<Versionsnummer>\template\StandardPages_<gewünschtes Papierformat>` und führen Sie `Install.bat` aus (Doppelklick), um die mitgelieferte Normseiten-Vorlage zu installieren.
+3. Öffnen Sie den Ordner `yW2OO_<Versionsnummer>` und führen Sie `Install.bat` aus (Doppelklick). Dadurch werden alle Programmdateien an den richtigen Ort kopiert und es wird die Office-Erweiterung installiert.
 
-4. __Optional:__ Öffnen Sie den Ordner `yW2OO_<Versionsnummer>\fonts` und entpacken Sie das Archiv `CourierPrime.zip`. Installieren Sie die `.ttf`-Dateien (Rechtsklick -> Installieren).
+4. __Optional:__ Öffnen Sie den Ordner `yW2OO_<Versionsnummer>\template\StandardPages_<gewünschtes Papierformat>` und führen Sie `Install.bat` aus (Doppelklick), um die mitgelieferte Normseiten-Vorlage zu installieren.
+
+5. __Optional:__ Öffnen Sie den Ordner `yW2OO_<Versionsnummer>\fonts` und entpacken Sie das Archiv `CourierPrime.zip`. Installieren Sie die `.ttf`-Dateien (Rechtsklick -> Installieren).
 
 
 ## yW2OO benutzen
