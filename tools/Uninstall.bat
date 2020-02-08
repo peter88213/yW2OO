@@ -24,7 +24,7 @@ set _LibreOffice5_w32=c:\Program Files\LibreOffice 5
 set _LibreOffice6_w64=c:\Program Files (x86)\LibreOffice
 set _LibreOffice6_w32=c:\Program Files\LibreOffice
 
-et _LibreOffice_Userprofile=AppData\Roaming\LibreOffice\4\user
+set _LibreOffice_Userprofile=AppData\Roaming\LibreOffice\4\user
 
 echo -----------------------------------------------------------------
 echo yW2OO (yWriter to OpenOffice/LibreOffice) v%_release%
