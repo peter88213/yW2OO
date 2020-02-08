@@ -1,4 +1,4 @@
-# yW2OO (yWriter to OpenOffice/LibreOffice converter)
+# yW2OO (yWriter to LibreOffice converter)
 
 Export a novel from [yWriter 7](http://www.spacejock.com/yWriter7.html) to a neat OpenDocument text file, ready to apply templates and styles.
 

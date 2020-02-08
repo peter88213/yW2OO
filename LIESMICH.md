@@ -1,4 +1,4 @@
-# yW2OO (yWriter-zu-OpenOffice/LibreOffice-Konvertierer)
+# yW2OO (yWriter-zu-LibreOffice-Konvertierer)
 
 Einen Roman aus [yWriter 7](http://www.spacejock.com/yWriter7.html) in eine saubere OpenDocument-Textdatei exportieren, um Dokument- und Formatvorlagen anwenden zu können.
 
