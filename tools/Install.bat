@@ -91,11 +91,12 @@ echo echo ERROR: yW2OO Software is not installed! >> writer.bat
 echo goto end >> writer.bat
 echo :inst_ok >> writer.bat
 echo echo yW2OO v%_release% >> writer.bat
-echo echo Starting yWriter to OpenOffice conversion ... >> writer.bat
-echo for /F "tokens=*" %%l in ('dir /b *.yw7') do "%_writer%\program\python.exe" "%_user%\yW2OO\yw2oo.py" "%%l" >> writer.bat
+
+echo echo Starting yWriter to LibreOffice conversion ... >> writer.bat
+echo "%_writer%\program\python.exe" "%_user%\yW2OO\yw2oo.py" >> writer.bat
 echo if errorlevel 1 goto end >> writer.bat
-echo echo Running LibreOffice Writer ... >> writer.bat
-echo for /F "tokens=*" %%l in ('dir /b *_yw2oo.html') do "%_writer%\program\swriter.exe" "macro:///yW2OO.Convert.main" "%%l" 
+
+echo exit >> writer.bat
 echo :end >> writer.bat
 echo pause >> writer.bat
 

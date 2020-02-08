@@ -9,10 +9,22 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import sys
 import os
+import subprocess
 import re
 import xml.etree.ElementTree as ET
 
 TITLE = 'yW2OO v2.0'
+
+LIBREOFFICE = ['c:/Program Files/LibreOffice/program/swriter.exe',
+               'c:/Program Files (x86)/LibreOffice/program/swriter.exe',
+               'c:/Program Files/LibreOffice 5/program/swriter.exe',
+               'c:/Program Files (x86)/LibreOffice 5/program/swriter.exe']
+
+
+SUFFIX = '_exp'
+# File name suffix for the exported html file.
+# Example:
+# foo.yw7 --> foo_exp.html
 
 HTML_SCENE_DIVIDER = '* * *'
 # To be placed between scene ending and beginning tags.
@@ -264,10 +276,6 @@ class Manuscript(Novel):
                         lines.append('<h4>' + HTML_SCENE_DIVIDER + '</h4>')
                         lines.append('<p class="textbody">')
 
-                        # Insert scene ID as anchor.
-
-                        lines.append('<a name="ScID:' + scId + '" />')
-
                         # Insert scene title as comment.
 
                         lines.append(
@@ -297,10 +305,6 @@ class Manuscript(Novel):
             return 'ERROR: ' + self._filePath + '" is write protected.'
 
         return 'SUCCESS: "' + self._filePath + '" saved.'
-
-    def get_structure(self):
-        """This file format has no comparable structure."""
-        return None
 
 
 class Yw7File(Novel):
@@ -379,105 +383,50 @@ class Yw7File(Novel):
             return False
 
 
-class CnvRunner():
-    """Standalone yWriter 7 converter. 
+def main():
+    sourcePath = None
+    files = os.listdir('.')
 
-    # Arguments
+    for file in files:
 
-        sourcePath : str
-            a full or relative path to the file to be converted.
+        if '.yw7' in file:
+            sourcePath = file
+            break
 
-        document : Novel
-            instance of any Novel subclass representing the 
-            source or target document. 
+    if sourcePath is None:
+        print('ERROR: No yWriter 7 project found.')
+        exit(1)
 
-        extension : str
-            File extension determining the source or target 
-            document's file type. The extension is needed because 
-            there can be ambiguous Novel subclasses 
-            (e.g. OfficeFile).
-            Examples: 
-            - md
-            - docx
-            - odt
-            - html
+    print('Export yWriter7 scenes content to html')
+    print('Project: "' + sourcePath + '"')
+    yw7File = Yw7File(sourcePath)
 
-        silentMode : bool
-            True by default. Intended for automated tests. 
-            If True, the GUI is not started and no further 
-            user interaction is required. Overwriting of existing
-            files is forced. 
-            Calling scripts shall set silentMode = False.
+    if yw7File.is_locked():
+        print('ERROR: yWriter 7 seems to be open. Please close first.')
+        sys.exit(1)
 
-        suffix : str
-            Optional file name suffix used for ambiguous html files.
-            Examples:
-            - _manuscript for a html file containing scene contents.
-            - _scenes for a html file containing scene summaries.
-            - _chapters for a html file containing chapter summaries.
+    message = yw7File.read()
+    print(message)
 
-    # Methods
+    if message.startswith('ERROR'):
+        sys.exit(1)
 
-    yw7_to_document : str
-        Arguments
-            yw7File : Yw7File
-                an object representing the source file.
-            documentFile : Novel
-                a Novel subclass instance representing the target file.
-        Read .yw7 file, parse xml and create a document file.
-        Return a message beginning with SUCCESS or ERROR.    
-    """
+    document = Manuscript(sourcePath.split('.yw7')[0] + SUFFIX + '.html')
+    message = document.write(yw7File)
+    print(message)
 
-    def __init__(self, sourcePath, document, extension, silentMode, suffix):
-        """Determine the direction and invoke the converter. """
-        self.silentMode = silentMode
+    if message.startswith('ERROR'):
+        sys.exit(1)
 
-        # The conversion's direction depends on the sourcePath argument.
+    for lo in LIBREOFFICE:
 
-        if sourcePath.endswith('.yw7'):
-            yw7Path = sourcePath
-
-            # Generate the target file path.
-
-            document.filePath = sourcePath.split(
-                '.yw7')[0] + suffix + '.' + extension
-            print('Export yWriter7 scenes content to ' + extension)
-            print('Project: "' + yw7Path + '"')
-
-            # Instantiate an Yw7File object and pass it along with
-            # the document to the converter class.
-
-            yw7File = Yw7File(yw7Path)
-            print(self.yw7_to_document(yw7File, document))
-
-        else:
-            print('Argument is wrong or missing\nInput file must be .yw7 type.')
-
-    def yw7_to_document(self, yw7File, documentFile):
-        """Read .yw7 file and convert xml to a document file."""
-        if yw7File.is_locked():
-            return 'ERROR: yWriter 7 seems to be open. Please close first.'
-
-        if yw7File.filePath is None:
-            return 'ERROR: "' + yw7File.filePath + '" is not an yWriter 7 project.'
-
-        message = yw7File.read()
-
-        if message.startswith('ERROR'):
-            return message
-
-        return documentFile.write(yw7File)
-
-
-def run(sourcePath, silentMode=True):
-    document = Manuscript('')
-    converter = CnvRunner(sourcePath, document, 'html',
-                          silentMode, '_yw2oo')
+        if os.path.isfile(lo):
+            cmd = [os.path.normpath(lo)]
+            cmd.append('macro:///yW2OO.Convert.main')
+            cmd.append(document.filePath)
+            subprocess.call(cmd)
+            break
 
 
 if __name__ == '__main__':
-    try:
-        sourcePath = sys.argv[1]
-    except:
-        sourcePath = ''
-    run(sourcePath, False)
+    main()
