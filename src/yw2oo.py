@@ -1,6 +1,7 @@
 """yW2OO v2.0 -Export ywriter7 scenes as html. 
 
-Syntax: yw2oo.py your_project.yw7
+Syntax: yw2oo.py
+An .yw7 project file must exist within the working directory. 
 
 Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/yW2OO
