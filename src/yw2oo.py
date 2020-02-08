@@ -120,29 +120,6 @@ class Novel():
         if filePath.lower().endswith(self._FILE_EXTENSION):
             self._filePath = filePath
 
-    def file_exists(self):
-        """Check whether the file specified by _filePath exists. """
-        if os.path.isfile(self._filePath):
-            return True
-
-        else:
-            return False
-
-    def get_structure(self):
-        """returns a string showing the order of chapters and scenes 
-        as a tree. The result can be used to compare two Novel objects 
-        by their structure.
-        """
-        lines = []
-
-        for chId in self.srtChapters:
-            lines.append('ChID:' + str(chId) + '\n')
-
-            for scId in self.chapters[chId].srtScenes:
-                lines.append('  ScID:' + str(scId) + '\n')
-
-        return ''.join(lines)
-
 
 class Chapter():
     """yWriter chapter representation."""
@@ -177,41 +154,12 @@ class Scene():
         self.title = None
         # str
 
-        self._sceneContent = None
+        self.sceneContent = None
         # str
         # Scene text with yW7 raw markup.
 
-        self.wordCount = None
-        # int
-        # To be updated by the sceneContent setter
-
-        self.letterCount = None
-        # int
-        # To be updated by the sceneContent setter
-
         self.isUnused = None
         # bool
-
-    @property
-    def sceneContent(self):
-        return self._sceneContent
-
-    @sceneContent.setter
-    def sceneContent(self, text):
-        """Set sceneContent updating word count and letter count."""
-        self._sceneContent = text
-        text = re.sub('\[.+?\]|\.|\,| -', '', self._sceneContent)
-        # Remove yw7 raw markup for word count
-
-        wordList = text.split()
-        self.wordCount = len(wordList)
-
-        text = re.sub('\[.+?\]', '', self._sceneContent)
-        # Remove yw7 raw markup for letter count
-
-        text = text.replace('\n', '')
-        text = text.replace('\r', '')
-        self.letterCount = len(text)
 
 
 class Manuscript(Novel):
