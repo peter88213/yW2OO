@@ -56,6 +56,10 @@ set _file=%_root%src\findyw7.py
 set _dest=%_target%\setup\
 call :copyFile
 
+set _file=%_root%src\enableComments.py
+set _dest=%_target%\setup\
+call :copyFile
+
 set _file=%_root%oxt\yW2OO-L-%_release%.oxt
 set _dest=%_target%\setup\program\
 call :copyFile

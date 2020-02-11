@@ -17,7 +17,7 @@ REM * The yW2OO Office Extension is installed.
 REM * The program starter "writer.bat" is generated in the setup directory.
 REM * "writer.bat" is copied to all yWriter project directories within [userprofile]\Documents.
 
-set _release=2.0.1
+set _release=2.0.0
 
 pushd setup
 
@@ -103,7 +103,7 @@ echo pause >> writer.bat
 echo "%_writer%\program\python.exe" "findyw7.py" >> findyw7.bat
 call findyw7.bat
 call CopyWriter.bat
-
+"%_writer%\program\python.exe" "enableComments.py
 popd
 
 echo Creating template install scripts
