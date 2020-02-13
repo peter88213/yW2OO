@@ -10,12 +10,12 @@ REM
 REM Preconditions:
 REM * yW2OO is installed.
 REM * LibreOffice 5.x or 6.x is installed.
-RREM
+REM
 REM Postconditions:
 REM * Previously auto-installed items of yW2OO are removed.
 REM * "writer.bat" is removed from all yWriter project directories within [userprofile]\Documents.
 
-set _release=2.0.0
+set _release=2.1.0
 
 pushd setup
 
@@ -33,7 +33,7 @@ echo -----------------------------------------------------------------
 
 rem Detect Combination of Windows and Office 
 
-f exist "%_LibreOffice5_w64%\program\swriter.exe" goto LibreOffice5-Win64
+if exist "%_LibreOffice5_w64%\program\swriter.exe" goto LibreOffice5-Win64
 if exist "%_LibreOffice5_w32%\program\swriter.exe" goto LibreOffice5-Win32
 if exist "%_LibreOffice6_w64%\program\swriter.exe" goto LibreOffice6-Win64
 if exist "%_LibreOffice6_w32%\program\swriter.exe" goto LibreOffice6-Win32
@@ -74,10 +74,6 @@ rmdir /s /q "%_user%\yW2OO"
 echo Deleting writer.bat ...
 
 del writer.bat
-
-echo Removing OpenOffice extension ...
-
-"%_writer%\program\unopkg" remove -f yW2OO-L-%_release%.oxt
 
 echo "%_writer%\program\python.exe" "findyw7.py" >> findyw7.bat
 call findyw7.bat

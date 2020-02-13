@@ -17,7 +17,7 @@ REM * The yW2OO Office Extension is installed.
 REM * The program starter "writer.bat" is generated in the setup directory.
 REM * "writer.bat" is copied to all yWriter project directories within [userprofile]\Documents.
 
-set _release=2.0.0
+set _release=2.1.0
 
 pushd setup
 
@@ -74,14 +74,12 @@ echo Removing old OpenOffice extension ...
 
 "%_writer%\program\unopkg" remove -f yW2OO.OXT >nul
 
-echo Installing new OpenOffice extension ...
-
-"%_writer%\program\unopkg" add -f program\yW2OO-L-%_release%.oxt
 
 echo Copying program components to %_user% ...
 
 if not exist "%_user%\yW2OO" mkdir "%_user%\yW2OO"
 copy /y program\*.py "%_user%\yW2OO"
+copy /y program\template.zip "%_user%\yW2OO"
 
 echo Creating "writer.bat" ...
 
@@ -103,23 +101,14 @@ echo pause >> writer.bat
 echo "%_writer%\program\python.exe" "findyw7.py" >> findyw7.bat
 call findyw7.bat
 call CopyWriter.bat
-"%_writer%\program\python.exe" "enableComments.py
 popd
-
-echo Creating template install scripts
-echo copy /-y StandardPages.ott "%_user%\template\" > template\StandardPages_A4\Install.bat
-echo copy /-y StandardPages.ott "%_user%\template\" > template\StandardPages_Letter\Install.bat
 
 echo -----------------------------------------------------------------
 echo #
 echo # Installation of yW2OO software package v%_release% finished.
 echo #
-echo # Now look for "standard pages" template in  "template" folder
-echo #
 echo # Operation: 
-echo # Export your yWriter project as HTML,
-echo # Go into your yWriter Project folder,
-echo # then run "writer.bat"
+echo # Go into your yWriter Project folder and run "writer.bat"
 echo #
 echo -----------------------------------------------------------------
 

@@ -6,7 +6,7 @@ REM See: https://github.com/peter88213/yW2OO
 REM License: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM Copyright: (c) 2020, Peter Triesberger
 
-set _release=2.0.0
+set _release=2.1.0
 
 set _project=yW2OO
 
@@ -24,11 +24,6 @@ mkdir %_target%
 mkdir %_target%\setup
 mkdir %_target%\setup\program
 mkdir %_target%\fonts
-mkdir %_target%\template
-mkdir %_target%\template\StandardPages_A4
-mkdir %_target%\template\StandardPages_Letter
-
-xcopy /s %_root%\add-on\*.* %_target%\add-on\
 
 rem --------------------------------------------------------
 rem Generate release info
@@ -56,11 +51,7 @@ set _file=%_root%src\findyw7.py
 set _dest=%_target%\setup\
 call :copyFile
 
-set _file=%_root%src\enableComments.py
-set _dest=%_target%\setup\
-call :copyFile
-
-set _file=%_root%oxt\yW2OO-L-%_release%.oxt
+set _file=%_root%odt\template.zip
 set _dest=%_target%\setup\program\
 call :copyFile
 
@@ -74,22 +65,6 @@ call :copyFile
 
 set _file=%_root%tools\Uninstall.bat
 set _dest=%_target%\
-call :copyFile
-
-set _file=%_root%ott\StandardPages_A4\README.md
-set _dest=%_target%\template\StandardPages_A4\
-call :copyFile
-
-set _file=%_root%ott\StandardPages_A4\standardPages.ott
-set _dest=%_target%\template\StandardPages_A4\
-call :copyFile
-
-set _file=%_root%ott\StandardPages_Letter\README.md
-set _dest=%_target%\template\StandardPages_Letter\
-call :copyFile
-
-set _file=%_root%ott\StandardPages_Letter\standardPages.ott
-set _dest=%_target%\template\StandardPages_Letter\
 call :copyFile
 
 set _file=%_root%fonts\CourierPrime.zip

@@ -7,6 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import unittest
+import zipfile
 
 import yw2oo
 
@@ -24,10 +25,11 @@ TEST_EXEC_PATH = 'yw7/'
 
 # Test data
 TEST_FILE = 'yWriter Sample Project.yw7'
-EXPORT_FILE = 'yWriter Sample Project_exp.html'
+EXPORT_FILE = 'yWriter Sample Project_exp.odt'
 
-# Reference data for correct execution
-YW2OO_REF_FILE = 'yW2OOreference5.html'
+DOCUMENT_CONTENT = 'content.xml'
+DOCUMENT_META = 'meta.xml'
+DOCUMENT_STYLES = 'styles.xml'
 
 
 def read_file(inputFile):
@@ -66,13 +68,21 @@ class NormalOperation(unittest.TestCase):
             pass
 
     def test_yw2oo(self):
-        """ Test yw2oo without running sceti afterwards. """
+        """ Test yw2oo. """
         os.chdir(TEST_EXEC_PATH)
+
         yw2oo.main()
+        # self.assertEqual(, 'SUCCESS: "' + EXPORT_FILE + '" saved.')
         os.chdir(TEST_PATH)
-        # html file must contain all the replacements.
-        self.assertEqual(read_file(TEST_EXEC_PATH + EXPORT_FILE),
-                         read_file(TEST_DATA_PATH + EXPORT_FILE))
+
+        with zipfile.ZipFile(TEST_EXEC_PATH + EXPORT_FILE, 'r') as myzip:
+            myzip.extract(DOCUMENT_CONTENT, TEST_EXEC_PATH)
+            myzip.extract(DOCUMENT_STYLES, TEST_EXEC_PATH)
+
+        self.assertEqual(read_file(TEST_EXEC_PATH + DOCUMENT_CONTENT),
+                         read_file(TEST_DATA_PATH + DOCUMENT_CONTENT))
+        self.assertEqual(read_file(TEST_EXEC_PATH + DOCUMENT_STYLES),
+                         read_file(TEST_DATA_PATH + DOCUMENT_STYLES))
 
 
 class NoProjectFile(unittest.TestCase):
