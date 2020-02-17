@@ -811,9 +811,9 @@ def main():
 
             if os.path.isfile(lo):
                 cmd = [os.path.normpath(lo)]
-                cmd.append('macro:///yW2OO.Convert.main')
                 cmd.append(document.filePath)
                 subprocess.call(cmd)
+                break
 
     return (message)
 

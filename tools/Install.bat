@@ -17,7 +17,7 @@ REM * The yW2OO Office Extension is installed.
 REM * The program starter "writer.bat" is generated in the setup directory.
 REM * "writer.bat" is copied to all yWriter project directories within [userprofile]\Documents.
 
-set _release=2.1.0
+set _release=2.1.1
 
 pushd setup
 
