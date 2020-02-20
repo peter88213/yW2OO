@@ -1406,6 +1406,8 @@ class OdtTemplate():
             return 'ERROR: Cannot write "meta.xml".'
 
         return 'SUCCESS: ODT structure generated.'
+
+
 from abc import abstractmethod
 
 
@@ -1533,8 +1535,6 @@ def to_odt(text):
         pass
 
     return text
-
-
 
 
 class OdtFile(Novel, OdtTemplate):
@@ -1673,8 +1673,8 @@ class OdtFile(Novel, OdtTemplate):
         self.tear_down()
         return 'SUCCESS: "' + self._filePath + '" saved.'
 
-import xml.etree.ElementTree as ET
 
+import xml.etree.ElementTree as ET
 
 
 class Chapter():
@@ -1704,7 +1704,6 @@ class Chapter():
         # list of str
         # The chapter's scene IDs. The order of its elements
         # corresponds to the chapter's order of the scenes.
-
 
 
 class Scene():
@@ -1830,8 +1829,6 @@ def cdata(filePath, cdataTags: list):
         return 'ERROR: Can not write"' + filePath + '".'
 
     return 'SUCCESS: "' + filePath + '" written.'
-
-
 
 
 class Yw7File(Novel):
@@ -2291,6 +2288,5 @@ def main():
 
 
 if __name__ == '__main__':
-    startWriter = True
     message = main()
     print(message)
