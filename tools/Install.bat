@@ -75,23 +75,23 @@ echo Removing old OpenOffice extension ...
 "%_writer%\program\unopkg" remove -f yW2OO.OXT >nul
 
 
-echo Copying program components to %_user% ...
+echo Copying program components to %_user%\Scripts\python ...
 
-if not exist "%_user%\yW2OO" mkdir "%_user%\yW2OO"
-copy /y program\*.py "%_user%\yW2OO"
-copy /y program\template.zip "%_user%\yW2OO"
+if not exist "%_user%\Scripts" mkdir "%_user%\Scripts"
+if not exist "%_user%\Scripts\python" mkdir "%_user%\Scripts\python"
+copy /y program\*.py "%_user%\Scripts\python"
 
 echo Creating "writer.bat" ...
 
 echo @echo off > writer.bat
-echo if exist "%_user%\yW2OO\yw2oo.py" goto inst_ok >> writer.bat
+echo if exist "%_user%\Scripts\python\yw2oo.py" goto inst_ok >> writer.bat
 echo echo ERROR: yW2OO Software is not installed! >> writer.bat
 echo goto end >> writer.bat
 echo :inst_ok >> writer.bat
 echo echo yW2OO v%_release% >> writer.bat
 
 echo echo Starting yWriter to LibreOffice conversion ... >> writer.bat
-echo "%_writer%\program\python.exe" "%_user%\yW2OO\yw2oo.py" >> writer.bat
+echo "%_writer%\program\python.exe" "%_user%\Scripts\python\yw2oo.py" >> writer.bat
 echo if errorlevel 1 goto end >> writer.bat
 
 echo exit >> writer.bat

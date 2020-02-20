@@ -67,9 +67,9 @@ goto settings_done
 
 :settings_done
 
-echo Deleting program components in %_user%\yW2OO and removing folder ...
+echo Deleting program components in %_user%\Scripts\python ...
 
-rmdir /s /q "%_user%\yW2OO"
+del /q "%_user%\Scripts\python\yw2oo.py"
 
 echo Deleting writer.bat ...
 
