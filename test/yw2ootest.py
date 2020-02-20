@@ -25,7 +25,7 @@ TEST_EXEC_PATH = 'yw7/'
 
 # Test data
 TEST_FILE = 'yWriter Sample Project.yw7'
-EXPORT_FILE = 'yWriter Sample Project_exp.odt'
+EXPORT_FILE = 'yWriter Sample Project.odt'
 
 DOCUMENT_CONTENT = 'content.xml'
 DOCUMENT_META = 'meta.xml'
