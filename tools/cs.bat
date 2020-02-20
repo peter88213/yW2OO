@@ -51,10 +51,6 @@ set _file=%_root%src\findyw7.py
 set _dest=%_target%\setup\
 call :copyFile
 
-set _file=%_root%odt\template.zip
-set _dest=%_target%\setup\program\
-call :copyFile
-
 set _file=%_root%LICENSE
 set _dest=%_target%\
 call :copyFile
