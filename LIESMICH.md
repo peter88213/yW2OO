@@ -35,7 +35,7 @@ Die yW2OO Software kommt als ZIP-Archiv `yW2OO_Versionsnummer.zip`.
 
 1. Verfassen Sie Ihren Roman mit yWriter 7. Schauen Sie nach, ob der Ordner `<Ihr yWriter Projekt>.yw` eine Datei namens `writer.bat` enthält. Falls nicht, kopieren Sie sie von `yW2OO_<Versionsnummer>\setup` hierher.
 
-2. Schließen Sie yWriter und öffnen Sie den Ordner `<Ihr yWriter Projekt>.yw7` und führen Sie `writer.bat` aus (Doppelklick). Wenn alles klappt, wird LibreOffice Writer automatisch starten und das Dokument im OpenDocument-Format als `<Ihr yWriter Projekt>_exp.odt` mit hierarchischer Struktur und mit den richtigen Absatz-/Zeichenvorlagen anzeigen.
+2. Schließen Sie yWriter und öffnen Sie den Ordner `<Ihr yWriter Projekt>.yw7` und führen Sie `writer.bat` aus (Doppelklick). Wenn alles klappt, wird LibreOffice Writer automatisch starten und das Dokument im OpenDocument-Format als `<Ihr yWriter Projekt>.odt` mit hierarchischer Struktur und mit den richtigen Absatz-/Zeichenvorlagen anzeigen.
 
 3. Bringen Sie Ihr Manuskript mit Hilfe von [OOTyW](https://github.com/peter88213/OOTyW/wiki/Deutsch) typographisch auf Vordermann.
 
