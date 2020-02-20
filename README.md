@@ -35,9 +35,11 @@ The yW2OO Software comes as a zipfile `yW2OO_<version number>.zip`.
 
 1. Write your novel in yWriter 7. Make sure, the `<your yWriter project>.yw` folder contains a file named `writer.bat`. If not, copy it from `yW2OO_<version number>\setup>` folder.
 
-2. Close yWriter, move into the `<your yWriter project>.yw` folder, and run `writer.bat` (double click). If everything goes well, LibreOffice Writer will start automatically and show your document as a OpenDocument file named `<your yWriter project>.odt` with a hierarchical structure and with the right styles applied.
+2. Close yWriter, move into the `<your yWriter project>.yw` folder, and run `writer.bat` (double click). 
 
-3. Fine tune your manuscript typographically with [OOTyW](https://github.com/peter88213/OOTyW/wiki).
+3. If everything goes well, you will see an OpenDocument file named `<your yWriter project>.odt`. Double click to open.
+
+4. Fine tune your manuscript typographically with [OOTyW](https://github.com/peter88213/OOTyW/wiki).
 
 ## How to uninstall
 
