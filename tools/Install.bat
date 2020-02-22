@@ -13,10 +13,10 @@ REM * LibreOffice 5.x or 6.x is installed.
 REM
 REM Postconditions: 
 REM * The yW2OO Python scripts are installed in the LibreOffice user profile.
-REM * The program starter "writer.bat" is generated in the setup directory.
-REM * "writer.bat" is copied to all yWriter project directories within [userprofile]\Documents.
+REM * The program starter "export.bat" is generated in the setup directory.
+REM * "export.bat" is copied to all yWriter project directories within [userprofile]\Documents.
 
-set _release=2.2.0
+set _release=2.3.0
 
 pushd setup
 
@@ -80,26 +80,26 @@ if not exist "%_user%\Scripts" mkdir "%_user%\Scripts"
 if not exist "%_user%\Scripts\python" mkdir "%_user%\Scripts\python"
 copy /y program\*.py "%_user%\Scripts\python"
 
-echo Creating "writer.bat" ...
+echo Creating "export.bat" ...
 
-echo @echo off > writer.bat
-echo if exist "%_user%\Scripts\python\yw2oo.py" goto inst_ok >> writer.bat
-echo echo ERROR: yW2OO Software is not installed! >> writer.bat
-echo goto end >> writer.bat
-echo :inst_ok >> writer.bat
-echo echo yW2OO v%_release% >> writer.bat
+echo @echo off > export.bat
+echo if exist "%_user%\Scripts\python\yw2oo.py" goto inst_ok >> export.bat
+echo echo ERROR: yW2OO Software is not installed! >> export.bat
+echo goto end >> export.bat
+echo :inst_ok >> export.bat
+echo echo yW2OO v%_release% >> export.bat
 
-echo echo Starting yWriter to LibreOffice conversion ... >> writer.bat
-echo "%_writer%\program\python.exe" "%_user%\Scripts\python\yw2oo.py" >> writer.bat
-echo if errorlevel 1 goto end >> writer.bat
+echo echo Starting yWriter to LibreOffice conversion ... >> export.bat
+echo "%_writer%\program\python.exe" "%_user%\Scripts\python\yw2oo.py" >> export.bat
+echo if errorlevel 1 goto end >> export.bat
 
-echo exit >> writer.bat
-echo :end >> writer.bat
-echo pause >> writer.bat
+echo exit >> export.bat
+echo :end >> export.bat
+echo pause >> export.bat
 
 echo "%_writer%\program\python.exe" "findyw7.py" >> findyw7.bat
 call findyw7.bat
-call CopyWriter.bat
+call Copyexport.bat
 popd
 
 echo -----------------------------------------------------------------
@@ -107,7 +107,7 @@ echo #
 echo # Installation of yW2OO software package v%_release% finished.
 echo #
 echo # Operation: 
-echo # Go into your yWriter Project folder and run "writer.bat"
+echo # Go into your yWriter Project folder and run "export.bat"
 echo #
 echo -----------------------------------------------------------------
 

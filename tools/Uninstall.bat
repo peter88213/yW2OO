@@ -13,9 +13,9 @@ REM * LibreOffice 5.x or 6.x is installed.
 REM
 REM Postconditions:
 REM * Previously auto-installed items of yW2OO are removed.
-REM * "writer.bat" is removed from all yWriter project directories within [userprofile]\Documents.
+REM * "export.bat" is removed from all yWriter project directories within [userprofile]\Documents.
 
-set _release=2.2.0
+set _release=2.3.0
 
 pushd setup
 
@@ -71,13 +71,13 @@ echo Deleting program components in %_user%\Scripts\python ...
 
 del /q "%_user%\Scripts\python\yw2oo.py"
 
-echo Deleting writer.bat ...
+echo Deleting export.bat ...
 
-del writer.bat
+del export.bat
 
 echo "%_writer%\program\python.exe" "findyw7.py" >> findyw7.bat
 call findyw7.bat
-call RemoveWriter.bat
+call Removeexport.bat
 
 popd
 

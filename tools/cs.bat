@@ -6,7 +6,7 @@ REM See: https://github.com/peter88213/yW2OO
 REM License: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM Copyright: (c) 2020, Peter Triesberger
 
-set _release=2.2.0
+set _release=2.3.0
 
 set _project=yW2OO
 
@@ -23,7 +23,6 @@ if exist %_target% rd /s /q %_target%
 mkdir %_target%
 mkdir %_target%\setup
 mkdir %_target%\setup\program
-mkdir %_target%\fonts
 
 rem --------------------------------------------------------
 rem Generate release info
@@ -61,10 +60,6 @@ call :copyFile
 
 set _file=%_root%tools\Uninstall.bat
 set _dest=%_target%\
-call :copyFile
-
-set _file=%_root%fonts\CourierPrime.zip
-set _dest=%_target%\fonts\
 call :copyFile
 
 exit /b

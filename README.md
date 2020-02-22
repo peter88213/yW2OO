@@ -28,14 +28,14 @@ The yW2OO Software comes as a zipfile `yW2OO_<version number>.zip`.
 
 3. Move into the `yW2OO_<version number>` folder and run `Install.bat` (double click). This will copy all needed files to the right places.
 
-4. __Optional:__ Open the `yW2OO_<version number>\fonts>` folder, and unzip `CourierPrime.zip`. Install the `.ttf` files (right click -> Install).
+4. __Optional:__  Download and install the [Courier Prime](https://quoteunquoteapps.com/courierprime).
 
 
 ## How to use
 
-1. Write your novel in yWriter 7. Make sure, the `<your yWriter project>.yw` folder contains a file named `writer.bat`. If not, copy it from `yW2OO_<version number>\setup>` folder.
+1. Write your novel in yWriter 7. Make sure, the `<your yWriter project>.yw` folder contains a file named `export.bat`. If not, copy it from `yW2OO_<version number>\setup>` folder.
 
-2. Close yWriter, move into the `<your yWriter project>.yw` folder, and run `writer.bat` (double click). 
+2. Close yWriter, move into the `<your yWriter project>.yw` folder, and run `export.bat` (double click). 
 
 3. If everything goes well, you will see an OpenDocument file named `<your yWriter project>.odt`. Double click to open.
 
