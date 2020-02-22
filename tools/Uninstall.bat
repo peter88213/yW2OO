@@ -15,7 +15,7 @@ REM Postconditions:
 REM * Previously auto-installed items of yW2OO are removed.
 REM * "export.bat" is removed from all yWriter project directories within [userprofile]\Documents.
 
-set _release=2.3.0
+set _release=2.3.1
 
 pushd setup
 

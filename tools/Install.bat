@@ -16,7 +16,7 @@ REM * The yW2OO Python scripts are installed in the LibreOffice user profile.
 REM * The program starter "export.bat" is generated in the setup directory.
 REM * "export.bat" is copied to all yWriter project directories within [userprofile]\Documents.
 
-set _release=2.3.0
+set _release=2.3.1
 
 pushd setup
 
