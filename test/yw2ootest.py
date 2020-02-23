@@ -1,6 +1,6 @@
 """ Python unit tests for the yW2OO project.
 
-Test suite for yw2oo.py (does conversion) and sceti.py (does annotation).
+Test suite for yw2oo.py.
 
 For further information see https://github.com/peter88213/yW2OO
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -14,7 +14,7 @@ import yw2oo
 
 # Test environment
 
-# The paths are relative to the "src" directory,
+# The paths are relative to the "test" directory,
 # where this script is placed and executed
 
 TEST_PATH = os.getcwd()
@@ -81,9 +81,7 @@ class NormalOperation(unittest.TestCase):
             os.remove(TEST_EXEC_PATH + ODT_TEST)
         except:
             pass
-        # Place the correct html Export file.
-        copy_file(YW7_NORMAL,
-                  YW7_TEST)
+        copy_file(YW7_NORMAL, YW7_TEST)
 
     def test_yw2oo(self):
         os.chdir(TEST_EXEC_PATH)
