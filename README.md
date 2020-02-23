@@ -1,4 +1,4 @@
-# yW2OO (yWriter to LibreOffice converter)
+# yW2OO - yWriter to LibreOffice converter
 
 Export a novel from [yWriter 7](http://www.spacejock.com/yWriter7.html) to an OpenDocument text file.
 
@@ -35,7 +35,7 @@ The yW2OO Software comes as a zipfile `yW2OO_<version number>.zip`.
 
 1. Write your novel in yWriter 7. Make sure, the `<your yWriter project>.yw` folder contains a file named `export.bat`. If not, copy it from `yW2OO_<version number>\setup>` folder.
 
-2. Close yWriter, move into the `<your yWriter project>.yw` folder, and run `export.bat` (double click). 
+2. Backup entire project and close yWriter. Move into the `<your yWriter project>.yw` folder, and run `export.bat` (double click). 
 
 3. If everything goes well, you will see an OpenDocument file named `<your yWriter project>.odt`. Double click to open.
 
