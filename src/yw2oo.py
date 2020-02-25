@@ -20,6 +20,17 @@ from datetime import datetime
 
 class OdtTemplate():
 
+    _ODT_HEADING_STARTS = ['<text:h text:style-name="Heading_20_2" text:outline-level="2">',
+                           '<text:h text:style-name="Heading_20_1" text:outline-level="1">']
+    _ODT_HEADING_END = '</text:h>'
+
+    _ODT_TITLE_START = '<text:p text:style-name="Title">'
+    _ODT_SUBTITLE_START = '<text:p text:style-name="Subtitle">'
+
+    _ODT_FIRST_PARA_START = '<text:p text:style-name="Text_20_body">'
+    _ODT_SCENEDIV_START = '<text:p text:style-name="Heading_20_4">'
+    _ODT_PARA_END = '</text:p>'
+
     _TEMPDIR = 'temp_odt'
 
     _ODT_COMPONENTS = ['manifest.rdf', 'META-INF', 'content.xml', 'meta.xml', 'mimetype',
@@ -27,14 +38,14 @@ class OdtTemplate():
 
     _CONTENT_XML_HEADER = '''<?xml version="1.0" encoding="UTF-8"?>
 
-<office:document-content xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:rpt="http://openoffice.org/2005/report" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:css3t="http://www.w3.org/TR/css3-text/" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:officeooo="http://openoffice.org/2009/office" office:version="1.2">
+<office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" office:version="1.2">
  <office:scripts/>
  <office:font-face-decls>
   <style:font-face style:name="StarSymbol" svg:font-family="StarSymbol" style:font-charset="x-symbol"/>
   <style:font-face style:name="Courier New" svg:font-family="&apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
-  <style:font-face style:name="Courier Prime" svg:font-family="&apos;Courier Prime&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
-  <style:font-face style:name="Courier Prime1" svg:font-family="&apos;Courier Prime&apos;, &apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
- </office:font-face-decls>
+  <style:font-face style:name="Courier Prime" svg:font-family="&apos;Courier Prime&apos;, &apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
+  <style:font-face style:name="Courier New1" svg:font-family="&apos;Courier New&apos;" style:font-family-generic="roman" style:font-pitch="fixed"/>
+   </office:font-face-decls>
  <office:automatic-styles>
   <style:style style:name="Sect1" style:family="section">
    <style:section-properties style:editable="false">
@@ -195,8 +206,7 @@ class OdtTemplate():
   <style:font-face style:name="StarSymbol" svg:font-family="StarSymbol" style:font-charset="x-symbol"/>
   <style:font-face style:name="Segoe UI1" svg:font-family="&apos;Segoe UI&apos;" style:font-family-generic="swiss"/>
   <style:font-face style:name="Courier New" svg:font-family="&apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
-  <style:font-face style:name="Courier Prime" svg:font-family="&apos;Courier Prime&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
-  <style:font-face style:name="Courier Prime1" svg:font-family="&apos;Courier Prime&apos;, &apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
+  <style:font-face style:name="Courier Prime" svg:font-family="&apos;Courier Prime&apos;, &apos;Courier New&apos;" style:font-adornments="Standard" style:font-family-generic="modern" style:font-pitch="fixed"/>
   <style:font-face style:name="Cumberland" svg:font-family="Cumberland" style:font-family-generic="modern" style:font-pitch="fixed"/>
   <style:font-face style:name="Courier New1" svg:font-family="&apos;Courier New&apos;" style:font-family-generic="roman" style:font-pitch="fixed"/>
   <style:font-face style:name="Segoe UI" svg:font-family="&apos;Segoe UI&apos;" style:font-family-generic="roman" style:font-pitch="variable"/>
@@ -222,7 +232,7 @@ class OdtTemplate():
   </style:default-style>
   <style:style style:name="Standard" style:family="paragraph" style:class="text" style:master-page-name="">
    <style:paragraph-properties fo:line-height="0.73cm" style:page-number="auto"/>
-   <style:text-properties style:font-name="Courier Prime1" fo:font-size="12pt" fo:font-weight="normal"/>
+   <style:text-properties style:font-name="Courier Prime" fo:font-size="12pt" fo:font-weight="normal"/>
   </style:style>
   <style:style style:name="Heading" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Text_20_body" style:class="text" style:master-page-name="">
    <style:paragraph-properties fo:line-height="0.73cm" fo:text-align="center" style:justify-single-word="false" style:page-number="auto" fo:keep-with-next="always">
@@ -243,13 +253,13 @@ class OdtTemplate():
   <style:style style:name="Table" style:family="paragraph" style:parent-style-name="Caption" style:class="extra"/>
   <style:style style:name="Index" style:family="paragraph" style:parent-style-name="Standard" style:class="index"/>
   <style:style style:name="Heading_20_1" style:display-name="Heading 1" style:family="paragraph" style:parent-style-name="Heading" style:next-style-name="Text_20_body" style:default-outline-level="1" style:list-style-name="" style:class="text" style:master-page-name="">
-   <style:paragraph-properties fo:margin-top="1.461cm" fo:margin-bottom="0.73cm" style:page-number="auto">
+   <style:paragraph-properties fo:margin-top="0.73cm" fo:margin-bottom="0.73cm" style:page-number="auto">
     <style:tab-stops/>
    </style:paragraph-properties>
    <style:text-properties fo:text-transform="uppercase" fo:font-weight="bold"/>
   </style:style>
   <style:style style:name="Heading_20_2" style:display-name="Heading 2" style:family="paragraph" style:parent-style-name="Heading" style:next-style-name="Text_20_body" style:default-outline-level="2" style:list-style-name="" style:class="text" style:master-page-name="">
-   <style:paragraph-properties fo:margin-top="1.461cm" fo:margin-bottom="0.73cm" style:page-number="auto"/>
+   <style:paragraph-properties fo:margin-top="0.73cm" fo:margin-bottom="0.73cm" style:page-number="auto"/>
    <style:text-properties fo:font-weight="bold"/>
   </style:style>
   <style:style style:name="Heading_20_3" style:display-name="Heading 3" style:family="paragraph" style:parent-style-name="Heading" style:next-style-name="Text_20_body" style:default-outline-level="3" style:class="text" style:master-page-name="">
@@ -299,15 +309,15 @@ class OdtTemplate():
    <style:text-properties fo:font-size="75%" fo:font-weight="bold"/>
   </style:style>
   <style:style style:name="Title" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Subtitle" style:class="chapter" style:master-page-name="">
-   <style:paragraph-properties fo:margin="100%" fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="6.001cm" fo:margin-bottom="0cm" fo:line-height="200%" fo:text-align="center" style:justify-single-word="false" fo:text-indent="0cm" style:auto-text-indent="false" style:page-number="auto" fo:background-color="transparent" fo:padding="0cm" fo:border="none" text:number-lines="false" text:line-number="0">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0.73cm" fo:text-align="center" style:justify-single-word="false" style:page-number="auto" fo:background-color="transparent" fo:padding="0cm" fo:border="none" text:number-lines="false" text:line-number="0">
     <style:tab-stops/>
     <style:background-image/>
    </style:paragraph-properties>
-   <style:text-properties fo:text-transform="uppercase" fo:letter-spacing="0.106cm" fo:font-weight="normal" style:letter-kerning="false"/>
+   <style:text-properties fo:text-transform="uppercase" fo:letter-spacing="normal" fo:font-weight="normal" style:letter-kerning="false"/>
   </style:style>
   <style:style style:name="Subtitle" style:family="paragraph" style:parent-style-name="Title" style:class="chapter" style:master-page-name="">
-   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" style:page-number="auto"/>
-   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:letter-spacing="normal" fo:font-style="italic" fo:font-weight="normal"/>
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0.73cm" style:page-number="auto"/>
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" fo:letter-spacing="normal"/>
   </style:style>
   <style:style style:name="Hanging_20_indent" style:display-name="Hanging indent" style:family="paragraph" style:parent-style-name="Text_20_body" style:class="text">
    <style:paragraph-properties fo:margin="100%" fo:margin-left="1cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" fo:text-indent="-0.499cm" style:auto-text-indent="false">
@@ -1319,7 +1329,7 @@ class OdtTemplate():
  <office:master-styles>
   <style:master-page style:name="Standard" style:page-layout-name="Mpm1">
    <style:footer>
-    <text:p text:style-name="Footer"><text:page-number text:select-page="current">13</text:page-number></text:p>
+    <text:p text:style-name="Footer"><text:page-number text:select-page="current">14</text:page-number></text:p>
    </style:footer>
   </style:master-page>
   <style:master-page style:name="First_20_Page" style:display-name="First Page" style:page-layout-name="Mpm2" style:next-style-name="Standard"/>
@@ -1572,9 +1582,6 @@ class OdtFile(Novel, OdtTemplate):
     """OpenDocument xml project file representation."""
     _FILE_EXTENSION = '.odt'
 
-    _ODT_HEADING_MARKERS = ['<text:h text:style-name="Heading_20_2" text:outline-level="2">',
-                            '<text:h text:style-name="Heading_20_1" text:outline-level="1">']
-
     _SCENE_DIVIDER = '* * *'
     # To be placed between scene ending and beginning tags.
 
@@ -1590,6 +1597,9 @@ class OdtFile(Novel, OdtTemplate):
         Return a message beginning with SUCCESS or ERROR.
         """
         lines = [self._CONTENT_XML_HEADER]
+        lines.append(self._ODT_TITLE_START + self.title + self._ODT_PARA_END)
+        lines.append(self._ODT_SUBTITLE_START +
+                     self.author + self._ODT_PARA_END)
 
         for chId in self.srtChapters:
 
@@ -1597,10 +1607,8 @@ class OdtFile(Novel, OdtTemplate):
 
                 # Write chapter heading.
 
-                headingMarker = self._ODT_HEADING_MARKERS[self.chapters[chId].chLevel]
-                lines.append(headingMarker + format_chapter_title(
-                    self.chapters[chId].title) + '</text:h>')
-
+                lines.append(self._ODT_HEADING_STARTS[self.chapters[chId].chLevel] + format_chapter_title(
+                    self.chapters[chId].title) + self._ODT_HEADING_END)
                 firstSceneInChapter = True
 
                 for scId in self.chapters[chId].srtScenes:
@@ -1611,9 +1619,9 @@ class OdtFile(Novel, OdtTemplate):
 
                         if not firstSceneInChapter:
                             lines.append(
-                                '<text:p text:style-name="Heading_20_4">' + self._SCENE_DIVIDER + '</text:p>')
+                                self._ODT_SCENEDIV_START + self._SCENE_DIVIDER + self._ODT_PARA_END)
 
-                        scenePrefix = '<text:p text:style-name="Text_20_body">'
+                        scenePrefix = self._ODT_FIRST_PARA_START
 
                         # Write scene title as comment.
 
@@ -1626,10 +1634,10 @@ class OdtFile(Novel, OdtTemplate):
 
                         if self.scenes[scId].sceneContent is not None:
                             lines.append(scenePrefix +
-                                         to_odt(self.scenes[scId].sceneContent) + '</text:p>')
+                                         to_odt(self.scenes[scId].sceneContent) + self._ODT_PARA_END)
 
                         else:
-                            lines.append(scenePrefix + '</text:p>')
+                            lines.append(scenePrefix + self._ODT_PARA_END)
 
                         firstSceneInChapter = False
 
