@@ -1,17 +1,11 @@
-"""PyWriter v1.3 - Export ywriter7 scenes. 
-
-File format: odt (without chapter and scene tags)
+"""yW2OO - Export ywriter7 scenes to odt. 
 
 Copyright (c) 2020 Peter Triesberger.
-For further information see https://github.com/peter88213/PyWriter
+For further information see https://github.com/peter88213/yW2OO
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-
 import os
-
-
 import zipfile
-
 import re
 import locale
 from shutil import rmtree
@@ -1421,6 +1415,8 @@ class OdtTemplate():
             return 'ERROR: Cannot write "meta.xml".'
 
         return 'SUCCESS: ODT structure generated.'
+
+
 from abc import abstractmethod
 
 
@@ -1576,9 +1572,7 @@ def to_odt(text):
     return text
 
 
-
-
-class OdtFile(Novel, OdtTemplate):
+class OdtFileWriter(Novel, OdtTemplate):
     """OpenDocument xml project file representation."""
     _FILE_EXTENSION = '.odt'
 
@@ -1712,8 +1706,8 @@ class OdtFile(Novel, OdtTemplate):
         self.tear_down()
         return 'SUCCESS: "' + self._filePath + '" saved.'
 
-import xml.etree.ElementTree as ET
 
+import xml.etree.ElementTree as ET
 
 
 class Chapter():
@@ -1743,7 +1737,6 @@ class Chapter():
         # list of str
         # The chapter's scene IDs. The order of its elements
         # corresponds to the chapter's order of the scenes.
-
 
 
 class Scene():
@@ -1869,8 +1862,6 @@ def cdata(filePath, cdataTags: list):
         return 'ERROR: Can not write"' + filePath + '".'
 
     return 'SUCCESS: "' + filePath + '" written.'
-
-
 
 
 class Yw7File(Novel):
@@ -2283,14 +2274,6 @@ class Yw7File(Novel):
             return False
 
 
-TITLE = 'yW2OO v2.2'
-
-LIBREOFFICE = ['c:/Program Files/LibreOffice/program/swriter.exe',
-               'c:/Program Files (x86)/LibreOffice/program/swriter.exe',
-               'c:/Program Files/LibreOffice 5/program/swriter.exe',
-               'c:/Program Files (x86)/LibreOffice 5/program/swriter.exe']
-
-
 SUFFIX = ''
 # File name suffix for the exported odt file.
 # Example:
@@ -2323,7 +2306,7 @@ def main():
     if message.startswith('ERROR'):
         return message
 
-    document = OdtFile(sourcePath.split('.yw7')[0] + SUFFIX + '.odt')
+    document = OdtFileWriter(sourcePath.split('.yw7')[0] + SUFFIX + '.odt')
     document.comments = True
     message = document.write(yw7File)
     return message
