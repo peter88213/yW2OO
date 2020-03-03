@@ -52,6 +52,8 @@ Die yW2OO Software kommt als ZIP-Archiv `yW2OO_Versionsnummer.zip`.
 2. Öffnen Sie den Ordner Ihres yWriter-Projekts und machen Sie einen Rechtsklick auf die
    .yw7-Projektdatei. Im Kontextmenü wählen Sie `Export to LibreOffice`.
 
+![Screenshot: Windows Explorer Kontextmenu](https://raw.githubusercontent.com/peter88213/yW2OO/master/docs/Screenshots/yw2oo_cm.png)
+
 3. Wenn alles klappt, sehen Sie jetzt eine OpenDocument-Datei `<Ihr yWriter Projekt>.odt`. Zum Bearbeiten doppelklicken.
 
 4. Bringen Sie Ihr Manuskript mit Hilfe von [OOTyW](https://github.com/peter88213/OOTyW/wiki/Deutsch) typographisch auf Vordermann.
