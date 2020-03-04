@@ -3,6 +3,7 @@
 	<name>yW2OO</name>
 	<comment></comment>
 	<projects>
+		<project>PyWriter</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -1,3 +1,4 @@
 /dist/
+/build/
 /test/yw7/
 *.pyc
