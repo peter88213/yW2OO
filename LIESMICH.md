@@ -23,7 +23,7 @@ Mehr Informationen finden Sie im [Wiki (deutsch)](https://github.com/peter88213/
 
 Die yW2OO Software kommt als ZIP-Archiv `yW2OO_Versionsnummer.zip`. 
 
-[Download-Seite](https://github.com/peter88213/yW2OO/releases)
+[Download-Seite](https://github.com/peter88213/yW2OO/releases/latest)
 
 
 
@@ -46,8 +46,15 @@ Die yW2OO Software kommt als ZIP-Archiv `yW2OO_Versionsnummer.zip`.
 
 ## yW2OO benutzen
 
-1. Verfassen Sie Ihren Roman mit yWriter7. Machen Sie ein Backup des gesamten Projekts
-   und schließen sie yWriter. 
+1. Verfassen Sie Ihren Roman mit yWriter7. Bitte beachten Sie die folgenden Konventionen:
+   * Textauszeichung: Fettschrift (Bold) und Kursivschrift (Italics) werden unterstützt. Andere Hervorhebungen wie Unterstreichung (Underline) und Durchstreichung (Strikethrough) gehen verloren. 
+   * Kapitel und Szenen, die als "Unused" (U) markiert sind, werden nicht exportiert.
+   * Kapitel, die mit "Other" (I) markiert sind, werden nicht exportiert.
+   * Wenn `This chapter begins a new section` in _Chapter/Details_ ausgewählt ist, ist die Überschrift auf der ersten Ebene. Andernfalls ist sie auf der zweiten Ebene.
+   * Wenn `Suppress chapter title when exporting` in _Chapter/Details_ ausgewählt ist, entfernt yW2OO "Chapter" aus den automatisch nummerierten Kapitelüberschriften. Die Nummern bleiben erhalten, ebenso die anderen Kapitelüberschriften.
+   * Wenn `Append to previous scene` in _Szene/Exporting_ ausgewählt ist, wird weder eine leere Zeile noch ein Szenentrenner zwischen den Szenen eingefügt. Andernfalls werden drei Sternchen eingefügt (Stil: Überschrift 4). 
+
+   Machen Sie ein Backup des gesamten Projekts und schließen sie yWriter. 
 
 2. Öffnen Sie den Ordner Ihres yWriter-Projekts und machen Sie einen Rechtsklick auf die
    .yw7-Projektdatei. Im Kontextmenü wählen Sie `Export to LibreOffice`.
