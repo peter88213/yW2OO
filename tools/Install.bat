@@ -15,7 +15,7 @@ REM Postconditions:
 REM * The yW2OO Python scripts are installed in the LibreOffice user profile.
 REM * For yWriter7 files, there is an Explorer context menu entry "Export to LibreOffice".
 
-set _release=2.6.0
+set _release=2.6.1
 
 pushd setup
 
@@ -45,28 +45,24 @@ goto end
 :LibreOffice5-Win64
 set _writer=%_LibreOffice5_w64%
 set _user=%USERPROFILE%\%_LibreOffice_Userprofile%
-set _reg=add_cm_5w64.reg
 echo LibreOffice 5 found ...
 goto settings_done
 
 :LibreOffice5-Win32
 set _writer=%_LibreOffice5_w32%
 set _user=%USERPROFILE%\%_LibreOffice_Userprofile%
-set _reg=add_cm_5w32.reg
 echo LibreOffice 5 found ...
 goto settings_done
 
 :LibreOffice6-Win64
 set _writer=%_LibreOffice6_w64%
 set _user=%USERPROFILE%\%_LibreOffice_Userprofile%
-set _reg=add_cm_6w64.reg
 echo LibreOffice found ...
 goto settings_done
 
 :LibreOffice6-Win32
 set _writer=%_LibreOffice6_w32%
 set _user=%USERPROFILE%\%_LibreOffice_Userprofile%
-set _reg=add_cm_6w32.reg
 echo LibreOffice found ...
 goto settings_done
 
@@ -80,7 +76,11 @@ copy /y program\*.py "%_user%\Scripts\python"
 
 echo Installing Explorer context menu entry (You may be asked for approval) ...
 
-%_reg%
+if not exist c:\pywriter mkdir c:\pywriter 
+
+echo "%_writer%\program\python.exe" "%_user%\Scripts\python\yw2oo.py" > c:\pywriter\yw2oo.bat
+
+add_cm.reg
 
 popd
 

@@ -15,7 +15,7 @@ REM Postconditions:
 REM * Previously auto-installed items of yW2OO are removed.
 REM * The Explorer context menu entry "Export to LibreOffice" is removed.
 
-set _release=2.6.0
+set _release=2.6.1
 
 pushd setup
 
@@ -70,6 +70,7 @@ goto settings_done
 echo Deleting program components in %_user%\Scripts\python ...
 
 del /q "%_user%\Scripts\python\yw2oo.py"
+del /q c:\pywriter\yw2oo.bat
 
 echo Removing Explorer context menu entry (You may be asked for approval) ...
 

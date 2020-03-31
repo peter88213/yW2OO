@@ -6,7 +6,7 @@ REM See: https://github.com/peter88213/yW2OO
 REM License: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM Copyright: (c) 2020, Peter Triesberger
 
-set _release=2.6.0
+set _release=2.6.1
 
 set _project=yW2OO
 
@@ -50,19 +50,7 @@ set _file=%_root%reg\del_cm.reg
 set _dest=%_target%\setup\
 call :copyFile
 
-set _file=%_root%reg\add_cm_5w32.reg
-set _dest=%_target%\setup\
-call :copyFile
-
-set _file=%_root%reg\add_cm_6w32.reg
-set _dest=%_target%\setup\
-call :copyFile
-
-set _file=%_root%reg\add_cm_6w64.reg
-set _dest=%_target%\setup\
-call :copyFile
-
-set _file=%_root%reg\add_cm_5w64.reg
+set _file=%_root%reg\add_cm.reg
 set _dest=%_target%\setup\
 call :copyFile
 
