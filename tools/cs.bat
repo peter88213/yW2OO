@@ -6,7 +6,7 @@ REM See: https://github.com/peter88213/yW2OO
 REM License: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM Copyright: (c) 2020, Peter Triesberger
 
-set _release=2.6.1
+set _release=2.6.2
 
 set _project=yW2OO
 
