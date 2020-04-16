@@ -40,13 +40,6 @@
 		<copy file="../LIESMICH.md" todir="${dist}/yW2OO_v${release}" />
 
 		<zip destfile="${dist}/yW2OO_v${release}.zip" basedir="${dist}/yW2OO_v${release}" />
-		
-	
-</target>
-
-<target name="clean" description="clean up">
-	<delete dir="${dist}" />
-	<delete dir="${build}" />
-</target>
+	</target>
 
 </project>
