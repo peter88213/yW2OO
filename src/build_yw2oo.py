@@ -10,12 +10,12 @@ import os
 import inliner
 
 SRC = '../src/'
-BUILD = '../build/'
+BUILD = '../test/'
 
 
 def main():
     os.chdir(SRC)
-    inliner.run('yw2oo.py', BUILD + 'yw2oo.py', 'pywriter')
+    inliner.run('yw_2_oo.py', BUILD + 'yw2oo.py', 'pywriter')
     print('Done.')
 
 

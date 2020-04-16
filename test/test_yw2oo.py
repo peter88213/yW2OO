@@ -17,9 +17,9 @@ import yw2oo
 # The paths are relative to the "test" directory,
 # where this script is placed and executed
 
-TEST_PATH = os.getcwd()
-TEST_DATA_PATH = 'data/'
-TEST_EXEC_PATH = 'yw7/'
+TEST_PATH = os.getcwd() + '/../test'
+TEST_DATA_PATH = TEST_PATH + '/data/'
+TEST_EXEC_PATH = TEST_PATH + '/yw7/'
 
 # To be placed in TEST_DATA_PATH:
 
