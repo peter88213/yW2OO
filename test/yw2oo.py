@@ -2332,7 +2332,7 @@ def main():
 
     for file in files:
 
-        if '.yw7' in file:
+        if file.endswith('.yw7'):
             sourcePath = file
             break
 
