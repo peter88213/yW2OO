@@ -42,4 +42,10 @@
 		<zip destfile="${dist}/yW2OO_v${release}.zip" basedir="${dist}/yW2OO_v${release}" />
 	</target>
 
+	<target name="clean" description="clean up">
+		
+		<delete file="${test}/yw2oo.py" />
+		
+	</target>
+
 </project>

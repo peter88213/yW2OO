@@ -1,5 +1,7 @@
 """yW2OO - Export ywriter7 scenes to odt. 
 
+Depends on the PyWriter library v1.5
+
 Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/yW2OO
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
@@ -7,8 +9,8 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 
 import os
 
-from pywriter.model.odt_file_writer import OdtFileWriter
-from pywriter.model.yw7file import Yw7File
+from pywriter.fileop.odt_file_writer import OdtFileWriter
+from pywriter.fileop.yw7file import Yw7File
 
 
 SUFFIX = ''
