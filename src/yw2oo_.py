@@ -1,6 +1,6 @@
-"""yW2OO - Export ywriter7 scenes to odt. 
+"""yW2OO - Export yWriter scenes to odt. 
 
-Depends on the PyWriter library v1.5
+Depends on the PyWriter library v1.6
 
 Copyright (c) 2020 Peter Triesberger.
 For further information see https://github.com/peter88213/yW2OO
@@ -10,7 +10,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 
 from pywriter.odt.odt_file import OdtFile
-from pywriter.yw7.yw7_file import Yw7File
+from pywriter.yw.yw_file import YwFile
 
 
 SUFFIX = ''
@@ -30,24 +30,33 @@ def main():
             sourcePath = file
             break
 
+    if not sourcePath:
+
+        for file in files:
+
+            if file.endswith('.yw6'):
+                sourcePath = file
+                break
+
     if sourcePath is None:
-        return 'ERROR: No yWriter 7 project found.'
+        return 'ERROR: No yWriter project found.'
 
-    print('Export yWriter7 scenes content to odt')
+    print('Export yWriter scenes content to odt')
     print('Project: "' + sourcePath + '"')
-    yw7File = Yw7File(sourcePath)
+    ywFile = YwFile(sourcePath)
 
-    if yw7File.is_locked():
-        return 'ERROR: yWriter 7 seems to be open. Please close first.'
+    if ywFile.is_locked():
+        return 'ERROR: yWriter seems to be open. Please close first.'
 
-    message = yw7File.read()
+    message = ywFile.read()
 
     if message.startswith('ERROR'):
         return message
 
-    document = OdtFile(sourcePath.split('.yw7')[0] + SUFFIX + '.odt')
+    fileName, FileExtension = os.path.splitext(sourcePath)
+    document = OdtFile(fileName + SUFFIX + '.odt')
     document.comments = True
-    message = document.write(yw7File)
+    message = document.write(ywFile)
     return message
 
 

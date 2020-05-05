@@ -113,7 +113,7 @@ class NoProjectFile(unittest.TestCase):
 
     def test_all(self):
         """ Test both yw2oo and sceti. """
-        self.assertEqual(yw2oo.main(), 'ERROR: No yWriter 7 project found.')
+        self.assertEqual(yw2oo.main(), 'ERROR: No yWriter project found.')
 
     def tearDown(self):
         remove_all_testfiles()
