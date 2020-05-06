@@ -1,6 +1,6 @@
 # yW2OO (yWriter-zu-LibreOffice-Konvertierer)
 
-Einen Roman aus [yWriter 7](http://www.spacejock.com/yWriter7.html) in eine OpenDocument-Textdatei 
+Einen Roman aus [yWriter 6](http://www.spacejock.com/yWriter6.html) oder [yWriter 7](http://www.spacejock.com/yWriter7.html) in eine OpenDocument-Textdatei 
 exportieren.
 
 ![Screenshot: Automatisch erzeugtes ODT](https://raw.githubusercontent.com/peter88213/yW2OO/master/docs/Screenshots/Writer-de.png)
@@ -13,7 +13,7 @@ Mehr Informationen finden Sie im [Wiki (deutsch)](https://github.com/peter88213/
 
 * Windows.
 
-* yWriter 7.
+* yWriter 6 oder 7.
 
 * Eine reguläre LibreOffice 5 oder 6-Installation (nicht "portable").
 
@@ -46,7 +46,7 @@ Die yW2OO Software kommt als ZIP-Archiv `yW2OO_Versionsnummer.zip`.
 
 ## yW2OO benutzen
 
-1. Verfassen Sie Ihren Roman mit yWriter7. Bitte beachten Sie die folgenden Konventionen:
+1. Verfassen Sie Ihren Roman mit yWriter. Bitte beachten Sie die folgenden Konventionen:
    * Textauszeichung: Fettschrift (Bold) und Kursivschrift (Italics) werden unterstützt. Andere Hervorhebungen wie Unterstreichung (Underline) und Durchstreichung (Strikethrough) gehen verloren. 
    * Kapitel und Szenen, die als "Unused" (U) markiert sind, werden nicht exportiert.
    * Kapitel, die mit "Other" (I) markiert sind, werden nicht exportiert.
@@ -56,7 +56,7 @@ Die yW2OO Software kommt als ZIP-Archiv `yW2OO_Versionsnummer.zip`.
 
    Machen Sie ein Backup des gesamten Projekts und schließen sie yWriter. 
 
-2. Öffnen Sie den Ordner Ihres yWriter-Projekts und machen Sie einen Rechtsklick auf die
+2. Öffnen Sie den Ordner Ihres yWriter-Projekts und machen Sie einen Rechtsklick auf die .yw6 oder
    .yw7-Projektdatei. Im Kontextmenü wählen Sie `Export to LibreOffice`.
 
 ![Screenshot: Windows Explorer Kontextmenu](https://raw.githubusercontent.com/peter88213/yW2OO/master/docs/Screenshots/yw2oo_cm.png)
