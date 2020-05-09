@@ -37,7 +37,6 @@
 		
 		<copy file="../LICENSE" todir="${dist}/yW2OO_v${release}" />
 		<copy file="../README.md" todir="${dist}/yW2OO_v${release}" />
-		<copy file="../LIESMICH.md" todir="${dist}/yW2OO_v${release}" />
 
 		<zip destfile="${dist}/yW2OO_v${release}.zip" basedir="${dist}/yW2OO_v${release}" />
 	</target>
