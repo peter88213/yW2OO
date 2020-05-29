@@ -1,9 +1,12 @@
-""" Build python scripts for the PyWriter "proofread" distributions.
+""" Build a python script for the yw2oo distribution.
         
-In order to distribute single scripts without dependencies, 
+In order to distribute a single script without dependencies, 
 this script "inlines" all modules imported from the pywriter package.
 
-For further information see https://github.com/peter88213/PyWriter
+The PyWriter project (see see https://github.com/peter88213/PyWriter)
+must be located on the same directory level as the yW2OO project. 
+
+For further information see https://github.com/peter88213/yW2OO
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os

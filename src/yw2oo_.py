@@ -53,7 +53,7 @@ def main():
     if message.startswith('ERROR'):
         return message
 
-    fileName, FileExtension = os.path.splitext(sourcePath)
+    fileName, fileExtension = os.path.splitext(sourcePath)
     document = OdtFile(fileName + SUFFIX + '.odt')
     document.comments = True
     message = document.write(ywFile)
