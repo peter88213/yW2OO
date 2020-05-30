@@ -15,7 +15,7 @@ REM Postconditions:
 REM * Previously auto-installed items of yW2OO are removed.
 REM * The Explorer context menu entry "Export to LibreOffice" is removed.
 
-set _release=2.7.0
+set _release=2.8.0
 
 pushd setup
 

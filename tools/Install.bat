@@ -14,8 +14,9 @@ REM
 REM Postconditions: 
 REM * The yW2OO Python scripts are installed in the LibreOffice user profile.
 REM * For yWriter7 files, there is an Explorer context menu entry "Export to LibreOffice".
+REM * There is a batch file in c:\pywriter to invoke the Python interpreter.
 
-set _release=2.7.0
+set _release=2.8.0
 
 pushd setup
 
