@@ -56,7 +56,8 @@ def main():
     fileName, fileExtension = os.path.splitext(sourcePath)
     document = OdtFile(fileName + SUFFIX + '.odt')
     document.comments = True
-    message = document.write(ywFile)
+    document.merge(ywFile)
+    message = document.write()
     return message
 
 
