@@ -1,4 +1,18 @@
-# yW2OO - yWriter to LibreOffice converter
+# Please note: 
+
+This project will not be continued. Users are advised to uninstall yW2OO and switch to one of the following projects: 
+
+## For LibreOffice users: 
+
+The yw-cnv extension for LibreOffice: Import and export yWriter 6/7 projects. 
+
+https://github.com/peter88213/yw-cnv
+
+## For OpenOffice users: 
+
+The pywoo tools for OpenOffice: Import and export yWriter 6/7 projects with Python. 
+
+https://github.com/peter88213/pywoo# yW2OO - yWriter to LibreOffice converter
 
 Export a novel from [yWriter 6](http://www.spacejock.com/yWriter6.html) or [yWriter 7](http://www.spacejock.com/yWriter7.html) to an OpenDocument 
 text file.
