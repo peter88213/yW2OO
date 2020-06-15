@@ -10,9 +10,11 @@ https://github.com/peter88213/yw-cnv
 
 ## For OpenOffice users: 
 
-# The pywoo tools for OpenOffice: Import and export yWriter 6/7 projects with Python. 
+The pywoo tools for OpenOffice: Import and export yWriter 6/7 projects with Python. 
 
 https://github.com/peter88213/pywoo# yW2OO - yWriter to LibreOffice converter
+
+# Tne yW2OO yWriter to LibreOffice converter
 
 Export a novel from [yWriter 6](http://www.spacejock.com/yWriter6.html) or [yWriter 7](http://www.spacejock.com/yWriter7.html) to an OpenDocument 
 text file.
