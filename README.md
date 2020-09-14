@@ -1,10 +1,26 @@
+# Please note: 
+
+This project will not be continued. Users are advised to uninstall yW2OO and switch to one of the following projects: 
+
+## For LibreOffice users: 
+
+The yw-cnv extension for LibreOffice: Import and export yWriter 6/7 projects. 
+
+https://github.com/peter88213/yw-cnv
+
+## For OpenOffice users: 
+
+The pywoo tools for OpenOffice: Import and export yWriter 6/7 projects with Python. 
+
+https://github.com/peter88213/pywoo
+
+
 # yW2OO (yWriter to OpenOffice/LibreOffice converter)
 
 Convert [yWriter](http://www.spacejock.com/yWriter5.html)'s HTML export file into a neat OpenDocument text file, ready to apply templates and styles.
 
 ![Screenshot: Generated ODT in OpenOffice Writer](https://raw.githubusercontent.com/peter88213/yW2OO/master/docs/Screenshots/Writer.png)
 
-For more information see [Wiki (english)](https://github.com/peter88213/yW2OO/wiki)
 
 ## Download
 
