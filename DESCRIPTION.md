@@ -12,10 +12,6 @@ This project will not be continued. Users are advised to uninstall yW2OO and swi
 [The pywoo extension for OpenOffice](https://peter88213.github.io/pywoo): Import and export yWriter 6/7 projects with Python. 
 
 
-## How to uninstall yW2OO
-
-Move into the `yW2OO_<version number>` folder and run `Uninstall.bat` (double click). 
-
 
 # yW2OO (yWriter to OpenOffice/LibreOffice converter): Description
 
@@ -46,6 +42,11 @@ The yW2OO Software comes as a zipfile `yW2OO_<version number>.zip`.
 1. Write your novel in yWriter. Make sure, the `<your yWriter project>\Export` folder contains a file named `writer.bat`. If not, copy it from `yW2OO_<version number>\setup>` folder.
 
 2. __Optional:__ Let yWriter export your scene descriptions to the default location, if you want the scene titles as navigable comments inserted. Command: __Project > Export Project > Scene descriptions__
+
+
+## How to uninstall yW2OO
+
+Move into the `yW2OO_<version number>` folder and run `Uninstall.bat` (double click). 
 
 3. Let yWriter export your project to `<your yWriter project>\Export\Exported Project.html`. Command: __Project > Export Project > to html__.
 
