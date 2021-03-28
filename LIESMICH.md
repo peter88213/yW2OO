@@ -1,4 +1,20 @@
-# yW2OO (yWriter-zu-OpenOffice/LibreOffice-Konvertierer)
+# Bitte beachten: 
+
+Dieses Projekt wird nicht weiterentwickelt. OpenOffice- und LibreOffice-Benutzern wird empfohlen, yW2OO zu deinstallieren und eine der folgenden Erweiterungen zu benutzen: 
+
+## Für LibreOffice-Benutzer: 
+
+[Die yw-cnv Extension für LibreOffice](https://peter88213.github.io/yw-cnv): yWriter 6/7-Pprojekte importieren und exportieren. 
+
+
+## Für OpenOffice-Benutzer: 
+
+[Die pywoo Extension für OpenOffice](https://peter88213.github.io/pywoo): yWriter 6/7-Pprojekte mit Python importieren und exportieren. 
+
+
+
+
+# yW2OO (yWriter-zu-OpenOffice/LibreOffice-Konvertierer) - Beschreibung
 
 HTML-Exportdatei von [yWriter](http://www.spacejock.com/yWriter5.html) in eine saubere OpenDocument-Textdatei umwandeln, um Dokument- und Formatvorlagen anwenden zu können.
 
