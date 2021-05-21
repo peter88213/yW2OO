@@ -13,7 +13,7 @@ from string import Template
 
 APP = 'yw2oo.pyw'
 
-YW7_CONTEXT_MENU = '''Windows Registry Editor Version 5.00
+YW_CONTEXT_MENU = '''Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo]
 "MUIVerb"="Export to OpenOffice"
@@ -110,9 +110,6 @@ YW7_CONTEXT_MENU = '''Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\14export\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\""
-'''
-
-YW6_CONTEXT_MENU = '''Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter6\\shell\\yw2oo]
 "MUIVerb"="Export to OpenOffice"
@@ -203,9 +200,6 @@ YW6_CONTEXT_MENU = '''Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter6\\shell\\yw2oo\\shell\\14export\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\""
-'''
-
-YW5_CONTEXT_MENU = '''Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter5\\shell\\yw2oo]
 "MUIVerb"="Export to OpenOffice"
@@ -297,10 +291,10 @@ def update_reg(installPath):
     python = sys.executable.replace('\\', '\\\\')
     script = installPath.replace('/', '\\\\') + '\\\\' + APP
     mapping = dict(PYTHON=python, SCRIPT=script)
-    make_reg(installPath + '/add_cm7.reg', Template(YW7_CONTEXT_MENU), mapping)
-    make_reg(installPath + '/add_cm6.reg', Template(YW6_CONTEXT_MENU), mapping)
-    make_reg(installPath + '/add_cm5.reg', Template(YW5_CONTEXT_MENU), mapping)
-    make_reg(installPath + '/del_cm.reg', Template(RESET_CONTEXT_MENU), {})
+    make_reg(installPath + '/add_context_menu.reg',
+             Template(YW_CONTEXT_MENU), mapping)
+    make_reg(installPath + '/rem_context_menu.reg',
+             Template(RESET_CONTEXT_MENU), {})
 
 
 def run():
@@ -308,11 +302,19 @@ def run():
     installPath = os.getenv('APPDATA').replace('\\', '/') + '/yw2oo'
 
     try:
-        os.mkdir(installPath)
-        print(os.path.normpath(installPath) + ' created.')
+        with os.scandir(installPath) as files:
+
+            for file in files:
+                os.remove(file)
 
     except:
-        pass
+
+        try:
+            os.mkdir(installPath)
+            print(os.path.normpath(installPath) + ' created.')
+
+        except:
+            pass
 
     update_reg(installPath)
 
