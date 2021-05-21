@@ -2,7 +2,7 @@
 <project name="yw2oo" basedir=".">
 	<property name="release" value="2.9.0" />
 	<property name="src" location="../src" />
-	<property name="builddir" location="../test" />
+	<property name="builddir" location="../build" />
 	<property name="dist" location="../dist" />
 	<property name="project-name" value="${ant.project.name}" />
 	<property name="release-name" value="${project-name}_v${release}" />
@@ -10,43 +10,29 @@
 	<target name="build" description="inline all library modules">
 		
 		<delete dir="${dist}" />
-		<delete file="${builddir}/yw2oo.pyw" />
+		<delete dir="${builddir}" />
+		<mkdir dir="${builddir}" />
 			<exec executable="python" failonerror="true">
 			    <arg value="${src}/build_yw2oo.py"/>
 			</exec>
-		<replace encoding="utf-8" file="${builddir}/yw2oo.pyw" token="@release" value="${release}" />
-	</target>
-
-	<target name="test" description="test the script">	
-		<exec executable="python" failonerror="true">
-		    <arg value="${builddir}/test_yw2oo.py"/>
-		</exec>
 	</target>
 
 	<target name="dist" description="generate the distribution">
 		
 		<mkdir dir="${dist}" />
 		<mkdir dir="${dist}/yW2OO_v${release}" />
-		<!--mkdir dir="${dist}/yW2OO_v${release}/setup" /-->
-		<!--mkdir dir="${dist}/yW2OO_v${release}/setup/program" /-->
-
 		<copy file="${builddir}/yw2oo.pyw" todir="${dist}/yW2OO_v${release}" />
-		<!--copy file="${reg}/add_cm.reg" todir="${dist}/yW2OO_v${release}/setup" /-->
-		<!--copy file="${reg}/del_cm.reg" todir="${dist}/yW2OO_v${release}/setup" /-->
-
-		<!--copy file="./Install.bat" todir="${dist}/yW2OO_v${release}" /-->
-		<!--copy file="./Uninstall.bat" todir="${dist}/yW2OO_v${release}" /-->
-		
+		<replace encoding="utf-8" file="${dist}/yW2OO_v${release}/yw2oo.pyw" token="@release" value="${release}" />
+		<copy file="${src}/setup.py" todir="${dist}/yW2OO_v${release}" />
+		<replace encoding="utf-8" file="${dist}/yW2OO_v${release}/setup.py" token="@release" value="${release}" />	
 		<copy file="../LICENSE" todir="${dist}/yW2OO_v${release}" />
 		<copy file="../README.md" todir="${dist}/yW2OO_v${release}" />
 
 		<zip destfile="${dist}/yW2OO_v${release}.zip" basedir="${dist}/yW2OO_v${release}" />
 	</target>
 
-	<target name="clean" description="clean up">
-		
-		<delete file="${builddir}/yw2oo.pyw" />
-		
+	<target name="clean" description="clean up">		
+		<delete dir="${builddir}" />
 	</target>
 
 </project>
