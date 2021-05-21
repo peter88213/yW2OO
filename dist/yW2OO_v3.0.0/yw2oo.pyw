@@ -1,6 +1,6 @@
 """Convert yWriter project to odt or ods. 
 
-Version 2.9.0
+Version 3.0.0
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/yW2OO
