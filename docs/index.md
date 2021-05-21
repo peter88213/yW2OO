@@ -1,7 +1,11 @@
+![screenshot](Screenshots/yw2oo_cm.png)
+
+
+
 [yWriter](http://spacejock.com/yWriter7.html) is a free word processor written by Australian author and programmer Simon Haynes. yWriter's strengths are structuring novels and controlling the progress during the writing process. With this Python script, you can combine the advantages of yWriter 7 with the advantages of OpenOffice/LibreOffice.
 
 
-## Features (a Python 3 installation is required) {#features}
+## Features (a Python 3 installation is required)
 
 -   Generate a "standard manuscript" formatted **ODF text document
     (ODT)** from an yWriter 6/7 project.

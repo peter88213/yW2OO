@@ -24,8 +24,8 @@
 		<mkdir dir="${dist}/yW2OO_v${release}" />
 		<copy file="${builddir}/yw2oo.pyw" todir="${dist}/yW2OO_v${release}" />
 		<replace encoding="utf-8" file="${dist}/yW2OO_v${release}/yw2oo.pyw" token="@release" value="${release}" />
-		<copy file="${src}/setup.py" todir="${dist}/yW2OO_v${release}" />
-		<replace encoding="utf-8" file="${dist}/yW2OO_v${release}/setup.py" token="@release" value="${release}" />	
+		<copy file="${src}/setup.pyw" todir="${dist}/yW2OO_v${release}" />
+		<replace encoding="utf-8" file="${dist}/yW2OO_v${release}/setup.pyw" token="@release" value="${release}" />	
 		<copy file="../LICENSE" todir="${dist}/yW2OO_v${release}" />
 		<copy file="${docs}/usage.md" tofile="${dist}/yW2OO_v${release}/README.md" />
 
