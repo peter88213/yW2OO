@@ -305,8 +305,7 @@ def update_reg(installPath):
 
 def run():
     """Install the yW2OO script and extend the yWriter context menu."""
-    installPath = os.path.expanduser(
-        os.sep.join(["~"])).replace('\\', '/') + '/yw2oo'
+    installPath = os.getenv('APPDATA').replace('\\', '/') + '/yw2oo'
 
     try:
         os.mkdir(installPath)
@@ -318,7 +317,7 @@ def run():
     update_reg(installPath)
 
     copy_file(APP, installPath + '/' + APP)
-    print(installPath + '/' + APP + ' copied.')
+    print(os.path.normpath(installPath + '/' + APP) + ' copied.')
 
     os.startfile(os.path.normpath(installPath))
 
