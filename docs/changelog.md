@@ -2,9 +2,9 @@
 
 ## Changelog
 
-### v3.0.0 
+### v3.0.0 Complete revision
 
-Complete revision, based on PyWriter v3.0.0
+Stand-alone universal exporter, based on PyWriter v3.0.0
 
 ### v1.16.0
 - Add an AddOn menu to the extension for manual conversion.

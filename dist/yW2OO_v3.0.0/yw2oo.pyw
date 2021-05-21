@@ -6751,7 +6751,7 @@ class Exporter(UniversalExporter):
     def __init__(self):
         """Extend the super class method."""
         UniversalExporter.__init__(self)
-        self.ui = UiTkOpen('yWriter import/export')
+        self.ui = UiTkOpen('Export from yWriter')
 
     def export_from_yw(self, sourceFile, targetFile):
         """Extend the super class method."""
