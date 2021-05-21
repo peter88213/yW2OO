@@ -1,39 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="yw2oo" basedir=".">
-	<property name="release" value="2.8.0" />
+	<property name="release" value="2.9.0" />
 	<property name="src" location="../src" />
-	<property name="test" location="../test" />
+	<property name="builddir" location="../test" />
 	<property name="dist" location="../dist" />
-	<property name="oxt" location="../oxt" />
-	<property name="reg" location="../reg" />
 	<property name="project-name" value="${ant.project.name}" />
 	<property name="release-name" value="${project-name}_v${release}" />
 
 	<target name="build" description="inline all library modules">
 		
 		<delete dir="${dist}" />
-		<delete file="${test}/yw2oo.py" />
+		<delete file="${builddir}/yw2oo.pyw" />
 			<exec executable="python" failonerror="true">
 			    <arg value="${src}/build_yw2oo.py"/>
 			</exec>
-			<exec executable="python" failonerror="true">
-			    <arg value="${test}/test_yw2oo.py"/>
-			</exec>
+		<replace encoding="utf-8" file="${builddir}/yw2oo.pyw" token="@release" value="${release}" />
+	</target>
+
+	<target name="test" description="test the script">	
+		<exec executable="python" failonerror="true">
+		    <arg value="${builddir}/test_yw2oo.py"/>
+		</exec>
 	</target>
 
 	<target name="dist" description="generate the distribution">
 		
 		<mkdir dir="${dist}" />
 		<mkdir dir="${dist}/yW2OO_v${release}" />
-		<mkdir dir="${dist}/yW2OO_v${release}/setup" />
-		<mkdir dir="${dist}/yW2OO_v${release}/setup/program" />
+		<!--mkdir dir="${dist}/yW2OO_v${release}/setup" /-->
+		<!--mkdir dir="${dist}/yW2OO_v${release}/setup/program" /-->
 
-		<copy file="${test}/yw2oo.py" todir="${dist}/yW2OO_v${release}/setup/program" />
-		<copy file="${reg}/add_cm.reg" todir="${dist}/yW2OO_v${release}/setup" />
-		<copy file="${reg}/del_cm.reg" todir="${dist}/yW2OO_v${release}/setup" />
+		<copy file="${builddir}/yw2oo.pyw" todir="${dist}/yW2OO_v${release}" />
+		<!--copy file="${reg}/add_cm.reg" todir="${dist}/yW2OO_v${release}/setup" /-->
+		<!--copy file="${reg}/del_cm.reg" todir="${dist}/yW2OO_v${release}/setup" /-->
 
-		<copy file="./Install.bat" todir="${dist}/yW2OO_v${release}" />
-		<copy file="./Uninstall.bat" todir="${dist}/yW2OO_v${release}" />
+		<!--copy file="./Install.bat" todir="${dist}/yW2OO_v${release}" /-->
+		<!--copy file="./Uninstall.bat" todir="${dist}/yW2OO_v${release}" /-->
 		
 		<copy file="../LICENSE" todir="${dist}/yW2OO_v${release}" />
 		<copy file="../README.md" todir="${dist}/yW2OO_v${release}" />
@@ -43,7 +45,7 @@
 
 	<target name="clean" description="clean up">
 		
-		<delete file="${test}/yw2oo.py" />
+		<delete file="${builddir}/yw2oo.pyw" />
 		
 	</target>
 

@@ -85,7 +85,7 @@ class NormalOperation(unittest.TestCase):
 
     def test_yw2oo(self):
         os.chdir(TEST_EXEC_PATH)
-        self.assertEqual(yw2oo.main(), 'SUCCESS: "' + ODT_TEST + '" saved.')
+        yw2oo.run(YW7_TEST)
         os.chdir(TEST_PATH)
 
         with zipfile.ZipFile(TEST_EXEC_PATH + ODT_TEST, 'r') as myzip:
@@ -96,24 +96,6 @@ class NormalOperation(unittest.TestCase):
                          read_file(TEST_DATA_PATH + DOCUMENT_CONTENT))
         self.assertEqual(read_file(TEST_EXEC_PATH + DOCUMENT_STYLES),
                          read_file(TEST_DATA_PATH + DOCUMENT_STYLES))
-
-    def tearDown(self):
-        remove_all_testfiles()
-
-
-class NoProjectFile(unittest.TestCase):
-    """Test case: yWriter project file is not present."""
-
-    def setUp(self):
-        # Make sure there's no yWriter project file present.
-        try:
-            os.remove(YW7_TEST)
-        except:
-            pass
-
-    def test_all(self):
-        """ Test both yw2oo and sceti. """
-        self.assertEqual(yw2oo.main(), 'ERROR: No yWriter project found.')
 
     def tearDown(self):
         remove_all_testfiles()
