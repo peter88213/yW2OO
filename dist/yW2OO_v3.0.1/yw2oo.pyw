@@ -1,6 +1,6 @@
 """Convert yWriter project to odt or ods. 
 
-Version 3.0.0
+Version 3.0.1
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/yW2OO
@@ -6673,8 +6673,6 @@ class UniversalExporter(YwCnvUi):
                              OdsSceneList,
                              OdsPlotList]
 from tkinter import *
-
-from tkinter import *
 from tkinter import messagebox
 
 
@@ -6731,12 +6729,8 @@ class UiTk(Ui):
         """Start the Tk main loop."""
         self.root.mainloop()
 
-
-class UiTkOpen(UiTk):
-    """Extend the UiTk class with an additional 'Open' button."""
-
     def show_open_button(self, open_cmd):
-        """Add an 'Open' button to UiTk."""
+        """Add an 'Open' button to the main window."""
         self.root.openButton = Button(text="Open", command=open_cmd)
         self.root.openButton.config(height=1, width=10)
         self.rowCount += 1
@@ -6751,7 +6745,7 @@ class Exporter(UniversalExporter):
     def __init__(self):
         """Extend the super class method."""
         UniversalExporter.__init__(self)
-        self.ui = UiTkOpen('Export from yWriter')
+        self.ui = UiTk('Export from yWriter')
 
     def export_from_yw(self, sourceFile, targetFile):
         """Extend the super class method."""

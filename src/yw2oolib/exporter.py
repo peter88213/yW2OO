@@ -5,7 +5,7 @@ For further information see https://github.com/peter88213/yw2oo
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 from pywriter.converter.universal_exporter import UniversalExporter
-from pywriter.ui.ui_tk_open import UiTkOpen
+from pywriter.ui.ui_tk import UiTk
 
 
 class Exporter(UniversalExporter):
@@ -16,7 +16,7 @@ class Exporter(UniversalExporter):
     def __init__(self):
         """Extend the super class method."""
         UniversalExporter.__init__(self)
-        self.ui = UiTkOpen('Export from yWriter')
+        self.ui = UiTk('Export from yWriter')
 
     def export_from_yw(self, sourceFile, targetFile):
         """Extend the super class method."""
