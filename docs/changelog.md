@@ -4,7 +4,7 @@
 
 ## Changelog
 
-### v1.0.2 Service release
+### v3.0.2 Service release
 
 - Refactor for faster execution.
 Based on Pywriter v3.2.1
