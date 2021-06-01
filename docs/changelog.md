@@ -4,6 +4,14 @@
 
 ## Changelog
 
+### v1.0.2 Service release
+
+- Refactor for faster execution.
+Based on Pywriter v3.2.1
+
+### v3.0.1 Service release
+Refactor, based on PyWriter v3.2.0
+
 ### v3.0.0 Complete revision
 
 Stand-alone universal exporter, based on PyWriter v3.0.0

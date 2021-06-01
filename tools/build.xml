@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="yw2oo" basedir=".">
-	<property name="release" value="3.0.1" />
+	<property name="release" value="3.0.2" />
 	<property name="src" location="../src" />
 	<property name="builddir" location="../build" />
 	<property name="dist" location="../dist" />

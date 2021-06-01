@@ -1,7 +1,7 @@
 """Install the yW2OO script and set up the registry files
 for extending the yWriter context menu. 
 
-Version 3.0.1
+Version 3.0.2
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/yW2OO
