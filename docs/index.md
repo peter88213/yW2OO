@@ -8,9 +8,9 @@
 ## Features (a Python 3 installation is required)
 
 -   Generate a "standard manuscript" formatted **ODF text document
-    (ODT)** from an yWriter 6/7 project.
+    (ODT)** from an yWriter 7 project.
 
--   Load yWriter 6/7 chapters and scenes into an OpenDocument file with
+-   Load yWriter 7 chapters and scenes into an OpenDocument file with
     chapter and scene markers for **proof reading** and writing back.
 
 -   Generate a **character list** that can be edited in Office Calc and
@@ -44,7 +44,7 @@ first uninstall your current yW2OO installation with its included **Uninstall.ba
 
 ## Download and install
 
-[Download the latest release (version 3.0.2)](https://raw.githubusercontent.com/peter88213/yW2OO/master/dist/yW2OO_v3.0.2.zip)
+[Download the latest release (version 3.2.0)](https://raw.githubusercontent.com/peter88213/yW2OO/master/dist/yW2OO_v3.2.0.zip)
 
 [Instructions for installation and use](usage)
 
