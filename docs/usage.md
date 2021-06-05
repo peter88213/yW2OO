@@ -155,7 +155,7 @@ This will generate a new OpenDocument text document (odt) containing a
 be edited and written back to yWriter format. File name suffix is
 `_chapters`.
 
-**Note:** Doesn\'t apply to chapters marked
+**Note:** Doesn't apply to chapters marked
 `This chapter begins a new section` in yWriter.
 
 
@@ -285,7 +285,7 @@ to yWriter format. File name suffix is `_items`.
 ## Scene list
 
 This will generate a new OpenDocument spreadsheet (ods) listing scene
-title, scene descriptions, and links to the manuscript\'s scene
+title, scene descriptions, and links to the manuscript's scene
 sections. Further scene metadata (e.g. tags, goals, time), if any. File
 name suffix is `_scenelist`.
 
@@ -304,8 +304,8 @@ related metadata that can be displayed and edited. File name suffix is
 ### Plotting conventions
 
 In yWriter, you can divide your novel into **Plot Sections** (e.g. acts
-or steps) by inserting chapters marked "other". They will show up in
-blue color and won\'t get exported.
+or steps) by inserting "Notes" chapters. They will show up in
+blue color and won't get exported.
 
 **Plot-related events** (e.g. "Mid Point", "Climax") can be
 identified by "scene tags" if you want to link them to a specific
@@ -313,10 +313,10 @@ scene.
 
 You can use scene notes for **plot-specific explanations**.
 
-If you want to **visualize character arcs**, you can use the project\'s
+If you want to **visualize character arcs**, you can use the project's
 rating names by changing them to the names of up to four main
 characters. Then you can quantify the state of these four characters and
-put them into the scenes. It\'s easy then to let OpenOffice Calc show a
+put them into the scenes. It's easy then to let OpenOffice Calc show a
 diagram for the scene ratings over scene count or word count.
 
 -   Only rating field names corresponding to character names or
