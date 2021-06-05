@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### v3.4.0 Service update
+
+- Cope better with the scene type overdetermination since yWriter 7.0.7.2.
+- Slight modifications of the plot list (not backward compatible for re-import).
+
+Based on PyWriter v3.6.0
+
 ### v3.2.0 Drop yWriter 6 support
 
 Support only yWriter 7 projects for better maintainability and speed.
