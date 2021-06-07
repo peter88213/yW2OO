@@ -62,7 +62,7 @@ menu entry.
 
 ## Export to odt
 
-This will load yWriter 6/7 chapters and scenes into a new OpenDocument
+This will load yWriter 7 chapters and scenes into a new OpenDocument
 text document (odt).
 
 -   The document is placed in the same folder as the yWriter project.
@@ -100,7 +100,7 @@ text document (odt).
 
 ## Proof reading
 
-This will load yWriter 6/7 chapters and scenes into a new OpenDocument
+This will load yWriter 7 chapters and scenes into a new OpenDocument
 text document (odt) with chapter and scene markers. File name suffix is
 `_proof`.
 
@@ -125,7 +125,7 @@ text document (odt) with chapter and scene markers. File name suffix is
 
 ## Manuscript
 
-This will load yWriter 6/7 chapters and scenes into a new OpenDocument
+This will load yWriter 7 chapters and scenes into a new OpenDocument
 text document (odt) with invisible chapter and scene sections (to be
 seen in the Navigator). File name suffix is `_manuscript`.
 
