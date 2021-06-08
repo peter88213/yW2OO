@@ -6,10 +6,15 @@
 
 ### v3.4.0 Service update
 
-- Cope better with the scene type overdetermination since yWriter 7.0.7.2.
 - Slight modifications of the plot list (not backward compatible for re-import).
 
 Based on PyWriter v3.6.0
+
+### v3.2.1 Bugfix update
+
+- Cope better with the chapter/scene type overdetermination since yWriter 7.0.7.2.
+
+Based on PyWriter v3.4.1
 
 ### v3.2.0 Drop yWriter 6 support
 
