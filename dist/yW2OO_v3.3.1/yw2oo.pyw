@@ -1,6 +1,6 @@
 """Convert yWriter project to odt or ods. 
 
-Version 3.3.0
+Version 3.3.1
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/yW2OO
@@ -1272,7 +1272,15 @@ class Yw7TreeBuilder():
             chId = chp.find('ID').text
 
             if chId in ywProject.chapters:
-                chp.find('Title').text = ywProject.chapters[chId].title
+
+                if ywProject.chapters[chId] is not None:
+
+                    if chp.find('Title') is not None:
+                        chp.find('Title').text = ywProject.chapters[chId].title
+
+                    else:
+                        ET.SubElement(
+                            chp, 'Title').text = ywProject.chapters[chId].title
 
                 if ywProject.chapters[chId].desc is not None:
 
@@ -1322,7 +1330,13 @@ class Yw7TreeBuilder():
             if scId in ywProject.scenes:
 
                 if ywProject.scenes[scId].title is not None:
-                    scn.find('Title').text = ywProject.scenes[scId].title
+
+                    if scn.find('Title') is not None:
+                        scn.find('Title').text = ywProject.scenes[scId].title
+
+                    else:
+                        ET.SubElement(
+                            scn, 'Title').text = ywProject.scenes[scId].title
 
                 if ywProject.scenes[scId].desc is not None:
 
@@ -4725,8 +4739,8 @@ class OdtChapterDesc(OdtFile):
     partTemplate = '''<text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../${ProjectName}_parts.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
 '''
 
-    chapterTemplate = '''<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../${ProjectName}_manuscript.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
-<text:section text:style-name="Sect1" text:name="ChID:$ID">
+    chapterTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
+<text:h text:style-name="Heading_20_2" text:outline-level="2"><text:a xlink:href="../${ProjectName}_manuscript.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
 <text:p text:style-name="Text_20_body">$Desc</text:p>
 </text:section>
 '''
@@ -4747,8 +4761,8 @@ class OdtPartDesc(OdtFile):
 <text:p text:style-name="Subtitle">$AuthorName</text:p>
 '''
 
-    partTemplate = '''<text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../${ProjectName}_manuscript.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
-<text:section text:style-name="Sect1" text:name="ChID:$ID">
+    partTemplate = '''<text:section text:style-name="Sect1" text:name="ChID:$ID">
+<text:h text:style-name="Heading_20_1" text:outline-level="1"><text:a xlink:href="../${ProjectName}_manuscript.odt#ChID:$ID%7Cregion">$Title</text:a></text:h>
 <text:p text:style-name="Text_20_body">$Desc</text:p>
 </text:section>
 '''
