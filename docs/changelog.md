@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v3.4.1 Bugfix update
+
+- Fix the "proofread tags" paragraph styles.
+
+Based on PyWriter v3.6.6
+
 ### v3.4.0 New document formatting, general program improvement
 
 It is highly advised to update to this version.
