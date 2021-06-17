@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v3.4.2 Optional update
+
+- Major refactoring of the yw7 file processing.
+
+Based on PyWriter v3.8.0
+
 ### v3.4.1 Bugfix update
 
 - Fix the "proofread tags" paragraph styles.
