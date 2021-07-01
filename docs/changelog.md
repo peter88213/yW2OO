@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v3.4.3 Optional update
+
+- Major refactoring of the template based export.
+
+Based on PyWriter v3.12.5
+
 ### v3.4.2 Optional update
 
 - Major refactoring of the yw7 file processing.
