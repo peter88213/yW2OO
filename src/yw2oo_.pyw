@@ -6,17 +6,28 @@ Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/yW2OO
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-import os
 import sys
-from urllib.parse import unquote
 
-from yw2oolib.exporter import Exporter
+from pywriter.ui.ui_tk import UiTk
+from pywriter.converter.yw7_exporter import Yw7Exporter
 
-YW_EXTENSIONS = ['.yw7', '.yw6', '.yw5']
+
+class Exporter(Yw7Exporter):
+    """Extend the Super class. 
+    Show 'Open' button after conversion from yw.
+    """
+
+    def export_from_yw(self, sourceFile, targetFile):
+        """Extend the super class method, showing an 'open' button after conversion."""
+        Yw7Exporter.export_from_yw(self, sourceFile, targetFile)
+
+        if self.newFile:
+            self.ui.show_open_button(self.open_newFile)
 
 
 def run(sourcePath, suffix=None):
     converter = Exporter()
+    converter.ui = UiTk('Export from yWriter @release')
     kwargs = {'suffix': suffix}
     converter.run(sourcePath, **kwargs)
     converter.ui.start()
@@ -25,24 +36,15 @@ def run(sourcePath, suffix=None):
 if __name__ == '__main__':
 
     try:
-        sourcePath = unquote(sys.argv[1].replace('file:///', ''))
+        sourcePath = sys.argv[1]
 
     except:
         sourcePath = ''
 
-    fileName, FileExtension = os.path.splitext(sourcePath)
+    try:
+        suffix = sys.argv[2]
 
-    if not FileExtension in YW_EXTENSIONS:
-        # Source file is not a yWriter project.
-        suffix = None
-
-    else:
-        # Source file is a yWriter project; suffix matters.
-
-        try:
-            suffix = sys.argv[2]
-
-        except:
-            suffix = ''
+    except:
+        suffix = ''
 
     run(sourcePath, suffix)
