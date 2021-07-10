@@ -69,10 +69,10 @@ text document (odt).
 -   Document's **filename**: `<yW project name>.odt`.
 -   Text markup: Bold and italics are supported. Other highlighting such
     as underline and strikethrough are lost.
--   Only "normal" chapters and scenes are imported. Chapters and
-    scenes marked "unused", "todo" or "notes" are not imported.
+-   Only "normal" chapters and scenes are exported. Chapters and
+    scenes marked "unused", "todo" or "notes" are not exported.
 -   Only scenes that are intended for RTF export in yWriter will be
-    imported.
+    exported.
 -   Comments in the text bracketed with slashes and asterisks (like
     `/* this is a comment */`) are converted to author's comments.
 -   Interspersed HTML, TEX, or RTF commands are taken over unchanged.
@@ -339,4 +339,10 @@ diagram for the scene ratings over scene count or word count.
 [Top of page](#top)
 
 ------------------------------------------------------------------------
+
+## Installation path
+
+The **setup.py** installation script installs *yw2oo.pyw* in the user profile. This is the installation path: 
+
+`c:\Users\<user name>\AppData\Roaming\PyWriter\yw2oo`
 

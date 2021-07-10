@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### v3.4.5 Standardize the installation path
+
+- Move the installation path to the AppData\Roaming\PyWriter subfolder, 
+where all PyWriter-based applications are to be located.
+
+Based on PyWriter v3.12.7
+
 ### v3.4.4 Optional update
 
 Refactor: 

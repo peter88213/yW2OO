@@ -1,6 +1,6 @@
 """Convert yWriter project to odt or ods. 
 
-Version 3.4.4
+Version 3.4.5
 
 Copyright (c) 2021 Peter Triesberger
 For further information see https://github.com/peter88213/yW2OO
@@ -775,7 +775,7 @@ class Novel():
         else:
             suffix = ''
 
-        if filePath.lower().endswith(suffix + self.EXTENSION):
+        if filePath.lower().endswith((suffix + self.EXTENSION).lower()):
             self._filePath = filePath
             head, tail = os.path.split(os.path.realpath(filePath))
             self.projectPath = quote(head.replace('\\', '/'), '/:')
@@ -3554,6 +3554,7 @@ class OdfFile(FileExport):
         """
         FileExport.__init__(self, filePath, **kwargs)
         self.tempDir = tempfile.mkdtemp(suffix='.tmp', prefix='odf_')
+        self.originalPath = self._filePath
 
     def __del__(self):
         """Make sure to delete the temporary directory,
@@ -3665,13 +3666,13 @@ class OdfFile(FileExport):
 
         # Add "content.xml" to the temporary directory.
 
-        filePath = self._filePath
+        self.originalPath = self._filePath
 
         self._filePath = self.tempDir + '/content.xml'
 
         message = FileExport.write(self)
 
-        self._filePath = filePath
+        self._filePath = self.originalPath
 
         if message.startswith('ERROR'):
             return message
@@ -6679,7 +6680,7 @@ class Exporter(Yw7Exporter):
 
 def run(sourcePath, suffix=None):
     converter = Exporter()
-    converter.ui = UiTk('Export from yWriter 3.4.4')
+    converter.ui = UiTk('Export from yWriter 3.4.5')
     kwargs = {'suffix': suffix}
     converter.run(sourcePath, **kwargs)
     converter.ui.start()

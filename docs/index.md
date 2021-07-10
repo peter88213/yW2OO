@@ -44,7 +44,7 @@ first uninstall your current yW2OO installation with its included **Uninstall.ba
 
 ## Download and install
 
-[Download the latest release (version 3.4.4)](https://raw.githubusercontent.com/peter88213/yW2OO/master/dist/yW2OO_v3.4.4.zip)
+[Download the latest release (version 3.4.5)](https://raw.githubusercontent.com/peter88213/yW2OO/master/dist/yW2OO_v3.4.5.zip)
 
 [Instructions for installation and use](usage)
 

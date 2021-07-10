@@ -340,3 +340,9 @@ diagram for the scene ratings over scene count or word count.
 
 ------------------------------------------------------------------------
 
+## Installation path
+
+The **setup.py** installation script installs *yw2oo.pyw* in the user profile. This is the installation path: 
+
+`c:\Users\<user name>\AppData\Roaming\PyWriter\yw2oo`
+
