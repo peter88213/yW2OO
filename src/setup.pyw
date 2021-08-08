@@ -10,6 +10,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 import os
 import sys
 from string import Template
+from shutil import copyfile
 
 APP = 'yw2oo.pyw'
 
@@ -123,14 +124,6 @@ RESET_CONTEXT_MENU = '''Windows Registry Editor Version 5.00
 '''
 
 
-def copy_file(inputFile, outputFile):
-    with open(inputFile, 'rb') as f:
-        myData = f.read()
-    with open(outputFile, 'wb') as f:
-        f.write(myData)
-    return()
-
-
 def update_reg(installPath):
 
     def make_reg(filePath, template, mapping):
@@ -171,7 +164,7 @@ def run():
 
     update_reg(installPath)
 
-    copy_file(APP, installPath + '/' + APP)
+    copyfile(APP, installPath + '/' + APP)
     print(os.path.normpath(installPath + '/' + APP) + ' copied.')
 
     os.startfile(os.path.normpath(installPath))
