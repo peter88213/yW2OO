@@ -10,7 +10,7 @@ import os
 import inliner
 
 SRC = '../src/'
-BUILD = '../build/'
+BUILD = '../test/'
 SOURCE_FILE = SRC + 'yw2oo_.pyw'
 TARGET_FILE = BUILD + 'yw2oo.pyw'
 
