@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v3.6.0 Feature update
+
+- Add notes to the character descriptions.
+
+Based on PyWriter v3.22.0
+
 ### v3.4.6 Bugfix release
 
 This release is strongly recommended.
