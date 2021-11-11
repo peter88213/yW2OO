@@ -22,94 +22,100 @@ YW_CONTEXT_MENU = '''Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell]
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\00export]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\000export]
 @="Export to odt"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\00export\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\000export\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\""
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\01proof]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\010brfsynopsis]
+@="Brief Synopsis"
+
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\010brfsynopsis\\command]
+@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _brf_synopsis"
+
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\020proof]
 @="Proof reading"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\01proof\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\020proof\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _proof"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\02manuscript]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\030manuscript]
 @="Manuscript"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\02manuscript\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\030manuscript\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _manuscript"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\03scenedesc]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\040scenedesc]
 @="Scene Descriptions"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\03scenedesc\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\040scenedesc\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _scenes"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\04chapterdesc]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\050chapterdesc]
 @="Chapter Descriptions"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\04chapterdesc\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\050chapterdesc\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _chapters"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\05partdesc]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\060partdesc]
 @="Part Descriptions"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\05partdesc\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\060partdesc\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _parts"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\06charlist]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\070charlist]
 @="Character List"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\06charlist\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\070charlist\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _charlist"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\07loclist]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\080loclist]
 @="Location List"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\07loclist\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\080loclist\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _loclist"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\08itemlist]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\090itemlist]
 @="Item List"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\08itemlist\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\090itemlist\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _itemlist"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\10crossreference]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\100crossreference]
 @="Cross references"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\10crossreference\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\100crossreference\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _xref"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\11chardesc]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\110chardesc]
 @="Character Descriptions"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\11chardesc\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\110chardesc\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _characters"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\12locdesc]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\120locdesc]
 @="Location Descriptions"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\12locdesc\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\120locdesc\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _locations"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\13itemdesc]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\130itemdesc]
 @="Item Descriptions"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\13itemdesc\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\130itemdesc\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _items"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\14scenelist]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\140scenelist]
 @="Scene List"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\14scenelist\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\140scenelist\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _scenelist"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\15plotlist]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\150plotlist]
 @="Plot List"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\15plotlist\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\150plotlist\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _plotlist"
 
 [-HKEY_CURRENT_USER\Software\Classes\yWriter6\shell\yw2oo]
