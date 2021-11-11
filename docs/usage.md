@@ -5,6 +5,7 @@
 ## Command reference
 
 -   [Export to odt](#export-to-odt)
+-   [Brief synopsis](#brief-synopsis)
 -   [Proof reading](#proof-reading)
 -   [Manuscript](#manuscript)
 -   [Scene descriptions](#scene-descriptions)
@@ -91,6 +92,31 @@ text document (odt).
     indentation of the first line.
 -   Scenes marked "attach to previous scene" in yWriter appear like
     continuous paragraphs.
+
+
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Brief synopsis
+
+This will load a brief synopsis with chapter and scenes titles into a new
+ OpenDocument text document (odt).
+
+-   The document is placed in the same folder as the yWriter project.
+-   Document's **filename**: `<yW project name_brf_synopsis>.odt`.
+-   Only "normal" chapters and scenes are exported. Chapters and
+    scenes marked "unused", "todo" or "notes" are not exported.
+-   Only scenes that are intended for RTF export in yWriter will be
+    exported.
+-   Chapter titles appear as first level heading if the chapter is
+    marked as beginning of a new section in yWriter. Such headings are
+    considered as "part" headings.
+-   Chapter titles appear as second level heading if the chapter is not
+    marked as beginning of a new section. Such headings are considered
+    as "chapter" headings.
+-   Scene titles appear as plain paragraphs.
 
 
 

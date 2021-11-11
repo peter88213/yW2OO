@@ -6,6 +6,12 @@
 
 ### v3.6.0 Feature update
 
+- Add a brief synopsis with chapter and scene titles.
+
+Based on PyWriter v3.28.0
+
+### v3.6.0 Feature update
+
 - Add notes to the character descriptions.
 
 Based on PyWriter v3.22.0
