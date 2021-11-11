@@ -4,7 +4,7 @@
 
 ## Changelog
 
-### v3.6.0 Feature update
+### v3.8.0 Feature update
 
 - Add a brief synopsis with chapter and scene titles.
 

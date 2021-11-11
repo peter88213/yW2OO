@@ -8,7 +8,10 @@
 ## Features (a Python 3 installation is required)
 
 -   Generate a "standard manuscript" formatted **ODF text document
-    (ODT)** from an yWriter 7 project.
+    (ODT)** from a yWriter 7 project.
+
+-   Generate a **brief synopsis** with chapter and scene titles
+    from a yWriter 7 project.
 
 -   Load yWriter 7 chapters and scenes into an OpenDocument file with
     chapter and scene markers for **proof reading** and writing back.
