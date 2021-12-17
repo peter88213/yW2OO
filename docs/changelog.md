@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v3.8.1 Bugfix update
+
+- Fix a bug in the setup script where setup is aborted when the "PyWriter" directory does not exist in the user profile.
+
+Based on PyWriter v3.28.1
+
 ### v3.8.0 Feature update
 
 - Add a brief synopsis with chapter and scene titles.

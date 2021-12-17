@@ -162,7 +162,7 @@ def run():
     except:
 
         try:
-            os.mkdir(installPath)
+            os.makedirs(installPath)
             print(os.path.normpath(installPath) + ' created.')
 
         except:
