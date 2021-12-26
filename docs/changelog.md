@@ -4,6 +4,15 @@
 
 ## Changelog
 
+### v3.8.2 Optional update for Linux compatibility
+
+- Add shebang and change the line endings for Linux.
+- Change the installation path to make it compatible with non-Windows OS.
+
+After update, please remove the old version at `~\AppData\Roaming\yw2oo` manually.
+
+Based on PyWriter v3.28.1
+
 ### v3.8.1 Bugfix update
 
 - Fix a bug in the setup script where setup is aborted when the "PyWriter" directory does not exist in the user profile.

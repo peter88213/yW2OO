@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Install the yW2OO script and set up the registry files
 for extending the yWriter context menu. 
 
@@ -11,6 +12,7 @@ import os
 import sys
 from string import Template
 from shutil import copyfile
+from pathlib import Path
 
 APP = 'yw2oo.pyw'
 
@@ -151,7 +153,7 @@ def update_reg(installPath):
 
 def run():
     """Install the yW2OO script and extend the yWriter context menu."""
-    installPath = os.getenv('APPDATA').replace('\\', '/') + '/PyWriter/yw2oo'
+    installPath = str(Path.home()).replace('\\', '/') + '/.pywriter/yw2oo'
 
     try:
         with os.scandir(installPath) as files:

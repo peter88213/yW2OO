@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="yw2oo" basedir=".">
-	<property name="release" value="3.8.1" />
+	<property name="release" value="3.8.2" />
 	<property name="src" location="../src" />
 	<property name="test" location="../test" />
 	<property name="build" location="../build" />
@@ -28,6 +28,7 @@
 		<replace encoding="utf-8" file="${build}/${project-name}_v${release}/setup.pyw" token="@release" value="${release}" />	
 		<copy file="../LICENSE" todir="${build}/${project-name}_v${release}" />
 		<copy file="${docs}/usage.md" tofile="${build}/${project-name}_v${release}/README.md" />
+		<fixcrlf encoding="utf-8" eol="lf" srcdir="${build}/${project-name}_v${release}" includes="**/*.pyw" />
 
 		<zip destfile="${dist}/${project-name}_v${release}.zip" basedir="${build}/${project-name}_v${release}" />
 

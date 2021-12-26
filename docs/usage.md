@@ -54,7 +54,7 @@ yWriter to OpenOffice/LibreOffice converter - yWriter export to odt/ods document
 
 ## How to uninstall yW2OO
 
-Move into the installation folder `~\AppData\Roaming\yw2oo` and double click on `rem_context_menu.reg`. 
+Move into the installation folder `~\.yw2oo` and double click on `rem_context_menu.reg`. 
 You may be asked for approval to modify the registry. Please accept to remove the Explorer context
 menu entry. 
 
@@ -370,5 +370,5 @@ diagram for the scene ratings over scene count or word count.
 
 The **setup.py** installation script installs *yw2oo.pyw* in the user profile. This is the installation path: 
 
-`c:\Users\<user name>\AppData\Roaming\PyWriter\yw2oo`
+`c:\Users\<user name>\.pywriter\yw2oo`
 
