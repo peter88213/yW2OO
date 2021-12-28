@@ -15,23 +15,26 @@
 			</exec>
 	</target>
 
-	<target name="dist" description="generate the distribution">
-		
+	<target name="dist" description="generate the distribution">		
 		<delete dir="${build}" />
 		<delete dir="${dist}" />
 		<mkdir dir="${build}" />
 		<mkdir dir="${dist}" />
 		<mkdir dir="${build}/${project-name}_v${release}" />
+		
 		<copy file="${test}/yw2oo.pyw" todir="${build}/${project-name}_v${release}" />
 		<replace encoding="utf-8" file="${build}/${project-name}_v${release}/yw2oo.pyw" token="@release" value="${release}" />
+		
 		<copy file="${src}/setup.pyw" todir="${build}/${project-name}_v${release}" />
 		<replace encoding="utf-8" file="${build}/${project-name}_v${release}/setup.pyw" token="@release" value="${release}" />	
+		
+		<fixcrlf encoding="utf-8" eol="lf" srcdir="${build}/${project-name}_v${release}" includes="**/*.pyw" />
+		
 		<copy file="../LICENSE" todir="${build}/${project-name}_v${release}" />
 		<copy file="${docs}/usage.md" tofile="${build}/${project-name}_v${release}/README.md" />
-		<fixcrlf encoding="utf-8" eol="lf" srcdir="${build}/${project-name}_v${release}" includes="**/*.pyw" />
-
+		
 		<zip destfile="${dist}/${project-name}_v${release}.zip" basedir="${build}/${project-name}_v${release}" />
-
+		
 		<copy file="${docs}/template/index.md" overwrite="True" todir="${docs}" />
 		<replace encoding="utf-8" file="${docs}/index.md" token="0.99.0" value="${release}" />
 	</target>

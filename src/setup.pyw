@@ -154,21 +154,14 @@ def update_reg(installPath):
 def run():
     """Install the yW2OO script and extend the yWriter context menu."""
     installPath = str(Path.home()).replace('\\', '/') + '/.pywriter/yw2oo'
+    os.makedirs(installPath + '/config', exist_ok=True)
 
-    try:
-        with os.scandir(installPath) as files:
+    with os.scandir(installPath) as files:
 
-            for file in files:
+        for file in files:
+
+            if not 'config' in file.name:
                 os.remove(file)
-
-    except:
-
-        try:
-            os.makedirs(installPath)
-            print(os.path.normpath(installPath) + ' created.')
-
-        except:
-            pass
 
     update_reg(installPath)
 
