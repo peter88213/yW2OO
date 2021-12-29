@@ -39,6 +39,9 @@ yWriter to OpenOffice/LibreOffice converter - yWriter export to odt/ods document
    Now, add the context menu entries by double-clicking  `add_context_menu.reg`. 
    You may be asked for approval to modify  the Windows registry. Please accept.
 
+You can remove the context menu entries by double-clicking  `rem_context_menu.reg`.
+
+Please note that these context menus depend on the currently installed Python version. After a major Python update you may need to run the setup program again and renew the registry entries.
 
 ## How to use yW2OO
 

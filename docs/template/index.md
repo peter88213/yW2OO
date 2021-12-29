@@ -7,28 +7,14 @@
 
 ## Features (a Python 3 installation is required)
 
--   Generate a "standard manuscript" formatted **ODF text document
-    (ODT)** from a yWriter 7 project.
-
--   Generate a **brief synopsis** with chapter and scene titles
-    from a yWriter 7 project.
-
--   Load yWriter 7 chapters and scenes into an OpenDocument file with
-    chapter and scene markers for **proof reading** and writing back.
-
--   Generate a **character list** that can be edited in Office Calc and
-    written back to yWriter format.
-
--   Generate a **location list** that can be edited in Office Calc and
-    written back to yWriter format.
-
--   Generate an **item list** that can be edited in Office Calc and
-    written back to yWriter format.
-
--   Generate an OpenDocument text file containing navigable **cross
-    references** , such as scenes per character, characters per tag,
-    etc.
-
+- Generate a "standard manuscript" formatted **ODF text document (ODT)** from a yWriter 7 project.
+- Generate a **brief synopsis** with chapter and scene titles from a yWriter 7 project.
+- Load yWriter 7 chapters and scenes into an OpenDocument file with chapter and scene markers for **proof reading** and writing back.
+- Generate a **character list** that can be edited in Office Calc and written back to yWriter format.
+- Generate a **location list** that can be edited in Office Calc and written back to yWriter format.
+- Generate an **item list** that can be edited in Office Calc and written back to yWriter format.
+- Generate an OpenDocument text file containing navigable **cross references** , such as scenes per character, characters per tag, etc.
+- Launch via Windows context menu. 
 
 With the [pywoo extension for OpenOffice](https://peter88213.github.io/pywoo) and the [yw-cnv extension for LibreOffice](https://peter88213.github.io/yw-cnv), you can write your edited Office documents back to the yWriter project.
 
