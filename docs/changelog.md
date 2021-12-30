@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v3.8.4 Bugfix release
+
+- Fix a bug in the PyWriter library where brief synopses cannot be opened with LibreOffice 7.
+
+Based on PyWriter v3.28.2
+
 ### v3.8.3 Change the order in the context menu
 
 - Move "Brief Synopsis" below "Proof reading".
