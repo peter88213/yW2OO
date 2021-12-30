@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v3.8.3 Change the order in the context menu
+
+- Move "Brief Synopsis" below "Proof reading".
+
+Based on PyWriter v3.28.1
+
 ### v3.8.2 Optional update for Linux compatibility
 
 - Add shebang and change the line endings for Linux.

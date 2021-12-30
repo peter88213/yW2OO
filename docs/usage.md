@@ -5,8 +5,8 @@
 ## Command reference
 
 -   [Export to odt](#export-to-odt)
--   [Brief synopsis](#brief-synopsis)
 -   [Proof reading](#proof-reading)
+-   [Brief synopsis](#brief-synopsis)
 -   [Manuscript](#manuscript)
 -   [Scene descriptions](#scene-descriptions)
 -   [Chapter descriptions](#chapter-descriptions)
@@ -102,31 +102,6 @@ text document (odt).
 
 ------------------------------------------------------------------------
 
-## Brief synopsis
-
-This will load a brief synopsis with chapter and scenes titles into a new
- OpenDocument text document (odt).
-
--   The document is placed in the same folder as the yWriter project.
--   Document's **filename**: `<yW project name_brf_synopsis>.odt`.
--   Only "normal" chapters and scenes are exported. Chapters and
-    scenes marked "unused", "todo" or "notes" are not exported.
--   Only scenes that are intended for RTF export in yWriter will be
-    exported.
--   Chapter titles appear as first level heading if the chapter is
-    marked as beginning of a new section in yWriter. Such headings are
-    considered as "part" headings.
--   Chapter titles appear as second level heading if the chapter is not
-    marked as beginning of a new section. Such headings are considered
-    as "chapter" headings.
--   Scene titles appear as plain paragraphs.
-
-
-
-[Top of page](#top)
-
-------------------------------------------------------------------------
-
 ## Proof reading
 
 This will load yWriter 7 chapters and scenes into a new OpenDocument
@@ -145,6 +120,31 @@ text document (odt) with chapter and scene markers. File name suffix is
     containing the markers** if you want to be able to reimport the
     document into yWriter.
 -   Back up your yWriter project and close yWriter before.
+
+
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Brief synopsis
+
+This will load a brief synopsis with chapter and scenes titles into a new
+ OpenDocument text document (odt).
+
+-   The document is placed in the same folder as the yWriter project.
+-   Document's **filename**: `<yW project name_brf_synopsis>.odt`.
+-   Only "normal" chapters and scenes are exported. Chapters and
+    scenes marked "unused", "todo" or "notes" are not exported.
+-   Only scenes that are intended for RTF export in yWriter will be
+    exported.
+-   Chapter titles appear as first level heading if the chapter is
+    marked as beginning of a new section in yWriter. Such headings are
+    considered as "part" headings.
+-   Chapter titles appear as second level heading if the chapter is not
+    marked as beginning of a new section. Such headings are considered
+    as "chapter" headings.
+-   Scene titles appear as plain paragraphs.
 
 
 

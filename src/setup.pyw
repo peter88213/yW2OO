@@ -64,17 +64,17 @@ YW_CONTEXT_MENU = '''Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\000export\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\""
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\010brfsynopsis]
-@="Brief Synopsis"
-
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\010brfsynopsis\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _brf_synopsis"
-
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\020proof]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\010proof]
 @="Proof reading"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\020proof\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\010proof\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _proof"
+
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\020brfsynopsis]
+@="Brief Synopsis"
+
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\020brfsynopsis\\command]
+@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _brf_synopsis"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\030manuscript]
 @="Manuscript"
