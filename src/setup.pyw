@@ -50,7 +50,7 @@ python3 '$Apppath' %F
 
 APP = 'yw2oo.pyw'
 
-YW_CONTEXT_MENU = '''Windows Registry Editor Version 5.00
+SET_CONTEXT_MENU = '''Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo]
 "MUIVerb"="Export to OpenOffice"
@@ -175,10 +175,11 @@ def output(text):
     processInfo.config(text=('\n').join(message))
 
 
-def update_reg(installPath):
+def make_context_menu(installPath):
+    """Generate ".reg" files to extend the yWriter context menu."""
 
-    def make_reg(filePath, template, mapping):
-        """Create a registry file to extend the yWriter context menu."""
+    def save_reg_file(filePath, template, mapping):
+        """Save a registry file."""
 
         with open(filePath, 'w', encoding='utf-8') as f:
             f.write(template.safe_substitute(mapping))
@@ -188,10 +189,10 @@ def update_reg(installPath):
     python = sys.executable.replace('\\', '\\\\')
     script = installPath.replace('/', '\\\\') + '\\\\' + APP
     mapping = dict(PYTHON=python, SCRIPT=script)
-    make_reg(installPath + '/add_context_menu.reg',
-             Template(YW_CONTEXT_MENU), mapping)
-    make_reg(installPath + '/rem_context_menu.reg',
-             Template(RESET_CONTEXT_MENU), {})
+    save_reg_file(installPath + '/add_context_menu.reg',
+                  Template(SET_CONTEXT_MENU), mapping)
+    save_reg_file(installPath + '/rem_context_menu.reg',
+                  Template(RESET_CONTEXT_MENU), {})
 
 
 def open_folder(installDir):
@@ -279,9 +280,10 @@ def install(pywriterPath):
     except:
         pass
 
-    # Generate registry entries for the context menu.
+    # Generate registry entries for the context menu (Windows only).
 
-    update_reg(installDir)
+    if os.name == 'nt':
+        make_context_menu(installDir)
 
     # Display a success message.
 

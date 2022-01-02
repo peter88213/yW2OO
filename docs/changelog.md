@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### v3.8.5 Create backup when overwriting
+
+- Create registry files on setup only under Windows.
+- Create backups when overwriting files.
+
+Based on PyWriter v3.30.0
+
 ### v3.8.4 Bugfix release
 
 - Fix a bug in the PyWriter library where brief synopses cannot be opened with LibreOffice 7.
