@@ -45,7 +45,7 @@ Please note that these context menus depend on the currently installed Python ve
 
 ## How to use yW2OO
 
-1. Move into your yWriter project folder, and right-click your .yw6 or .yw7 project file. 
+1. Move into your yWriter project folder, and right-click your .yw7 project file. 
    In the context menu, choose `Export to OpenOffice`. 
    
 2. A sub menu with document types will open. Select the desired one.
