@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v3.8.6 Update text formatting
+
+When creating odt files, make paragraphs after blank lines "Text body" without indent.
+
+Based on PyWriter v3.32.2
+
 ### v3.8.5 Create backup when overwriting
 
 - Create registry files on setup only under Windows.
