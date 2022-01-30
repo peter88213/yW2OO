@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### v3.10.0 Optional update
+
+- Rework the error messaging system.
+- Refactor.
+
+Based on PyWriter v5.0.0
+
 ### v3.8.6 Update text formatting
 
 When creating odt files, make paragraphs after blank lines "Text body" without indent.
