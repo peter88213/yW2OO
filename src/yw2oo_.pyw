@@ -22,7 +22,7 @@ class Exporter(Yw7Exporter):
         Yw7Exporter.export_from_yw(self, sourceFile, targetFile)
 
         if self.newFile:
-            self.ui.show_open_button(self.open_newFile)
+            self.ui._show_open_button(self._open_newFile)
 
 
 def run(sourcePath, suffix=None):
