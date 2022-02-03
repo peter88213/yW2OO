@@ -22,8 +22,7 @@ With the [pywoo extension for OpenOffice](https://peter88213.github.io/pywoo) an
 ## Requirements
 
 - Windows.
-- [Python 3](https://www.python.org). Python 3.4 or more recent will work. However, Python 3.7 or above is highly recommended.
-- [yWriter](http://spacejock.com/yWriter7.html).
+- [Python 3.6+](https://www.python.org).  
 - An [OpenOffice](http://www.openoffice.org/) or [LibreOffice](https://www.libreoffice.org/) installation.
 
 ## Please note: 
