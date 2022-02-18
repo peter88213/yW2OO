@@ -17,9 +17,9 @@ class Exporter(Yw7Exporter):
     Show 'Open' button after conversion from yw.
     """
 
-    def export_from_yw(self, sourceFile, targetFile):
+    def export_from_yw(self, source, target):
         """Extend the super class method, showing an 'open' button after conversion."""
-        Yw7Exporter.export_from_yw(self, sourceFile, targetFile)
+        Yw7Exporter.export_from_yw(self, source, target)
 
         if self.newFile:
             self.ui._show_open_button(self._open_newFile)
