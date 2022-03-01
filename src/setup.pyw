@@ -42,7 +42,6 @@ On Linux, create a launcher on your desktop. With xfce for instance, the launche
 python3 '$Apppath' %F
 '''
 
-
 APP = 'yw2oo.pyw'
 
 SET_CONTEXT_MENU = '''Windows Registry Editor Version 5.00

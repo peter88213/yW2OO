@@ -8,34 +8,11 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import sys
 from pywriter.ui.ui_tk import UiTk
-from pywriter.converter.yw7_exporter import Yw7Exporter
-
-
-class Exporter(Yw7Exporter):
-    """A converter for universal export from a yWriter 7 project.
-
-    Public methods:
-        export_from_yw(sourceFile, targetFile) -- Convert from yWriter project to other file format.
-
-    Shows the 'Open' button after conversion from yw.
-    """
-
-    def export_from_yw(self, source, target):
-        """Convert from yWriter project to other file format.
-
-        Positional arguments:
-            source -- YwFile subclass instance.
-            target -- Any Novel subclass instance.
-        
-        Extends the super class method, showing an 'open' button after conversion.
-        """
-        Yw7Exporter.export_from_yw(self, source, target)
-        if self.newFile:
-            self.ui._show_open_button(self._open_newFile)
+from yw2oolib.yw2oo_exporter import Yw2ooExporter
 
 
 def run(sourcePath, suffix=None):
-    converter = Exporter()
+    converter = Yw2ooExporter()
     converter.ui = UiTk('Export from yWriter @release')
     kwargs = {'suffix': suffix}
     converter.run(sourcePath, **kwargs)
