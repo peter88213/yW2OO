@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v3.10.1
+
+- Improve code and documentation quality.
+
+Based on PyWriter v5.0.2
+
 ### v3.10.0
 
 - Fix a bug where "To do" chapters cause an exception.
