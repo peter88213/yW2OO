@@ -4,7 +4,13 @@
 
 ## Changelog
 
-### v3.10.1
+### v3.10.2 Optional update
+
+- Clean up ODF templates to make the code and generated documents more compact.
+
+Based on PyWriter v5.0.3
+
+### v3.10.1 Optional update
 
 - Improve code and documentation quality.
 
