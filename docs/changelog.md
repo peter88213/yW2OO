@@ -4,6 +4,15 @@
 
 ## Changelog
 
+### v3.12.0
+
+- Add document type: Notes scenes.
+- Remove document type: Plot list.
+
+When installing this version, please update the Explorer context menu.
+
+Based on PyWriter v5.2.0
+
 ### v3.10.2 Optional update
 
 - Clean up ODF templates to make the code and generated documents more compact.

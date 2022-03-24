@@ -142,11 +142,11 @@ SET_CONTEXT_MENU = '''Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\140scenelist\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _scenelist"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\150plotlist]
-@="Plot List"
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\150notes]
+@="Notes Chapters"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\150plotlist\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _plotlist"
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\150notes\\command]
+@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _notes"
 
 [-HKEY_CURRENT_USER\Software\Classes\yWriter6\shell\yw2oo]
 [-HKEY_CURRENT_USER\Software\Classes\yWriter5\shell\yw2oo]
@@ -177,12 +177,14 @@ def make_context_menu(installPath):
         with open(filePath, 'w', encoding='utf-8') as f:
             f.write(template.safe_substitute(mapping))
         output(f'Creating "{os.path.normpath(filePath)}"')
+
     python = sys.executable.replace('\\', '\\\\')
     instPath = installPath.replace('/', '\\\\')
     script = f'{instPath}\\\\{APP}'
     mapping = dict(PYTHON=python, SCRIPT=script)
     save_reg_file(f'{installPath}/add_context_menu.reg', Template(SET_CONTEXT_MENU), mapping)
     save_reg_file(f'{installPath}/rem_context_menu.reg', Template(RESET_CONTEXT_MENU), {})
+
 
 def open_folder(installDir):
     """Open an installation folder window in the file manager.
@@ -200,6 +202,7 @@ def open_folder(installDir):
                 # Mac
             except:
                 pass
+
 
 def install(pywriterPath):
     """Install the script."""
