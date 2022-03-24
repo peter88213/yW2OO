@@ -19,7 +19,7 @@
 -   [Location descriptions](#location-descriptions)
 -   [Item descriptions](#item-descriptions)
 -   [Scene list](#scene-list)
--   [Plot list](#plot-list)
+-   [Notes chapters](#notes-chapters)
 
 
 yWriter to OpenOffice/LibreOffice converter - yWriter export to odt/ods documents. 
@@ -130,9 +130,7 @@ text document (odt) with chapter and scene markers. File name suffix is
 ## Brief synopsis
 
 This will load a brief synopsis with chapter and scenes titles into a new
- OpenDocument text document (odt).
-
--   The document is placed in the same folder as the yWriter project.
+ OpenDocument teOptionally, you can append placed in the same folder as the yWriter project.
 -   Document's **filename**: `<yW project name_brf_synopsis>.odt`.
 -   Only "normal" chapters and scenes are exported. Chapters and
     scenes marked "unused", "todo" or "notes" are not exported.
@@ -324,44 +322,11 @@ name suffix is `_scenelist`.
 
 ------------------------------------------------------------------------
 
-## Plot list
+## Notes chapters
 
-This will generate a new OpenDocument spreadsheet (ods) listing plot
-related metadata that can be displayed and edited. File name suffix is
-`_plotlist`.
-
-### Plotting conventions
-
-In yWriter, you can divide your novel into **Plot Sections** (e.g. acts
-or steps) by inserting "Notes" chapters. They will show up in
-blue color and won't get exported.
-
-**Plot-related events** (e.g. "Mid Point", "Climax") can be
-identified by "scene tags" if you want to link them to a specific
-scene.
-
-You can use scene notes for **plot-specific explanations**.
-
-If you want to **visualize character arcs**, you can use the project's
-rating names by changing them to the names of up to four main
-characters. Then you can quantify the state of these four characters and
-put them into the scenes. It's easy then to let OpenOffice Calc show a
-diagram for the scene ratings over scene count or word count.
-
--   Only rating field names corresponding to character names or
-    containing the string "story", e.g. "A-Story", "BStoryline"
-    (up to 10 case insensitive characters) appear in the plot list.
--   Only ratings greater than 1 appear in the plot list, i.e. 1 means
-    "a rating is not set for this chapter".
--   Recommended ratings:
-    -   1 = N/A
-    -   2 = unhappy
-    -   3 = dissatisfied
-    -   4 = vague
-    -   5 = satisfied
-    -   6 = happy
--   Ratings deleted while editing the plotlist will be converted to 1 on
-    writing back.
+This will write yWriter 7 "Notes" chapters with child scenes into a new 
+OpenDocument text document (odt) with invisible chapter and scene 
+sections (to be seen in the Navigator). File name suffix is `_notes`.
 
 
 
@@ -369,9 +334,8 @@ diagram for the scene ratings over scene count or word count.
 
 ------------------------------------------------------------------------
 
+
 ## Installation path
 
-The **setup.py** installation script installs *yw2oo.pyw* in the user profile. This is the installation path: 
-
-`c:\Users\<user name>\.pywriter\yw2oo`
+The **setup.py** installation script installs *yw2oo.pyw* in the user profile. This is the OptioOptioOptionally, you can appendter\yw2oo`
 
