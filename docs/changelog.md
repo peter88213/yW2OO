@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v3.12.1 Optional update
+
+Improve non-Windows compatibility.
+
+Based on PyWriter v5.2.2
+
 ### v3.12.0
 
 - Add document type: Notes scenes.
