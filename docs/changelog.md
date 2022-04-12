@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v3.12.2 Optional update
+
+Provide the "Quotations" paragraph style.
+
+Based on PyWriter v5.4.2
+
 ### v3.12.1 Optional update
 
 Improve non-Windows compatibility.
