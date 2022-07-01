@@ -23,7 +23,6 @@ With the [pywoo extension for OpenOffice](https://peter88213.github.io/pywoo) an
 
 - Windows.
 - [Python 3.6+](https://www.python.org).  
-- An [OpenOffice](http://www.openoffice.org/) or [LibreOffice](https://www.libreoffice.org/) installation.
 
 ## Please note: 
 
