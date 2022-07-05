@@ -4,6 +4,14 @@
 
 ## Changelog
 
+### v3.14.0 
+
+When exporting chapters and scenes to odt,
+- ignore scenes beginning with <HTML> or <TEX>,
+- remove inline raw code.
+
+Based on PyWriter v5.14.0
+
 ### v3.12.5 Improved word counting
 
 - Fix word counting considering ellipses.

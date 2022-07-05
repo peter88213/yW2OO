@@ -66,7 +66,7 @@ menu entry.
 
 ## Export to odt
 
-This will load yWriter 7 chapters and scenes into a new OpenDocument
+This will export yWriter 7 chapters and scenes to a new OpenDocument
 text document (odt).
 
 -   The document is placed in the same folder as the yWriter project.
@@ -77,6 +77,7 @@ text document (odt).
     scenes marked "unused", "todo" or "notes" are not exported.
 -   Only scenes that are intended for RTF export in yWriter will be
     exported.
+-   Scenes beginning with <HTML> or <TEX> are not exported.
 -   Comments in the text bracketed with slashes and asterisks (like
     `/* this is a comment */`) are converted to author's comments.
 -   Interspersed HTML, TEX, or RTF commands are taken over unchanged.
@@ -113,8 +114,10 @@ text document (odt) with chapter and scene markers. File name suffix is
 -   Document's filename: `<yW project name>_proof.odt`.
 -   Text markup: Bold and italics are supported. Other highlighting such
     as underline and strikethrough are lost.
--   All chapters and scenes will be exported, whether "used" or
+-   Scenes beginning with <HTML> or <TEX> are not exported.
+-   All other chapters and scenes are exported, whether "used" or
     "unused".
+-   Interspersed HTML, TEX, or RTF commands are taken over unchanged.
 -   The document contains chapter `[ChID:x]` and scene `[ScID:y]`
     markers according to yWriter 5 standard. **Do not touch lines
     containing the markers** if you want to be able to reimport the
@@ -131,11 +134,13 @@ text document (odt) with chapter and scene markers. File name suffix is
 
 This will load a brief synopsis with chapter and scenes titles into a new
  OpenDocument teOptionally, you can append placed in the same folder as the yWriter project.
+ 
 -   Document's **filename**: `<yW project name_brf_synopsis>.odt`.
 -   Only "normal" chapters and scenes are exported. Chapters and
     scenes marked "unused", "todo" or "notes" are not exported.
 -   Only scenes that are intended for RTF export in yWriter will be
     exported.
+-   Titles of scenes beginning with <HTML> or <TEX> are not exported.
 -   Chapter titles appear as first level heading if the chapter is
     marked as beginning of a new section in yWriter. Such headings are
     considered as "part" headings.
@@ -156,6 +161,17 @@ This will load yWriter 7 chapters and scenes into a new OpenDocument
 text document (odt) with invisible chapter and scene sections (to be
 seen in the Navigator). File name suffix is `_manuscript`.
 
+-  Only "normal" chapters and scenes are exported. Chapters and
+   scenes marked "unused", "todo" or "notes" are not exported.
+-  Scenes beginning with <HTML> or <TEX> are not exported.
+-  Comments within scenes are written back as scene titles 
+   if surrounded by `~`.
+-  Chapters and scenes can neither be rearranged nor deleted.
+-  Scenes can be split by inserting headings or a scene divider:
+    -  *Heading 1* --› New chapter title (beginning a new section).
+    -  *Heading 2* --› New chapter title.
+    -  `###` --› Scene divider.  Optionally, you can append the 
+       scene title to the scene divider.
 
 
 [Top of page](#top)
