@@ -80,7 +80,7 @@ text document (odt).
 -   Scenes beginning with <HTML> or <TEX> are not exported.
 -   Comments in the text bracketed with slashes and asterisks (like
     `/* this is a comment */`) are converted to author's comments.
--   Interspersed HTML, TEX, or RTF commands are taken over unchanged.
+-   Interspersed HTML, TEX, or RTF commands are removed.
 -   Gobal variables and project variables are not resolved.
 -   Chapter titles appear as first level heading if the chapter is
     marked as beginning of a new section in yWriter. Such headings are
@@ -161,13 +161,17 @@ This will load yWriter 7 chapters and scenes into a new OpenDocument
 text document (odt) with invisible chapter and scene sections (to be
 seen in the Navigator). File name suffix is `_manuscript`.
 
--  Only "normal" chapters and scenes are exported. Chapters and
-   scenes marked "unused", "todo" or "notes" are not exported.
--  Scenes beginning with <HTML> or <TEX> are not exported.
--  Comments within scenes are written back as scene titles 
-   if surrounded by `~`.
--  Chapters and scenes can neither be rearranged nor deleted.
--  Scenes can be split by inserting headings or a scene divider:
+-   Only "normal" chapters and scenes are exported. Chapters and
+    scenes marked "unused", "todo" or "notes" are not exported.
+-   Scenes beginning with <HTML> or <TEX> are not exported.
+-   Comments within scenes are written back as scene titles 
+    if surrounded by `~`.
+-   Comments in the text bracketed with slashes and asterisks (like
+    `/* this is a comment */`) are converted to author's comments.
+-   Interspersed HTML, TEX, or RTF commands are taken over unchanged.
+-   Gobal variables and project variables are not resolved.
+-   Chapters and scenes can neither be rearranged nor deleted.
+-   Scenes can be split by inserting headings or a scene divider:
     -  *Heading 1* --› New chapter title (beginning a new section).
     -  *Heading 2* --› New chapter title.
     -  `###` --› Scene divider.  Optionally, you can append the 
