@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v3.16.0 
+
+- OdtExport: When exporting chapters and scenes to odt, set style of paragraphs that start with "> " to "Quotations".
+
+Based on PyWriter v5.16.0
+
 ### v3.14.0 
 
 When exporting chapters and scenes to odt,
