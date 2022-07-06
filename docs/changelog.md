@@ -4,6 +4,14 @@
 
 ## Changelog
 
+### v3.16.1 Bugfix release
+
+OdtExport:
+- Fix quotations at scene start.
+- Fix and refactor inline code removal.
+
+Based on PyWriter v5.16.1
+
 ### v3.16.0 
 
 - OdtExport: When exporting chapters and scenes to odt, set style of paragraphs that start with "> " to "Quotations".
