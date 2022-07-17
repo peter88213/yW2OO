@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v3.16.2 Improved setup
+
+- Catch exceptions in the setup script.
+
+Based on PyWriter v5.18.0
+
 ### v3.16.1 Bugfix release
 
 OdtExport:
