@@ -12,6 +12,8 @@ import sys
 import os
 import stat
 from shutil import copyfile
+from shutil import copytree
+from shutil import rmtree
 from pathlib import Path
 from string import Template
 try:
@@ -225,6 +227,9 @@ def install(pywriterPath):
         pass
     os.makedirs(cnfDir, exist_ok=True)
 
+    # Delete existing localization files.
+    rmtree(f'{installDir}/locale', ignore_errors=True)
+
     # Delete the old version, but retain configuration, if any.
     with os.scandir(installDir) as files:
         for file in files:
@@ -235,6 +240,10 @@ def install(pywriterPath):
     # Install the new version.
     copyfile(APP, f'{installDir}/{APP}')
     output(f'Copying "{APP}"')
+
+    # Install the localization files.
+    copytree('locale', f'{installDir}/locale')
+    output(f'Copying "locale"')
 
     # Make the script executable under Linux.
     st = os.stat(f'{installDir}/{APP}')
