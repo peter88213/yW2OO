@@ -14,7 +14,7 @@ File structure:
 │   └── src/
 │       ├── translations.py
 │       └── msgfmt.py
-└── <project>/
+└── yW2OO/
     ├── src/ 
     │   └── translate_de.py
     └── i18n/
@@ -29,13 +29,25 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/yW2OO
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import os
+import sys
+sys.path.insert(0, f'{os.getcwd()}/../../PyWriter/src')
 import translations
 import msgfmt
 
-APP = 'yW2OO'
+APP_NAME = 'yW2OO'
 PO_PATH = '../i18n/de.po'
 MO_PATH = '../i18n/locale/de/LC_MESSAGES/pywriter.mo'
 
-if translations.main('de', app=APP):
-    print(f'Writing "{MO_PATH}" ...')
-    msgfmt.make(PO_PATH, MO_PATH)
+
+def main(version='unknown'):
+    if translations.main('de', app=APP_NAME, appVersion=version):
+        print(f'Writing "{MO_PATH}" ...')
+        msgfmt.make(PO_PATH, MO_PATH)
+
+
+if __name__ == '__main__':
+    try:
+        main(sys.argv[1])
+    except:
+        main()

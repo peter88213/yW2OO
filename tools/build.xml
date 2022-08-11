@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="yw2oo" basedir=".">
-	<property name="version" value="3.17.1" />
+	<property name="version" value="3.17.2" />
 	<property name="test-app" value="yw2oo" />
 	
 	<property name="source-path" location="../src" />
@@ -15,7 +15,12 @@
 	<target name="build" description="inline all library modules">
 		<delete file="${test-path}/${test-app}.pyw" />
 		<exec executable="python" failonerror="true">
-		    <arg value="${source-path}/build_${test-app}.py"/>
+		    <arg value="${source-path}/make_pot.py"/>
+		    <arg value="${version}"/>
+		</exec>
+		<exec executable="python" failonerror="true">
+		    <arg value="${source-path}/translate_de.py"/>
+		    <arg value="${version}"/>
 		</exec>
 	</target>
 

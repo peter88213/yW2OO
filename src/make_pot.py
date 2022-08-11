@@ -5,6 +5,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import sys
+sys.path.insert(0, f'{os.getcwd()}/../../PyWriter/src')
 from build_yw2oo import main
 from build_yw2oo import TARGET_FILE
 import pgettext
@@ -13,7 +14,7 @@ APP = 'yW2OO'
 POT_FILE = '../i18n/messages.pot'
 
 
-def make_pot():
+def make_pot(version='unknown'):
     # Generate a complete script.
     main()
 
@@ -24,7 +25,7 @@ def make_pot():
     else:
         backedUp = False
     try:
-        pot = pgettext.PotFile(POT_FILE, app=APP)
+        pot = pgettext.PotFile(POT_FILE, app=APP, appVersion=version)
         pot.scan_file(TARGET_FILE)
         print(f'Writing "{pot.filePath}"...\n')
         pot.write_pot()
@@ -38,5 +39,9 @@ def make_pot():
 
 
 if __name__ == '__main__':
-    if not make_pot():
+    try:
+        success = make_pot(sys.argv[1])
+    except:
+        success = make_pot()
+    if not success:
         sys.exit(1)
