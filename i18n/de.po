@@ -1,11 +1,11 @@
-# yW2OO Dictionary (English-German)
+#  Dictionary (English-German)
 # Copyright (C) 2022 Peter Triesberger
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.17.2\n"
+"Project-Id-Version: unknown\n"
 "POT-Creation-Date: 2022-08-11 15:56:52\n"
-"PO-Revision-Date: 2022-08-11 15:56:52\n"
+"PO-Revision-Date: 2022-08-12 11:37:28\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -98,7 +98,7 @@ msgid "No yWriter project to write"
 msgstr "Kein yWriter-Projekt zu schreiben"
 
 msgid "Notes chapters"
-msgstr "Notizenkapitel"
+msgstr "Notizen-Kapitel"
 
 msgid "Novel"
 msgstr "Roman"
