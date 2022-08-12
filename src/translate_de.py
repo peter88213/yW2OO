@@ -47,6 +47,8 @@ def main(version='unknown'):
         print(f'Writing "{MO_PATH}" ...')
         msgfmt.make(PO_PATH, MO_PATH)
         copyfile(MO_PATH, MO_COPY)
+    else:
+        sys.exit(1)
 
 
 if __name__ == '__main__':
