@@ -1,11 +1,11 @@
-#  Dictionary (English-German)
+# yW2OO Dictionary (English-German)
 # Copyright (C) 2022 Peter Triesberger
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: unknown\n"
-"POT-Creation-Date: 2022-08-11 15:56:52\n"
-"PO-Revision-Date: 2022-08-12 11:37:28\n"
+"Project-Id-Version: 3.17.3\n"
+"POT-Creation-Date: 2022-08-12 21:33:55\n"
+"PO-Revision-Date: 2022-08-12 21:33:55\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -43,6 +43,9 @@ msgstr "Figurenbeschreibung"
 msgid "Character list"
 msgstr "Figurenliste"
 
+msgid "Close"
+msgstr "Schließen"
+
 msgid "Create a yWriter project file from {0}\nNew project: \"{1}\""
 msgstr "Erzeuge eine yWriter-Projektdatei aus {0}.n\nNeues Projekt: \"{1}\""
 
@@ -52,8 +55,20 @@ msgstr "Querverweise"
 msgid "Editable manuscript"
 msgstr "Manuskript zum Bearbeiten"
 
+msgid "Exit"
+msgstr "Beenden"
+
+msgid "Export"
+msgstr "Exportieren"
+
+msgid "Export to odt"
+msgstr "Zu odt exportieren"
+
 msgid "Export type is not supported"
 msgstr "Exporttyp nicht unterstützt"
+
+msgid "File"
+msgstr "Datei"
 
 msgid "File already exists"
 msgstr "Datei existiert bereits"
@@ -103,8 +118,11 @@ msgstr "Notizen-Kapitel"
 msgid "Novel"
 msgstr "Roman"
 
-msgid "Open"
-msgstr "Öffnen"
+msgid "Open exported document"
+msgstr "Exportiertes Dokument öffnen"
+
+msgid "Open..."
+msgstr "Öffnen..."
 
 msgid "Overwrite existing file \"{}\"?"
 msgstr "Bestehende Datei \"{}\" überschreiben?"
@@ -127,8 +145,17 @@ msgstr "Manuskript mit Markierungen zum Überarbeiten"
 msgid "This document is not meant to be written back"
 msgstr "Dieses Dokument ist nicht zum Zurückschreiben gedacht"
 
-msgid "WARNING"
-msgstr "WARNUNG"
+msgid "Todo chapters"
+msgstr "Planungs-Kapitel"
+
+msgid "Unknown author"
+msgstr "Unbekannter Autor"
+
+msgid "Untitled yWriter project"
+msgstr "yWriter-Projekt ohne Titel"
+
+msgid "by"
+msgstr "von"
 
 msgid "manuscript"
 msgstr "Manuskript"

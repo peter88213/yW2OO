@@ -150,6 +150,12 @@ SET_CONTEXT_MENU = '''Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\150notes\\command]
 @="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _notes"
 
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\160todo]
+@="Todo Chapters"
+
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\160todo\\command]
+@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _todo"
+
 [-HKEY_CURRENT_USER\Software\Classes\yWriter6\shell\yw2oo]
 [-HKEY_CURRENT_USER\Software\Classes\yWriter5\shell\yw2oo]
 '''

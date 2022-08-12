@@ -31,6 +31,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import sys
+from shutil import copyfile
 sys.path.insert(0, f'{os.getcwd()}/../../PyWriter/src')
 import translations
 import msgfmt
@@ -38,12 +39,14 @@ import msgfmt
 APP_NAME = 'yW2OO'
 PO_PATH = '../i18n/de.po'
 MO_PATH = '../i18n/locale/de/LC_MESSAGES/pywriter.mo'
+MO_COPY = '../src/locale/de/LC_MESSAGES/pywriter.mo'
 
 
 def main(version='unknown'):
     if translations.main('de', app=APP_NAME, appVersion=version):
         print(f'Writing "{MO_PATH}" ...')
         msgfmt.make(PO_PATH, MO_PATH)
+        copyfile(MO_PATH, MO_COPY)
 
 
 if __name__ == '__main__':

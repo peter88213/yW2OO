@@ -4,6 +4,16 @@
 
 ## Changelog
 
+### v4.0.0 
+
+- New user interface.
+- New document type for "ToDo" chapters.
+- Add internationalization according to GNU coding standards.
+- Provide German localization.
+- Consider project names containing a reserved suffix.
+
+Based on PyWriter v5.22.0
+
 ### v3.16.3 Update setup script
 
 - Change the working dir to the script dir on startup in order to avoid "file not found" error.

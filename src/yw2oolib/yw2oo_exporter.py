@@ -25,7 +25,9 @@ class Yw2ooExporter(Yw7Exporter):
         
         Extends the super class method, showing an 'open' button after conversion.
         """
-        Yw7Exporter.export_from_yw(self, source, target)
+        super().export_from_yw(source, target)
         if self.newFile:
-            self.ui.show_open_button(self._open_newFile)
+            self.ui.show_open_button()
+        else:
+            self.ui.hide_open_button()
 

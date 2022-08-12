@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.17.2\n"
-"POT-Creation-Date: 2022-08-11 15:56:52\n"
+"Project-Id-Version: 3.17.3\n"
+"POT-Creation-Date: 2022-08-12 21:33:55\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -44,6 +44,9 @@ msgstr ""
 msgid "Character list"
 msgstr ""
 
+msgid "Close"
+msgstr ""
+
 msgid "Create a yWriter project file from {0}\nNew project: \"{1}\""
 msgstr ""
 
@@ -53,7 +56,19 @@ msgstr ""
 msgid "Editable manuscript"
 msgstr ""
 
+msgid "Exit"
+msgstr ""
+
+msgid "Export"
+msgstr ""
+
+msgid "Export to odt"
+msgstr ""
+
 msgid "Export type is not supported"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already exists"
@@ -104,7 +119,10 @@ msgstr ""
 msgid "Novel"
 msgstr ""
 
-msgid "Open"
+msgid "Open exported document"
+msgstr ""
+
+msgid "Open..."
 msgstr ""
 
 msgid "Overwrite existing file \"{}\"?"
@@ -128,7 +146,16 @@ msgstr ""
 msgid "This document is not meant to be written back"
 msgstr ""
 
-msgid "WARNING"
+msgid "Todo chapters"
+msgstr ""
+
+msgid "Unknown author"
+msgstr ""
+
+msgid "Untitled yWriter project"
+msgstr ""
+
+msgid "by"
 msgstr ""
 
 msgid "manuscript"
