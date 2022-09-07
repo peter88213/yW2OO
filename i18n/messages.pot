@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.17.3\n"
-"POT-Creation-Date: 2022-08-12 21:33:55\n"
+"Project-Id-Version: 3.17.4\n"
+"POT-Creation-Date: 2022-09-07 17:57:02\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -15,6 +15,9 @@ msgstr ""
 
 
 msgid "Action canceled by user"
+msgstr ""
+
+msgid "Bio"
 msgstr ""
 
 msgid "Brief synopsis"
@@ -53,6 +56,9 @@ msgstr ""
 msgid "Cross reference"
 msgstr ""
 
+msgid "Description"
+msgstr ""
+
 msgid "Editable manuscript"
 msgstr ""
 
@@ -83,6 +89,9 @@ msgstr ""
 msgid "File written"
 msgstr ""
 
+msgid "Goals"
+msgstr ""
+
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
 msgstr ""
 
@@ -111,6 +120,9 @@ msgid "New scenes created during conversion."
 msgstr ""
 
 msgid "No yWriter project to write"
+msgstr ""
+
+msgid "Notes"
 msgstr ""
 
 msgid "Notes chapters"

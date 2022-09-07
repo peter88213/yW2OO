@@ -16,11 +16,24 @@ from shutil import copytree
 from shutil import rmtree
 from pathlib import Path
 from string import Template
+import gettext
+import locale
 try:
     from tkinter import *
 except ModuleNotFoundError:
     print('The tkinter module is missing. Please install the tk support package for your python3 version.')
     sys.exit(1)
+
+# Initialize localization.
+LOCALE_PATH = f'{os.path.dirname(sys.argv[0])}/locale/'
+CURRENT_LANGUAGE = locale.getdefaultlocale()[0][:2]
+try:
+    t = gettext.translation('reg', LOCALE_PATH, languages=[CURRENT_LANGUAGE])
+    _ = t.gettext
+except:
+
+    def _(message):
+        return message
 
 APPNAME = 'yw2oo'
 VERSION = ' @release'
@@ -46,115 +59,119 @@ python3 '$Apppath' %F
 
 APP = 'yw2oo.pyw'
 
-SET_CONTEXT_MENU = '''Windows Registry Editor Version 5.00
+SET_CONTEXT_MENU = f'''Windows Registry Editor Version 5.00
+
+[-HKEY_CURRENT_USER\Software\Classes\yWriter7\shell\yw2oo]
+[-HKEY_CURRENT_USER\Software\Classes\yWriter6\shell\yw2oo]
+[-HKEY_CURRENT_USER\Software\Classes\yWriter5\shell\yw2oo]
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo]
-"MUIVerb"="Export to OpenOffice"
+"MUIVerb"="{_('Export to OpenOffice')}"
 "subcommands"=""
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell]
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\000export]
-@="Export to odt"
+@="{_('Export to odt')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\000export\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\""
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\""
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\010proof]
-@="Proof reading"
+@="{_('Proof reading')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\010proof\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _proof"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _proof"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\020brfsynopsis]
-@="Brief Synopsis"
+@="{_('Brief synopsis')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\020brfsynopsis\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _brf_synopsis"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _brf_synopsis"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\030manuscript]
-@="Manuscript"
+@="{_('Manuscript')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\030manuscript\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _manuscript"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _manuscript"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\040scenedesc]
-@="Scene Descriptions"
+@="{_('Scene descriptions')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\040scenedesc\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _scenes"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _scenes"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\050chapterdesc]
-@="Chapter Descriptions"
+@="{_('Chapter descriptions')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\050chapterdesc\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _chapters"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _chapters"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\060partdesc]
-@="Part Descriptions"
+@="{_('Part descriptions')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\060partdesc\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _parts"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _parts"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\070charlist]
-@="Character List"
+@="{_('Character list')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\070charlist\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _charlist"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _charlist"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\080loclist]
-@="Location List"
+@="{_('Location list')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\080loclist\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _loclist"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _loclist"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\090itemlist]
-@="Item List"
+@="{_('Item list')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\090itemlist\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _itemlist"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _itemlist"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\100crossreference]
-@="Cross references"
+@="{_('Cross references')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\100crossreference\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _xref"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _xref"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\110chardesc]
-@="Character Descriptions"
+@="{_('Character descriptions')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\110chardesc\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _characters"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _characters"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\120locdesc]
-@="Location Descriptions"
+@="{_('Location descriptions')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\120locdesc\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _locations"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _locations"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\130itemdesc]
-@="Item Descriptions"
+@="{_('Item descriptions')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\130itemdesc\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _items"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _items"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\140scenelist]
-@="Scene List"
+@="{_('Scene list')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\140scenelist\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _scenelist"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _scenelist"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\150notes]
-@="Notes Chapters"
+@="{_('Notes chapters')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\150notes\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _notes"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _notes"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\160todo]
-@="Todo Chapters"
+@="{_('Todo chapters')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\160todo\\command]
-@="\\"${PYTHON}\\" \\"${SCRIPT}\\" \\"%1\\" _todo"
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _todo"
 
 [-HKEY_CURRENT_USER\Software\Classes\yWriter6\shell\yw2oo]
 [-HKEY_CURRENT_USER\Software\Classes\yWriter5\shell\yw2oo]
@@ -182,7 +199,7 @@ def make_context_menu(installPath):
 
     def save_reg_file(filePath, template, mapping):
         """Save a registry file."""
-        with open(filePath, 'w', encoding='utf-8') as f:
+        with open(filePath, 'w') as f:
             f.write(template.safe_substitute(mapping))
         output(f'Creating "{os.path.normpath(filePath)}"')
 
@@ -248,7 +265,7 @@ def install(pywriterPath):
     output(f'Copying "{APP}"')
 
     # Install the localization files.
-    copytree('locale', f'{installDir}/locale')
+    copytree('locale', f'{installDir}/locale', dirs_exist_ok=True)
     output(f'Copying "locale"')
 
     # Make the script executable under Linux.
