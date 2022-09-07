@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 3.17.4\n"
-"POT-Creation-Date: 2022-09-07 17:57:02\n"
-"PO-Revision-Date: 2022-09-07 17:57:02\n"
+"POT-Creation-Date: 2022-09-07 21:40:47\n"
+"PO-Revision-Date: 2022-09-07 21:40:47\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgid "Close"
 msgstr "Schließen"
 
 msgid "Create a yWriter project file from {0}\nNew project: \"{1}\""
-msgstr "Erzeuge eine yWriter-Projektdatei aus {0}.n\nNeues Projekt: \"{1}\""
+msgstr "Erzeuge eine yWriter-Projektdatei aus {0}\nNeues Projekt: \"{1}\""
 
 msgid "Cross reference"
 msgstr "Querverweise"
@@ -66,6 +66,9 @@ msgstr "Beenden"
 
 msgid "Export"
 msgstr "Exportieren"
+
+msgid "Export from yWriter"
+msgstr "Aus yWriter exportieren"
 
 msgid "Export to odt"
 msgstr "Zu odt exportieren"
@@ -116,7 +119,7 @@ msgid "New Scene"
 msgstr "Neue Szene"
 
 msgid "New scenes created during conversion."
-msgstr "Während der Konvertierung wurden neue Szenen erzeugt"
+msgstr "Während der Konvertierung wurden neue Szenen erzeugt."
 
 msgid "No yWriter project to write"
 msgstr "Kein yWriter-Projekt zu schreiben"
@@ -129,6 +132,9 @@ msgstr "Notizen-Kapitel"
 
 msgid "Novel"
 msgstr "Roman"
+
+msgid "Open"
+msgstr "Öffnen"
 
 msgid "Open exported document"
 msgstr "Exportiertes Dokument öffnen"
@@ -165,6 +171,9 @@ msgstr "Unbekannter Autor"
 
 msgid "Untitled yWriter project"
 msgstr "yWriter-Projekt ohne Titel"
+
+msgid "WARNING"
+msgstr "WARNUNG"
 
 msgid "by"
 msgstr "von"

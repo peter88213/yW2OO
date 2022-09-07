@@ -1,4 +1,4 @@
-""""Provide a tkinter GUI framework for yWriter docx/xlsx export.
+""""Provide a tkinter GUI framework for yWriter odf export.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/yw-viewer
@@ -13,7 +13,7 @@ from yw2oolib.yw2oo_exporter import Yw2ooExporter
 
 
 class Yw2ooTk(MainTk):
-    """A tkinter GUI class for yWriter docx/xlsx export.
+    """A tkinter GUI class for yWriter odf export.
     
     Public methods:
         disable_menu() -- disable menu entries when no project is open.
@@ -71,7 +71,7 @@ class Yw2ooTk(MainTk):
         self.root._openButton = tk.Button(text=_('Open exported document'), state=tk.DISABLED, command=self._open_newFile)
         self.root._openButton.config(height=1)
         self.root._openButton.pack(pady=10)
-        self.root.quitButton = tk.Button(text=_("Quit"), command=quit)
+        self.root.quitButton = tk.Button(text=_("Quit"), command=self.on_quit)
         self.root.quitButton.config(height=1, width=10)
         self.root.quitButton.pack(pady=10)
 
@@ -96,7 +96,7 @@ class Yw2ooTk(MainTk):
         self.kwargs['suffix'] = suffix
         self._exporter.run(self.ywPrj.filePath, **self.kwargs)
 
-    def show_open_button(self):
+    def show_open_button(self, open_cmd=None):
         self.root._openButton['state'] = tk.NORMAL
 
     def hide_open_button(self):

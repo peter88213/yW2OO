@@ -27,7 +27,7 @@ class Yw2ooExporter(Yw7Exporter):
         """
         super().export_from_yw(source, target)
         if self.newFile:
-            self.ui.show_open_button()
+            self.ui.show_open_button(self._open_newFile)
         else:
             self.ui.hide_open_button()
 

@@ -75,7 +75,7 @@ SET_CONTEXT_MENU = f'''Windows Registry Editor Version 5.00
 @="{_('Export to odt')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\000export\\command]
-@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\""
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" x"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\010proof]
 @="{_('Proof reading')}"
@@ -173,8 +173,6 @@ SET_CONTEXT_MENU = f'''Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\160todo\\command]
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _todo"
 
-[-HKEY_CURRENT_USER\Software\Classes\yWriter6\shell\yw2oo]
-[-HKEY_CURRENT_USER\Software\Classes\yWriter5\shell\yw2oo]
 '''
 
 RESET_CONTEXT_MENU = '''Windows Registry Editor Version 5.00

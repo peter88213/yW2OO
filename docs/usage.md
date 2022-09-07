@@ -41,14 +41,34 @@ yWriter to OpenOffice/LibreOffice converter - yWriter export to odt/ods document
 
 You can remove the context menu entries by double-clicking  `rem_context_menu.reg`.
 
-Please note that these context menus depend on the currently installed Python version. After a major Python update you may need to run the setup program again and renew the registry entries.
+Please note that these context menus depend on the currently installed Python version. 
+After a major Python update you may need to run the setup program again and renew the registry entries.
 
 ## How to use yW2OO
+
+#### Using the graphical user interface
+
+The included installation script prompts you to create a shortcut on the desktop. 
+
+1. Start the program by double-clicking the desktop shortcut icon. On startup, the last opened yWriter project 
+   is loaded, if any. Otherwise, a "file open" dialog is displayed. Optionally, you can drag your yWriter 
+   project and drop it on the shortcut icon. 
+   
+2. If the loaded file is not the project you want to export from, open another project via the 
+   **File > Open** command (or *Ctrl-O* shortcut). 
+   
+3. Via the **Export** menu, choose the export document type. this will start the export.
+
+4. If everything goes well, a success message pops up. The newly created file is located 
+   in the same folder as your yWriter project. If you want to edit your new document immediately, 
+   just click on the `open` button. 
+
+#### Using the Explorer context menu
 
 1. Move into your yWriter project folder, and right-click your .yw7 project file. 
    In the context menu, choose `Export to OpenOffice`. 
    
-2. A sub menu with document types will open. Select the desired one.
+2. A sub menu with export document types will open. Select the desired one.
 
 3. If everything goes well, a success message pops up. The newly created file is located 
    in the same folder as your yWriter project. If you want to edit your new document immediately, 
