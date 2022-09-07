@@ -131,12 +131,6 @@ SET_CONTEXT_MENU = f'''Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\090itemlist\\command]
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _itemlist"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\100crossreference]
-@="{_('Cross references')}"
-
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\100crossreference\\command]
-@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _xref"
-
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\110chardesc]
 @="{_('Character descriptions')}"
 
