@@ -43,37 +43,51 @@ class Yw2ooTk(MainTk):
         self._exporter = Yw2ooExporter()
         self._exporter.ui = self
 
+        self._openButton = tk.Button(self.mainWindow, text=_('Open exported document'), state=tk.DISABLED, command=self._open_newFile)
+        self._openButton.config(height=1)
+        self._openButton.pack(pady=10)
+        self.quitButton = tk.Button(self.mainWindow, text=_("Quit"), command=self.on_quit)
+        self.quitButton.config(height=1, width=10)
+        self.quitButton.pack(pady=10)
+        self.disable_menu()
+
     def _build_main_menu(self):
         """Add main menu entries.
         
         Extends the superclass template method. 
         """
         super()._build_main_menu()
-        self._exportMenu = tk.Menu(self.mainMenu, tearoff=0)
-        self.mainMenu.add_cascade(label=_('Export'), menu=self._exportMenu)
-        self.mainMenu.entryconfig(_('Export'), state='disabled')
-        self._exportMenu.add_command(label=_('Export to odt'),
-                                        command=lambda: self._export_document(''))
-        self._exportMenu.add_command(label=_('Brief synopsis'),
-                                        command=lambda: self._export_document('_brf_synopsis'))
-        self._exportMenu.add_command(label=_('Scene descriptions'),
-                                       command=lambda: self._export_document('_scenes'))
-        self._exportMenu.add_command(label=_('Chapter descriptions'),
-                                        command=lambda: self._export_document('_chapters'))
-        self._exportMenu.add_command(label=_('Part descriptions'),
-                                       command=lambda: self._export_document('_parts'))
-        self._exportMenu.add_command(label=_('Character descriptions'),
-                                        command=lambda: self._export_document('_characters'))
-        self._exportMenu.add_command(label=_('Location descriptions'),
-                                        command=lambda: self._export_document('_locations'))
-        self._exportMenu.add_command(label=_('Item descriptions'),
-                                        command=lambda: self._export_document('_items'))
-        self.root._openButton = tk.Button(text=_('Open exported document'), state=tk.DISABLED, command=self._open_newFile)
-        self.root._openButton.config(height=1)
-        self.root._openButton.pack(pady=10)
-        self.root.quitButton = tk.Button(text=_("Quit"), command=self.on_quit)
-        self.root.quitButton.config(height=1, width=10)
-        self.root.quitButton.pack(pady=10)
+
+        # Export
+        self.exportMenu = tk.Menu(self.mainMenu, tearoff=0)
+        self.mainMenu.add_cascade(label=_('Export'), menu=self.exportMenu)
+        self.exportMenu.add_command(label=_('Manuscript without tags (export only)'), command=lambda: self._export_document(''))
+        self.exportMenu.add_command(label=_('Brief synopsis (export only)'), command=lambda: self._export_document('_brf_synopsis'))
+        self.exportMenu.add_command(label=_('Cross references (export only)'), command=lambda: self._export_document('_xref'))
+        self.exportMenu.add_separator()
+        self.exportMenu.add_command(label=_('Manuscript for editing'), command=lambda: self._export_document('_manuscript'))
+        self.exportMenu.add_command(label=_('Notes chapters for editing'), command=lambda: self._export_document('_notes'))
+        self.exportMenu.add_command(label=_('Todo chapters for editing'), command=lambda: self._export_document('_todo'))
+        self.exportMenu.add_separator()
+        self.exportMenu.add_command(label=_('Manuscript with visible structure tags for proof reading'), command=lambda: self._export_document('_proof'))
+
+        # Descriptions
+        self.descMenu = tk.Menu(self.mainMenu, tearoff=0)
+        self.mainMenu.add_cascade(label=_('Descriptions'), menu=self.descMenu)
+        self.descMenu.add_command(label=_('Export part descriptions for editing'), command=lambda: self._export_document('_parts'))
+        self.descMenu.add_command(label=_('Export chapter descriptions for editing'), command=lambda: self._export_document('_chapters'))
+        self.descMenu.add_command(label=_('Export scene descriptions for editing'), command=lambda: self._export_document('_scenes'))
+        self.descMenu.add_command(label=_('Export character descriptions for editing'), command=lambda: self._export_document('_characters'))
+        self.descMenu.add_command(label=_('Export location descriptions for editing'), command=lambda: self._export_document('_locations'))
+        self.descMenu.add_command(label=_('Export item descriptions for editing'), command=lambda: self._export_document('_items'))
+
+        # Lists
+        self.listMenu = tk.Menu(self.mainMenu, tearoff=0)
+        self.mainMenu.add_cascade(label=_('Lists'), menu=self.listMenu)
+        self.listMenu.add_command(label=_('Export scene list (spreadsheet)'), command=lambda: self._export_document('_scenelist'))
+        self.listMenu.add_command(label=_('Export character list (spreadsheet)'), command=lambda: self._export_document('_charlist'))
+        self.listMenu.add_command(label=_('Export location list (spreadsheet)'), command=lambda: self._export_document('_loclist'))
+        self.listMenu.add_command(label=_('Export item list (spreadsheet)'), command=lambda: self._export_document('_itemlist'))
 
     def disable_menu(self):
         """Disable menu entries when no project is open.
@@ -82,6 +96,8 @@ class Yw2ooTk(MainTk):
         """
         super().disable_menu()
         self.mainMenu.entryconfig(_('Export'), state='disabled')
+        self.mainMenu.entryconfig(_('Descriptions'), state='disabled')
+        self.mainMenu.entryconfig(_('Lists'), state='disabled')
         self.hide_open_button()
 
     def enable_menu(self):
@@ -91,16 +107,18 @@ class Yw2ooTk(MainTk):
         """
         super().enable_menu()
         self.mainMenu.entryconfig(_('Export'), state='normal')
+        self.mainMenu.entryconfig(_('Descriptions'), state='normal')
+        self.mainMenu.entryconfig(_('Lists'), state='normal')
 
     def _export_document(self, suffix):
         self.kwargs['suffix'] = suffix
         self._exporter.run(self.ywPrj.filePath, **self.kwargs)
 
     def show_open_button(self, open_cmd=None):
-        self.root._openButton['state'] = tk.NORMAL
+        self._openButton['state'] = tk.NORMAL
 
     def hide_open_button(self):
-        self.root._openButton['state'] = tk.DISABLED
+        self._openButton['state'] = tk.DISABLED
 
     def _open_newFile(self):
         """Open the converted file for editing and exit the converter script."""

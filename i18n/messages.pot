@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.17.4\n"
-"POT-Creation-Date: 2022-09-07 21:40:47\n"
+"Project-Id-Version: 3.17.5\n"
+"POT-Creation-Date: 2022-09-07 23:46:52\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -21,6 +21,9 @@ msgid "Bio"
 msgstr ""
 
 msgid "Brief synopsis"
+msgstr ""
+
+msgid "Brief synopsis (export only)"
 msgstr ""
 
 msgid "Can not process file"
@@ -56,7 +59,13 @@ msgstr ""
 msgid "Cross reference"
 msgstr ""
 
+msgid "Cross references (export only)"
+msgstr ""
+
 msgid "Description"
+msgstr ""
+
+msgid "Descriptions"
 msgstr ""
 
 msgid "Editable manuscript"
@@ -68,10 +77,37 @@ msgstr ""
 msgid "Export"
 msgstr ""
 
+msgid "Export chapter descriptions for editing"
+msgstr ""
+
+msgid "Export character descriptions for editing"
+msgstr ""
+
+msgid "Export character list (spreadsheet)"
+msgstr ""
+
 msgid "Export from yWriter"
 msgstr ""
 
-msgid "Export to odt"
+msgid "Export item descriptions for editing"
+msgstr ""
+
+msgid "Export item list (spreadsheet)"
+msgstr ""
+
+msgid "Export location descriptions for editing"
+msgstr ""
+
+msgid "Export location list (spreadsheet)"
+msgstr ""
+
+msgid "Export part descriptions for editing"
+msgstr ""
+
+msgid "Export scene descriptions for editing"
+msgstr ""
+
+msgid "Export scene list (spreadsheet)"
 msgstr ""
 
 msgid "Export type is not supported"
@@ -104,10 +140,22 @@ msgstr ""
 msgid "Item list"
 msgstr ""
 
+msgid "Lists"
+msgstr ""
+
 msgid "Location descriptions"
 msgstr ""
 
 msgid "Location list"
+msgstr ""
+
+msgid "Manuscript for editing"
+msgstr ""
+
+msgid "Manuscript with visible structure tags for proof reading"
+msgstr ""
+
+msgid "Manuscript without tags (export only)"
 msgstr ""
 
 msgid "New Chapter"
@@ -129,6 +177,9 @@ msgid "Notes"
 msgstr ""
 
 msgid "Notes chapters"
+msgstr ""
+
+msgid "Notes chapters for editing"
 msgstr ""
 
 msgid "Novel"
@@ -165,6 +216,9 @@ msgid "This document is not meant to be written back"
 msgstr ""
 
 msgid "Todo chapters"
+msgstr ""
+
+msgid "Todo chapters for editing"
 msgstr ""
 
 msgid "Unknown author"

@@ -57,7 +57,7 @@ The included installation script prompts you to create a shortcut on the desktop
 2. If the loaded file is not the project you want to export from, open another project via the 
    **File > Open** command (or *Ctrl-O* shortcut). 
    
-3. Via the **Export** menu, choose the export document type. this will start the export.
+3. Via the main menu, choose the export document type. This will start the export.
 
 4. If everything goes well, a success message pops up. The newly created file is located 
    in the same folder as your yWriter project. If you want to edit your new document immediately, 
