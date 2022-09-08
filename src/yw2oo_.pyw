@@ -25,41 +25,39 @@ OPTIONS = {}
 
 
 def run(sourcePath='', suffix=None, installDir='.'):
+
+    #--- Load configuration.
+    iniFile = f'{installDir}/{APPNAME}.ini'
+    configuration = Configuration(SETTINGS, OPTIONS)
+    configuration.read(iniFile)
+    kwargs = {}
+    kwargs.update(configuration.settings)
+    kwargs.update(configuration.options)
+
+    #--- Get initial project path.
+    if not sourcePath or not os.path.isfile(sourcePath):
+        sourcePath = kwargs['yw_last_open']
+
+    #--- Instantiate the exporter object.
+    ui = Yw2ooTk(f'{APPNAME} @release', **kwargs)
+    ui.open_project(sourcePath)
+
     if suffix:
+        # Output document type is set, so run the converter immediately.
         if suffix == 'x':
             suffix = ''
-        converter = Yw2ooExporter()
-        converter.ui = UiTk(f'{_("Export from yWriter")} @release')
-        set_icon(converter.ui.root, icon='yLogo32')
         kwargs = {'suffix': suffix}
-        converter.run(sourcePath, **kwargs)
-        converter.ui.start()
+        ui.exporter.run(sourcePath, **kwargs)
 
-    else:
-        #--- Load configuration.
-        iniFile = f'{installDir}/{APPNAME}.ini'
-        configuration = Configuration(SETTINGS, OPTIONS)
-        configuration.read(iniFile)
-        kwargs = {}
-        kwargs.update(configuration.settings)
-        kwargs.update(configuration.options)
+    ui.start()
 
-        #--- Get initial project path.
-        if not sourcePath or not os.path.isfile(sourcePath):
-            sourcePath = kwargs['yw_last_open']
-
-        #--- Instantiate the exporter object.
-        exporter = Yw2ooTk(f'{APPNAME} @release', **kwargs)
-        exporter.open_project(sourcePath)
-        exporter.start()
-
-        #--- Save project specific configuration
-        for keyword in exporter.kwargs:
-            if keyword in configuration.options:
-                configuration.options[keyword] = exporter.kwargs[keyword]
-            elif keyword in configuration.settings:
-                configuration.settings[keyword] = exporter.kwargs[keyword]
-            configuration.write(iniFile)
+    #--- Save project specific configuration
+    for keyword in ui.kwargs:
+        if keyword in configuration.options:
+            configuration.options[keyword] = ui.kwargs[keyword]
+        elif keyword in configuration.settings:
+            configuration.settings[keyword] = ui.kwargs[keyword]
+        configuration.write(iniFile)
 
 
 if __name__ == '__main__':

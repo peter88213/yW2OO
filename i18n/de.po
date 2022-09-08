@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.17.8\n"
-"POT-Creation-Date: 2022-09-08 18:53:09\n"
-"PO-Revision-Date: 2022-09-08 18:53:09\n"
+"Project-Id-Version: 3.17.9\n"
+"POT-Creation-Date: 2022-09-08 19:07:30\n"
+"PO-Revision-Date: 2022-09-08 19:07:30\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -84,9 +84,6 @@ msgstr "Figurenbeschreibungen zum Bearbeiten exportieren"
 
 msgid "Export character list (spreadsheet)"
 msgstr "Figurenliste exportieren (Tabelle)"
-
-msgid "Export from yWriter"
-msgstr "Aus yWriter exportieren"
 
 msgid "Export item descriptions for editing"
 msgstr "Gegenstandsbeschreibungen zum Bearbeiten exportieren"

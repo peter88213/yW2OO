@@ -42,8 +42,8 @@ class Yw2ooTk(MainTk):
         self.kwargs = kwargs
         super().__init__(title, **kwargs)
         set_icon(self.root, icon='yLogo32')
-        self._exporter = Yw2ooExporter()
-        self._exporter.ui = self
+        self.exporter = Yw2ooExporter()
+        self.exporter.ui = self
 
         self._openButton = tk.Button(self.mainWindow, text=_('Open exported document'), state=tk.DISABLED, command=self._open_newFile)
         self._openButton.config(height=1)
@@ -114,7 +114,7 @@ class Yw2ooTk(MainTk):
 
     def _export_document(self, suffix):
         self.kwargs['suffix'] = suffix
-        self._exporter.run(self.ywPrj.filePath, **self.kwargs)
+        self.exporter.run(self.ywPrj.filePath, **self.kwargs)
 
     def show_open_button(self, open_cmd=None):
         self._openButton['state'] = tk.NORMAL
@@ -124,4 +124,4 @@ class Yw2ooTk(MainTk):
 
     def _open_newFile(self):
         """Open the converted file for editing and exit the converter script."""
-        open_document(self._exporter.newFile)
+        open_document(self.exporter.newFile)
