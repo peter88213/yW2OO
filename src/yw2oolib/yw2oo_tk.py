@@ -133,8 +133,9 @@ class Yw2ooTk(MainTk):
         self._openButton['state'] = tk.DISABLED
 
     def _open_newFile(self):
-        """Open the converted file for editing and exit the converter script."""
+        """Open the converted file for editing and exit the program."""
         open_document(self.exporter.newFile)
+        self.on_quit()
 
     def show_help(self, event=None):
         if os.path.isfile(HELPFILE):

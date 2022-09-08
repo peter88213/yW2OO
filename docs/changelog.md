@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v4.0.1 
+
+- Exit program after opening the exported document.
+
+Based on PyWriter v7.4.1
+
 ### v4.0.0 
 
 - New user interface.
