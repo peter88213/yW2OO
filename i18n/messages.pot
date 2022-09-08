@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.17.9\n"
-"POT-Creation-Date: 2022-09-08 19:07:30\n"
+"Project-Id-Version: 3.17.10\n"
+"POT-Creation-Date: 2022-09-08 20:41:17\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -44,10 +44,19 @@ msgstr ""
 msgid "Chapter descriptions"
 msgstr ""
 
+msgid "Chapter descriptions for editing"
+msgstr ""
+
 msgid "Character descriptions"
 msgstr ""
 
+msgid "Character descriptions for editing"
+msgstr ""
+
 msgid "Character list"
+msgstr ""
+
+msgid "Character list (spreadsheet)"
 msgstr ""
 
 msgid "Close"
@@ -77,36 +86,6 @@ msgstr ""
 msgid "Export"
 msgstr ""
 
-msgid "Export chapter descriptions for editing"
-msgstr ""
-
-msgid "Export character descriptions for editing"
-msgstr ""
-
-msgid "Export character list (spreadsheet)"
-msgstr ""
-
-msgid "Export item descriptions for editing"
-msgstr ""
-
-msgid "Export item list (spreadsheet)"
-msgstr ""
-
-msgid "Export location descriptions for editing"
-msgstr ""
-
-msgid "Export location list (spreadsheet)"
-msgstr ""
-
-msgid "Export part descriptions for editing"
-msgstr ""
-
-msgid "Export scene descriptions for editing"
-msgstr ""
-
-msgid "Export scene list (spreadsheet)"
-msgstr ""
-
 msgid "Export type is not supported"
 msgstr ""
 
@@ -134,7 +113,13 @@ msgstr ""
 msgid "Item descriptions"
 msgstr ""
 
+msgid "Item descriptions for editing"
+msgstr ""
+
 msgid "Item list"
+msgstr ""
+
+msgid "Item list (spreadsheet)"
 msgstr ""
 
 msgid "Lists"
@@ -143,13 +128,19 @@ msgstr ""
 msgid "Location descriptions"
 msgstr ""
 
+msgid "Location descriptions for editing"
+msgstr ""
+
 msgid "Location list"
+msgstr ""
+
+msgid "Location list (spreadsheet)"
 msgstr ""
 
 msgid "Manuscript for editing"
 msgstr ""
 
-msgid "Manuscript with visible structure tags for proof reading"
+msgid "Manuscript with visible tags for proof reading"
 msgstr ""
 
 msgid "Manuscript without tags (export only)"
@@ -197,13 +188,22 @@ msgstr ""
 msgid "Part descriptions"
 msgstr ""
 
+msgid "Part descriptions for editing"
+msgstr ""
+
 msgid "Quit"
 msgstr ""
 
 msgid "Scene descriptions"
 msgstr ""
 
+msgid "Scene descriptions for editing"
+msgstr ""
+
 msgid "Scene list"
+msgstr ""
+
+msgid "Scene list (spreadsheet)"
 msgstr ""
 
 msgid "Tagged manuscript for proofing"

@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.17.9\n"
-"POT-Creation-Date: 2022-09-08 19:07:30\n"
-"PO-Revision-Date: 2022-09-08 19:07:30\n"
+"Project-Id-Version: 3.17.10\n"
+"POT-Creation-Date: 2022-09-08 20:41:17\n"
+"PO-Revision-Date: 2022-09-08 20:41:18\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -43,11 +43,20 @@ msgstr "Kann Datei nicht schreiben"
 msgid "Chapter descriptions"
 msgstr "Kapitelbeschreibung"
 
+msgid "Chapter descriptions for editing"
+msgstr "Kapitelbeschreibungen zum Bearbeiten"
+
 msgid "Character descriptions"
 msgstr "Figurenbeschreibung"
 
+msgid "Character descriptions for editing"
+msgstr "Figurenbeschreibungen zum Bearbeiten"
+
 msgid "Character list"
 msgstr "Figurenliste"
+
+msgid "Character list (spreadsheet)"
+msgstr "Figurenliste (Tabelle)"
 
 msgid "Close"
 msgstr "Schließen"
@@ -76,36 +85,6 @@ msgstr "Beenden"
 msgid "Export"
 msgstr "Exportieren"
 
-msgid "Export chapter descriptions for editing"
-msgstr "Kapitelbeschreibungen zum Bearbeiten exportieren"
-
-msgid "Export character descriptions for editing"
-msgstr "Figurenbeschreibungen zum Bearbeiten exportieren"
-
-msgid "Export character list (spreadsheet)"
-msgstr "Figurenliste exportieren (Tabelle)"
-
-msgid "Export item descriptions for editing"
-msgstr "Gegenstandsbeschreibungen zum Bearbeiten exportieren"
-
-msgid "Export item list (spreadsheet)"
-msgstr "Gegenstandsliste exportieren (Tabelle)"
-
-msgid "Export location descriptions for editing"
-msgstr "Schauplatzbeschreibungen zum Bearbeiten exportieren"
-
-msgid "Export location list (spreadsheet)"
-msgstr "Schauplatzliste exportieren (Tabelle)"
-
-msgid "Export part descriptions for editing"
-msgstr "Teilebeschreibungen zum Bearbeiten exportieren"
-
-msgid "Export scene descriptions for editing"
-msgstr "Szenenbeschreibungen zum Bearbeiten exportieren"
-
-msgid "Export scene list (spreadsheet)"
-msgstr "Szenenliste exportieren (Tabelle)"
-
 msgid "Export type is not supported"
 msgstr "Exporttyp nicht unterstützt"
 
@@ -133,8 +112,14 @@ msgstr "Quelle: {0} \"{1}\"\nZiel: {2} \"{3}\""
 msgid "Item descriptions"
 msgstr "Gegenstandsbeschreibungen"
 
+msgid "Item descriptions for editing"
+msgstr "Gegenstandsbeschreibungen zum Bearbeiten"
+
 msgid "Item list"
 msgstr "Gegenstandsliste"
+
+msgid "Item list (spreadsheet)"
+msgstr "Gegenstandsliste (Tabelle)"
 
 msgid "Lists"
 msgstr "Listen"
@@ -142,13 +127,19 @@ msgstr "Listen"
 msgid "Location descriptions"
 msgstr "Schauplatzbeschreibungen"
 
+msgid "Location descriptions for editing"
+msgstr "Schauplatzbeschreibungen zum Bearbeiten"
+
 msgid "Location list"
 msgstr "Schauplatzliste"
+
+msgid "Location list (spreadsheet)"
+msgstr "Schauplatzliste (Tabelle)"
 
 msgid "Manuscript for editing"
 msgstr "Manuskript zum Bearbeiten"
 
-msgid "Manuscript with visible structure tags for proof reading"
+msgid "Manuscript with visible tags for proof reading"
 msgstr "Manuskript mit sichtbaren Markierungen zum Korrekturlesen"
 
 msgid "Manuscript without tags (export only)"
@@ -196,14 +187,23 @@ msgstr "Bestehende Datei \"{}\" überschreiben?"
 msgid "Part descriptions"
 msgstr "Teilebeschreibungen"
 
+msgid "Part descriptions for editing"
+msgstr "Teilebeschreibungen zum Bearbeiten"
+
 msgid "Quit"
 msgstr "Beenden"
 
 msgid "Scene descriptions"
 msgstr "Szenebeschreibungen"
 
+msgid "Scene descriptions for editing"
+msgstr "Szenenbeschreibungen zum Bearbeiten"
+
 msgid "Scene list"
 msgstr "Szenenliste"
+
+msgid "Scene list (spreadsheet)"
+msgstr "Szenenliste (Tabelle)"
 
 msgid "Tagged manuscript for proofing"
 msgstr "Manuskript mit Markierungen zum Überarbeiten"

@@ -78,7 +78,7 @@ SET_CONTEXT_MENU = f'''Windows Registry Editor Version 5.00
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" x"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\010proof]
-@="{_('Manuscript with visible structure tags for proof reading')}"
+@="{_('Manuscript with visible tags for proof reading')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\010proof\\command]
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _proof"

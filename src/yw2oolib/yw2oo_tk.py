@@ -71,25 +71,25 @@ class Yw2ooTk(MainTk):
         self.exportMenu.add_command(label=_('Notes chapters for editing'), command=lambda: self._export_document('_notes'))
         self.exportMenu.add_command(label=_('Todo chapters for editing'), command=lambda: self._export_document('_todo'))
         self.exportMenu.add_separator()
-        self.exportMenu.add_command(label=_('Manuscript with visible structure tags for proof reading'), command=lambda: self._export_document('_proof'))
+        self.exportMenu.add_command(label=_('Manuscript with visible tags for proof reading'), command=lambda: self._export_document('_proof'))
 
         # Descriptions
         self.descMenu = tk.Menu(self.mainMenu, tearoff=0)
         self.mainMenu.add_cascade(label=_('Descriptions'), menu=self.descMenu)
-        self.descMenu.add_command(label=_('Export part descriptions for editing'), command=lambda: self._export_document('_parts'))
-        self.descMenu.add_command(label=_('Export chapter descriptions for editing'), command=lambda: self._export_document('_chapters'))
-        self.descMenu.add_command(label=_('Export scene descriptions for editing'), command=lambda: self._export_document('_scenes'))
-        self.descMenu.add_command(label=_('Export character descriptions for editing'), command=lambda: self._export_document('_characters'))
-        self.descMenu.add_command(label=_('Export location descriptions for editing'), command=lambda: self._export_document('_locations'))
-        self.descMenu.add_command(label=_('Export item descriptions for editing'), command=lambda: self._export_document('_items'))
+        self.descMenu.add_command(label=_('Part descriptions for editing'), command=lambda: self._export_document('_parts'))
+        self.descMenu.add_command(label=_('Chapter descriptions for editing'), command=lambda: self._export_document('_chapters'))
+        self.descMenu.add_command(label=_('Scene descriptions for editing'), command=lambda: self._export_document('_scenes'))
+        self.descMenu.add_command(label=_('Character descriptions for editing'), command=lambda: self._export_document('_characters'))
+        self.descMenu.add_command(label=_('Location descriptions for editing'), command=lambda: self._export_document('_locations'))
+        self.descMenu.add_command(label=_('Item descriptions for editing'), command=lambda: self._export_document('_items'))
 
         # Lists
         self.listMenu = tk.Menu(self.mainMenu, tearoff=0)
         self.mainMenu.add_cascade(label=_('Lists'), menu=self.listMenu)
-        self.listMenu.add_command(label=_('Export scene list (spreadsheet)'), command=lambda: self._export_document('_scenelist'))
-        self.listMenu.add_command(label=_('Export character list (spreadsheet)'), command=lambda: self._export_document('_charlist'))
-        self.listMenu.add_command(label=_('Export location list (spreadsheet)'), command=lambda: self._export_document('_loclist'))
-        self.listMenu.add_command(label=_('Export item list (spreadsheet)'), command=lambda: self._export_document('_itemlist'))
+        self.listMenu.add_command(label=_('Scene list (spreadsheet)'), command=lambda: self._export_document('_scenelist'))
+        self.listMenu.add_command(label=_('Character list (spreadsheet)'), command=lambda: self._export_document('_charlist'))
+        self.listMenu.add_command(label=_('Location list (spreadsheet)'), command=lambda: self._export_document('_loclist'))
+        self.listMenu.add_command(label=_('Item list (spreadsheet)'), command=lambda: self._export_document('_itemlist'))
 
     def disable_menu(self):
         """Disable menu entries when no project is open.

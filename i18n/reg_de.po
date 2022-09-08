@@ -47,7 +47,7 @@ msgstr "Schauplatzliste (Tabelle)"
 msgid "Manuscript for editing"
 msgstr "Manuskript zum Bearbeiten"
 
-msgid "Manuscript with visible structure tags for proof reading"
+msgid "Manuscript with visible tags for proof reading"
 msgstr "Manuskript mit sichtbaren Markierungen zum Korrekturlesen"
 
 msgid "Manuscript without tags (export only)"
