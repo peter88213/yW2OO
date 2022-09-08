@@ -12,7 +12,7 @@
 - Provide German localization.
 - Consider project names containing a reserved suffix.
 
-Based on PyWriter v7.2.1
+Based on PyWriter v7.4.1
 
 ### v3.16.3 Update setup script
 

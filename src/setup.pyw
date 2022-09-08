@@ -72,97 +72,106 @@ SET_CONTEXT_MENU = f'''Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell]
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\000export]
-@="{_('Export to odt')}"
+@="{_('Manuscript without tags (export only)')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\000export\\command]
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" x"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\010proof]
-@="{_('Proof reading')}"
+@="{_('Manuscript with visible structure tags for proof reading')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\010proof\\command]
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _proof"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\020brfsynopsis]
-@="{_('Brief synopsis')}"
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\020manuscript]
+@="{_('Manuscript for editing')}"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\020brfsynopsis\\command]
-@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _brf_synopsis"
-
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\030manuscript]
-@="{_('Manuscript')}"
-
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\030manuscript\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\020manuscript\\command]
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _manuscript"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\040scenedesc]
-@="{_('Scene descriptions')}"
+@="{_('Scene descriptions for editing')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\040scenedesc\\command]
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _scenes"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\050chapterdesc]
-@="{_('Chapter descriptions')}"
+@="{_('Chapter descriptions for editing')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\050chapterdesc\\command]
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _chapters"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\060partdesc]
-@="{_('Part descriptions')}"
+@="{_('Part descriptions for editing')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\060partdesc\\command]
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _parts"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\070charlist]
-@="{_('Character list')}"
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\200more]
+@="{_('More')}..."
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\070charlist\\command]
-@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _charlist"
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\200more\\command]
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\""
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\080loclist]
-@="{_('Location list')}"
+'''
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\080loclist\\command]
-@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _loclist"
+'''
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\030brfsynopsis]
+@="{_('Brief synopsis (export only)')}"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\090itemlist]
-@="{_('Item list')}"
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\030brfsynopsis\\command]
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _brf_synopsis"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\090itemlist\\command]
-@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _itemlist"
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\070chardesc]
+@="{_('Character descriptions for editing')}"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\110chardesc]
-@="{_('Character descriptions')}"
-
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\110chardesc\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\070chardesc\\command]
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _characters"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\120locdesc]
-@="{_('Location descriptions')}"
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\080locdesc]
+@="{_('Location descriptions for editing')}"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\120locdesc\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\080locdesc\\command]
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _locations"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\130itemdesc]
-@="{_('Item descriptions')}"
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\090itemdesc]
+@="{_('Item descriptions for editing')}"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\130itemdesc\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\090itemdesc\\command]
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _items"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\140scenelist]
-@="{_('Scene list')}"
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\100scenelist]
+@="{_('Scene list (spreadsheet)')}"
 
-[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\140scenelist\\command]
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\100scenelist\\command]
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _scenelist"
 
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\110charlist]
+@="{_('Character list (spreadsheet)')}"
+
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\110charlist\\command]
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _charlist"
+
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\120loclist]
+@="{_('Location list (spreadsheet)')}"
+
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\120loclist\\command]
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _loclist"
+
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\130itemlist]
+@="{_('Item list (spreadsheet)')}"
+
+[HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\130itemlist\\command]
+@="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _itemlist"
+
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\150notes]
-@="{_('Notes chapters')}"
+@="{_('Notes chapters for editing')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\150notes\\command]
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _notes"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\160todo]
-@="{_('Todo chapters')}"
+@="{_('Todo chapters for editing')}"
 
 [HKEY_CURRENT_USER\Software\Classes\\yWriter7\\shell\\yw2oo\\shell\\160todo\\command]
 @="\\"$PYTHON\\" \\"$SCRIPT\\" \\"%1\\" _todo"
@@ -242,10 +251,9 @@ def install(pywriterPath):
         pass
     os.makedirs(cnfDir, exist_ok=True)
 
-    # Delete existing localization files.
-    rmtree(f'{installDir}/locale', ignore_errors=True)
-
     # Delete the old version, but retain configuration, if any.
+    rmtree(f'{installDir}/locale', ignore_errors=True)
+    rmtree(f'{installDir}/icons', ignore_errors=True)
     with os.scandir(installDir) as files:
         for file in files:
             if not 'config' in file.name:

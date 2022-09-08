@@ -22,7 +22,6 @@ With the [pywoo extension for OpenOffice](https://peter88213.github.io/pywoo) an
     
 ## Requirements
 
-- Windows.
 - [Python 3.6+](https://www.python.org).  
 
 ## Please note: 

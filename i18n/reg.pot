@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: unknown\n"
-"POT-Creation-Date: 2022-09-07 17:49:45\n"
+"POT-Creation-Date: 2022-09-08 17:40:24\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -14,56 +14,53 @@ msgstr ""
 "Generated-By: PyWriter pgettext.py 0.3\n"
 
 
-msgid "Brief synopsis"
+msgid "Brief synopsis (export only)"
 msgstr ""
 
-msgid "Chapter descriptions"
+msgid "Chapter descriptions for editing"
 msgstr ""
 
-msgid "Character descriptions"
+msgid "Character descriptions for editing"
 msgstr ""
 
-msgid "Character list"
-msgstr ""
-
-msgid "Cross references"
+msgid "Character list (spreadsheet)"
 msgstr ""
 
 msgid "Export to OpenOffice"
 msgstr ""
 
-msgid "Export to odt"
+msgid "Item descriptions for editing"
 msgstr ""
 
-msgid "Item descriptions"
+msgid "Item list (spreadsheet)"
 msgstr ""
 
-msgid "Item list"
+msgid "Location descriptions for editing"
 msgstr ""
 
-msgid "Location descriptions"
+msgid "Location list (spreadsheet)"
 msgstr ""
 
-msgid "Location list"
+msgid "Manuscript for editing"
 msgstr ""
 
-msgid "Manuscript"
+msgid "Manuscript with visible structure tags for proof reading"
 msgstr ""
 
-msgid "Notes chapters"
+msgid "Manuscript without tags (export only)"
 msgstr ""
 
-msgid "Part descriptions"
+msgid "Notes chapters for editing"
 msgstr ""
 
-msgid "Proof reading"
+msgid "Part descriptions for editing"
 msgstr ""
 
-msgid "Scene descriptions"
+msgid "Scene descriptions for editing"
 msgstr ""
 
-msgid "Scene list"
+msgid "Scene list (spreadsheet)"
 msgstr ""
 
-msgid "Todo chapters"
+msgid "Todo chapters for editing"
 msgstr ""

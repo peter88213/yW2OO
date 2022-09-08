@@ -14,17 +14,17 @@ msgstr ""
 "Generated-By: PyWriter pgettext.py 0.3\n"
 
 
-msgid "Brief synopsis"
-msgstr "Kurzzusammenfassung"
+msgid "Brief synopsis (export only)"
+msgstr "Kurzzusammenfassung (nur Export)"
 
-msgid "Chapter descriptions"
-msgstr "Kapitelbeschreibungen"
+msgid "Chapter descriptions for editing"
+msgstr "Kapitelbeschreibungen zum Bearbeiten"
 
-msgid "Character descriptions"
-msgstr "Figurenbeschreibungen"
+msgid "Character descriptions for editing"
+msgstr "Figurenbeschreibungen zum Bearbeiten"
 
-msgid "Character list"
-msgstr "Figurenliste"
+msgid "Character list (spreadsheet)"
+msgstr "Figurenliste (Tabelle)"
 
 msgid "Cross references"
 msgstr "Querverweise"
@@ -32,38 +32,41 @@ msgstr "Querverweise"
 msgid "Export to OpenOffice"
 msgstr "Zu OpenOffice exportieren"
 
-msgid "Export to odt"
-msgstr "Ins odt-Format exportieren"
+msgid "Item descriptions for editing"
+msgstr "Gegenstandsbeschreibungen zum Bearbeiten"
 
-msgid "Item descriptions"
-msgstr "Gegenstandsbeschreibungen"
+msgid "Item list (spreadsheet)"
+msgstr "Gegenstandsliste (Tabelle)"
 
-msgid "Item list"
-msgstr "Gegenstandsliste"
+msgid "Location descriptions for editing"
+msgstr "Schauplatzbeschreibungen zum Bearbeiten"
 
-msgid "Location descriptions"
-msgstr "Schauplatzbeschreibungen"
+msgid "Location list (spreadsheet)"
+msgstr "Schauplatzliste (Tabelle)"
 
-msgid "Location list"
-msgstr "Schauplatzliste"
+msgid "Manuscript for editing"
+msgstr "Manuskript zum Bearbeiten"
 
-msgid "Manuscript"
-msgstr "Manuskript"
+msgid "Manuscript with visible structure tags for proof reading"
+msgstr "Manuskript mit sichtbaren Markierungen zum Korrekturlesen"
 
-msgid "Notes chapters"
-msgstr "Notizen-Kapitel"
+msgid "Manuscript without tags (export only)"
+msgstr "Manuskript ohne Markierungen (nur Export)"
 
-msgid "Part descriptions"
-msgstr "Teilebeschreibungen"
+msgid "More"
+msgstr "Mehr"
 
-msgid "Proof reading"
-msgstr "Korrekturlesen"
+msgid "Notes chapters for editing"
+msgstr "Notizen-Kapitel zum Bearbeiten"
 
-msgid "Scene descriptions"
-msgstr "Szenebeschreibungen"
+msgid "Part descriptions for editing"
+msgstr "Teilebeschreibungen zum Bearbeiten"
 
-msgid "Scene list"
-msgstr "Szenenliste"
+msgid "Scene descriptions for editing"
+msgstr "Szenebeschreibungen zum Bearbeiten"
 
-msgid "Todo chapters"
-msgstr "Planungs-Kapitel"
+msgid "Scene list (spreadsheet)"
+msgstr "Szenenliste (Tabelle)"
+
+msgid "Todo chapters for editing"
+msgstr "Planungs-Kapitel zum Bearbeiten"

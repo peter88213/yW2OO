@@ -22,7 +22,6 @@ With the [pywoo extension for OpenOffice](https://peter88213.github.io/pywoo) an
     
 ## Requirements
 
-- Windows.
 - [Python 3.6+](https://www.python.org).  
 
 ## Please note: 
@@ -32,7 +31,7 @@ first uninstall your current yW2OO installation with its included **Uninstall.ba
 
 ## Download and install
 
-[Download the latest release (version 3.17.7)](https://raw.githubusercontent.com/peter88213/yW2OO/main/dist/yW2OO_v3.17.7.zip)
+[Download the latest release (version 3.17.8)](https://raw.githubusercontent.com/peter88213/yW2OO/main/dist/yW2OO_v3.17.8.zip)
 
 [Instructions for installation and use](usage)
 
