@@ -31,6 +31,10 @@ For more information, see the [project homepage](https://peter88213.github.io/yW
 - [Eclipse IDE](https://eclipse.org) with [PyDev](https://pydev.org) and [EGit](https://www.eclipse.org/egit/)
 - [Apache Ant](https://ant.apache.org/) for building the application script
 
+## Credits
+
+The icons are made using the free *Pusab* font by Ryoichi Tsunekawa, [Flat-it](http://flat-it.com/).
+
 ## License
 
 yW2OO is distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).

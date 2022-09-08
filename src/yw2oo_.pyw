@@ -10,6 +10,7 @@ import os
 import sys
 from pathlib import Path
 from pywriter.pywriter_globals import *
+from pywriter.ui.set_icon_tk import *
 from pywriter.config.configuration import Configuration
 from pywriter.ui.ui_tk import UiTk
 from yw2oolib.yw2oo_exporter import Yw2ooExporter
@@ -29,6 +30,7 @@ def run(sourcePath='', suffix=None, installDir='.'):
             suffix = ''
         converter = Yw2ooExporter()
         converter.ui = UiTk(f'{_("Export from yWriter")} @release')
+        set_icon(converter.ui.root, icon='yLogo32')
         kwargs = {'suffix': suffix}
         converter.run(sourcePath, **kwargs)
         converter.ui.start()

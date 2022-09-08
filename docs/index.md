@@ -32,7 +32,7 @@ first uninstall your current yW2OO installation with its included **Uninstall.ba
 
 ## Download and install
 
-[Download the latest release (version 3.17.6)](https://raw.githubusercontent.com/peter88213/yW2OO/main/dist/yW2OO_v3.17.6.zip)
+[Download the latest release (version 3.17.7)](https://raw.githubusercontent.com/peter88213/yW2OO/main/dist/yW2OO_v3.17.7.zip)
 
 [Instructions for installation and use](usage)
 
@@ -40,8 +40,7 @@ first uninstall your current yW2OO installation with its included **Uninstall.ba
 
 ## Credits
 
-[yWriter](http://spacejock.com/yWriter7.html) by Simon Haynes.
-
+The icons are made using the free *Pusab* font by Ryoichi Tsunekawa, [Flat-it](http://flat-it.com/).
 
 ## License
 

@@ -40,8 +40,7 @@ first uninstall your current yW2OO installation with its included **Uninstall.ba
 
 ## Credits
 
-[yWriter](http://spacejock.com/yWriter7.html) by Simon Haynes.
-
+The icons are made using the free *Pusab* font by Ryoichi Tsunekawa, [Flat-it](http://flat-it.com/).
 
 ## License
 

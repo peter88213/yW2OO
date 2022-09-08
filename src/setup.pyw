@@ -260,6 +260,10 @@ def install(pywriterPath):
     copytree('locale', f'{installDir}/locale', dirs_exist_ok=True)
     output(f'Copying "locale"')
 
+    # Install the icon files.
+    copytree('icons', f'{installDir}/icons', dirs_exist_ok=True)
+    output(f'Copying "icons"')
+
     # Make the script executable under Linux.
     st = os.stat(f'{installDir}/{APP}')
     os.chmod(f'{installDir}/{APP}', st.st_mode | stat.S_IEXEC)

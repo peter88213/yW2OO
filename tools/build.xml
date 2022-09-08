@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="yw2oo" basedir=".">
-	<property name="version" value="3.17.6" />
+	<property name="version" value="3.17.7" />
 	<property name="test-app" value="yw2oo" />
 	
 	<property name="source-path" location="../src" />
@@ -52,6 +52,10 @@
 		
 		<copy todir="${build-path}/${release}/locale"> 
 			<fileset dir="${i18n-path}/locale" />
+		</copy>
+		
+		<copy todir="${build-path}/${release}/icons"> 
+			<fileset dir="${source-path}/icons" />
 		</copy>
 		
 		<zip destfile="${dist-path}/${release}.zip" basedir="${build-path}/${release}" />

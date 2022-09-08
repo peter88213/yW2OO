@@ -9,6 +9,7 @@ import tkinter as tk
 from pywriter.pywriter_globals import *
 from pywriter.file.doc_open import open_document
 from pywriter.ui.main_tk import MainTk
+from pywriter.ui.set_icon_tk import *
 from yw2oolib.yw2oo_exporter import Yw2ooExporter
 
 
@@ -40,6 +41,7 @@ class Yw2ooTk(MainTk):
         """
         self.kwargs = kwargs
         super().__init__(title, **kwargs)
+        set_icon(self.root, icon='yLogo32')
         self._exporter = Yw2ooExporter()
         self._exporter.ui = self
 
