@@ -1,16 +1,21 @@
 """"Provide a tkinter GUI framework for yWriter odf export.
 
 Copyright (c) 2022 Peter Triesberger
-For further information see https://github.com/peter88213/yw-viewer
+For further information see https://github.com/peter88213/yW2OO
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
+import os
 import tkinter as tk
+import webbrowser
 
 from pywriter.pywriter_globals import *
 from pywriter.file.doc_open import open_document
 from pywriter.ui.main_tk import MainTk
 from pywriter.ui.set_icon_tk import *
 from yw2oolib.yw2oo_exporter import Yw2ooExporter
+
+HELPFILE = f'{os.path.dirname(sys.argv[0])}/help.html'
+HELPSITE = 'https://peter88213.github.io/yW2OO/help'
 
 
 class Yw2ooTk(MainTk):
@@ -27,6 +32,7 @@ class Yw2ooTk(MainTk):
 
     Show titles, descriptions, and contents in a text box.
     """
+    _KEY_HELP = ('<F1>', 'F1')
 
     def __init__(self, title, **kwargs):
         """Organize the GUI main window.
@@ -52,6 +58,7 @@ class Yw2ooTk(MainTk):
         self.quitButton.config(height=1, width=10)
         self.quitButton.pack(pady=10)
         self.disable_menu()
+        self.root.bind(self._KEY_HELP[0], self.show_help)
 
     def _build_main_menu(self):
         """Add main menu entries.
@@ -91,6 +98,9 @@ class Yw2ooTk(MainTk):
         self.listMenu.add_command(label=_('Location list (spreadsheet)'), command=lambda: self._export_document('_loclist'))
         self.listMenu.add_command(label=_('Item list (spreadsheet)'), command=lambda: self._export_document('_itemlist'))
 
+        # Help
+        self.mainMenu.add_command(label=_('Help'), command=self.show_help)
+
     def disable_menu(self):
         """Disable menu entries when no project is open.
         
@@ -125,3 +135,9 @@ class Yw2ooTk(MainTk):
     def _open_newFile(self):
         """Open the converted file for editing and exit the converter script."""
         open_document(self.exporter.newFile)
+
+    def show_help(self, event=None):
+        if os.path.isfile(HELPFILE):
+            webbrowser.open(HELPFILE)
+        else:
+            webbrowser.open(HELPSITE)

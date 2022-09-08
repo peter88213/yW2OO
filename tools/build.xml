@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="yw2oo" basedir=".">
-	<property name="version" value="3.17.10" />
+	<property name="version" value="4.0.0" />
 	<property name="test-app" value="yw2oo" />
 	
 	<property name="source-path" location="../src" />
@@ -38,6 +38,7 @@
 		<mkdir dir="${build-path}" />
 		<mkdir dir="${dist-path}" />
 		<mkdir dir="${build-path}/${release}" />
+		<mkdir dir="${build-path}/${release}/help" />
 		
 		<copy file="${test-path}/${test-app}.pyw" tofile="${build-path}/${release}/${application}.pyw" />
 		<replace encoding="utf-8" file="${build-path}/${release}/${application}.pyw" token="@release" value="${version}" />
@@ -47,6 +48,7 @@
 
 		<copy file="../LICENSE" todir="${build-path}/${release}" />	
 		<copy file="${docs-path}/usage.md" tofile="${build-path}/${release}/README.md" />
+		<copy file="${docs-path}/help.md" tofile="${build-path}/${release}/help.md" />
 		
 		<fixcrlf encoding="utf-8" eol="lf" srcdir="${build-path}/${release}" includes="**/*.*" />
 		
@@ -57,6 +59,13 @@
 		<copy todir="${build-path}/${release}/icons"> 
 			<fileset dir="${source-path}/icons" />
 		</copy>
+		
+		<exec executable="cmd">
+			<arg value="/c"/>
+			<arg value="pandoc -o ${build-path}/${release}/help/help.html -fMarkdown-smart --template ${docs-path}/template/template.html ${docs-path}/help.md"/>
+		</exec>	
+		<replace encoding="utf-8" file="${build-path}/${release}/help/help.html" token="&lt;title&gt;&lt;/title&gt;" value="&lt;title&gt;yW2OO Help&lt;/title&gt;" />
+		<fixcrlf encoding="utf-8" eol="lf" file="${build-path}/${release}/help/help.html" />
 		
 		<zip destfile="${dist-path}/${release}.zip" basedir="${build-path}/${release}" />
 		

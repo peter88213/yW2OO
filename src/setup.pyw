@@ -254,6 +254,7 @@ def install(pywriterPath):
     # Delete the old version, but retain configuration, if any.
     rmtree(f'{installDir}/locale', ignore_errors=True)
     rmtree(f'{installDir}/icons', ignore_errors=True)
+    rmtree(f'{installDir}/help', ignore_errors=True)
     with os.scandir(installDir) as files:
         for file in files:
             if not 'config' in file.name:
@@ -263,6 +264,10 @@ def install(pywriterPath):
     # Install the new version.
     copyfile(APP, f'{installDir}/{APP}')
     output(f'Copying "{APP}"')
+
+    # Install the help files.
+    copytree('help', f'{installDir}', dirs_exist_ok=True)
+    output(f'Copying "help"')
 
     # Install the localization files.
     copytree('locale', f'{installDir}/locale', dirs_exist_ok=True)
