@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.0.1\n"
-"POT-Creation-Date: 2022-09-08 22:18:46\n"
-"PO-Revision-Date: 2022-09-08 22:18:47\n"
+"Project-Id-Version: 4.0.2\n"
+"POT-Creation-Date: 2022-09-09 10:01:37\n"
+"PO-Revision-Date: 2022-09-09 10:01:38\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -108,6 +108,9 @@ msgstr "Ziele"
 
 msgid "Help"
 msgstr "Hilfe"
+
+msgid "Help file not found. Please check the installation"
+msgstr "Hilfedatei nicht gefunden. Bitte die Installation prüfen."
 
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
 msgstr "Quelle: {0} \"{1}\"\nZiel: {2} \"{3}\""

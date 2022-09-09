@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.0.1\n"
-"POT-Creation-Date: 2022-09-08 22:18:46\n"
+"Project-Id-Version: 4.0.2\n"
+"POT-Creation-Date: 2022-09-09 10:01:37\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -108,6 +108,9 @@ msgid "Goals"
 msgstr ""
 
 msgid "Help"
+msgstr ""
+
+msgid "Help file not found. Please check the installation"
 msgstr ""
 
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""

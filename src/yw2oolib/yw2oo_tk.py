@@ -6,6 +6,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import tkinter as tk
+from tkinter import messagebox
 import webbrowser
 
 from pywriter.pywriter_globals import *
@@ -15,7 +16,6 @@ from pywriter.ui.set_icon_tk import *
 from yw2oolib.yw2oo_exporter import Yw2ooExporter
 
 HELPFILE = f'{os.path.dirname(sys.argv[0])}/help.html'
-HELPSITE = 'https://peter88213.github.io/yW2OO/help'
 
 
 class Yw2ooTk(MainTk):
@@ -141,4 +141,4 @@ class Yw2ooTk(MainTk):
         if os.path.isfile(HELPFILE):
             webbrowser.open(HELPFILE)
         else:
-            webbrowser.open(HELPSITE)
+            messagebox.showerror(self._title, _('Help file not found. Please check the installation'))

@@ -52,13 +52,12 @@ text document (odt).
 -   Scene titles appear as navigable comments pinned to the beginning of
     the scene.
 -   Scenes are separated by `* * *`. The first line is not
-    indented. You can replace the scene separators by blank lines with 
-    the menu command **Format >  Replace scene dividers with blank lines**.
+    indented.
 -   Starting from the second paragraph, paragraphs begin with
     indentation of the first line.
+-   Paragraphs starting with `> ` are formatted as quotations.
 -   Scenes marked "attach to previous scene" in yWriter appear like
     continuous paragraphs.
--   Paragraphs starting with `> ` are formatted as quotations.
 
 
 [Top of page](#top)
