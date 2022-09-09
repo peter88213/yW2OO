@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### v4.0.2 
+
+- Fix help file.
+- Show a pop-up message if the helpfile is missing.
+
+Based on PyWriter v7.4.1
+
 ### v4.0.1 
 
 - Exit program after opening the exported document.
