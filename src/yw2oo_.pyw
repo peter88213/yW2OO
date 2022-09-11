@@ -57,7 +57,7 @@ def run(sourcePath='', suffix=None, installDir='.'):
             configuration.options[keyword] = ui.kwargs[keyword]
         elif keyword in configuration.settings:
             configuration.settings[keyword] = ui.kwargs[keyword]
-        configuration.write(iniFile)
+    configuration.write(iniFile)
 
 
 if __name__ == '__main__':
