@@ -41,13 +41,13 @@ msgid "Cannot write file"
 msgstr "Kann Datei nicht schreiben"
 
 msgid "Chapter descriptions"
-msgstr "Kapitelbeschreibung"
+msgstr "Kapitelbeschreibungen"
 
 msgid "Chapter descriptions for editing"
 msgstr "Kapitelbeschreibungen zum Bearbeiten"
 
 msgid "Character descriptions"
-msgstr "Figurenbeschreibung"
+msgstr "Figurenbeschreibungen"
 
 msgid "Character descriptions for editing"
 msgstr "Figurenbeschreibungen zum Bearbeiten"
