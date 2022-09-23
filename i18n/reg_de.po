@@ -63,10 +63,10 @@ msgid "Part descriptions for editing"
 msgstr "Teilebeschreibungen zum Bearbeiten"
 
 msgid "Scene descriptions for editing"
-msgstr "Szenebeschreibungen zum Bearbeiten"
+msgstr "Abschnittsbeschreibungen zum Bearbeiten"
 
 msgid "Scene list (spreadsheet)"
-msgstr "Szenenliste (Tabelle)"
+msgstr "Abschnittsliste (Tabelle)"
 
 msgid "Todo chapters for editing"
 msgstr "Planungs-Kapitel zum Bearbeiten"
