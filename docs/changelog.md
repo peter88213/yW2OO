@@ -4,6 +4,14 @@
 
 ## Changelog
 
+### v4.1.3 
+
+- Change the German wording: Szene --> Abschnitt.
+- Process the document's language and country (if any) when exporting ODF.
+- Support "no document language" settings.
+
+Based on PyWriter v7.10.2
+
 ### v4.0.2 
 
 - Fix help file.
