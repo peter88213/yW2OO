@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v4.1.4 
+
+- When importing from yWriter, paragraphs that start with "> " are formatted as "Quotations".
+
+Based on PyWriter v7.10.3
+
 ### v4.1.3 
 
 - Change the German wording: Szene --> Abschnitt.
