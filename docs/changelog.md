@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v4.2.3
+
+- Undo the change from v4.1.3: Change the German wording (Abschnitt --> Szene).
+
+Based on PyWriter v7.12.2
+
 ### v4.2.2
 
 - Read the document language and country codes from project variables, if any.
