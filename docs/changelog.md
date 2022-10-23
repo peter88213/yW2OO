@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v4.2.4
+
+- Fix a bug in odt manuscript export, where the "Quotation" style is not applied at scene start.
+
+Based on PyWriter v7.14.1
+
 ### v4.2.3
 
 - Undo the change from v4.1.3: Change the German wording (Abschnitt --> Szene).
