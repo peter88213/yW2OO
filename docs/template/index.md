@@ -22,7 +22,7 @@ With the [pywoo extension for OpenOffice](https://peter88213.github.io/pywoo) an
     
 ## Requirements
 
-- [Python](https://www.python.org/) version 3.6 min.; version 3.10 max.
+- [Python](https://www.python.org/) 3.6 =< version <= 3.10.
 
 ## Please note: 
 
