@@ -4,11 +4,11 @@
 
 ## Changelog
 
-### v4.2.5
+### v4.3.0
 
 - Library upgrade.
 
-Based on PyWriter v8.0.1
+Based on PyWriter v8.0.2
 
 ### v4.2.4
 
