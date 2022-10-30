@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v4.2.5
+
+- Library upgrade.
+
+Based on PyWriter v8.0.1
+
 ### v4.2.4
 
 - Fix a bug in odt manuscript export, where the "Quotation" style is not applied at scene start.
