@@ -4,11 +4,12 @@
 
 ## Changelog
 
-### v4.3.0
+### v4.3.1
 
 - Library upgrade.
+- Assign "no language" to the chapter/scene markers for the  proof reading document.
 
-Based on PyWriter v8.0.2
+Based on PyWriter v8.0.4
 
 ### v4.2.4
 
