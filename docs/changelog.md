@@ -8,7 +8,7 @@
 
 - Library upgrade.
 - Assign "no language" to the chapter/scene markers for the  proof reading document.
-- When converting to ODT format, apply all XML predefineded entities.
+- When converting to ODT format, apply all XML predefined entities.
 - Fix a bug where attempting to save a write-protected file raises an
 uncaught exception.
 
