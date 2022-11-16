@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v4.3.3
+
+- Fix a bug where no error message is not displayed, if no help text is available.
+
+Based on PyWriter v8.0.9
+
 ### v4.3.2
 
 - Library upgrade.
