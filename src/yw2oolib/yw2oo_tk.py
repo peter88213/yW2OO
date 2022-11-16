@@ -141,4 +141,4 @@ class Yw2ooTk(MainTk):
         if os.path.isfile(HELPFILE):
             webbrowser.open(HELPFILE)
         else:
-            messagebox.showerror(self._title, _('Help file not found. Please check the installation'))
+            messagebox.showerror(self.title, _('Help file not found. Please check the installation'))
