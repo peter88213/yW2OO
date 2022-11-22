@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.3.3\n"
-"POT-Creation-Date: 2022-11-16 20:05:54\n"
+"Project-Id-Version: 4.4.0\n"
+"POT-Creation-Date: 2022-11-22 16:16:27\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -152,15 +152,6 @@ msgstr ""
 msgid "Manuscript without tags (export only)"
 msgstr ""
 
-msgid "New Chapter"
-msgstr ""
-
-msgid "New Part"
-msgstr ""
-
-msgid "New Scene"
-msgstr ""
-
 msgid "New scenes created during conversion."
 msgstr ""
 
@@ -174,9 +165,6 @@ msgid "Notes chapters"
 msgstr ""
 
 msgid "Notes chapters for editing"
-msgstr ""
-
-msgid "Novel"
 msgstr ""
 
 msgid "Open"

@@ -124,7 +124,7 @@ class Yw2ooTk(MainTk):
 
     def _export_document(self, suffix):
         self.kwargs['suffix'] = suffix
-        self.exporter.run(self.ywPrj.filePath, **self.kwargs)
+        self.exporter.run(self.prjFile.filePath, **self.kwargs)
 
     def show_open_button(self, open_cmd=None):
         self._openButton['state'] = tk.NORMAL

@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.3.3\n"
-"POT-Creation-Date: 2022-11-16 20:05:54\n"
-"PO-Revision-Date: 2022-11-16 20:05:54\n"
+"Project-Id-Version: 4.4.0\n"
+"POT-Creation-Date: 2022-11-22 16:16:27\n"
+"PO-Revision-Date: 2022-11-22 16:16:27\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -151,15 +151,6 @@ msgstr "Manuskript mit sichtbaren Markierungen zum Korrekturlesen"
 msgid "Manuscript without tags (export only)"
 msgstr "Manuskript ohne Markierungen (nur Export)"
 
-msgid "New Chapter"
-msgstr "Neues Kapitel"
-
-msgid "New Part"
-msgstr "Neuer Teil"
-
-msgid "New Scene"
-msgstr "Neue Szene"
-
 msgid "New scenes created during conversion."
 msgstr "Während der Konvertierung wurden neue Szenen erzeugt."
 
@@ -174,9 +165,6 @@ msgstr "Notizen-Kapitel"
 
 msgid "Notes chapters for editing"
 msgstr "Notizen-Kapitel zum Bearbeiten"
-
-msgid "Novel"
-msgstr "Roman"
 
 msgid "Open"
 msgstr "Öffnen"
