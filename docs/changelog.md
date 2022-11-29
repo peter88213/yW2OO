@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### v4.4.1 Bugfix
+
+- Fix a regression from v4.3.1 where wrong language markers are imported
+from the "proofread" document.
+
+Based on PyWriter v9.0.5
+
 ### v4.4.0
 
 - Code optimization and library update. 
