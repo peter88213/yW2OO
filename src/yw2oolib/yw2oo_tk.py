@@ -1,4 +1,4 @@
-""""Provide a tkinter GUI framework for yWriter odf export.
+"""Provide a tkinter GUI framework for yWriter odf export.
 
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/yW2OO
