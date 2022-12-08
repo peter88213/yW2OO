@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Install the yW2OO script and set up the registry files
 for extending the yWriter context menu. 
 

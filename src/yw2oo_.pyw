@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Convert yWriter project to odt or ods. 
 
 Version @release
