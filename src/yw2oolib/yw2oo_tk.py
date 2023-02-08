@@ -11,14 +11,14 @@ import webbrowser
 
 from pywriter.pywriter_globals import *
 from pywriter.file.doc_open import open_document
-from pywriter.ui.main_tk import MainTk
+from pywriter.ui.main_tk_cnv import MainTkCnv
 from pywriter.ui.set_icon_tk import *
 from yw2oolib.yw2oo_exporter import Yw2ooExporter
 
 HELPFILE = f'{os.path.dirname(sys.argv[0])}/help.html'
 
 
-class Yw2ooTk(MainTk):
+class Yw2ooTk(MainTkCnv):
     """A tkinter GUI class for yWriter odf export.
     
     Public methods:
@@ -51,6 +51,7 @@ class Yw2ooTk(MainTk):
         self.exporter = Yw2ooExporter()
         self.exporter.ui = self
 
+        self._docExtension = '.odt'
         self._openButton = tk.Button(self.mainWindow, text=_('Open exported document'), state=tk.DISABLED, command=self._open_newFile)
         self._openButton.config(height=1)
         self._openButton.pack(pady=10)
@@ -124,7 +125,7 @@ class Yw2ooTk(MainTk):
 
     def _export_document(self, suffix):
         self.kwargs['suffix'] = suffix
-        self.exporter.run(self.prjFile.filePath, **self.kwargs)
+        self.exporter.run(self._sourcePath, **self.kwargs)
 
     def show_open_button(self, open_cmd=None):
         self._openButton['state'] = tk.NORMAL
@@ -134,6 +135,7 @@ class Yw2ooTk(MainTk):
 
     def _open_newFile(self):
         """Open the converted file for editing and exit the program."""
+        print(self.exporter.newFile)
         open_document(self.exporter.newFile)
         self.on_quit()
 
@@ -142,3 +144,24 @@ class Yw2ooTk(MainTk):
             webbrowser.open(HELPFILE)
         else:
             messagebox.showerror(self.title, _('Help file not found. Please check the installation'))
+
+    def reverse_direction(self):
+        """Make the YW7 file the source instead of the selected ODT.
+        
+        Remove the ODT suffix, if any.
+        Overrides the superclass method.
+        """
+        fileName, fileExtension = os.path.splitext(self._sourcePath)
+        if fileExtension == self._docExtension:
+            self._sourcePath = f'{fileName}{self._ywExtension}'
+
+            # Strip suffix, if any.
+            if not os.path.isfile(self._sourcePath):
+                fileName = fileName.rsplit('_', 1)
+                projectName = f'{fileName[0]}{self._ywExtension}'
+                if os.path.isfile(projectName):
+                    self._sourcePath = projectName
+
+            self.show_path(norm_path(self._sourcePath))
+            self.root.title(f'{self._EXPORT_DESC} - {self.title}')
+            self.show_status('')

@@ -23,6 +23,11 @@ SETTINGS = dict(
     root_geometry='600x140',
 )
 OPTIONS = {}
+FILE_TYPES = [
+    ('yWriter 7 project', '.yw7'),
+    ('Open Document Text', '.odt'),
+    ('Open Document Spreadsheet', '.od2'),
+]
 
 
 def run(sourcePath='', suffix=None, installDir='.'):
@@ -31,7 +36,7 @@ def run(sourcePath='', suffix=None, installDir='.'):
     iniFile = f'{installDir}/{APPNAME}.ini'
     configuration = Configuration(SETTINGS, OPTIONS)
     configuration.read(iniFile)
-    kwargs = {}
+    kwargs = dict(file_types=FILE_TYPES,)
     kwargs.update(configuration.settings)
     kwargs.update(configuration.options)
 

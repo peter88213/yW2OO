@@ -4,10 +4,10 @@ Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/yW2OO
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
-from pywriter.converter.yw7_exporter import Yw7Exporter
+from pywriter.converter.yw7_converter import Yw7Converter
 
 
-class Yw2ooExporter(Yw7Exporter):
+class Yw2ooExporter(Yw7Converter):
     """A converter for universal export from a yWriter 7 project.
 
     Public methods:
@@ -16,7 +16,7 @@ class Yw2ooExporter(Yw7Exporter):
     Shows the 'Open' button after conversion from yw.
     """
 
-    def export_from_yw(self, source, target):
+    def run(self, sourcePath, **kwargs):
         """Convert from yWriter project to other file format.
 
         Positional arguments:
@@ -25,7 +25,7 @@ class Yw2ooExporter(Yw7Exporter):
         
         Extends the super class method, showing an 'open' button after conversion.
         """
-        super().export_from_yw(source, target)
+        super().run(sourcePath, **kwargs)
         if self.newFile:
             self.ui.show_open_button(self._open_newFile)
         else:
