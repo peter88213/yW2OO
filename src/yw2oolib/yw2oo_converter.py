@@ -7,7 +7,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 from pywriter.converter.yw7_converter import Yw7Converter
 
 
-class Yw2ooExporter(Yw7Converter):
+class Yw2ooConverter(Yw7Converter):
     """A converter for universal export from a yWriter 7 project.
 
     Public methods:

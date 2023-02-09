@@ -14,7 +14,7 @@ from pywriter.file.doc_open import open_document
 from pywriter.yw.yw7_file import Yw7File
 from pywriter.ui.main_tk import MainTk
 from pywriter.ui.set_icon_tk import *
-from yw2oolib.yw2oo_exporter import Yw2ooExporter
+from yw2oolib.yw2oo_converter import Yw2ooConverter
 
 HELPFILE = f'{os.path.dirname(sys.argv[0])}/help.html'
 
@@ -59,7 +59,7 @@ class Yw2ooTk(MainTk):
         self._ywExtension = Yw7File.EXTENSION
         self._docExtension = None
 
-        self.converter = Yw2ooExporter()
+        self.converter = Yw2ooConverter()
         self.converter.ui = self
 
         self._docExtension = '.odt'

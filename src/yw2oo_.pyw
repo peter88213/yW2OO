@@ -13,8 +13,6 @@ from pathlib import Path
 from pywriter.pywriter_globals import *
 from pywriter.ui.set_icon_tk import *
 from pywriter.config.configuration import Configuration
-from pywriter.ui.ui_tk import UiTk
-from yw2oolib.yw2oo_exporter import Yw2ooExporter
 from yw2oolib.yw2oo_tk import Yw2ooTk
 
 APPNAME = 'yw2oo'
@@ -40,7 +38,7 @@ def run(sourcePath='', suffix=None, installDir='.'):
     kwargs.update(configuration.settings)
     kwargs.update(configuration.options)
 
-    #--- Instantiate the exporter object.
+    #--- Instantiate the converter object.
     ui = Yw2ooTk(f'{APPNAME} @release', **kwargs)
 
     #--- Get initial project path.
@@ -52,7 +50,7 @@ def run(sourcePath='', suffix=None, installDir='.'):
             if suffix == 'x':
                 suffix = ''
         kwargs['suffix'] = suffix
-        ui.exporter.run(sourcePath, **kwargs)
+        ui.converter.run(sourcePath, **kwargs)
 
     ui.open_project(sourcePath)
 
