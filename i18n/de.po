@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.4.3\n"
-"POT-Creation-Date: 2023-01-01 10:12:09\n"
-"PO-Revision-Date: 2023-01-01 10:12:09\n"
+"Project-Id-Version: unknown\n"
+"POT-Creation-Date: 2023-02-09 10:58:38\n"
+"PO-Revision-Date: 2023-02-09 10:59:30\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -36,6 +36,9 @@ msgstr "Kann Datei nicht erzeugen"
 
 msgid "Cannot overwrite file"
 msgstr "Kann Datei nicht überschreiben"
+
+msgid "Cannot read file"
+msgstr "Kann Datei nicht lesen"
 
 msgid "Cannot write file"
 msgstr "Kann Datei nicht schreiben"
@@ -85,6 +88,9 @@ msgstr "Beenden"
 msgid "Export"
 msgstr "Exportieren"
 
+msgid "Export from yWriter."
+msgstr "Aus yWriter exportieren"
+
 msgid "Export type is not supported"
 msgstr "Exporttyp nicht unterstützt"
 
@@ -111,6 +117,12 @@ msgstr "Hilfe"
 
 msgid "Help file not found. Please check the installation"
 msgstr "Hilfedatei nicht gefunden. Bitte die Installation prüfen."
+
+msgid "Import"
+msgstr "Importieren"
+
+msgid "Import to yWriter."
+msgstr "Zu yWriter importieren"
 
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
 msgstr "Quelle: {0} \"{1}\"\nZiel: {2} \"{3}\""
@@ -151,6 +163,15 @@ msgstr "Manuskript mit sichtbaren Markierungen zum Korrekturlesen"
 msgid "Manuscript without tags (export only)"
 msgstr "Manuskript ohne Markierungen (nur Export)"
 
+msgid "New Chapter"
+msgstr "Neues Kapitel"
+
+msgid "New Part"
+msgstr "Neuer Teil"
+
+msgid "New Scene"
+msgstr "Neue Szene"
+
 msgid "New scenes created during conversion."
 msgstr "Während der Konvertierung wurden neue Szenen erzeugt."
 
@@ -166,11 +187,14 @@ msgstr "Notizen-Kapitel"
 msgid "Notes chapters for editing"
 msgstr "Notizen-Kapitel zum Bearbeiten"
 
+msgid "Novel outline"
+msgstr "Romanstruktur"
+
 msgid "Open"
 msgstr "Öffnen"
 
-msgid "Open exported document"
-msgstr "Exportiertes Dokument öffnen"
+msgid "Open converted file"
+msgstr "Konvertierte Datei öffnen"
 
 msgid "Open..."
 msgstr "Öffnen..."
@@ -199,6 +223,9 @@ msgstr "Szenenliste"
 msgid "Scene list (spreadsheet)"
 msgstr "Szenenliste (Tabelle)"
 
+msgid "Swap"
+msgstr "Umkehren"
+
 msgid "Tagged manuscript for proofing"
 msgstr "Manuskript mit Markierungen zum Überarbeiten"
 
@@ -219,6 +246,12 @@ msgstr "Projekt ohne Titel"
 
 msgid "WARNING"
 msgstr "WARNUNG"
+
+msgid "Work in progress"
+msgstr "Manuskript in Arbeit"
+
+msgid "Wrong table structure"
+msgstr "Falsche Tabellenstruktur"
 
 msgid "by"
 msgstr "von"

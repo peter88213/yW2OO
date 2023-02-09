@@ -11,14 +11,15 @@ import webbrowser
 
 from pywriter.pywriter_globals import *
 from pywriter.file.doc_open import open_document
-from pywriter.ui.main_tk_cnv import MainTkCnv
+from pywriter.yw.yw7_file import Yw7File
+from pywriter.ui.main_tk import MainTk
 from pywriter.ui.set_icon_tk import *
 from yw2oolib.yw2oo_exporter import Yw2ooExporter
 
 HELPFILE = f'{os.path.dirname(sys.argv[0])}/help.html'
 
 
-class Yw2ooTk(MainTkCnv):
+class Yw2ooTk(MainTk):
     """A tkinter GUI class for yWriter odf export.
     
     Public methods:
@@ -26,12 +27,16 @@ class Yw2ooTk(MainTkCnv):
         enable_menu() -- enable menu entries when a project is open.
         open_project(fileName) -- create a yWriter project instance and read the file. 
         close_project() -- close the yWriter project without saving and reset the user interface.
+        reverse_direction() -- swap source and target file names.
+        convert_file() -- call the converter's conversion method, if a source file is selected.
 
     Public instance variables:
-        treeWindow -- tk window for the project tree.
+        converter -- converter strategy class.
 
     Show titles, descriptions, and contents in a text box.
     """
+    _EXPORT_DESC = _('Export from yWriter.')
+    _IMPORT_DESC = _('Import to yWriter.')
     _KEY_HELP = ('<F1>', 'F1')
 
     def __init__(self, title, **kwargs):
@@ -48,11 +53,17 @@ class Yw2ooTk(MainTkCnv):
         self.kwargs = kwargs
         super().__init__(title, **kwargs)
         set_icon(self.root, icon='yLogo32')
-        self.exporter = Yw2ooExporter()
-        self.exporter.ui = self
+
+        self._fileTypes = kwargs['file_types']
+        self._sourcePath = None
+        self._ywExtension = Yw7File.EXTENSION
+        self._docExtension = None
+
+        self.converter = Yw2ooExporter()
+        self.converter.ui = self
 
         self._docExtension = '.odt'
-        self._openButton = tk.Button(self.mainWindow, text=_('Open exported document'), state=tk.DISABLED, command=self._open_newFile)
+        self._openButton = tk.Button(self.mainWindow, text=_('Open converted file'), state=tk.DISABLED, command=self._open_newFile)
         self._openButton.config(height=1)
         self._openButton.pack(pady=10)
         self.quitButton = tk.Button(self.mainWindow, text=_("Quit"), command=self.on_quit)
@@ -70,7 +81,10 @@ class Yw2ooTk(MainTkCnv):
 
         # Export
         self.exportMenu = tk.Menu(self.mainMenu, tearoff=0)
+        self.mainMenu.add_command(label=_('Swap'), command=self.reverse_direction)
+        self.mainMenu.entryconfig(_('Swap'), state='disabled')
         self.mainMenu.add_cascade(label=_('Export'), menu=self.exportMenu)
+        self.mainMenu.add_cascade(label=_('Import'), command=lambda: self._export_document(''))
         self.exportMenu.add_command(label=_('Manuscript without tags (export only)'), command=lambda: self._export_document(''))
         self.exportMenu.add_command(label=_('Brief synopsis (export only)'), command=lambda: self._export_document('_brf_synopsis'))
         self.exportMenu.add_command(label=_('Cross references (export only)'), command=lambda: self._export_document('_xref'))
@@ -108,7 +122,9 @@ class Yw2ooTk(MainTkCnv):
         Extends the superclass method.      
         """
         super().disable_menu()
+        self.mainMenu.entryconfig(_('Swap'), state='disabled')
         self.mainMenu.entryconfig(_('Export'), state='disabled')
+        self.mainMenu.entryconfig(_('Import'), state='disabled')
         self.mainMenu.entryconfig(_('Descriptions'), state='disabled')
         self.mainMenu.entryconfig(_('Lists'), state='disabled')
         self.hide_open_button()
@@ -119,13 +135,49 @@ class Yw2ooTk(MainTkCnv):
         Extends the superclass method.
         """
         super().enable_menu()
-        self.mainMenu.entryconfig(_('Export'), state='normal')
         self.mainMenu.entryconfig(_('Descriptions'), state='normal')
         self.mainMenu.entryconfig(_('Lists'), state='normal')
+        fileName, fileExtension = os.path.splitext(self._sourcePath)
+        if fileExtension == self._ywExtension:
+            self.mainMenu.entryconfig(_('Swap'), state='disabled')
+            self.mainMenu.entryconfig(_('Export'), state='normal')
+            self.mainMenu.entryconfig(_('Import'), state='disabled')
+        else:
+            self.mainMenu.entryconfig(_('Swap'), state='normal')
+            self.mainMenu.entryconfig(_('Export'), state='disabled')
+            self.mainMenu.entryconfig(_('Import'), state='normal')
+
+    def open_project(self, fileName):
+        """Select a valid project file and display the path.
+        
+        Positional arguments:
+            fileName -- str: project file path.
+            
+        Return True on success, otherwise return False.
+        Extends the superclass method.
+        """
+        fileName = super().select_project(fileName)
+        if not fileName:
+            return False
+        self.kwargs['yw_last_open'] = fileName
+        self._sourcePath = fileName
+        self.enable_menu()
+        if fileName.endswith(self._ywExtension):
+            self.root.title(f'{self._EXPORT_DESC} - {self.title}')
+        elif fileName.endswith(self._docExtension):
+            self.root.title(f'{self._IMPORT_DESC} - {self.title}')
+        self.show_path(f'{norm_path(fileName)}')
+        return True
+
+    def convert_file(self):
+        """Call the converter's conversion method, if a source file is selected."""
+        self.show_status('')
+        self.kwargs['yw_last_open'] = self._sourcePath
+        self.converter.run(self._sourcePath, **self.kwargs)
 
     def _export_document(self, suffix):
         self.kwargs['suffix'] = suffix
-        self.exporter.run(self._sourcePath, **self.kwargs)
+        self.converter.run(self._sourcePath, **self.kwargs)
 
     def show_open_button(self, open_cmd=None):
         self._openButton['state'] = tk.NORMAL
@@ -135,8 +187,7 @@ class Yw2ooTk(MainTkCnv):
 
     def _open_newFile(self):
         """Open the converted file for editing and exit the program."""
-        print(self.exporter.newFile)
-        open_document(self.exporter.newFile)
+        open_document(self.converter.newFile)
         self.on_quit()
 
     def show_help(self, event=None):
@@ -154,6 +205,7 @@ class Yw2ooTk(MainTkCnv):
         fileName, fileExtension = os.path.splitext(self._sourcePath)
         if fileExtension == self._docExtension:
             self._sourcePath = f'{fileName}{self._ywExtension}'
+            self.enable_menu()
 
             # Strip suffix, if any.
             if not os.path.isfile(self._sourcePath):
@@ -162,6 +214,7 @@ class Yw2ooTk(MainTkCnv):
                 if os.path.isfile(projectName):
                     self._sourcePath = projectName
 
+            self.kwargs['yw_last_open'] = self._sourcePath
             self.show_path(norm_path(self._sourcePath))
             self.root.title(f'{self._EXPORT_DESC} - {self.title}')
             self.show_status('')

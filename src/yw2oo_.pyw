@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Convert yWriter project to odt or ods. 
+"""Convert yWriter project to or from odt or ods. 
 
 Version @release
 Requires Python 3.6+
@@ -40,20 +40,21 @@ def run(sourcePath='', suffix=None, installDir='.'):
     kwargs.update(configuration.settings)
     kwargs.update(configuration.options)
 
+    #--- Instantiate the exporter object.
+    ui = Yw2ooTk(f'{APPNAME} @release', **kwargs)
+
     #--- Get initial project path.
     if not sourcePath or not os.path.isfile(sourcePath):
         sourcePath = kwargs['yw_last_open']
-
-    #--- Instantiate the exporter object.
-    ui = Yw2ooTk(f'{APPNAME} @release', **kwargs)
-    ui.open_project(sourcePath)
-
-    if suffix:
-        # Output document type is set, so run the converter immediately.
-        if suffix == 'x':
-            suffix = ''
-        kwargs = {'suffix': suffix}
+    else:
+        if suffix:
+            # Output document type is set, so run the converter immediately.
+            if suffix == 'x':
+                suffix = ''
+        kwargs['suffix'] = suffix
         ui.exporter.run(sourcePath, **kwargs)
+
+    ui.open_project(sourcePath)
 
     ui.start()
 

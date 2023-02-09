@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.4.3\n"
-"POT-Creation-Date: 2023-01-01 10:12:09\n"
+"Project-Id-Version: unknown\n"
+"POT-Creation-Date: 2023-02-09 10:58:38\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -36,6 +36,9 @@ msgid "Cannot create file"
 msgstr ""
 
 msgid "Cannot overwrite file"
+msgstr ""
+
+msgid "Cannot read file"
 msgstr ""
 
 msgid "Cannot write file"
@@ -86,6 +89,9 @@ msgstr ""
 msgid "Export"
 msgstr ""
 
+msgid "Export from yWriter."
+msgstr ""
+
 msgid "Export type is not supported"
 msgstr ""
 
@@ -111,6 +117,12 @@ msgid "Help"
 msgstr ""
 
 msgid "Help file not found. Please check the installation"
+msgstr ""
+
+msgid "Import"
+msgstr ""
+
+msgid "Import to yWriter."
 msgstr ""
 
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
@@ -152,6 +164,15 @@ msgstr ""
 msgid "Manuscript without tags (export only)"
 msgstr ""
 
+msgid "New Chapter"
+msgstr ""
+
+msgid "New Part"
+msgstr ""
+
+msgid "New Scene"
+msgstr ""
+
 msgid "New scenes created during conversion."
 msgstr ""
 
@@ -167,10 +188,13 @@ msgstr ""
 msgid "Notes chapters for editing"
 msgstr ""
 
+msgid "Novel outline"
+msgstr ""
+
 msgid "Open"
 msgstr ""
 
-msgid "Open exported document"
+msgid "Open converted file"
 msgstr ""
 
 msgid "Open..."
@@ -200,6 +224,9 @@ msgstr ""
 msgid "Scene list (spreadsheet)"
 msgstr ""
 
+msgid "Swap"
+msgstr ""
+
 msgid "Tagged manuscript for proofing"
 msgstr ""
 
@@ -219,6 +246,12 @@ msgid "Untitled project"
 msgstr ""
 
 msgid "WARNING"
+msgstr ""
+
+msgid "Work in progress"
+msgstr ""
+
+msgid "Wrong table structure"
 msgstr ""
 
 msgid "by"
