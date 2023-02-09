@@ -161,6 +161,8 @@ class Yw2ooTk(MainTk):
             return False
         self.kwargs['yw_last_open'] = fileName
         self._sourcePath = fileName
+        self.show_status('')
+        self.hide_open_button()
         self.enable_menu()
         if fileName.endswith(self._ywExtension):
             self.root.title(f'{self._EXPORT_DESC} - {self.title}')
@@ -203,9 +205,11 @@ class Yw2ooTk(MainTk):
         Overrides the superclass method.
         """
         fileName, fileExtension = os.path.splitext(self._sourcePath)
-        if fileExtension == self._docExtension:
+        if fileExtension != self._ywExtension:
             self._sourcePath = f'{fileName}{self._ywExtension}'
             self.enable_menu()
+            self.show_status('')
+            self.hide_open_button()
 
             # Strip suffix, if any.
             if not os.path.isfile(self._sourcePath):

@@ -24,7 +24,7 @@ OPTIONS = {}
 FILE_TYPES = [
     ('yWriter 7 project', '.yw7'),
     ('Open Document Text', '.odt'),
-    ('Open Document Spreadsheet', '.od2'),
+    ('Open Document Spreadsheet', '.ods'),
 ]
 
 
