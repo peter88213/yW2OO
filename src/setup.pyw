@@ -4,7 +4,7 @@ for extending the yWriter context menu.
 
 Version @release
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/yW2OO
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
@@ -18,6 +18,7 @@ from pathlib import Path
 from string import Template
 import gettext
 import locale
+import platform
 try:
     from tkinter import *
 except ModuleNotFoundError:
@@ -41,7 +42,8 @@ except:
 
 APPNAME = 'yw2oo'
 VERSION = ' @release'
-APP = f'{APPNAME}.pyw'
+APP = f'{APPNAME}.py'
+START_UP_SCRIPT = 'run.pyw'
 INI_FILE = f'{APPNAME}.ini'
 INI_PATH = '/config/'
 SAMPLE_PATH = 'sample/'
@@ -55,13 +57,17 @@ SHORTCUT_MESSAGE = '''
 Now you might want to create a shortcut on your desktop.  
 
 On Windows, open the installation folder, hold down the Alt key on your keyboard, 
-and then drag and drop $Appname.pyw to your desktop.
+and then drag and drop run.pyw to your desktop.
 
 On Linux, create a launcher on your desktop. With xfce for instance, the launcher's command may look like this:
 python3 '$Apppath' %F
 '''
 
-APP = 'yw2oo.pyw'
+APP = 'yw2oo.py'
+
+START_UP_CODE = f'''import {APPNAME}
+{APPNAME}.main()
+'''
 
 SET_CONTEXT_MENU = f'''Windows Registry Editor Version 5.00
 
@@ -210,7 +216,7 @@ def make_context_menu(installPath):
 
     python = sys.executable.replace('\\', '\\\\')
     instPath = installPath.replace('/', '\\\\')
-    script = f'{instPath}\\\\{APP}'
+    script = f'{instPath}\\\\{START_UP_SCRIPT}'
     mapping = dict(PYTHON=python, SCRIPT=script)
     save_reg_file(f'{installPath}/add_context_menu.reg', Template(SET_CONTEXT_MENU), mapping)
     save_reg_file(f'{installPath}/rem_context_menu.reg', Template(RESET_CONTEXT_MENU), {})
@@ -262,8 +268,11 @@ def install(pywriterPath):
     with os.scandir(installDir) as files:
         for file in files:
             if not 'config' in file.name:
-                os.remove(file)
-                output(f'Removing "{file.name}"')
+                try:
+                    os.remove(file)
+                    output(f'Removing "{file.name}"')
+                except:
+                    pass
 
     # Install the new version.
     copyfile(APP, f'{installDir}/{APP}')
@@ -304,6 +313,14 @@ def install(pywriterPath):
     # Display a success message.
     mapping = {'Appname': APPNAME, 'Apppath': f'{installDir}/{APP}'}
     output(Template(SUCCESS_MESSAGE).safe_substitute(mapping))
+
+    #--- Create a start-up script.
+    if platform.system() == 'Windows':
+        shebang = ''
+    else:
+        shebang = '#!/usr/bin/python3\n'
+    with open(f'{installDir}/{START_UP_SCRIPT}', 'w', encoding='utf-8') as f:
+        f.write(f'{shebang}{START_UP_CODE}')
 
     # Ask for shortcut creation.
     if not simpleUpdate:

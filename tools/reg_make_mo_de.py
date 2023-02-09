@@ -8,7 +8,7 @@ as specified by the ".reg" file to generate.
 Usage: 
 reg_make_mo_de.py
 
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/novelyst
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """

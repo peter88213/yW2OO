@@ -7,14 +7,14 @@ For further information see https://github.com/peter88213/yw2oo
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import os
-import sys 
+import sys
 sys.path.insert(0, f'{os.getcwd()}/../../PyWriter/src')
 import inliner
 
 SRC = '../src/'
 BUILD = '../test/'
-SOURCE_FILE = f'{SRC}yw2oo_.pyw'
-TARGET_FILE = f'{BUILD}yw2oo.pyw'
+SOURCE_FILE = f'{SRC}yw2oo_.py'
+TARGET_FILE = f'{BUILD}yw2oo.py'
 
 
 def main():
