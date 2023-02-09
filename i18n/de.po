@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: unknown\n"
-"POT-Creation-Date: 2023-02-09 10:58:38\n"
-"PO-Revision-Date: 2023-02-09 10:59:30\n"
+"Project-Id-Version: 4.5.a\n"
+"POT-Creation-Date: 2023-02-09 12:30:35\n"
+"PO-Revision-Date: 2023-02-09 12:30:35\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -190,9 +190,6 @@ msgstr "Notizen-Kapitel zum Bearbeiten"
 msgid "Novel outline"
 msgstr "Romanstruktur"
 
-msgid "Open"
-msgstr "Öffnen"
-
 msgid "Open converted file"
 msgstr "Konvertierte Datei öffnen"
 
@@ -243,9 +240,6 @@ msgstr "Unbekannter Autor"
 
 msgid "Untitled project"
 msgstr "Projekt ohne Titel"
-
-msgid "WARNING"
-msgstr "WARNUNG"
 
 msgid "Work in progress"
 msgstr "Manuskript in Arbeit"
