@@ -4,6 +4,19 @@
 
 ## Changelog
 
+### v5.0.0 Major feature update
+
+IMPORTANT: 
+- If you have a desktop shortcut to start yW2OO, please change the target from "yw2oo.pyw" to "run.pyw".
+- If you use the Windows Explorer context menu entry, please re-run the registry scripts after setup.
+
+Changes
+- Provide reverse conversion of ODT/ODS to yWriter.
+- Use a start up script ( *run.pyw* ) to speed up execution.
+- Replace the built in help with online help.
+
+Based on PyWriter v12.1.0
+
 ### v4.4.3
 
 - Make it run on old Windows versions.

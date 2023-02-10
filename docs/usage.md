@@ -2,7 +2,7 @@
 
 ------------------------------------------------------------------
 
-yW2OO: yWriter - OpenOffice/LibreOffice converter
+*yW2OO:* yWriter - OpenOffice/LibreOffice converter
 
 # Instructions for use
 

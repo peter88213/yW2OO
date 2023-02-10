@@ -4,7 +4,7 @@
 
 # Descriptions menu
 
-**Export from yWriter to an OpenDocument Text document (.odt)**
+**Export descriptions from yWriter to an OpenDocument Text document (.odt)**
 
 The generated ODT documents can be re-imported to yWriter with **Import**.
 In this case, the descriptions will be updated in an existing yWriter project.

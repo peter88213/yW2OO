@@ -19,10 +19,15 @@ This writes back the document's content to the yWriter project file.
     a newly created yWriter project. **Note:** Existing yWriter projects
     will not be overwritten.
 
-- [About formatting text](about-formatting-text)
-- [About document language handling](about-document-language-handling)
-- [How to set up a work in progress for export]how-to-set-up-a-work-in-progress-for-export
-- [How to set up an outline for export]how-to-set-up-an-outline-for-export
+
+
+[About formatting text](about-formatting-text)
+
+[About document language handling](about-document-language-handling)
+
+[How to set up a work in progress for export](how-to-set-up-a-work-in-progress-for-export)
+
+[How to set up an outline for export](how-to-set-up-an-outline-for-export)
 
 --- 
 
