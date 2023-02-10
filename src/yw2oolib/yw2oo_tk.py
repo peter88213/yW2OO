@@ -16,8 +16,6 @@ from pywriter.ui.main_tk import MainTk
 from pywriter.ui.set_icon_tk import *
 from yw2oolib.yw2oo_converter import Yw2ooConverter
 
-HELPFILE = f'{os.path.dirname(sys.argv[0])}/help.html'
-
 
 class Yw2ooTk(MainTk):
     """A tkinter GUI class for yWriter odf export.
@@ -37,7 +35,7 @@ class Yw2ooTk(MainTk):
     """
     _EXPORT_DESC = _('Export from yWriter.')
     _IMPORT_DESC = _('Import to yWriter.')
-    _KEY_HELP = ('<F1>', 'F1')
+    _HELP_URL = 'https://peter88213.github.io/yW2OO/usage'
 
     def __init__(self, title, **kwargs):
         """Organize the GUI main window.
@@ -70,7 +68,6 @@ class Yw2ooTk(MainTk):
         self.quitButton.config(height=1, width=10)
         self.quitButton.pack(pady=10)
         self.disable_menu()
-        self.root.bind(self._KEY_HELP[0], self.show_help)
 
     def _build_main_menu(self):
         """Add main menu entries.
@@ -114,7 +111,9 @@ class Yw2ooTk(MainTk):
         self.listMenu.add_command(label=_('Item list (spreadsheet)'), command=lambda: self._export_document('_itemlist'))
 
         # Help
-        self.mainMenu.add_command(label=_('Help'), command=self.show_help)
+        self.helpMenu = tk.Menu(self.mainMenu, tearoff=0)
+        self.mainMenu.add_cascade(label=_('Help'), menu=self.helpMenu)
+        self.helpMenu.add_command(label=_('Online help'), command=lambda: webbrowser.open(self._HELP_URL))
 
     def disable_menu(self):
         """Disable menu entries when no project is open.
@@ -191,12 +190,6 @@ class Yw2ooTk(MainTk):
         """Open the converted file for editing and exit the program."""
         open_document(self.converter.newFile)
         self.on_quit()
-
-    def show_help(self, event=None):
-        if os.path.isfile(HELPFILE):
-            webbrowser.open(HELPFILE)
-        else:
-            messagebox.showerror(self.title, _('Help file not found. Please check the installation'))
 
     def reverse_direction(self):
         """Make the YW7 file the source instead of the selected ODT.

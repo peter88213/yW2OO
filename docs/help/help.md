@@ -4,26 +4,9 @@
 
 # Command reference
 
-## File
-
-- Open
-- Close
-- Exit
-
-## Swap
-
-## Export
-
--   [Manuscript without tags (export only)](#manuscript-without-tags)
--   [Brief synopsis (export only)](#brief-synopsis)
--   [Cross references (export only)](#cross-references)
--   [Manuscript for editing](#manuscript-for-editing)
--   [Notes chapters for editing](#notes-chapters-for-editing)
--   [Todo chapters for editing](#todo-chapters-for-editing)
+-   [Manuscript without tags](#manuscript-without-tags)
 -   [Manuscript with visible tags for proof reading](#manuscript-with-visible-tags-for-proof-reading)
-
-## Import
-
+-   [Manuscript for editing](#manuscript-for-editing)
 -   [Scene descriptions for editing](#scene-descriptions-for-editing)
 -   [Chapter descriptions for editing](#chapter-descriptions-for-editing)
 -   [Part descriptions for editing](#part-descriptions-for-editing)
@@ -34,10 +17,10 @@
 -   [Location descriptions for editing](#location-descriptions-for-editing)
 -   [Item descriptions for editing](#item-descriptions-for-editing)
 -   [Scene list for editing](#scene-list)
-
-## Descriptions
-
-
+-   [Notes chapters for editing](#notes-chapters-for-editing)
+-   [Todo chapters for editing](#todo-chapters-for-editing)
+-   [Brief synopsis](#brief-synopsis)
+-   [Cross references](#cross-references)
 
 
 ------------------------------------------------------------------------
@@ -72,33 +55,9 @@ text document (odt).
     indented.
 -   Starting from the second paragraph, paragraphs begin with
     indentation of the first line.
+-   Paragraphs starting with `> ` are formatted as quotations.
 -   Scenes marked "attach to previous scene" in yWriter appear like
     continuous paragraphs.
--   Paragraphs starting with `> ` are formatted as quotations.
-
-
-[Top of page](#top)
-
-------------------------------------------------------------------------
-
-## Brief synopsis
-
-This will write a brief synopsis with chapter and scenes titles into a new 
-OpenDocument text document.  File name suffix is `_brf_synopsis`.
- 
--   Only "normal" chapters and scenes are exported. Chapters and
-    scenes marked "unused", "todo" or "notes" are not exported.
--   Only scenes that are intended for RTF export in yWriter will be
-    exported.
--   Titles of scenes beginning with `<HTML>` or `<TEX>` are not exported.
--   Chapter titles appear as first level heading if the chapter is
-    marked as beginning of a new section in yWriter. Such headings are
-    considered as "part" headings.
--   Chapter titles appear as second level heading if the chapter is not
-    marked as beginning of a new section. Such headings are considered
-    as "chapter" headings.
--   Scene titles appear as plain paragraphs.
-
 
 
 [Top of page](#top)
@@ -383,6 +342,30 @@ sections (to be seen in the Navigator). File name suffix is `_todo`.
     -  *Heading 2* --› New chapter title.
     -  `###` --› Scene divider. Optionally, you can append the 
        scene title to the scene divider.
+
+
+[Top of page](#top)
+
+------------------------------------------------------------------------
+
+## Brief synopsis
+
+This will write a brief synopsis with chapter and scenes titles into a new 
+OpenDocument text document.  File name suffix is `_brf_synopsis`.
+ 
+-   Only "normal" chapters and scenes are exported. Chapters and
+    scenes marked "unused", "todo" or "notes" are not exported.
+-   Only scenes that are intended for RTF export in yWriter will be
+    exported.
+-   Titles of scenes beginning with `<HTML>` or `<TEX>` are not exported.
+-   Chapter titles appear as first level heading if the chapter is
+    marked as beginning of a new section in yWriter. Such headings are
+    considered as "part" headings.
+-   Chapter titles appear as second level heading if the chapter is not
+    marked as beginning of a new section. Such headings are considered
+    as "chapter" headings.
+-   Scene titles appear as plain paragraphs.
+
 
 
 [Top of page](#top)

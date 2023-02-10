@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.5.0\n"
-"POT-Creation-Date: 2023-02-09 14:53:38\n"
+"Project-Id-Version: 4.5.1\n"
+"POT-Creation-Date: 2023-02-10 09:12:34\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -116,9 +116,6 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-msgid "Help file not found. Please check the installation"
-msgstr ""
-
 msgid "Import"
 msgstr ""
 
@@ -189,6 +186,9 @@ msgid "Notes chapters for editing"
 msgstr ""
 
 msgid "Novel outline"
+msgstr ""
+
+msgid "Online help"
 msgstr ""
 
 msgid "Open converted file"

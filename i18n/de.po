@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.5.0\n"
-"POT-Creation-Date: 2023-02-09 14:53:38\n"
-"PO-Revision-Date: 2023-02-09 14:53:38\n"
+"Project-Id-Version: 4.5.1\n"
+"POT-Creation-Date: 2023-02-10 09:12:34\n"
+"PO-Revision-Date: 2023-02-10 09:12:34\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -115,9 +115,6 @@ msgstr "Ziele"
 msgid "Help"
 msgstr "Hilfe"
 
-msgid "Help file not found. Please check the installation"
-msgstr "Hilfedatei nicht gefunden. Bitte die Installation prüfen."
-
 msgid "Import"
 msgstr "Importieren"
 
@@ -189,6 +186,9 @@ msgstr "Notizen-Kapitel zum Bearbeiten"
 
 msgid "Novel outline"
 msgstr "Romanstruktur"
+
+msgid "Online help"
+msgstr "Online-Hilfe"
 
 msgid "Open converted file"
 msgstr "Konvertierte Datei öffnen"

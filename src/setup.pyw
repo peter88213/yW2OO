@@ -278,10 +278,6 @@ def install(pywriterPath):
     copyfile(APP, f'{installDir}/{APP}')
     output(f'Copying "{APP}"')
 
-    # Install the help files.
-    copytree('help', f'{installDir}', dirs_exist_ok=True)
-    output(f'Copying "help"')
-
     # Install the localization files.
     copytree('locale', f'{installDir}/locale', dirs_exist_ok=True)
     output(f'Copying "locale"')
