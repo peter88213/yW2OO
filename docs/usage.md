@@ -78,7 +78,7 @@ You can open this page with **Help > Online help**.
 - **[Export menu](https://peter88213.github.io/yW2OO/help/export_menu)**
 - **[Import](https://peter88213.github.io/yW2OO/help/import_menu)**
 - **[Descriptions menu](https://peter88213.github.io/yW2OO/help/descriptions_menu)**
-- **[Lists menu](https://peter88213.github.io/yW2OO/help/Lists_menu)**
+- **[Lists menu](https://peter88213.github.io/yW2OO/help/lists_menu)**
 
 --- 
 
