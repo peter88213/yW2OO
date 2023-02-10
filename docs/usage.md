@@ -82,23 +82,6 @@ You can open this page with **Help > Online help**.
 
 --- 
 
-# Basic concepts
-
-## Formatting text
-
-It is assumed that very few types of text markup are needed for a novel text:
-
-- *Emphasized* (usually shown as italics).
-- *Strongly emphasized* (usually shown as capitalized).
-- *Citation* (paragraph visually distinguished from body text).
-
-When exporting to ODT format, *yW2OO* replaces these formattings as follows: 
-
-- Text with `[i]Italic markup[/i]` is formatted as *Emphasized*.
-- Text with `[b]Bold markup[/b]` is formatted as *Strongly emphasized*. 
-- Paragraphs starting with `> ` are formatted as *Quote*.
-
----
 
 ## How to uninstall yW2OO
 

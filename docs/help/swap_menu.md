@@ -6,8 +6,8 @@
 
 **Reverse the conversion direction**
 
-
+If an ODT or ODS document is open, you can open the corresponding yw7 project with **Swap**.
 
 ---
 
-[<< Previous](swap_menu) -- [Next >>](import_menu)
+[<< Previous](file_menu) -- [Next >>](export_menu)

@@ -119,96 +119,11 @@ seen in the Navigator). File name suffix is `_manuscript`.
 
 [Top of page](#top)
 
-------------------------------------------------------------------------
-
-
-## Scene descriptions for editing
-
-This will generate a new OpenDocument text document (odt) containing a
-**full synopsis** with chapter titles and scene descriptions that can be
-edited and written back to yWriter format. File name suffix is
-`_scenes`.
-
 
 
 [Top of page](#top)
 
 ------------------------------------------------------------------------
-
-## Chapter descriptions for editing
-
-This will generate a new OpenDocument text document (odt) containing a
-**brief synopsis** with chapter titles and chapter descriptions that can
-be edited and written back to yWriter format. File name suffix is
-`_chapters`.
-
-**Note:** Doesn't apply to chapters marked
-`This chapter begins a new section` in yWriter.
-
-
-
-[Top of page](#top)
-
-------------------------------------------------------------------------
-
-## Part descriptions for editing
-
-This will generate a new OpenDocument text document (odt) containing a
-**very brief synopsis** with part titles and part descriptions that can
-be edited and written back to yWriter format. File name suffix is
-`_parts`.
-
-**Note:** Applies only to chapters marked
-`This chapter  begins a new section` in yWriter.
-
-
-
-[Top of page](#top)
-
-------------------------------------------------------------------------
-
-## Character list
-
-This will generate a new OpenDocument spreadsheet (ods) containing a
-character list that can be edited in Office Calc and written back to
-yWriter format. File name suffix is `_charlist`.
-
-You may change the sort order of the rows. You may also add or remove
-rows. New entities must get a unique ID.
-
-
-
-[Top of page](#top)
-
-------------------------------------------------------------------------
-
-## Location list
-
-This will generate a new OpenDocument spreadsheet (ods) containing a
-location list that can be edited in Office Calc and written back to
-yWriter format. File name suffix is `_loclist`.
-
-You may change the sort order of the rows. You may also add or remove
-rows. New entities must get a unique ID.
-
-
-
-[Top of page](#top)
-
-------------------------------------------------------------------------
-
-## Item list
-
-This will generate a new OpenDocument spreadsheet (ods) containing an
-item list that can be edited in Office Calc and written back to yWriter
-format. File name suffix is `_itemlist`.
-
-You may change the sort order of the rows. You may also add or remove
-rows. New entities must get a unique ID.
-
-
-
-[Top of page](#top)
 
 ------------------------------------------------------------------------
 
@@ -229,40 +144,6 @@ references are:
 
 
 [Top of page](#top)
-
-------------------------------------------------------------------------
-
-## Character descriptions for editing
-
-This will generate a new OpenDocument text document (odt) containing
-character descriptions, bio, goals, and notes that can be edited in Office
-Writer and written back to yWriter format. File name suffix is
-`_characters`.
-
-
-
-[Top of page](#top)
-
-------------------------------------------------------------------------
-
-## Location descriptions for editing
-
-This will generate a new OpenDocument text document (odt) containing
-location descriptions that can be edited in Office Writer and written
-back to yWriter format. File name suffix is `_locations`.
-
-
-
-[Top of page](#top)
-
-------------------------------------------------------------------------
-
-## Item descriptions for editing
-
-This will generate a new OpenDocument text document (odt) containing
-item descriptions that can be edited in Office Writer and written back
-to yWriter format. File name suffix is `_items`.
-
 
 
 [Top of page](#top)

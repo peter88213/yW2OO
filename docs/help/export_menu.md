@@ -4,7 +4,77 @@
 
 # Export menu 
 
-**Export from yWriter to ODT/ODS**
+**Export scene contents from yWriter to an OpenDocument Text document (.odt)**
+
+The generated ODT documents can be re-imported to yWriter with **Import**.
+In this case, the scene content will be updated in an existing yWriter project.
+
+- [About formatting text](about-formatting-text)
+
+---
+
+## Manuscript without tags (export only)
+
+This will write parts, chapters, and scenes into a new OpenDocument
+text document (odt).
+
+-   The document is placed in the same folder as the project.
+-   Document's **filename**: `<project name>.odt`.
+-   Text markup: Bold and italics are supported. Other highlighting such
+    as underline and strikethrough are lost.
+-   Only "normal" chapters and scenes are exported. Chapters and
+    scenes marked "unused", "todo" or "notes" are not exported.
+-   Only scenes that are intended for RTF export in yWriter will be
+    exported.
+-   Scenes beginning with `<HTML>` or `<TEX>` are not exported.
+-   Comments in the text bracketed with slashes and asterisks (like
+    `/* this is a comment */`) are converted to author's comments.
+-   Interspersed HTML, TEX, or RTF commands are removed.
+-   Gobal variables and project variables are not resolved.
+-   Part titles appear as first level heading.
+-   Chapter titles appear as second level heading.
+-   Scene titles appear as navigable comments pinned to the beginning of
+    the scene.
+-   Scenes are separated by `* * *`. The first line is not
+    indented.
+-   Starting from the second paragraph, paragraphs begin with
+    indentation of the first line.
+-   Paragraphs starting with `> ` are formatted as quotations.
+-   Scenes marked "attach to previous scene" appear like
+    continuous paragraphs.
+
+---
+
+## Brief synopsis (export only)
+
+This will write a brief synopsis with part, chapter, and scenes titles into a new 
+OpenDocument text document.  File name suffix is `_brf_synopsis`.
+ 
+-   Only "normal" chapters and scenes are exported. Chapters and
+    scenes marked "unused", "todo" or "notes" are not exported.
+-   Only scenes that are intended for RTF export in yWriter will be
+    exported.
+-   Titles of scenes beginning with `<HTML>` or `<TEX>` are not exported.
+-   Part titles appear as first level heading.
+-   Chapter titles appear as second level heading.
+-   Scene titles appear as plain paragraphs.
+
+
+---
+
+## Cross references (export only)
+
+This will generate a new OpenDocument text document (odt) containing
+navigable cross references. File name suffix is `_xref`. The cross
+references are:
+
+-   Scenes per character,
+-   scenes per location,
+-   scenes per item,
+-   scenes per tag,
+-   characters per tag,
+-   locations per tag,
+-   items per tag.
 
 ---
 
@@ -29,7 +99,6 @@ seen in the Navigator). File name suffix is `_manuscript`.
     -  *Heading 2* --› New chapter title.
     -  `###` --› Scene divider. Optionally, you can also append the 
        scene title to the scene divider.
-
 
 ---
 
@@ -94,85 +163,23 @@ text document (odt) with chapter and scene markers. File name suffix is
 
 ---
 
-## Manuscript without tags (export only)
+## General
 
-This will write parts, chapters, and scenes into a new OpenDocument
-text document (odt).
+### About formatting text
 
--   The document is placed in the same folder as the project.
--   Document's **filename**: `<project name>.odt`.
--   Text markup: Bold and italics are supported. Other highlighting such
-    as underline and strikethrough are lost.
--   Only "normal" chapters and scenes are exported. Chapters and
-    scenes marked "unused", "todo" or "notes" are not exported.
--   Only scenes that are intended for RTF export in yWriter will be
-    exported.
--   Scenes beginning with `<HTML>` or `<TEX>` are not exported.
--   Comments in the text bracketed with slashes and asterisks (like
-    `/* this is a comment */`) are converted to author's comments.
--   Interspersed HTML, TEX, or RTF commands are removed.
--   Gobal variables and project variables are not resolved.
--   Part titles appear as first level heading.
--   Chapter titles appear as second level heading.
--   Scene titles appear as navigable comments pinned to the beginning of
-    the scene.
--   Scenes are separated by `* * *`. The first line is not
-    indented.
--   Starting from the second paragraph, paragraphs begin with
-    indentation of the first line.
--   Paragraphs starting with `> ` are formatted as quotations.
--   Scenes marked "attach to previous scene" appear like
-    continuous paragraphs.
+It is assumed that very few types of text markup are needed for a novel text:
+
+- *Emphasized* (usually shown as italics).
+- *Strongly emphasized* (usually shown as capitalized).
+- *Citation* (paragraph visually distinguished from body text).
+
+When exporting to ODT format, *yW2OO* replaces these formattings as follows: 
+
+- Text with `[i]Italic markup[/i]` is formatted as *Emphasized*.
+- Text with `[b]Bold markup[/b]` is formatted as *Strongly emphasized*. 
+- Paragraphs starting with `> ` are formatted as *Quote*.
 
 ---
 
-## Brief synopsis (export only)
-
-This will write a brief synopsis with part, chapter, and scenes titles into a new 
-OpenDocument text document.  File name suffix is `_brf_synopsis`.
- 
--   Only "normal" chapters and scenes are exported. Chapters and
-    scenes marked "unused", "todo" or "notes" are not exported.
--   Only scenes that are intended for RTF export in yWriter will be
-    exported.
--   Titles of scenes beginning with `<HTML>` or `<TEX>` are not exported.
--   Part titles appear as first level heading.
--   Chapter titles appear as second level heading.
--   Scene titles appear as plain paragraphs.
-
----
-
-## Arcs (export only)
-
-This will write arc-defining "Todo" parts and chapters with child scenes into a new 
-OpenDocument text document (odt). File name suffix is `_arcs`.
-
-The document contains:
-- Part titles (first level heading, only if the part's first chapter defines an arc)
-- Arc titles (second level heading)
-- Arc descriptions
-- Point titles (third level heading)
-- Links to the associated scene, if any
-- Point descrptions.
-- Point contents.
-
-
----
-
-## Cross references (export only)
-
-This will generate a new OpenDocument text document (odt) containing
-navigable cross references. File name suffix is `_xref`. The cross
-references are:
-
--   Scenes per character,
--   scenes per location,
--   scenes per item,
--   scenes per tag,
--   characters per tag,
--   locations per tag,
--   items per tag.
-
----
 
 [<< Previous](swap_menu) -- [Next >>](import_menu)
