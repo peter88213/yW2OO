@@ -2,7 +2,7 @@
 
 ------------------------------------------------------------------
 
-yWriter to OpenOffice/LibreOffice converter - yWriter export to odt/ods documents. 
+yW2OO: yWriter - OpenOffice/LibreOffice converter
 
 # Instructions for use
 

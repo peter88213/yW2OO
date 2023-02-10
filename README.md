@@ -1,4 +1,4 @@
-# yW2OO - yWriter to OpenOffice/LibreOffice converter
+# yW2OO: yWriter - OpenOffice/LibreOffice converter
 
 For more information, see the [project homepage](https://peter88213.github.io/yW2OO) with description and download instructions.
 
