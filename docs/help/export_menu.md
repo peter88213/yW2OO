@@ -9,7 +9,7 @@
 The generated ODT documents can be re-imported to yWriter with **Import**.
 In this case, the scene content will be updated in an existing yWriter project.
 
-[About formatting text](about-formatting-text)
+[About formatting text](#about-formatting-text)
 
 ---
 

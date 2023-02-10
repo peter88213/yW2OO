@@ -21,13 +21,13 @@ This writes back the document's content to the yWriter project file.
 
 
 
-[About formatting text](about-formatting-text)
+[About formatting text](#about-formatting-text)
 
-[About document language handling](about-document-language-handling)
+[About document language handling](#about-document-language-handling)
 
-[How to set up a work in progress for export](how-to-set-up-a-work-in-progress-for-export)
+[How to set up a work in progress for export](#how-to-set-up-a-work-in-progress-for-export)
 
-[How to set up an outline for export](how-to-set-up-an-outline-for-export)
+[How to set up an outline for export](#how-to-set-up-an-outline-for-export)
 
 --- 
 
