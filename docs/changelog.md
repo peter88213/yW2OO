@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v5.0.1
+
+- Improve error handling.
+
+Based on PyWriter v12.1.0
+
 ### v5.0.0 Major feature update
 
 IMPORTANT: 
