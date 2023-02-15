@@ -8,7 +8,7 @@
 
 - Improve error handling.
 
-Based on PyWriter v12.1.0
+Based on PyWriter v12.1.1
 
 ### v5.0.0 Major feature update
 
