@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v5.0.2
+
+- Reduce the memory use by discarding the docstrings on building.
+
+Based on PyWriter v12.1.2
+
 ### v5.0.1
 
 - Improve error handling.
