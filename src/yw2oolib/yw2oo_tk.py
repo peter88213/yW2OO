@@ -44,7 +44,7 @@ class Yw2ooTk(MainTk):
             title -- application title to be displayed at the window frame.
          
         Required keyword arguments:
-            yw_last_open -- str: initial file.
+            yw_last_open: str -- initial file.
         
         Extends the superclass constructor.
         """
@@ -150,7 +150,7 @@ class Yw2ooTk(MainTk):
         """Select a valid project file and display the path.
         
         Positional arguments:
-            fileName -- str: project file path.
+            fileName: str -- project file path.
             
         Return True on success, otherwise return False.
         Extends the superclass method.
