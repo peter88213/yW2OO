@@ -134,17 +134,19 @@ class Yw2ooTk(MainTk):
         Extends the superclass method.
         """
         super().enable_menu()
-        self.mainMenu.entryconfig(_('Descriptions'), state='normal')
-        self.mainMenu.entryconfig(_('Lists'), state='normal')
         fileName, fileExtension = os.path.splitext(self._sourcePath)
         if fileExtension == self._ywExtension:
             self.mainMenu.entryconfig(_('Swap'), state='disabled')
             self.mainMenu.entryconfig(_('Export'), state='normal')
             self.mainMenu.entryconfig(_('Import'), state='disabled')
+            self.mainMenu.entryconfig(_('Descriptions'), state='normal')
+            self.mainMenu.entryconfig(_('Lists'), state='normal')
         else:
             self.mainMenu.entryconfig(_('Swap'), state='normal')
             self.mainMenu.entryconfig(_('Export'), state='disabled')
             self.mainMenu.entryconfig(_('Import'), state='normal')
+            self.mainMenu.entryconfig(_('Descriptions'), state='disabled')
+            self.mainMenu.entryconfig(_('Lists'), state='disabled')
 
     def open_project(self, fileName):
         """Select a valid project file and display the path.

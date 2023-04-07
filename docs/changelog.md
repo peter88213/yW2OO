@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v5.0.5
+
+- When a document is loaded, disable "Descriptions" and "Lists" menus.
+
+Based on PyWriter v12.3.0
+
 ### v5.0.4
 
 - Make sure that no conversion is run on start if an invalid source path is set as commandline argument.
