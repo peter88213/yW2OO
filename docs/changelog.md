@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v5.0.3
+
+- Fix a bug where the "Open converted file" button is deactivated after conversion on start.
+
+Based on PyWriter v12.3.0
+
 ### v5.0.2
 
 - Reduce the memory use by discarding the docstrings on building.

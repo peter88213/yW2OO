@@ -59,15 +59,15 @@ def main():
     #--- Get initial project path.
     if not sourcePath or not os.path.isfile(sourcePath):
         sourcePath = kwargs['yw_last_open']
-    else:
-        if suffix:
-            # Output document type is set, so run the converter immediately.
-            if suffix == 'x':
-                suffix = ''
+    ui.open_project(sourcePath)
+    if suffix:
+        # Output document type is set, so run the converter immediately.
+        if suffix == 'x':
+            # Cmdline argument "x" is a placeholder for "plain" export.
+            suffix = ''
         kwargs['suffix'] = suffix
         ui.converter.run(sourcePath, **kwargs)
-
-    ui.open_project(sourcePath)
+        # Exits if converted document is opened.
 
     ui.start()
 
