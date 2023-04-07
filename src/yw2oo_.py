@@ -59,6 +59,7 @@ def main():
     #--- Get initial project path.
     if not sourcePath or not os.path.isfile(sourcePath):
         sourcePath = kwargs['yw_last_open']
+        suffix = None
     ui.open_project(sourcePath)
     if suffix:
         # Output document type is set, so run the converter immediately.

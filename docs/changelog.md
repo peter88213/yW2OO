@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v5.0.4
+
+- Make sure that no conversion is run on start if an invalid source path is set as commandline argument.
+
+Based on PyWriter v12.3.0
+
 ### v5.0.3
 
 - Fix a bug where the "Open converted file" button is deactivated after conversion on start.
