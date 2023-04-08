@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v5.0.6
+
+- Also convert .odt and .ods on start if specified by cmdline argument.
+
+Based on PyWriter v12.3.0
+
 ### v5.0.5
 
 - When a document is loaded, disable "Descriptions" and "Lists" menus.
