@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v5.0.7
+
+- Make it work on virtual file systems.
+
+Based on PyWriter v12.3.2
+
 ### v5.0.6
 
 - Also convert .odt and .ods on start if specified by cmdline argument.
