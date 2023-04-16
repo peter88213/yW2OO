@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### v5.0.9
+
+- When creating a new scene on ODT import, localize the default title.
+- Change the German wording according to novelyst: "Szene" --> "Abschnitt". 
+
+Based on PyWriter v12.4.1
+
 ### v5.0.8
 
 - Show a message when scenes are split during conversion.
