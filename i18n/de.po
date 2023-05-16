@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.0.9\n"
-"POT-Creation-Date: 2023-04-17 11:25:04\n"
-"PO-Revision-Date: 2023-04-17 11:25:04\n"
+"Project-Id-Version: 5.1.0\n"
+"POT-Creation-Date: 2023-05-16 21:38:07\n"
+"PO-Revision-Date: 2023-05-16 21:38:07\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -63,6 +63,9 @@ msgstr "Figurenliste (Tabelle)"
 
 msgid "Close"
 msgstr "Schließen"
+
+msgid "Corrupt marker"
+msgstr "Beschädigte Markierung"
 
 msgid "Create a yWriter project file from {0}\nNew project: \"{1}\""
 msgstr "Erzeuge eine yWriter-Projektdatei aus {0}\nNeues Projekt: \"{1}\""
@@ -151,6 +154,9 @@ msgstr "Schauplatzliste"
 msgid "Location list (spreadsheet)"
 msgstr "Schauplatzliste (Tabelle)"
 
+msgid "Manuscript"
+msgstr "Manuskript"
+
 msgid "Manuscript for editing"
 msgstr "Manuskript zum Bearbeiten"
 
@@ -222,6 +228,9 @@ msgstr "Abschnittsliste"
 
 msgid "Scene list (spreadsheet)"
 msgstr "Abschnittsliste (Tabelle)"
+
+msgid "Summary"
+msgstr "Zusammenfassung"
 
 msgid "Swap"
 msgstr "Umkehren"

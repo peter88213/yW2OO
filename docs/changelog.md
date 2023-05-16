@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v5.1.0
+
+- Provide translations for scene related comments in the exported documents. 
+
+Based on PyWriter v12.7.1
+
 ### v5.0.9
 
 - When creating a new scene on ODT import, localize the default title.
