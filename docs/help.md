@@ -125,14 +125,12 @@ text document (odt) with chapter and scene markers. File name suffix is
     containing the markers** if you want to be able to write the
     document back into yWriter.
 -   Chapters and scenes can neither be rearranged nor deleted. 
--   With *Writer*, you can split scenes by inserting headings or a scene divider:
+-   With *OpenOffice/LibreOffice Writer*, you can split scenes by inserting headings or a scene divider:
     -  *Heading 1* → New part title. Optionally, you can add a description, separated by `|`.
     -  *Heading 2* → New chapter title. Optionally, you can add a description, separated by `|`.
     -  `###` → Scene divider. Optionally, you can append the 
        scene title to the scene divider. You can also add a description, separated by `|`.
     - **Note:** Export documents with split scenes from *Writer* to yw7 not more than once.      
-       scene title to the scene divider.
-
 
 [Top of page](#top)
 
@@ -154,7 +152,7 @@ seen in the Navigator). File name suffix is `_manuscript`.
 -   Interspersed HTML, TEX, or RTF commands are taken over unchanged.
 -   Gobal variables and project variables are not resolved.
 -   Chapters and scenes can neither be rearranged nor deleted.
--   With *Writer*, you can split scenes by inserting headings or a scene divider:
+-   With *OpenOffice/LibreOffice Writer*, you can split scenes by inserting headings or a scene divider:
     -  *Heading 1* → New part title. Optionally, you can add a description, separated by `|`.
     -  *Heading 2* → New chapter title. Optionally, you can add a description, separated by `|`.
     -  `###` → Scene divider. Optionally, you can append the 
@@ -361,7 +359,7 @@ sections (to be seen in the Navigator). File name suffix is `_notes`.
 -  Comments within scenes are written back as scene titles
    if surrounded by `~`.
 -  Chapters and scenes can neither be rearranged nor deleted.
--   With *Writer*, you can split scenes by inserting headings or a scene divider:
+-   With *OpenOffice/LibreOffice Writer*, you can split scenes by inserting headings or a scene divider:
     -  *Heading 1* → New part title. Optionally, you can add a description, separated by `|`.
     -  *Heading 2* → New chapter title. Optionally, you can add a description, separated by `|`.
     -  `###` → Scene divider. Optionally, you can append the 
@@ -382,7 +380,7 @@ sections (to be seen in the Navigator). File name suffix is `_todo`.
 -  Comments within scenes are written back as scene titles
    if surrounded by `~`.
 -  Chapters and scenes can neither be rearranged nor deleted.
--   With *Writer*, you can split scenes by inserting headings or a scene divider:
+-   With *OpenOffice/LibreOffice Writer*, you can split scenes by inserting headings or a scene divider:
     -  *Heading 1* → New part title. Optionally, you can add a description, separated by `|`.
     -  *Heading 2* → New chapter title. Optionally, you can add a description, separated by `|`.
     -  `###` → Scene divider. Optionally, you can append the 
