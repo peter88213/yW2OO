@@ -37,9 +37,9 @@ first uninstall your current yW2OO installation with its included **Uninstall.ba
 
 ## Download and install
 
-[Download the latest release (version 5.2.1)](https://raw.githubusercontent.com/peter88213/yW2OO/main/dist/yW2OO_v5.2.1.zip)
+[Download the latest release (version 5.2.2)](https://raw.githubusercontent.com/peter88213/yW2OO/main/dist/yW2OO_v5.2.2.zip)
 
-- Extract the "yW2OO_v5.2.1" folder from the downloaded zipfile "yW2OO_v5.2.1.zip"
+- Extract the "yW2OO_v5.2.2" folder from the downloaded zipfile "yW2OO_v5.2.2.zip"
 - Move into this new folder and open "README.md" for further instructions.
 
 ---

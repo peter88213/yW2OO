@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v5.2.2
+
+- Fix a regression from v5.2.0 where the "proofing" document export may crash in case no language tags are found.
+
+Based on PyWriter v12.8.3
+
 ### v5.2.1
 
 - Simplify the "proofread" document's structure.
