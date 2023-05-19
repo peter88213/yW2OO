@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v5.2.1
+
+- Simplify the "proofread" document's structure.
+
+Based on PyWriter v12.8.2
+
 ### v5.2.0
 
 Modify the "Proofing document" classes for ODT exchange document conversion:
