@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.2.4\n"
-"POT-Creation-Date: 2023-05-21 08:50:04\n"
+"Project-Id-Version: 5.2.5\n"
+"POT-Creation-Date: 2023-05-24 11:19:57\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -63,6 +63,9 @@ msgid "Character list (spreadsheet)"
 msgstr ""
 
 msgid "Close"
+msgstr ""
+
+msgid "Convertible file"
 msgstr ""
 
 msgid "Corrupt marker"

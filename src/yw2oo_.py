@@ -22,9 +22,9 @@ SETTINGS = dict(
 )
 OPTIONS = {}
 FILE_TYPES = [
-    ('yWriter 7 project', '.yw7'),
-    ('Open Document Text', '.odt'),
-    ('Open Document Spreadsheet', '.ods'),
+    (_('Convertible file'), '.yw7'),
+    (_('Convertible file'), '.odt'),
+    (_('Convertible file'), '.ods'),
 ]
 
 
