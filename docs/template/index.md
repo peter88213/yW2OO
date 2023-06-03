@@ -42,6 +42,10 @@ first uninstall your current yW2OO installation with its included **Uninstall.ba
 - Extract the "yW2OO_v0.99.0" folder from the downloaded zipfile "yW2OO_v0.99.0.zip"
 - Move into this new folder and open "README.md" for further instructions.
 
+### Note for Linux users
+
+Please make sure that your Python3 installation has the *tkinter* module. On Ubuntu, for example, it is not available out of the box and must be installed via a separate package. 
+
 ---
 
 [Changelog](changelog)
