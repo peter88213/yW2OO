@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v5.3.0
+
+- Read ODT documents without meta.xml as created with FreeMind.
+
+Based on PyWriter v12.12.0
+
 ### v5.2.5
 
 - Improve the file open dialog.
