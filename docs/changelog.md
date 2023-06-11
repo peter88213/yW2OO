@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### v5.4.0
+
+- When exporting an ODT document that is not meant for re-import,
+convert yWriter comments into footnotes or endnotes.
+
+Based on PyWriter v12.13.0
+
 ### v5.3.0
 
 - Read ODT documents without meta.xml as created with FreeMind.
