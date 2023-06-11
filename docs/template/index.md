@@ -37,9 +37,9 @@ first uninstall your current yW2OO installation with its included **Uninstall.ba
 
 ## Download and install
 
-[Download the latest release (version 0.99.0)](https://raw.githubusercontent.com/peter88213/yW2OO/main/dist/yW2OO_v0.99.0.zip)
+[Download the latest release (version 0.99.0)](https://raw.githubusercontent.com/peter88213/yW2OO/main/dist/yw2oo_v0.99.0.zip)
 
-- Extract the "yW2OO_v0.99.0" folder from the downloaded zipfile "yW2OO_v0.99.0.zip"
+- Extract the "yw2oo_v0.99.0" folder from the downloaded zipfile "yw2oo_v0.99.0.zip"
 - Move into this new folder and open "README.md" for further instructions.
 
 ### Note for Linux users
