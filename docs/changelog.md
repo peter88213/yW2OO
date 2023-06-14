@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v 5.4.1
+
+- Fix a bug where the scene content gets lost when splitting a scene at an appended chapter heading.
+
+Based on PyWriter v12.13.2
+
 ### v5.4.0
 
 - When exporting an ODT document that is not meant for re-import,
