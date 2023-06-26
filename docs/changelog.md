@@ -4,7 +4,13 @@
 
 ## Changelog
 
-### v 5.4.1
+### v5.4.2
+
+- Ignore leading blanks when parsing footnote/endnote markup.
+
+Based on PyWriter v12.13.5
+
+### v5.4.1
 
 - Fix a bug where the scene content gets lost when splitting a scene at an appended chapter heading.
 
