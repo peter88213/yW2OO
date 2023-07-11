@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v5.4.32
+
+- Refactor the code for performance improvement.
+
+Based on PyWriter v12.13.6
+
 ### v5.4.2
 
 - Ignore leading blanks when parsing footnote/endnote markup.
