@@ -61,7 +61,7 @@ class Yw2ooTk(MainTk):
         self.converter.ui = self
 
         self._docExtension = '.odt'
-        self._openButton = tk.Button(self.mainWindow, text=_('Open converted file'), state=tk.DISABLED, command=self._open_newFile)
+        self._openButton = tk.Button(self.mainWindow, text=_('Open converted file'), state='disabled', command=self._open_newFile)
         self._openButton.config(height=1)
         self._openButton.pack(pady=10)
         self.quitButton = tk.Button(self.mainWindow, text=_("Quit"), command=self.on_quit)
@@ -183,10 +183,10 @@ class Yw2ooTk(MainTk):
         self.converter.run(self._sourcePath, **self.kwargs)
 
     def show_open_button(self, open_cmd=None):
-        self._openButton['state'] = tk.NORMAL
+        self._openButton['state'] = 'normal'
 
     def hide_open_button(self):
-        self._openButton['state'] = tk.DISABLED
+        self._openButton['state'] = 'disabled'
 
     def _open_newFile(self):
         """Open the converted file for editing and exit the program."""
