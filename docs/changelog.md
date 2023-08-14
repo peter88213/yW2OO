@@ -4,7 +4,7 @@
 
 ## Changelog
 
-### v5.4.32
+### v5.4.3
 
 - Refactor the code for performance improvement.
 
