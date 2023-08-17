@@ -1,4 +1,4 @@
-# yW2OO
+# yW2OO - Data transfer between OpenOffice/LibreOffice and yWriter
 
 ![screenshot](Screenshots/yw2oo_cm.png)
 
