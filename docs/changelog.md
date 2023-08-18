@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v5.5.0
+
+- Add scene headings to the "proofing" document.
+
+Based on PyWriter v12.14.0
+
 ### v5.4.3
 
 - Refactor the code for performance improvement.
