@@ -20,8 +20,6 @@
 - Update an existing yWriter 7 project with an edited text or spreadsheet document.
 - The application is ready for internationalization with GNU gettext. A German localization is provided. 
 
-With the [pywoo extension for OpenOffice](https://peter88213.github.io/pywoo) and the [yw-cnv extension for LibreOffice](https://peter88213.github.io/yw-cnv), you can write your edited Office documents back to the yWriter project.
-
     
 ## Requirements
 
@@ -54,6 +52,8 @@ Please make sure that your Python3 installation has the *tkinter* module. On Ubu
 
 See the [instructions for use](usage)
 
+---
+
 
 ## Credits
 
@@ -63,9 +63,11 @@ The icons are made using the free *Pusab* font by Ryoichi Tsunekawa, [Flat-it](h
 
 yW2OO is distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
 
+---
 
- 
+## See also
 
+[The pywoo extension for OpenOffice](https://peter88213.github.io/pywoo)
 
-
+[The yw-cnv extension for LibreOffice](https://peter88213.github.io/yw-cnv)
 
