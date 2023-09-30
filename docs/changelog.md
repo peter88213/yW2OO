@@ -4,6 +4,17 @@
 
 ## Changelog
 
+### v5.6.0
+
+Change the layout of exported documents.
+- Replace the Manuscript's scene comments with invisible scene headings.
+- Remove the ODT export's scene comments. 
+- Replace the Scene description document's scene comments with invisible scene headings.
+- Remove several links from the exported document's headings.
+This is mainly to speed up the opening of documents in OpenOffice.
+
+Based on PyWriter v12.16.1
+
 ### v5.5.0
 
 - Add scene headings to the "proofing" document.
