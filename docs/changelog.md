@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v5.6.3
+
+- Fix incompatibility of v5.6.2 with Python <3.9
+
+Based on PyWriter v12.16.7
+
 ### v5.6.2
 
 Change the layout of exported documents.
