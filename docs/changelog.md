@@ -4,6 +4,12 @@
 
 ## Changelog
 
+### v5.7.0
+
+Write more compact yw7 files without redundant data not needed by yWriter.
+
+Based on PyWriter v12.17.1
+
 ### v5.6.3
 
 - Fix incompatibility of v5.6.2 with Python <3.9
