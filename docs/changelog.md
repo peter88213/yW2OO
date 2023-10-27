@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### v5.7.1
+
+Fix a bug where normal scenes are written to the "notes" and "todo" export documents, 
+if appended to the previous scene.
+
+Based on PyWriter v12.17.2
+
 ### v5.7.0
 
 Write more compact yw7 files without redundant data not needed by yWriter.
