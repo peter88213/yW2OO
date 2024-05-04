@@ -30,7 +30,7 @@ After a major Python update you may need to run the setup program again and rene
 #### Drag and drop
 
 You can drag a document or yWriter project and drop it on the shortcut icon to instantly convert the file.
-After the conversion, the craphical user interface pops up, showing a message, and providing a button
+After the conversion, the graphical user interface pops up, showing a message, and providing a button
 to open the converted file.
 
 
