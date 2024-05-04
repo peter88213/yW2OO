@@ -17,7 +17,7 @@
    
 4. Open the installation folder. You may wish to create a shortcut to *run.pyw* on your Desktop.
 
-5. Under Windows, you can add am Explorer context menu by double-clicking  `add_context_menu.reg`. 
+5. Under Windows, you can add an Explorer context menu by double-clicking on  `add_context_menu.reg`. 
    You may be asked for approval to modify  the Windows registry. Please accept.
 
 You can remove the context menu entries by double-clicking  `rem_context_menu.reg`.
