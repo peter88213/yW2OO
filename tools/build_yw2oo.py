@@ -19,6 +19,7 @@ TARGET_FILE = f'{BUILD}yw2oo.py'
 
 
 def main():
+    os.makedirs(BUILD, exist_ok=True)
     inliner.run(SOURCE_FILE, TARGET_FILE, 'yw2oolib', '../src/')
     inliner.run(TARGET_FILE, TARGET_FILE, 'pywriter', '../../PyWriter/src/')
     print('Done.')

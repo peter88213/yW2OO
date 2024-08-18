@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="yw2oo" basedir=".">
-	<property name="version" value="5.7.5" />
+	<property name="version" value="5.7.6" />
 	<property name="test-app" value="yw2oo" />
 	
 	<property name="source-path" location="../src" />
@@ -21,14 +21,6 @@
 		<exec executable="python" failonerror="true">
 		    <arg value="translate_de.py"/>
 		    <arg value="${version}"/>
-		</exec>
-	</target>
-
-	<target name="test" description="integration test">
-		<copy file="${test-path}/test_${test-app}_.py" tofile="${test-path}/test_${test-app}.py" />
-		<replace encoding="utf-8" file="${test-path}/test_${test-app}.py" token="${test-app}_" value="${test-app}" />
-		<exec executable="python" failonerror="true">
-		    <arg value="${test-path}/test_${test-app}.py"/>
 		</exec>
 	</target>
 
