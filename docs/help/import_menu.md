@@ -25,9 +25,9 @@ This writes back the document's content to the yWriter project file.
 
 [About document language handling](#about-document-language-handling)
 
-[How to set up a work in progress for export](#how-to-set-up-a-work-in-progress-for-export)
+[How to set up a work in progress for import](#how-to-set-up-a-work-in-progress-for-import)
 
-[How to set up an outline for export](#how-to-set-up-an-outline-for-export)
+[How to set up an outline for import](#how-to-set-up-an-outline-for-import)
 
 --- 
 
@@ -85,7 +85,7 @@ It is recommended not to modify such markups in yWriter to avoid unwanted nestin
 
 ## HowTo
 
-## How to set up a work in progress for export
+## How to set up a work in progress for import
 
 A work in progress has no third level heading.
 
@@ -96,7 +96,7 @@ A work in progress has no third level heading.
 -   Comments right at the scene beginning are considered scene titles.
 -   All other text is considered scene content.
 
-## How to set up an outline for export
+## How to set up an outline for import
 
 An outline has at least one third level heading.
 
