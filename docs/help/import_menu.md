@@ -85,6 +85,11 @@ It is recommended not to modify such markups in yWriter to avoid unwanted nestin
 
 ## HowTo
 
+## General note
+
+Pleawe make sure that the headings are not hard-formatted in your original document. With LibreOffice, select the headings (you can use the Find dialog with "Format" activated), and reset the formatting with `Ctrl`-`M`.
+Then you can remove stray language tags: Select the whole document with `Ctrl`-`A`, then set the language of the selection to your default language.
+
 ## How to set up a work in progress for export
 
 A work in progress has no third level heading.
