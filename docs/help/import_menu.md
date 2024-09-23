@@ -96,6 +96,9 @@ A work in progress has no third level heading.
 -   Comments right at the scene beginning are considered scene titles.
 -   All other text is considered scene content.
 
+![Libreoffice example](../Screenshots/work-in-progress01.png)
+
+
 ## How to set up an outline for import
 
 An outline has at least one third level heading.
