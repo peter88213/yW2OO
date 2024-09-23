@@ -98,6 +98,9 @@ A work in progress has no third level heading.
 
 ![Libreoffice example](../Screenshots/work-in-progress01.png)
 
+This is an example document. The scene titles in the comments are optional; 
+if there are no comments, the converter will auto-generate scene titles. 
+
 
 ## How to set up an outline for import
 
