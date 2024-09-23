@@ -98,7 +98,7 @@ A work in progress has no third level heading.
 
 ![Libreoffice example](../Screenshots/work-in-progress01.png)
 
-This is an example document. The scene titles in the comments are optional; 
+This is an example work-in-progress document. The scene titles in the comments are optional; 
 if there are no comments, the converter will auto-generate scene titles. 
 
 
@@ -110,6 +110,13 @@ An outline has at least one third level heading.
 -   *Heading 2* → New chapter title.
 -   *Heading 3* → New scene title.
 -   All other text is considered to be chapter/scene description.
+
+![Libreoffice example](../Screenshots/work-in-progress02.png)
+
+This is an example outline document. The text right below the chapter heading
+is converted to chapter description. The text right below the scene heading
+is the scene description. 
+
 
 ---
 
