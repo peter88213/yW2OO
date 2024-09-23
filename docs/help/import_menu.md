@@ -98,7 +98,8 @@ A work in progress has no third level heading.
 
 ![Libreoffice example](../Screenshots/work-in-progress01.png)
 
-This is an example work-in-progress document. 
+Work-in-progress example: Note the blanks between the asterisks of
+the scene divider. It is not necessary to center the scene dividers.
 The scene titles in the comments are optional; 
 if there are no comments, the converter will auto-generate scene titles. 
 
