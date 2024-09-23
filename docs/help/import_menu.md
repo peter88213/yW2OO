@@ -111,7 +111,7 @@ An outline has at least one third level heading.
 -   *Heading 3* → New scene title.
 -   All other text is considered to be chapter/scene description.
 
-![Libreoffice example](../Screenshots/work-in-progress02.png)
+![Libreoffice example](../Screenshots/outline01.png)
 
 This is an example outline document. The text right below the chapter heading
 is converted to chapter description. The text right below the scene heading
